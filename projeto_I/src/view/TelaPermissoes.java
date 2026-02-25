@@ -8,6 +8,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
+import javax.swing.JScrollBar;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class TelaPermissoes extends JPanel {
 
@@ -20,6 +25,7 @@ public class TelaPermissoes extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(235, 219, 194));
 		add(menuBar, BorderLayout.NORTH);
 		
 		JMenu mnNewMenu = new JMenu("Notificações");
@@ -46,7 +52,23 @@ public class TelaPermissoes extends JPanel {
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[]", "[]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
+		
+		JLabel lblNewLabel = new JLabel("Permissões");
+		panel.add(lblNewLabel, "cell 1 1,grow");
+		
+		JButton btnNewButton = new JButton("New button");
+		panel.add(btnNewButton, "cell 3 1,grow");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane, "cell 1 3 3 1,grow");
+		
+		JPanel panel_1 = new JPanel();
+		scrollPane.setViewportView(panel_1);
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]", "[]"));
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		panel_1.add(lblNewLabel_3, "cell 14 0");
 
 	}
 
