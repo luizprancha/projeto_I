@@ -14,7 +14,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 
-public class TelaCadastroLoja extends JPanel {
+public class TelaCadastroConfeccao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
@@ -26,7 +26,7 @@ public class TelaCadastroLoja extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaCadastroLoja() throws FontFormatException, IOException {
+	public TelaCadastroConfeccao() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -63,7 +63,7 @@ public class TelaCadastroLoja extends JPanel {
 		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
 		).deriveFont(80f);
 		
-		JLabel lblNewLabel = new JLabel("Cadastro Loja");
+		JLabel lblNewLabel = new JLabel("Cadastro Confecção");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 2 1,alignx center,growy");
 		lblNewLabel.setFont(fonte);
@@ -73,7 +73,7 @@ public class TelaCadastroLoja extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome da loja:");
+		JLabel lblNewLabel_1 = new JLabel("Nome da confecção:");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
 		textField = new JTextField();
@@ -94,7 +94,7 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.add(textField_2, "cell 3 5,growx");
 		textField_2.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cadastrar Loja");
+		JButton btnNewButton = new JButton("Cadastrar Confecção");
 		panel.add(btnNewButton, "cell 2 5,growx,aligny center");
 
 	}

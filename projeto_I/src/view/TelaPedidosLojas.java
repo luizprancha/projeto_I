@@ -4,29 +4,30 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 
-public class TelaCadastroLoja extends JPanel {
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class TelaPedidosLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Create the panel.
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaCadastroLoja() throws FontFormatException, IOException {
+	public TelaPedidosLojas() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -47,12 +48,6 @@ public class TelaCadastroLoja extends JPanel {
 		JMenu mnNewMenu_4 = new JMenu("Pedidos");
 		menuBar.add(mnNewMenu_4);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Lojas");
-		mnNewMenu_4.add(mntmNewMenuItem);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Confecções");
-		mnNewMenu_4.add(mntmNewMenuItem_1);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
@@ -60,42 +55,51 @@ public class TelaCadastroLoja extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
-		).deriveFont(80f);
+		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		).deriveFont(50f);
 		
-		JLabel lblNewLabel = new JLabel("Cadastro Loja");
+		JLabel lblNewLabel = new JLabel("Pedidos Lojas");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
-		panel.add(lblNewLabel, "cell 2 1,alignx center,growy");
+		panel.add(lblNewLabel, "cell 1 1 2 1,alignx left,growy");
 		lblNewLabel.setFont(fonte);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome da loja:");
+		JLabel lblNewLabel_1 = new JLabel("Loja");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
 		textField = new JTextField();
 		panel_1.add(textField, "cell 3 1,growx");
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("CNPJ:");
-		panel_1.add(lblNewLabel_2, "cell 1 3");
+		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças");
+		panel_1.add(lblNewLabel_3, "cell 1 3");
+		
+		JLabel lblQuantidadePeçasMudar = new JLabel("20");
+		panel_1.add(lblQuantidadePeçasMudar, "cell 3 3");
+		
+		JLabel lblNewLabel_2 = new JLabel("Data de Entrega");
+		panel_1.add(lblNewLabel_2, "cell 1 5");
 		
 		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 3 3,growx");
+		panel_1.add(textField_1, "cell 3 5,growx");
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Endereço:");
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		JLabel lblNewLabel_5 = new JLabel("Valor Total");
+		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2, "cell 3 5,growx");
-		textField_2.setColumns(10);
+		JLabel lblValorTotalMudar = new JLabel("R$1.500,00");
+		panel_1.add(lblValorTotalMudar, "cell 3 7");
 		
-		JButton btnNewButton = new JButton("Cadastrar Loja");
-		panel.add(btnNewButton, "cell 2 5,growx,aligny center");
+		JButton btnNewButton = new JButton("Finalizar pedido");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(btnNewButton, "cell 2 5,grow");
 
 	}
 

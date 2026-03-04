@@ -21,7 +21,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class TelaLojas extends JPanel {
+public class TelaConfeccoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class TelaLojas extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaLojas() throws FontFormatException, IOException {
+	public TelaConfeccoes() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -70,12 +70,12 @@ public class TelaLojas extends JPanel {
 		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
 		).deriveFont(80f);
 		
-		JLabel lbLojas = new JLabel("Lojas");
+		JLabel lbLojas = new JLabel("Confecções");
 		lbLojas.setForeground(new Color(235, 219, 194));
 		lbLojas.setFont(fonte);
 		panel.add(lbLojas, "cell 1 1");
 		
-		JButton btCadastrarNovaLoja = new JButton("Cadastrar Loja");
+		JButton btCadastrarNovaLoja = new JButton("Cadastrar Confecção");
 		btCadastrarNovaLoja.setBackground(new Color(235, 219, 194));
 		btCadastrarNovaLoja.setBorderPainted(false);
 		btCadastrarNovaLoja.setFocusPainted(false);
