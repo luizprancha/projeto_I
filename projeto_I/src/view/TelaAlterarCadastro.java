@@ -14,7 +14,7 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.JTextField;
 
-public class TelaPermissões extends JPanel {
+public class TelaAlterarCadastro extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtSofiaMartinsPascoalini;
@@ -26,7 +26,7 @@ public class TelaPermissões extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaPermissões() throws FontFormatException, IOException {
+	public TelaAlterarCadastro() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();

@@ -15,7 +15,7 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.JButton;
 
-public class TelaPedidosLojasConfirmados extends JPanel {
+public class TelaPedidosConfeccoesConfirmados extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaPedidosLojasConfirmados() throws FontFormatException, IOException {
+	public TelaPedidosConfeccoesConfirmados() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -54,7 +54,7 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][][grow][grow][grow]"));
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -66,7 +66,7 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
 		).deriveFont(20f);
 		
-		JLabel lblNewLabel = new JLabel("Pedidos Lojas");
+		JLabel lblNewLabel = new JLabel("Pedidos Confecções");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		lblNewLabel.setBackground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1,grow");
@@ -76,8 +76,8 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel.add(btnNewButton, "cell 3 1,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmados:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNewLabel_1.setForeground(new Color(235, 219, 194));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel.add(lblNewLabel_1, "cell 1 3");
 		
 		JScrollPane scrollPane = new JScrollPane();
