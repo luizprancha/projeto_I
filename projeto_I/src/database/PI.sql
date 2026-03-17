@@ -72,6 +72,15 @@ CREATE TABLE PedidosLojas_Produtos (
   FOREIGN KEY (Produtos_idProdutos) REFERENCES Produtos(idProdutos)
 ) ENGINE=InnoDB;
 
+CREATE TABLE Usuarios (
+nome VARCHAR(50),
+user VARCHAR(50),
+cargo VARCHAR(20),
+senha VARCHAR(20),
+id INT AUTO_INCREMENT,
+PRIMARY KEY (usuario, senha)
+) ENGINE=InnoDB;
+
 INSERT INTO Lojas VALUES
 ('00.111.222/0001-10', 'Loja Estilo Fashion', 'Marcos Silva', 'Rua A, 100', '51999990001', 'contato@estilo.com'),
 ('11.222.333/0001-20', 'Moda Center', 'Ana Pereira', 'Rua B, 200', '51988880002', 'vendas@modacenter.com'),
@@ -106,3 +115,8 @@ INSERT INTO PedidosConfeccoes_Produtos VALUES
 (1, 1, 30, 25.00),
 (2, 2, 50, 70.00),
 (3, 3, 20, 90.00);
+
+INSERT INTO Usuarios VALUES
+("Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
+("João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
+("Maicon Douglas", "maicon2000", "Limpeza", "123456789");

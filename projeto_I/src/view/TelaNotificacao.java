@@ -26,7 +26,15 @@ public class TelaNotificacao extends JPanel {
 	 * Create the panel.
 	 * @throws IOException 
 	 * @throws FontFormatException 
+	 * 
+	 * 
 	 */
+	
+	Font fonte2 = Font.createFont(
+	        Font.TRUETYPE_FONT,
+	        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+	).deriveFont(14f);
+	
 	public TelaNotificacao() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
@@ -36,21 +44,29 @@ public class TelaNotificacao extends JPanel {
 		
 		JMenu mnNewMenu = new JMenu("Notificações");
 		menuBar.add(mnNewMenu);
+		mnNewMenu.setFont(fonte2);
+		
 		
 		JMenu mnNewMenu_1 = new JMenu("Produtos");
 		menuBar.add(mnNewMenu_1);
+		mnNewMenu_1.setFont(fonte2);
+		
 		
 		JMenu mnNewMenu_2 = new JMenu("Confecções");
 		menuBar.add(mnNewMenu_2);
+		mnNewMenu_2.setFont(fonte2);
 		
 		JMenu mnNewMenu_3 = new JMenu("Lojas");
 		menuBar.add(mnNewMenu_3);
+		mnNewMenu_3.setFont(fonte2);
 		
 		JMenu mnNewMenu_4 = new JMenu("Pedidos");
 		menuBar.add(mnNewMenu_4);
+		mnNewMenu_4.setFont(fonte2);
 		
 		JMenu mnNewMenu_5 = new JMenu("Permissões");
 		menuBar.add(mnNewMenu_5);
+		mnNewMenu_5.setFont(fonte2);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(235, 219, 194));
@@ -76,7 +92,12 @@ public class TelaNotificacao extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(15, 57, 87));
 		scrollPane_1.setViewportView(panel_1);
-		panel_1.setLayout(new MigLayout("", "[grow][grow 30][grow]", "[grow][grow 20][grow][grow 20][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow 30][grow]", "[grow][grow 20][grow][grow 20][grow]"));
+		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		).deriveFont(20f);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(235, 219, 194));
@@ -92,6 +113,7 @@ public class TelaNotificacao extends JPanel {
 		lbNo1.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo1.setForeground(new Color(235, 219, 194));
 		panel_8.add(lbNo1, "name_9304160647600");
+		lbNo1.setFont(fonte2);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(235, 219, 194));
@@ -112,6 +134,7 @@ public class TelaNotificacao extends JPanel {
 		lbNo2.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo2.setForeground(new Color(235, 219, 194));
 		panel_14.add(lbNo2, "name_9600362844400");
+		lbNo2.setFont(fonte2);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(new Color(235, 219, 194));
@@ -131,6 +154,7 @@ public class TelaNotificacao extends JPanel {
 		lbNo3.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo3.setForeground(new Color(235, 219, 194));
 		panel_10.add(lbNo3, "name_9655721472700");
+		lbNo3.setFont(fonte2);
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(235, 219, 194));
@@ -150,6 +174,7 @@ public class TelaNotificacao extends JPanel {
 		lbNo4.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo4.setForeground(new Color(235, 219, 194));
 		panel_16.add(lbNo4, "name_9790329387800");
+		lbNo4.setFont(fonte2);
 		
 		JPanel panel_17 = new JPanel();
 		panel_17.setBackground(new Color(235, 219, 194));
@@ -169,6 +194,7 @@ public class TelaNotificacao extends JPanel {
 		lbNo5.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo5.setForeground(new Color(235, 219, 194));
 		panel_12.add(lbNo5, "name_9698410286500");
+		lbNo5.setFont(fonte2);
 		
 		JPanel panel_13 = new JPanel();
 		panel_13.setBackground(new Color(235, 219, 194));
@@ -188,13 +214,11 @@ public class TelaNotificacao extends JPanel {
 		lbNo6.setIcon(new ImageIcon(TelaNotificacao.class.getResource("/imagem/novelo1.png")));
 		lbNo6.setForeground(new Color(235, 219, 194));
 		panel_18.add(lbNo6, "name_9793065763000");
+		lbNo6.setFont(fonte2);
 		
 		JPanel panel_19 = new JPanel();
 		panel_19.setBackground(new Color(235, 219, 194));
 		panel_7.add(panel_19, BorderLayout.CENTER);
-		
-		JPanel panel_20 = new JPanel();
-		panel_1.add(panel_20, "cell 0 5,grow");
 
 	}
 
