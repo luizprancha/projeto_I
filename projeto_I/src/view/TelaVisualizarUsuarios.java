@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
-public class TelaPermissoes extends JPanel {
+public class TelaVisualizarUsuarios extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfNome1;
@@ -37,7 +37,7 @@ public class TelaPermissoes extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaPermissoes() throws FontFormatException, IOException {
+	public TelaVisualizarUsuarios() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -83,13 +83,13 @@ public class TelaPermissoes extends JPanel {
 		).deriveFont(14f);
 		
 		
-		JLabel lblNewLabel = new JLabel("Permissões");
+		JLabel lblNewLabel = new JLabel("Usuários");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1,grow");
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton brVisualizarUsuarios = new JButton("Visualizar Usuários");
+		JButton brVisualizarUsuarios = new JButton("Editar Usuários");
 		brVisualizarUsuarios .setFont(fonte2);
 
 		
@@ -118,7 +118,7 @@ public class TelaPermissoes extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
 		scrollPane.setViewportView(panel_1);
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		
 		
@@ -146,12 +146,6 @@ public class TelaPermissoes extends JPanel {
 		panel_1.add(tfCargo1, "cell 5 3,growx");
 		tfCargo1.setColumns(10);
 		
-		JButton btSim1 = new JButton("✔️");
-		panel_1.add(btSim1, "cell 7 3");
-		
-		JButton btNao1 = new JButton("❌");
-		panel_1.add(btNao1, "cell 9 3");
-		
 		tfNome2 = new JTextField();
 		panel_1.add(tfNome2, "cell 1 5,growx");
 		tfNome2.setColumns(10);
@@ -164,12 +158,6 @@ public class TelaPermissoes extends JPanel {
 		panel_1.add(tfCargo2, "cell 5 5,growx");
 		tfCargo2.setColumns(10);
 		
-		JButton btSim2 = new JButton("✔️");
-		panel_1.add(btSim2, "cell 7 5");
-		
-		JButton btNao2 = new JButton("❌");
-		panel_1.add(btNao2, "cell 9 5");
-		
 		tfNome3 = new JTextField();
 		panel_1.add(tfNome3, "cell 1 7,growx");
 		tfNome3.setColumns(10);
@@ -181,12 +169,6 @@ public class TelaPermissoes extends JPanel {
 		tfCargo3 = new JTextField();
 		panel_1.add(tfCargo3, "cell 5 7,growx");
 		tfCargo3.setColumns(10);
-		
-		JButton brSim3 = new JButton("✔️");
-		panel_1.add(brSim3, "cell 7 7,alignx left");
-		
-		JButton btNao3 = new JButton("❌");
-		panel_1.add(btNao3, "cell 9 7");
 
 	}
 
