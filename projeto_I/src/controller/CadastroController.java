@@ -48,6 +48,11 @@ public class CadastroController {
 			else {
 				this.view.exibirMensagem("Erro", "Preencha todos os campos!", 0);
 			}
+			
+		});
+		
+		view.irParaLogin(e -> {
+			navegador.navegarPara("LOGIN");
 		});
 
 	

@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
 
@@ -73,6 +74,10 @@ public class TelaCadastro extends JPanel {
 		panel.add(pfSenha, "cell 3 7,growx");
 
 		btnCadastro = new JButton("Solicitar Cadastro");
+		btnCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCadastro.setBackground(begeFundo);
 		btnCadastro.setOpaque(true);
 		btnCadastro.setBorderPainted(false);
@@ -108,6 +113,10 @@ public class TelaCadastro extends JPanel {
 
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
 		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
+	}
+	
+	public void irParaLogin(ActionListener al) {
+		btnCadastro.addActionListener(al);
 	}
 
 	
