@@ -23,6 +23,7 @@ public class UsuarioDAO {
 			pstm.setString(2, usuario.getUser());
 			pstm.setString(3, usuario.getCargo());
 			pstm.setString(4, usuario.getSenha());
+			pstm.execute();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,7 +39,6 @@ public class UsuarioDAO {
 		}
 	}
 	
-	// READ - Lista de todos os Usuários
 			public List<Usuario> listarUsuarios(){
 				String sql = "SELECT * FROM Usuarios";
 				List<Usuario> usuarios = new ArrayList<>();
@@ -67,7 +67,7 @@ public class UsuarioDAO {
 				return usuarios;
 			}
 			
-			// UPDATE - Atualizar um usuário existente
+
 		    public void atualizarUsuario(Usuario usuario) {
 		        String sql = "UPDATE usuarios SET nome = ?, senha = ?, cargo = ?, user = ? WHERE id = ?";
 		        Connection conexao = null;

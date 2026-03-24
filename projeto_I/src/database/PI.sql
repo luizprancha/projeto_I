@@ -73,12 +73,12 @@ CREATE TABLE PedidosLojas_Produtos (
 ) ENGINE=InnoDB;
 
 CREATE TABLE Usuarios (
+id INT AUTO_INCREMENT,
 nome VARCHAR(50),
 user VARCHAR(50),
 cargo VARCHAR(20),
 senha VARCHAR(20),
-id INT AUTO_INCREMENT,
-PRIMARY KEY (usuario, senha)
+PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 INSERT INTO Lojas VALUES
@@ -117,6 +117,6 @@ INSERT INTO PedidosConfeccoes_Produtos VALUES
 (3, 3, 20, 90.00);
 
 INSERT INTO Usuarios VALUES
-("Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
-("João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
-("Maicon Douglas", "maicon2000", "Limpeza", "123456789");
+(null, "Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
+(null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
+(null,"Maicon Douglas", "maicon2000", "Limpeza", "123456789");

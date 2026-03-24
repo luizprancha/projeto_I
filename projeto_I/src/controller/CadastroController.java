@@ -45,6 +45,7 @@ public class CadastroController {
 				this.view.limparFormulario();
 				this.view.exibirMensagem("Sucesso", " Usuario Salvo", 1);
 			}
+			
 			else {
 				this.view.exibirMensagem("Erro", "Preencha todos os campos!", 0);
 			}
