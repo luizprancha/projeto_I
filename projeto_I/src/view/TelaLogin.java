@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.FontFormatException;
 
@@ -20,6 +22,8 @@ public class TelaLogin extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField tfUsuario;
 	private JTextField tfSenha;
+	private JButton btnEntrar;
+	private JButton btnCadastro; 
 
 	/**
 	 * Create the panel.
@@ -73,31 +77,50 @@ public class TelaLogin extends JPanel {
 		
 		Color begeFundo = new Color(235, 219, 194);
 		
-		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar = new JButton("Entrar");
 		btnEntrar.setFont(fonte2);
 		btnEntrar.setBackground(new Color(235, 219, 194));
 		btnEntrar.setBackground(begeFundo);
 		btnEntrar.setOpaque(true);
 		btnEntrar.setBorderPainted(false); // opcional
 		btnEntrar.setFocusPainted(false);  // opcional
-		btnEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		add(btnEntrar, "cell 3 5,grow");
 		
-		JButton btnCadastro = new JButton("Solicitar Cadastro");
+		btnCadastro = new JButton("Solicitar Cadastro");
 		btnCadastro.setFont(fonte2);
 		btnCadastro.setBackground(begeFundo);
 		btnCadastro.setOpaque(true);
 		btnCadastro.setBorderPainted(false); // opcional
 		btnCadastro.setFocusPainted(false);  // opcional
-		btnCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+	
 		add(btnCadastro, "cell 3 7,grow");
-
 	}
+		
+		public void entrar(ActionListener al) {
+			btnEntrar.addActionListener(al);
+		}
+
+		public void irParaCadastro(ActionListener al) {
+			btnCadastro.addActionListener(al);
+		}
+
+		public String getUsuario() {
+			return tfUsuario.getText();
+		}
+
+		public String getSenha() {
+			return tfSenha.getText();
+		}
+		
+	
+
+		public void exibirMensagem(String titulo, String mensagem, int tipo) {
+			JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
+		}
+	
+
+		
+	
 
 }

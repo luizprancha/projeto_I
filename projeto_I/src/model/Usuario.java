@@ -8,13 +8,13 @@ public class Usuario {
 	private String nome;
 	private int id;
 	
-	public Usuario(String user, String senha, String cargo, String CPF, String nome, int id) {
+	public Usuario(String user, String senha, String cargo, String nome) {
 		super();
 		this.user = user;
 		this.senha = senha;
 		this.cargo = cargo;
 		this.nome = nome;
-		this.id = id;
+	
 	}
 	public Usuario() {
 		super();
