@@ -75,7 +75,7 @@ CREATE TABLE PedidosLojas_Produtos (
 CREATE TABLE Usuarios (
 id INT AUTO_INCREMENT,
 nome VARCHAR(50),
-user VARCHAR(50),
+usuario VARCHAR(50),
 cargo VARCHAR(20),
 senha VARCHAR(20),
 PRIMARY KEY (id)
