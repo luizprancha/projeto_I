@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.BorderLayout;
@@ -10,7 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
-import javax.swing.JScrollBar;
+
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;

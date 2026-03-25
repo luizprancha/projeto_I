@@ -3,7 +3,7 @@ package view;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+
 import javax.swing.JMenu;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
@@ -14,7 +14,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 
-import javax.swing.SwingConstants;
+
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 

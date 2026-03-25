@@ -12,6 +12,7 @@ import view.TelaCadastro;
 public class CadastroController {
 	private final TelaCadastro view;
 	private final UsuarioDAO model;
+	@SuppressWarnings("unused")
 	private final Navegador navegador;
 
 	/**

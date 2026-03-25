@@ -7,7 +7,7 @@ import javax.swing.JMenu;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -61,10 +61,10 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
 		).deriveFont(40f);
 		
-		Font fonte1 = Font.createFont(
-		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
-		).deriveFont(20f);
+//		Font fonte1 = Font.createFont(
+//		        Font.TRUETYPE_FONT,
+//		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+//		).deriveFont(20f);
 		
 		JLabel lblNewLabel = new JLabel("Pedidos Confecções");
 		lblNewLabel.setForeground(new Color(235, 219, 194));

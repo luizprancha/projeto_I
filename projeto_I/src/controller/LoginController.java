@@ -5,7 +5,9 @@ import view.TelaLogin;
 
 public class LoginController {
 	
+	@SuppressWarnings("unused")
 	private TelaLogin view;
+	@SuppressWarnings("unused")
 	private Navegador navegador;
 
 	public LoginController(TelaLogin view, Navegador navegador) {

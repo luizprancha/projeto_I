@@ -8,7 +8,6 @@ import javax.swing.JMenuItem;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;

@@ -61,10 +61,10 @@ public class TelaEditarUsuarios extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
-		Font fonte1 = Font.createFont(
-		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
-		).deriveFont(50f);
+//		Font fonte1 = Font.createFont(
+//		        Font.TRUETYPE_FONT,
+//		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+//		).deriveFont(50f);
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,

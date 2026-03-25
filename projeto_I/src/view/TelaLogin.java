@@ -12,10 +12,7 @@ import java.awt.FontFormatException;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class TelaLogin extends JPanel {
 
