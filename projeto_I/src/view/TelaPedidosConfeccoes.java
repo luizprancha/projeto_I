@@ -13,7 +13,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 
-public class TelaPedidosConfecçoes extends JPanel {
+public class TelaPedidosConfeccoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +22,7 @@ public class TelaPedidosConfecçoes extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaPedidosConfecçoes() throws FontFormatException, IOException {
+	public TelaPedidosConfeccoes() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();

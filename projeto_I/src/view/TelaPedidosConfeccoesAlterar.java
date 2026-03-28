@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaPedidosConfecçoesAlterar extends JPanel {
+public class TelaPedidosConfeccoesAlterar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class TelaPedidosConfecçoesAlterar extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaPedidosConfecçoesAlterar() throws FontFormatException, IOException {
+	public TelaPedidosConfeccoesAlterar() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
