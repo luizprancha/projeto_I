@@ -22,12 +22,16 @@ public class TelaCadastro extends JPanel {
 	private JTextField tfNome;
 	private JTextField tfUsuario;
 	private JTextField tfCargo;
-	private JPasswordField pfSenha;
+	private JPasswordField tfSenha;
 
 	
 	private JButton btnCadastro;
 
 	Color begeFundo = new Color(235, 219, 194);
+	private JLabel lbNome;
+	private JLabel lbUsuario;
+	private JLabel lbCargo;
+	private JLabel lbSenha;
 
 	public TelaCadastro() throws FontFormatException, IOException {
 		setBackground(new Color(15, 57, 87));
@@ -52,26 +56,29 @@ public class TelaCadastro extends JPanel {
 		panel.setBackground(begeFundo);
 		panel.setLayout(new MigLayout("", "[grow][][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		add(panel, "cell 2 3 3 1,grow");
-
-	
-		panel.add(new JLabel("Nome"), "cell 1 1");
+		
+		lbNome = new JLabel("Nome");
+		panel.add(lbNome, "cell 1 1");
 		tfNome = new JTextField();
 		tfNome.setFont(fonteInter);
 		panel.add(tfNome, "cell 3 1,growx");
-
-		panel.add(new JLabel("Usuário"), "cell 1 3");
+		
+		lbUsuario = new JLabel("Usuário");
+		panel.add(lbUsuario, "cell 1 3");
 		tfUsuario = new JTextField();
 		tfUsuario.setFont(fonteInter);
 		panel.add(tfUsuario, "cell 3 3,growx");
-
-		panel.add(new JLabel("Cargo"), "cell 1 5");
+		
+		lbCargo = new JLabel("Cargo");
+		panel.add(lbCargo, "cell 1 5");
 		tfCargo = new JTextField();
 		tfCargo.setFont(fonteInter);
 		panel.add(tfCargo, "cell 3 5,growx");
-
-		panel.add(new JLabel("Senha"), "cell 1 7");
-		pfSenha = new JPasswordField();
-		panel.add(pfSenha, "cell 3 7,growx");
+		
+		lbSenha = new JLabel("Senha");
+		panel.add(lbSenha, "cell 1 7");
+		tfSenha = new JPasswordField();
+		panel.add(tfSenha, "cell 3 7,growx");
 
 		btnCadastro = new JButton("Solicitar Cadastro");
 		btnCadastro.addActionListener(new ActionListener() {
@@ -102,7 +109,7 @@ public class TelaCadastro extends JPanel {
 	}
 
 	public String getSenha() {
-		return new String(pfSenha.getPassword());
+		return new String(tfSenha.getPassword());
 	}
 
 
@@ -124,6 +131,6 @@ public class TelaCadastro extends JPanel {
 		tfNome.setText("");
 		tfUsuario.setText("");
 		tfCargo.setText("");
-		pfSenha.setText("");
+		tfSenha.setText("");
 	}
 }

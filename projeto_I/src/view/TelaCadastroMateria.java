@@ -8,20 +8,25 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaCadastroMateria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField tfCor;
+	private JTextField tfQuantidade;
 
 	/**
 	 * Create the panel.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	public TelaCadastroMateria() {
+	public TelaCadastroMateria() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -50,39 +55,56 @@ public class TelaCadastroMateria extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel = new JLabel("Cadastro Matéria Prima");
-		lblNewLabel.setForeground(new Color(235, 219, 194));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		panel.add(lblNewLabel, "cell 1 1 5 1,alignx center");
+		Font fonte = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		).deriveFont(100f);
+		
+		JLabel lbCadastroMateriaPrima = new JLabel("Cadastro Matéria Prima");
+		lbCadastroMateriaPrima.setForeground(new Color(235, 219, 194));
+		panel.add(lbCadastroMateriaPrima, "cell 1 1 5 1,alignx left");
+		lbCadastroMateriaPrima.setFont(fonte);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 2 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[][][][grow][]", "[][][][][][][]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		panel_1.add(lblNewLabel_1, "cell 1 1");
+		JLabel lbTipoProduto = new JLabel("Tipo de Produto");
+		panel_1.add(lbTipoProduto, "cell 1 1");
 		
-		textField = new JTextField();
-		panel_1.add(textField, "cell 3 1,growx");
-		textField.setColumns(10);
+		JComboBox cbTipoProduto = new JComboBox();
+		cbTipoProduto.setModel(new DefaultComboBoxModel(new String[] {"Tecido", "Aviamentos"}));
+		panel_1.add(cbTipoProduto, "cell 3 1,growx");
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		panel_1.add(lblNewLabel_2, "cell 1 3");
+		JLabel lbCor = new JLabel("Cor");
+		panel_1.add(lbCor, "cell 1 3");
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 3 3,growx");
-		textField_1.setColumns(10);
+		tfCor = new JTextField();
+		panel_1.add(tfCor, "cell 3 3,growx");
+		tfCor.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		JLabel lbQuantidade = new JLabel("Quantidade (unidade)");
+		panel_1.add(lbQuantidade, "cell 1 5");
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2, "cell 3 5,growx");
-		textField_2.setColumns(10);
+		tfQuantidade = new JTextField();
+		panel_1.add(tfQuantidade, "cell 3 5,growx");
+		tfQuantidade.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		panel.add(btnNewButton, "cell 3 5,growx");
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(new Color(255, 255, 255));
+		btnCadastrar.setContentAreaFilled(false);
+		btnCadastrar.setOpaque(false);
+		btnCadastrar.setBorderPainted(false);
+          
+		btnCadastrar.setContentAreaFilled(true);
+		btnCadastrar.setOpaque(true);
+		btnCadastrar.setBorderPainted(false);
+
+		btnCadastrar.setBackground(new Color(235, 219, 194 ));
+		
+		
+		panel.add(btnCadastrar, "cell 3 5,growx");
 
 	}
 
