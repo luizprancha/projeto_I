@@ -1,5 +1,6 @@
 package controller;
 
+import model.UsuarioDAO;
 import view.TelaLogin;
 
 
@@ -16,15 +17,21 @@ public class LoginController {
 
 	
 		view.entrar(e -> {
-			String user = view.getUsuario();
-			String senha = view.getSenha();
+		    String user = view.getUsuario();
+		    String senha = view.getSenha();
 
-			if(!user.equals("") && !senha.equals("")) {
-				navegador.navegarPara("NOTIFICACAO"); 
-			} else {
-				view.exibirMensagem("Erro", "Preencha os campos!", 0);
-			}
+		    if(!user.equals("") && !senha.equals("")) {
+		        UsuarioDAO usuarioDAO = new UsuarioDAO();
+		        if(usuarioDAO.verificarUsuario(user, senha)) {
+		            navegador.navegarPara("NOTIFICACAO");
+		        } else {
+		            view.exibirMensagem("Erro", "Usuário ou senha inválidos!", 0);
+		        }
+		    } else {
+		        view.exibirMensagem("Erro", "Preencha os campos!", 0);
+		    }
 		});
+
 
 		
 		view.irParaCadastro(e -> {

@@ -88,5 +88,30 @@ public class UsuarioDAO {
 		        	database.BancoDeDados.desconectar(conexao);
 		        }
 		    }
+		    
+		    public boolean verificarUsuario(String usuario, String senha) {
+		        String sql = "SELECT COUNT(*) FROM Usuarios WHERE usuario = ? AND senha = ?";
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
+		        ResultSet rset = null;
+		        try {
+		            conexao = database.BancoDeDados.conectar();
+		            pstm = conexao.prepareStatement(sql);
+		            pstm.setString(1, usuario);
+		            pstm.setString(2, senha);
+		            rset = pstm.executeQuery();
+		            if (rset.next()) {
+		                return rset.getInt(1) > 0;
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        } finally {
+		            database.BancoDeDados.desconectar(conexao);
+		        }
+		        return false;
+		    }
+
+		    
+		    
 	
 }
