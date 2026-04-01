@@ -13,13 +13,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroLoja extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField tfNomeLoja;
+	private JTextField tfCNPJ;
+	private JTextField tfEndereco;
 
 	/**
 	 * Create the panel.
@@ -73,29 +75,45 @@ public class TelaCadastroLoja extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome da loja:");
-		panel_1.add(lblNewLabel_1, "cell 1 1");
+		JLabel lbNomeLoja = new JLabel("Nome da loja:");
+		panel_1.add(lbNomeLoja, "cell 1 1");
 		
-		textField = new JTextField();
-		panel_1.add(textField, "cell 3 1,growx");
-		textField.setColumns(10);
+		tfNomeLoja = new JTextField();
+		panel_1.add(tfNomeLoja, "cell 3 1,growx");
+		tfNomeLoja.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("CNPJ:");
-		panel_1.add(lblNewLabel_2, "cell 1 3");
+		JLabel lbCNPJ = new JLabel("CNPJ:");
+		panel_1.add(lbCNPJ, "cell 1 3");
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 3 3,growx");
-		textField_1.setColumns(10);
+		tfCNPJ = new JTextField();
+		panel_1.add(tfCNPJ, "cell 3 3,growx");
+		tfCNPJ.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Endereço:");
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		JLabel lbEndereco = new JLabel("Endereço:");
+		panel_1.add(lbEndereco, "cell 1 5");
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2, "cell 3 5,growx");
-		textField_2.setColumns(10);
+		tfEndereco = new JTextField();
+		panel_1.add(tfEndereco, "cell 3 5,growx");
+		tfEndereco.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cadastrar Loja");
-		panel.add(btnNewButton, "cell 2 5,growx,aligny center");
+		JButton btnCadastroLoja = new JButton("Cadastrar Loja");
+		
+
+		btnCadastroLoja.setBackground(new Color(255, 255, 255));
+		btnCadastroLoja.setContentAreaFilled(false);
+		btnCadastroLoja.setOpaque(false);
+		btnCadastroLoja.setBorderPainted(false);
+          
+		btnCadastroLoja.setContentAreaFilled(true);
+		btnCadastroLoja.setOpaque(true);
+		btnCadastroLoja.setBorderPainted(false);
+
+		btnCadastroLoja.setBackground(new Color(235, 219, 194 ));
+		btnCadastroLoja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(btnCadastroLoja, "cell 2 5,growx,aligny center");
 
 	}
 

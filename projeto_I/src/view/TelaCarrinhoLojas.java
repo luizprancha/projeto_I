@@ -19,8 +19,8 @@ import javax.swing.JButton;
 public class TelaCarrinhoLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfBuscar;
+	private JTextField tfQuantidade;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
@@ -76,9 +76,9 @@ public class TelaCarrinhoLojas extends JPanel {
 		panel.add(lblNewLabel, "cell 1 1 4 1");
 		lblNewLabel.setFont(fonte);
 		
-		textField = new JTextField();
-		panel.add(textField, "cell 5 1,growx");
-		textField.setColumns(10);
+		tfBuscar = new JTextField();
+		panel.add(tfBuscar, "cell 5 1,growx");
+		tfBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 5 1,grow");
@@ -93,30 +93,30 @@ public class TelaCarrinhoLojas extends JPanel {
 		panel_1.add(panel_2, "cell 1 1,grow");
 		panel_2.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Camisa");
-		panel_2.add(lblNewLabel_1, "cell 1 1,alignx center,growy");
+		JLabel lbCamisa = new JLabel("Camisa");
+		panel_2.add(lbCamisa, "cell 1 1,alignx center,growy");
 		
-		JLabel lblNewLabel_2 = new JLabel("Quantidade");
-		panel_2.add(lblNewLabel_2, "cell 1 3,alignx center,aligny center");
+		JLabel lbQuantidade = new JLabel("Quantidade");
+		panel_2.add(lbQuantidade, "cell 1 3,alignx center,aligny center");
 		
-		JButton btnNewButton_4 = new JButton("-");
-		btnNewButton_4.setBackground(new Color(240, 240, 240));
-		panel_2.add(btnNewButton_4, "cell 0 5,alignx right");
+		JButton btnMenos = new JButton("-");
+		btnMenos.setBackground(new Color(240, 240, 240));
+		panel_2.add(btnMenos, "cell 0 5,alignx right");
 		
-		textField_1 = new JTextField();
-		textField_1.setBackground(new Color(240, 240, 240));
-		panel_2.add(textField_1, "cell 1 5,growx");
-		textField_1.setColumns(10);
+		tfQuantidade = new JTextField();
+		tfQuantidade.setBackground(new Color(240, 240, 240));
+		panel_2.add(tfQuantidade, "cell 1 5,growx");
+		tfQuantidade.setColumns(10);
 		
-		JButton btnNewButton_5 = new JButton("+");
-		btnNewButton_5.setBackground(new Color(240, 240, 240));
-		panel_2.add(btnNewButton_5, "cell 2 5,alignx left");
+		JButton btnMais = new JButton("+");
+		btnMais.setBackground(new Color(240, 240, 240));
+		panel_2.add(btnMais, "cell 2 5,alignx left");
 		
-		JLabel lblNewLabel_3 = new JLabel("Valor");
-		panel_2.add(lblNewLabel_3, "cell 1 6,alignx center");
+		JLabel lbValor = new JLabel("Valor");
+		panel_2.add(lbValor, "cell 1 6,alignx center");
 		
-		JLabel lblNewLabel_4 = new JLabel("R$1 500,00");
-		panel_2.add(lblNewLabel_4, "cell 1 8,alignx center");
+		JLabel lbTotal = new JLabel("R$1 500,00");
+		panel_2.add(lbTotal, "cell 1 8,alignx center");
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(255, 255, 255));
@@ -317,11 +317,44 @@ public class TelaCarrinhoLojas extends JPanel {
 		JButton btnExcluir = new JButton("Excluir");
 		panel.add(btnExcluir, "cell 1 5,growx,aligny center");
 		
-		JButton btnNewButton_1 = new JButton("Finalizar Pedido");
-		panel.add(btnNewButton_1, "cell 3 5,growx,aligny center");
+		btnExcluir.setBackground(new Color(255, 255, 255));
+		btnExcluir.setContentAreaFilled(false);
+		btnExcluir.setOpaque(false);
+		btnExcluir.setBorderPainted(false);
+          
+		btnExcluir.setContentAreaFilled(true);
+		btnExcluir.setOpaque(true);
+		btnExcluir.setBorderPainted(false);
+
+		btnExcluir.setBackground(new Color(235, 219, 194 ));
 		
-		JButton btnNewButton_2 = new JButton("Alterar");
-		panel.add(btnNewButton_2, "cell 5 5,growx,aligny center");
+		JButton btnFinalizarPedido = new JButton("Finalizar Pedido");
+		
+		btnFinalizarPedido.setBackground(new Color(255, 255, 255));
+		btnFinalizarPedido.setContentAreaFilled(false);
+		btnFinalizarPedido.setOpaque(false);
+		btnFinalizarPedido.setBorderPainted(false);
+          
+		btnFinalizarPedido.setContentAreaFilled(true);
+		btnFinalizarPedido.setOpaque(true);
+		btnFinalizarPedido.setBorderPainted(false);
+
+		btnFinalizarPedido.setBackground(new Color(235, 219, 194 ));
+		panel.add(btnFinalizarPedido, "cell 3 5,growx,aligny center");
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBackground(new Color(255, 255, 255));
+		btnAlterar.setContentAreaFilled(false);
+		btnAlterar.setOpaque(false);
+		btnAlterar.setBorderPainted(false);
+          
+		btnAlterar.setContentAreaFilled(true);
+		btnAlterar.setOpaque(true);
+		btnAlterar.setBorderPainted(false);
+
+		btnAlterar.setBackground(new Color(235, 219, 194 ));
+		
+		panel.add(btnAlterar, "cell 5 5,growx,aligny center");
 
 	}
 
