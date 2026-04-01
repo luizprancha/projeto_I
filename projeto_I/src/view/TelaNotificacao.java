@@ -17,11 +17,21 @@ import java.io.IOException;
 
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+ 
 public class TelaNotificacao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	private JMenu  mnProdutos;
+	private JMenu  mnNotificacoes;
+	private JMenu  mnConfeccoes;
+	private JMenu  mnLojas;
+	private JMenu mnPedidos;
+	private JMenu mnPermissoes;
 	/**
 	 * Create the panel.
 	 * @throws IOException 
@@ -42,31 +52,56 @@ public class TelaNotificacao extends JPanel {
 		menuBar.setBackground(new Color(235, 219, 194));
 		add(menuBar, BorderLayout.NORTH);
 		
-		JMenu mnNewMenu = new JMenu("Notificações");
-		menuBar.add(mnNewMenu);
-		mnNewMenu.setFont(fonte2);
+		mnNotificacoes = new JMenu("Notificações");
+		mnNotificacoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnNotificacoes);
+		mnNotificacoes.setFont(fonte2);
 		
 		
-		JMenu mnNewMenu_1 = new JMenu("Produtos");
-		menuBar.add(mnNewMenu_1);
-		mnNewMenu_1.setFont(fonte2);
+		 mnProdutos = new JMenu("Produtos"); 	
+		 mnProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnProdutos);
+		mnProdutos.setFont(fonte2);
 		
 		
-		JMenu mnNewMenu_2 = new JMenu("Confecções");
-		menuBar.add(mnNewMenu_2);
-		mnNewMenu_2.setFont(fonte2);
+	
+		mnConfeccoes = new JMenu("Confecções");
+		mnConfeccoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnConfeccoes);
+		mnConfeccoes.setFont(fonte2);
 		
-		JMenu mnNewMenu_3 = new JMenu("Lojas");
-		menuBar.add(mnNewMenu_3);
-		mnNewMenu_3.setFont(fonte2);
+		mnLojas = new JMenu("Lojas");
+		mnLojas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnLojas);
+		mnLojas.setFont(fonte2);
 		
-		JMenu mnNewMenu_4 = new JMenu("Pedidos");
-		menuBar.add(mnNewMenu_4);
-		mnNewMenu_4.setFont(fonte2);
+		mnPedidos = new JMenu("Pedidos");
+		mnPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnPedidos);
+		mnPedidos.setFont(fonte2);
 		
-		JMenu mnNewMenu_5 = new JMenu("Permissões");
-		menuBar.add(mnNewMenu_5);
-		mnNewMenu_5.setFont(fonte2);
+		 mnPermissoes = new JMenu("Permissões");
+		mnPermissoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(mnPermissoes);
+		mnPermissoes.setFont(fonte2);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(235, 219, 194));
@@ -220,6 +255,30 @@ public class TelaNotificacao extends JPanel {
 		panel_19.setBackground(new Color(235, 219, 194));
 		panel_7.add(panel_19, BorderLayout.CENTER);
 
+	}
+	
+	public void mnProdutos(ActionListener al) {
+		mnProdutos.addActionListener(al);
+	}
+	
+	public void mnNotificacoes(ActionListener al) {
+		mnNotificacoes.addActionListener(al);
+	}
+	
+	public void mnConfeccoes(ActionListener al) {
+		mnConfeccoes.addActionListener(al);
+	}
+	
+	public void mnPermissoes(ActionListener al) {
+		mnPermissoes.addActionListener(al);
+	}
+	
+	public void mnLojas(ActionListener al) {
+		mnLojas.addActionListener(al);
+	}
+	
+	public void mnPedidos(ActionListener al) {
+		mnPedidos.addActionListener(al);
 	}
 
 }
