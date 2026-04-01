@@ -32,7 +32,7 @@ public class TelaNotificacao extends JPanel {
 	
 	Font fonte2 = Font.createFont(
 	        Font.TRUETYPE_FONT,
-	        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+	        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 	).deriveFont(14f);
 	
 	public TelaNotificacao() throws FontFormatException, IOException {
@@ -76,7 +76,7 @@ public class TelaNotificacao extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(100f);
 
 		
@@ -96,7 +96,7 @@ public class TelaNotificacao extends JPanel {
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(20f);
 		
 		JPanel panel_2 = new JPanel();

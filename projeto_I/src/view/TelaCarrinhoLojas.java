@@ -68,7 +68,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(40f);
 		
 		JLabel lblNewLabel = new JLabel("Carrinho de pedidos ");

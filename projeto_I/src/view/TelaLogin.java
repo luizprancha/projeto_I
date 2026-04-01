@@ -33,7 +33,7 @@ public class TelaLogin extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(140f);
 		JLabel lbTitulo = new JLabel("Nó de Estoque");
 		lbTitulo.setFont(fonte);
@@ -50,7 +50,7 @@ public class TelaLogin extends JPanel {
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(14f); 
 		
 		JLabel lbUsuario = new JLabel("Usuário");

@@ -63,12 +63,12 @@ public class TelaEditarUsuarios extends JPanel {
 		
 //		Font fonte1 = Font.createFont(
 //		        Font.TRUETYPE_FONT,
-//		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+//		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 //		).deriveFont(50f);
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(70f);
 		
 		
@@ -86,7 +86,7 @@ public class TelaEditarUsuarios extends JPanel {
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(14f);
 		
 		

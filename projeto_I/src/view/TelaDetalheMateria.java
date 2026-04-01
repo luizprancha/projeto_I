@@ -50,12 +50,12 @@ public class TelaDetalheMateria extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(50f);
 		
 		Font fonteInter = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Inter.ttf")
+		        getClass().getResourceAsStream("/fontes/Inter.ttf")
 		).deriveFont(15f);
 		
 		JPanel panel = new JPanel();

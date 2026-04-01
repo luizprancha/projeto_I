@@ -63,7 +63,7 @@ public class TelaPedidosConfeccoesAlterar extends JPanel {
 		
 		Font fonte1 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(50f);
 		
 		JLabel lblNewLabel = new JLabel("Pedidos Confecções");

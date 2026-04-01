@@ -57,7 +57,7 @@ public class TelaCadastroMateria extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(100f);
 		
 		JLabel lbCadastroMateriaPrima = new JLabel("Cadastro Matéria Prima");
@@ -73,8 +73,8 @@ public class TelaCadastroMateria extends JPanel {
 		JLabel lbTipoProduto = new JLabel("Tipo de Produto");
 		panel_1.add(lbTipoProduto, "cell 1 1");
 		
-		JComboBox cbTipoProduto = new JComboBox();
-		cbTipoProduto.setModel(new DefaultComboBoxModel(new String[] {"Tecido", "Aviamentos"}));
+		JComboBox<String> cbTipoProduto = new JComboBox<>();
+		cbTipoProduto.setModel(new DefaultComboBoxModel<>(new String[] {"Tecido", "Aviamentos"}));
 		panel_1.add(cbTipoProduto, "cell 3 1,growx");
 		
 		JLabel lbCor = new JLabel("Cor");

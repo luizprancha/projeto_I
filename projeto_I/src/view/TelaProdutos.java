@@ -68,7 +68,7 @@ public class TelaProdutos extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(80f);
 		
 		JLabel lbLojas = new JLabel("Produtos");

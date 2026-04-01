@@ -39,12 +39,12 @@ public class TelaCadastro extends JPanel {
 
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(150f);
 
 		Font fonteInter = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Inter.ttf")
+		        getClass().getResourceAsStream("/fontes/Inter.ttf")
 		).deriveFont(15f);
 
 		JLabel lbBemVindo = new JLabel("Bem-vindo");

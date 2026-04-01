@@ -59,7 +59,7 @@ public class TelaCadastroProduto extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Jomhuria-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(100f);
 		
 		JLabel lbCadastro = new JLabel("Cadastro Produto");

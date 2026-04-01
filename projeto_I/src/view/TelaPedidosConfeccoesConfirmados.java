@@ -58,12 +58,12 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(40f);
 		
 //		Font fonte1 = Font.createFont(
 //		        Font.TRUETYPE_FONT,
-//		        getClass().getResourceAsStream("../fontes/Abel-Regular.ttf")
+//		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 //		).deriveFont(20f);
 		
 		JLabel lblNewLabel = new JLabel("Pedidos Confecções");
