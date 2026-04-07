@@ -32,29 +32,29 @@ public class TelaEditarUsuarios extends JPanel {
 	public TelaEditarUsuarios() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
-		JMenuBar menuBar = new JMenuBar();
-		add(menuBar, BorderLayout.NORTH);
-		
-		JMenu mnNewMenu = new JMenu("Notificações");
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnNewMenu_1 = new JMenu("Produtos");
-		menuBar.add(mnNewMenu_1);
-		
-		JMenu mnNewMenu_2 = new JMenu("Confecções");
-		menuBar.add(mnNewMenu_2);
-		
-		JMenu mnNewMenu_3 = new JMenu("Lojas");
-		menuBar.add(mnNewMenu_3);
-		
-		JMenu mnNewMenu_4 = new JMenu("Pedidos");
-		menuBar.add(mnNewMenu_4);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Confecções");
-		mnNewMenu_4.add(mntmNewMenuItem);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Lojas");
-		mnNewMenu_4.add(mntmNewMenuItem_1);
+//		JMenuBar menuBar = new JMenuBar();
+//		add(menuBar, BorderLayout.NORTH);
+//		
+//		JMenu mnNewMenu = new JMenu("Notificações");
+//		menuBar.add(mnNewMenu);
+//		
+//		JMenu mnNewMenu_1 = new JMenu("Produtos");
+//		menuBar.add(mnNewMenu_1);
+//		
+//		JMenu mnNewMenu_2 = new JMenu("Confecções");
+//		menuBar.add(mnNewMenu_2);
+//		
+//		JMenu mnNewMenu_3 = new JMenu("Lojas");
+//		menuBar.add(mnNewMenu_3);
+//		
+//		JMenu mnNewMenu_4 = new JMenu("Pedidos");
+//		menuBar.add(mnNewMenu_4);
+//		
+//		JMenuItem mntmNewMenuItem = new JMenuItem("Confecções");
+//		mnNewMenu_4.add(mntmNewMenuItem);
+//		
+//		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Lojas");
+//		mnNewMenu_4.add(mntmNewMenuItem_1);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
