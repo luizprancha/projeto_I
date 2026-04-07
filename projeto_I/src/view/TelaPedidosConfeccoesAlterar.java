@@ -19,10 +19,10 @@ import java.awt.event.ActionEvent;
 public class TelaPedidosConfeccoesAlterar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField tfConfeccao;
+	private JTextField tfQuantidade;
+	private JTextField tfDataEntrega;
+	private JTextField tfValorTotal;
 
 	/**
 	 * Create the panel.
@@ -78,44 +78,45 @@ public class TelaPedidosConfeccoesAlterar extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Confecção");
+		JLabel lblNewLabel_1 = new JLabel("Confecção:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		textField = new JTextField();
-		panel_1.add(textField, "cell 3 1,growx");
-		textField.setColumns(10);
+		tfConfeccao = new JTextField();
+		panel_1.add(tfConfeccao, "cell 3 1,growx");
+		tfConfeccao.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças");
+		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 3 3,growx");
-		textField_1.setColumns(10);
+		tfQuantidade = new JTextField();
+		panel_1.add(tfQuantidade, "cell 3 3,growx");
+		tfQuantidade.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Data de entrega");
+		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2, "cell 3 5,growx");
-		textField_2.setColumns(10);
+		tfDataEntrega = new JTextField();
+		panel_1.add(tfDataEntrega, "cell 3 5,growx");
+		tfDataEntrega.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Valor total");
+		JLabel lblNewLabel_4 = new JLabel("Valor total:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_4, "cell 1 7");
 		
-		textField_3 = new JTextField();
-		panel_1.add(textField_3, "cell 3 7,growx");
-		textField_3.setColumns(10);
+		tfValorTotal = new JTextField();
+		panel_1.add(tfValorTotal, "cell 3 7,growx");
+		tfValorTotal.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Confirmar Alterações");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.add(btnNewButton, "cell 2 5,growx");
+		JButton btnConfirmar = new JButton("Confirmar Alterações");
+		btnConfirmar.setBackground(new Color(235, 219, 194)); 
+		btnConfirmar.setContentAreaFilled(true);
+		btnConfirmar.setOpaque(true);
+		btnConfirmar.setBorderPainted(false);
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnConfirmar, "cell 2 5,growx");
 
 	}
 

@@ -18,6 +18,9 @@ import javax.swing.JButton;
 public class TelaPedidosConfeccoesConfirmados extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private JLabel lbNomeConfeccao2;
+	private JLabel lbNomeConfeccao3;
+	private JLabel lbNomeConfeccao5;
 
 	/**
 	 * Create the panel.
@@ -72,8 +75,13 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		panel.add(lblNewLabel, "cell 1 1,grow");
 		lblNewLabel.setFont(fonte);
 		
-		JButton btnNewButton = new JButton("Realizar novo pedido");
-		panel.add(btnNewButton, "cell 3 1,growx");
+		JButton btnRealizarNovo = new JButton("Realizar novo pedido");
+		btnRealizarNovo.setBackground(new Color(235, 219, 194)); 
+		btnRealizarNovo.setContentAreaFilled(true);
+		btnRealizarNovo.setOpaque(true);
+		btnRealizarNovo.setBorderPainted(false);
+		btnRealizarNovo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btnRealizarNovo, "cell 3 1,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmados:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
@@ -93,66 +101,66 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		panel_1.add(panel_2, "cell 0 0,grow");
 		panel_2.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		panel_2.add(lblNewLabel_2, "cell 0 1");
+		JLabel lbNomeConfeccao1 = new JLabel("Nome confecção");
+		panel_2.add(lbNomeConfeccao1, "cell 0 1");
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		panel_2.add(lblNewLabel_3, "cell 0 3");
+		JLabel lbDataEntrega1 = new JLabel("Data de entrega");
+		panel_2.add(lbDataEntrega1, "cell 0 3");
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_4, "cell 2 0,grow");
 		panel_4.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		panel_4.add(lblNewLabel_4, "cell 0 1");
+		lbNomeConfeccao2 = new JLabel("Nome confecção");
+		panel_4.add(lbNomeConfeccao2, "cell 0 1");
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		panel_4.add(lblNewLabel_5, "cell 0 3");
+		JLabel lbDataEntrega2 = new JLabel("Data de entrega");
+		panel_4.add(lbDataEntrega2, "cell 0 3");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_6, "cell 4 0,grow");
 		panel_6.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][][grow][grow][][grow]"));
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		panel_6.add(lblNewLabel_6, "cell 0 1");
+		lbNomeConfeccao3 = new JLabel("Nome confecção");
+		panel_6.add(lbNomeConfeccao3, "cell 0 1");
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		panel_6.add(lblNewLabel_7, "cell 0 4");
+		JLabel lbDataEntrega3 = new JLabel("Data de entrega");
+		panel_6.add(lbDataEntrega3, "cell 0 4");
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_3, "cell 0 2,grow");
 		panel_3.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		panel_3.add(lblNewLabel_8, "cell 0 1");
+		JLabel lbNomeConfeccao4 = new JLabel("Nome confecção");
+		panel_3.add(lbNomeConfeccao4, "cell 0 1");
 		
-		JLabel lblNewLabel_9 = new JLabel("New label");
-		panel_3.add(lblNewLabel_9, "cell 0 3");
+		JLabel lbDataEntrega4 = new JLabel("Data de entrega");
+		panel_3.add(lbDataEntrega4, "cell 0 3");
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_5, "cell 2 2,grow");
 		panel_5.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_10 = new JLabel("New label");
-		panel_5.add(lblNewLabel_10, "cell 0 1");
+		lbNomeConfeccao5 = new JLabel("Nome confecção");
+		panel_5.add(lbNomeConfeccao5, "cell 0 1");
 		
-		JLabel lblNewLabel_11 = new JLabel("New label");
-		panel_5.add(lblNewLabel_11, "cell 0 3");
+		JLabel lbDataEntrega5 = new JLabel("Data de entrega");
+		panel_5.add(lbDataEntrega5, "cell 0 3");
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_7, "cell 4 2,grow");
 		panel_7.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_12 = new JLabel("New label");
-		panel_7.add(lblNewLabel_12, "cell 0 1");
+		JLabel lbNomeConfeccao6 = new JLabel("Nome confecção");
+		panel_7.add(lbNomeConfeccao6, "cell 0 1");
 		
-		JLabel lblNewLabel_13 = new JLabel("New label");
-		panel_7.add(lblNewLabel_13, "cell 0 3");
+		JLabel lbDataEntrega6 = new JLabel("Data de entrega");
+		panel_7.add(lbDataEntrega6, "cell 0 3");
 
 	}
 

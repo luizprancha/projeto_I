@@ -89,28 +89,13 @@ public class TelaPermissoes extends JPanel {
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton brVisualizarUsuarios = new JButton("Visualizar Usuários");
-		brVisualizarUsuarios .setFont(fonte2);
-
-		
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194));
-		brVisualizarUsuarios.setContentAreaFilled(false);
-		brVisualizarUsuarios.setOpaque(false);
-		brVisualizarUsuarios.setBorderPainted(false);
-          
-		brVisualizarUsuarios.setContentAreaFilled(true);
-		brVisualizarUsuarios.setOpaque(true);
-		brVisualizarUsuarios.setBorderPainted(false);
-
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194 ));
-	
-		brVisualizarUsuarios.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		       
-		    }
-		});
-		
-		panel.add(brVisualizarUsuarios, "cell 3 1,grow");
+		JButton btnVisualizarUsuarios = new JButton("Visualizar Usuários");
+		btnVisualizarUsuarios.setBackground(new Color(235, 219, 194)); 
+		btnVisualizarUsuarios.setContentAreaFilled(true);
+		btnVisualizarUsuarios.setOpaque(true);
+		btnVisualizarUsuarios.setBorderPainted(false);
+		btnVisualizarUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		panel.add(btnVisualizarUsuarios, "cell 3 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 3 1,grow");

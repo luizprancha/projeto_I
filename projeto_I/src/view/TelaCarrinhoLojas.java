@@ -315,45 +315,27 @@ public class TelaCarrinhoLojas extends JPanel {
 		panel_9.add(lblNewLabel_32, "cell 1 9,alignx center");
 		
 		JButton btnExcluir = new JButton("Excluir");
-		panel.add(btnExcluir, "cell 1 5,growx,aligny center");
-		
-		btnExcluir.setBackground(new Color(255, 255, 255));
-		btnExcluir.setContentAreaFilled(false);
-		btnExcluir.setOpaque(false);
-		btnExcluir.setBorderPainted(false);
-          
+		btnExcluir.setBackground(new Color(235, 219, 194)); 
 		btnExcluir.setContentAreaFilled(true);
 		btnExcluir.setOpaque(true);
 		btnExcluir.setBorderPainted(false);
-
-		btnExcluir.setBackground(new Color(235, 219, 194 ));
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnExcluir, "cell 1 5,growx,aligny center");
 		
 		JButton btnFinalizarPedido = new JButton("Finalizar Pedido");
-		
-		btnFinalizarPedido.setBackground(new Color(255, 255, 255));
-		btnFinalizarPedido.setContentAreaFilled(false);
-		btnFinalizarPedido.setOpaque(false);
-		btnFinalizarPedido.setBorderPainted(false);
-          
+		btnFinalizarPedido.setBackground(new Color(235, 219, 194)); 
 		btnFinalizarPedido.setContentAreaFilled(true);
 		btnFinalizarPedido.setOpaque(true);
 		btnFinalizarPedido.setBorderPainted(false);
-
-		btnFinalizarPedido.setBackground(new Color(235, 219, 194 ));
+		btnFinalizarPedido.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btnFinalizarPedido, "cell 3 5,growx,aligny center");
 		
 		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.setBackground(new Color(255, 255, 255));
-		btnAlterar.setContentAreaFilled(false);
-		btnAlterar.setOpaque(false);
-		btnAlterar.setBorderPainted(false);
-          
+		btnAlterar.setBackground(new Color(235, 219, 194)); 
 		btnAlterar.setContentAreaFilled(true);
 		btnAlterar.setOpaque(true);
 		btnAlterar.setBorderPainted(false);
-
-		btnAlterar.setBackground(new Color(235, 219, 194 ));
-		
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btnAlterar, "cell 5 5,growx,aligny center");
 
 	}

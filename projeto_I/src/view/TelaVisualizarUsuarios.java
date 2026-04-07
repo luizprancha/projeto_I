@@ -89,28 +89,13 @@ public class TelaVisualizarUsuarios extends JPanel {
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton brVisualizarUsuarios = new JButton("Editar Usuários");
-		brVisualizarUsuarios .setFont(fonte2);
-
-		
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194));
-		brVisualizarUsuarios.setContentAreaFilled(false);
-		brVisualizarUsuarios.setOpaque(false);
-		brVisualizarUsuarios.setBorderPainted(false);
-          
-		brVisualizarUsuarios.setContentAreaFilled(true);
-		brVisualizarUsuarios.setOpaque(true);
-		brVisualizarUsuarios.setBorderPainted(false);
-
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194 ));
-	
-		brVisualizarUsuarios.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		       
-		    }
-		});
-		
-		panel.add(brVisualizarUsuarios, "cell 3 1,grow");
+		JButton btnEditarUsuario = new JButton("Editar Usuários");
+		btnEditarUsuario.setBackground(new Color(235, 219, 194)); 
+		btnEditarUsuario.setContentAreaFilled(true);
+		btnEditarUsuario.setOpaque(true);
+		btnEditarUsuario.setBorderPainted(false);
+		btnEditarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		panel.add(btnEditarUsuario, "cell 3 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 3 1,grow");

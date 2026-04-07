@@ -77,7 +77,7 @@ public class TelaDetalheMateria extends JPanel {
 		lblNewLabel_1.setFont(fonteInter);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		JLabel lbTipoTecido = new JLabel("New label");
+		JLabel lbTipoTecido = new JLabel("Malha");
 		lbTipoTecido.setFont(fonteInter);
 		panel_1.add(lbTipoTecido, "cell 3 1");
 		
@@ -85,7 +85,7 @@ public class TelaDetalheMateria extends JPanel {
 		lblNewLabel_2.setFont(fonteInter);
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
-		JLabel lbCor = new JLabel("New label");
+		JLabel lbCor = new JLabel("Azul");
 		lbCor.setFont(fonteInter);
 		panel_1.add(lbCor, "cell 3 3");
 		
@@ -93,28 +93,24 @@ public class TelaDetalheMateria extends JPanel {
 		lblNewLabel_3.setFont(fonteInter);
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		JLabel lbQtdeRolos = new JLabel("New label");
+		JLabel lbQtdeRolos = new JLabel("5");
 		lbQtdeRolos.setFont(fonteInter);
 		panel_1.add(lbQtdeRolos, "cell 3 5");
 		
 		JButton btExcluir = new JButton("Excluir");
-		btExcluir.setBackground(new Color(235, 219, 194));
+		btExcluir.setBackground(new Color(235, 219, 194)); 
+		btExcluir.setContentAreaFilled(true);
 		btExcluir.setOpaque(true);
-		btExcluir.setBorderPainted(false); // opcional
-		btExcluir.setFocusPainted(false);  // opcional
-		btExcluir.setFont(fonteInter);
-		btExcluir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btExcluir.setBorderPainted(false);
+		btExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btExcluir, "cell 2 5 2 1,growx");
 		
 		btEditar = new JButton("Editar");
-		btEditar.setBackground(new Color(235, 219, 194));
+		btEditar.setBackground(new Color(235, 219, 194)); 
+		btEditar.setContentAreaFilled(true);
 		btEditar.setOpaque(true);
-		btEditar.setBorderPainted(false); // opcional
-		btEditar.setFocusPainted(false);  // opcional
-		btEditar.setFont(fonteInter);
+		btEditar.setBorderPainted(false);
+		btEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btEditar, "cell 5 5 2 1,growx");
 
 	}

@@ -97,22 +97,11 @@ public class TelaCadastroConfeccao extends JPanel {
 		tfEndereço.setColumns(10);
 		
 		JButton btnCadastrarConfecção = new JButton("Cadastrar Confecção");
-		
-
-		btnCadastrarConfecção.setBackground(new Color(255, 255, 255));
-		btnCadastrarConfecção.setContentAreaFilled(false);
-		btnCadastrarConfecção.setOpaque(false);
-		btnCadastrarConfecção.setBorderPainted(false);
-          
+		btnCadastrarConfecção.setBackground(new Color(235, 219, 194)); 
 		btnCadastrarConfecção.setContentAreaFilled(true);
 		btnCadastrarConfecção.setOpaque(true);
 		btnCadastrarConfecção.setBorderPainted(false);
-
-		btnCadastrarConfecção.setBackground(new Color(235, 219, 194 ));
-		btnCadastrarConfecção.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCadastrarConfecção.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btnCadastrarConfecção, "cell 2 5,growx,aligny center");
 
 	}

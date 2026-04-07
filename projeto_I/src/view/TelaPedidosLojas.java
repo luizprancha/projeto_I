@@ -19,8 +19,11 @@ import java.awt.event.ActionEvent;
 public class TelaPedidosLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfLoja;
+	private JTextField tfDataEntrega;
+	private JTextField tfQuantidade;
+	private JTextField tfTotal;
+	private JButton btnFinalizar;
 
 	/**
 	 * Create the panel.
@@ -60,7 +63,7 @@ public class TelaPedidosLojas extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Pedidos Lojas");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
-		panel.add(lblNewLabel, "cell 1 1 2 1,alignx left,growy");
+		panel.add(lblNewLabel, "cell 1 1 3 1,alignx left,growy");
 		lblNewLabel.setFont(fonte);
 		
 		JPanel panel_1 = new JPanel();
@@ -71,35 +74,38 @@ public class TelaPedidosLojas extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Loja");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		textField = new JTextField();
-		panel_1.add(textField, "cell 3 1,growx");
-		textField.setColumns(10);
+		tfLoja = new JTextField();
+		panel_1.add(tfLoja, "cell 3 1,growx");
+		tfLoja.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças");
 		panel_1.add(lblNewLabel_3, "cell 1 3");
 		
-		JLabel lblQuantidadePeçasMudar = new JLabel("20");
-		panel_1.add(lblQuantidadePeçasMudar, "cell 3 3");
+		tfQuantidade = new JTextField();
+		panel_1.add(tfQuantidade, "cell 3 3,growx");
+		tfQuantidade.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Data de Entrega");
 		panel_1.add(lblNewLabel_2, "cell 1 5");
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 3 5,growx");
-		textField_1.setColumns(10);
+		tfDataEntrega = new JTextField();
+		panel_1.add(tfDataEntrega, "cell 3 5,growx");
+		tfDataEntrega.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Valor Total");
 		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
-		JLabel lblValorTotalMudar = new JLabel("R$1.500,00");
-		panel_1.add(lblValorTotalMudar, "cell 3 7");
+		tfTotal = new JTextField();
+		panel_1.add(tfTotal, "cell 3 7,growx");
+		tfTotal.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Finalizar pedido");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.add(btnNewButton, "cell 2 5,grow");
+		btnFinalizar = new JButton("Finalizar pedido");
+		btnFinalizar.setBackground(new Color(235, 219, 194)); 
+		btnFinalizar.setContentAreaFilled(true);
+		btnFinalizar.setOpaque(true);
+		btnFinalizar.setBorderPainted(false);
+		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btnFinalizar, "cell 2 5,grow");
 
 	}
 

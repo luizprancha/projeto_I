@@ -19,9 +19,9 @@ import java.awt.event.ActionEvent;
 public class TelaAlterarCadastro extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField txtSofiaMartinsPascoalini;
-	private JTextField txtSomapa;
-	private JTextField txtVendedora;
+	private JTextField tfNome;
+	private JTextField tfUsuario;
+	private JTextField tfCargo;
 
 	/**
 	 * Create the panel.
@@ -80,31 +80,31 @@ public class TelaAlterarCadastro extends JPanel {
 		lbNomeCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lbNomeCadastro, "cell 1 1");
 		
-		txtSofiaMartinsPascoalini = new JTextField();
-		txtSofiaMartinsPascoalini.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtSofiaMartinsPascoalini.setText("Sofia Martins Pascoalini");
-		panel_1.add(txtSofiaMartinsPascoalini, "cell 2 1 3 1,growx");
-		txtSofiaMartinsPascoalini.setColumns(10);
+		tfNome = new JTextField();
+		tfNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNome.setText("Sofia Martins Pascoalini");
+		panel_1.add(tfNome, "cell 2 1 3 1,growx");
+		tfNome.setColumns(10);
 		
 		JLabel lbUsuarioCadastro = new JLabel("Usuário");
 		lbUsuarioCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lbUsuarioCadastro, "cell 1 3");
 		
-		txtSomapa = new JTextField();
-		txtSomapa.setText("somapa");
-		txtSomapa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(txtSomapa, "cell 2 3 3 1,growx");
-		txtSomapa.setColumns(10);
+		tfUsuario = new JTextField();
+		tfUsuario.setText("somapa");
+		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(tfUsuario, "cell 2 3 3 1,growx");
+		tfUsuario.setColumns(10);
 		
 		JLabel lbCargoCadastro = new JLabel("Cargo");
 		lbCargoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lbCargoCadastro, "cell 1 5");
 		
-		txtVendedora = new JTextField();
-		txtVendedora.setText("Vendedor(a)");
-		txtVendedora.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(txtVendedora, "cell 2 5 3 1,growx");
-		txtVendedora.setColumns(10);
+		tfCargo = new JTextField();
+		tfCargo.setText("Vendedor(a)");
+		tfCargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(tfCargo, "cell 2 5 3 1,growx");
+		tfCargo.setColumns(10);
 		
 		JLabel lbPermissaoCadastro = new JLabel("Permissão");
 		lbPermissaoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -122,28 +122,19 @@ public class TelaAlterarCadastro extends JPanel {
 		
 		
 		
-		JButton btnUsuario = new JButton("Remover usuário");
-		
-
-		btnUsuario.setBackground(new Color(255, 255, 255));
-		btnUsuario.setContentAreaFilled(false);
-		btnUsuario.setOpaque(false);
-		btnUsuario.setBorderPainted(false);
-          
-		btnUsuario.setContentAreaFilled(true);
-		btnUsuario.setOpaque(true);
-		btnUsuario.setBorderPainted(false);
-
-		btnUsuario.setBackground(new Color(255, 255, 255 ));
-		btnUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(btnUsuario, "cell 1 9 2 1,grow");
+		JButton btnRemover = new JButton("Remover usuário");
+		btnRemover.setBackground(new Color(255, 255, 255)); 
+		btnRemover.setContentAreaFilled(true);
+		btnRemover.setOpaque(true);
+		btnRemover.setBorderPainted(false);
+		btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1.add(btnRemover, "cell 1 9 2 1,grow");
 		
 		JButton btnConfirmarAlterações = new JButton("Confirmar Alterações");
+		btnConfirmarAlterações.setBackground(new Color(255, 255, 255)); 
+		btnConfirmarAlterações.setContentAreaFilled(true);
+		btnConfirmarAlterações.setOpaque(true);
+		btnConfirmarAlterações.setBorderPainted(false);
 		btnConfirmarAlterações.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(btnConfirmarAlterações, "cell 4 9 2 1,grow");
 

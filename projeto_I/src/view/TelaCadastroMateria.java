@@ -92,18 +92,11 @@ public class TelaCadastroMateria extends JPanel {
 		tfQuantidade.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBackground(new Color(255, 255, 255));
-		btnCadastrar.setContentAreaFilled(false);
-		btnCadastrar.setOpaque(false);
-		btnCadastrar.setBorderPainted(false);
-          
+		btnCadastrar.setBackground(new Color(235, 219, 194)); 
 		btnCadastrar.setContentAreaFilled(true);
 		btnCadastrar.setOpaque(true);
 		btnCadastrar.setBorderPainted(false);
-
-		btnCadastrar.setBackground(new Color(235, 219, 194 ));
-		
-		
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btnCadastrar, "cell 3 5,growx");
 
 	}

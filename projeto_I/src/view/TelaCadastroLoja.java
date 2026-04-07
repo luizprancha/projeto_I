@@ -97,22 +97,11 @@ public class TelaCadastroLoja extends JPanel {
 		tfEndereco.setColumns(10);
 		
 		JButton btnCadastroLoja = new JButton("Cadastrar Loja");
-		
-
-		btnCadastroLoja.setBackground(new Color(255, 255, 255));
-		btnCadastroLoja.setContentAreaFilled(false);
-		btnCadastroLoja.setOpaque(false);
-		btnCadastroLoja.setBorderPainted(false);
-          
+		btnCadastroLoja.setBackground(new Color(235, 219, 194)); 
 		btnCadastroLoja.setContentAreaFilled(true);
 		btnCadastroLoja.setOpaque(true);
 		btnCadastroLoja.setBorderPainted(false);
-
-		btnCadastroLoja.setBackground(new Color(235, 219, 194 ));
-		btnCadastroLoja.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCadastroLoja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel.add(btnCadastroLoja, "cell 2 5,growx,aligny center");
 
 	}

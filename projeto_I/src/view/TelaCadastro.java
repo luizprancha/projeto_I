@@ -81,16 +81,11 @@ public class TelaCadastro extends JPanel {
 		panel.add(tfSenha, "cell 3 7,growx");
 
 		btnCadastro = new JButton("Solicitar Cadastro");
-		btnCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCadastro.setBackground(begeFundo);
+		btnCadastro.setBackground(new Color(235, 219, 194)); 
+		btnCadastro.setContentAreaFilled(true);
 		btnCadastro.setOpaque(true);
 		btnCadastro.setBorderPainted(false);
-		btnCadastro.setFocusPainted(false);
-		btnCadastro.setFont(fonteInter);
-
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		add(btnCadastro, "cell 3 5,grow");
 	}
 

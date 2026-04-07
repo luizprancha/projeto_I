@@ -71,39 +71,49 @@ public class TelaPedidosConfeccoes extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Confecção");
+		JLabel lblNewLabel_1 = new JLabel("Confecção:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		panel_1.add(lblNewLabel_5, "cell 3 1");
+		JLabel lbConfeccao = new JLabel("Confecção do zé");
+		panel_1.add(lbConfeccao, "cell 3 1");
 		
-		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças");
+		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		panel_1.add(lblNewLabel_6, "cell 3 3");
+		JLabel lbQuantidade = new JLabel("800");
+		panel_1.add(lbQuantidade, "cell 3 3");
 		
-		JLabel lblNewLabel_3 = new JLabel("Data de entrega");
+		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		panel_1.add(lblNewLabel_7, "cell 3 5");
+		JLabel lbDataEntrega = new JLabel("15/02/2026");
+		panel_1.add(lbDataEntrega, "cell 3 5");
 		
-		JLabel lblNewLabel_4 = new JLabel("Valor total");
+		JLabel lblNewLabel_4 = new JLabel("Valor total:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_4, "cell 1 7");
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		panel_1.add(lblNewLabel_8, "cell 3 7");
+		JLabel lbTotal = new JLabel("15000");
+		panel_1.add(lbTotal, "cell 3 7");
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		panel.add(btnNewButton, "cell 1 5,growx");
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(new Color(235, 219, 194)); 
+		btnCadastrar.setContentAreaFilled(true);
+		btnCadastrar.setOpaque(true);
+		btnCadastrar.setBorderPainted(false);
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel.add(btnCadastrar, "cell 1 5,growx");
 		
-		JButton btnNewButton_1 = new JButton("Alterar");
-		panel.add(btnNewButton_1, "cell 3 5,growx");
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBackground(new Color(235, 219, 194)); 
+		btnAlterar.setContentAreaFilled(true);
+		btnAlterar.setOpaque(true);
+		btnAlterar.setBorderPainted(false);
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel.add(btnAlterar, "cell 3 5,growx");
 
 	}
 

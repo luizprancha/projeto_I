@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.awt.event.ActionEvent;
 
 public class TelaLogin extends JPanel {
 
@@ -71,26 +72,20 @@ public class TelaLogin extends JPanel {
 		lbSenha.add(tfSenha, "cell 3 3,grow");
 		tfSenha.setColumns(10);
 		
-		
-		Color begeFundo = new Color(235, 219, 194);
-		
 		btnEntrar = new JButton("Entrar");
-		btnEntrar.setFont(fonte2);
-		btnEntrar.setBackground(new Color(235, 219, 194));
-		btnEntrar.setBackground(begeFundo);
+		btnEntrar.setBackground(new Color(235, 219, 194)); 
+		btnEntrar.setContentAreaFilled(true);
 		btnEntrar.setOpaque(true);
-		btnEntrar.setBorderPainted(false); // opcional
-		btnEntrar.setFocusPainted(false);  // opcional
-		
+		btnEntrar.setBorderPainted(false);
+		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		add(btnEntrar, "cell 3 5,grow");
 		
 		btnCadastro = new JButton("Solicitar Cadastro");
-		btnCadastro.setFont(fonte2);
-		btnCadastro.setBackground(begeFundo);
+		btnCadastro.setBackground(new Color(235, 219, 194)); 
+		btnCadastro.setContentAreaFilled(true);
 		btnCadastro.setOpaque(true);
-		btnCadastro.setBorderPainted(false); // opcional
-		btnCadastro.setFocusPainted(false);  // opcional
-	
+		btnCadastro.setBorderPainted(false);
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		add(btnCadastro, "cell 3 7,grow");
 	}
 		

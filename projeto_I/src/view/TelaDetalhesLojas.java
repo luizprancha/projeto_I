@@ -12,6 +12,8 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaDetalhesLojas extends JPanel {
 
@@ -57,7 +59,7 @@ public class TelaDetalhesLojas extends JPanel {
 		JLabel lblNewLabel = new JLabel("Lojas");
 		lblNewLabel.setFont(fonte);
 		lblNewLabel.setForeground(new Color(235, 219, 194));
-		panel.add(lblNewLabel, "cell 1 1 2 1,grow");
+		panel.add(lblNewLabel, "cell 1 1 5 1,grow");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
@@ -67,32 +69,42 @@ public class TelaDetalhesLojas extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Nome da Loja:");
 		panel_1.add(lblNewLabel_1, "cell 1 1,alignx left,growy");
 		
-		JLabel lblNewLabel_5 = new JLabel("LOJA");
-		panel_1.add(lblNewLabel_5, "cell 3 1,alignx left,growy");
+		JLabel lbNomeLoja = new JLabel("LOJA");
+		panel_1.add(lbNomeLoja, "cell 3 1,alignx left,growy");
 		
 		JLabel lblNewLabel_2 = new JLabel("CNPJ:");
 		panel_1.add(lblNewLabel_2, "cell 1 3,alignx left,growy");
 		
-		JLabel lblNewLabel_6 = new JLabel("CNPJ");
-		panel_1.add(lblNewLabel_6, "cell 3 3,alignx left,growy");
+		JLabel lbCNPJ = new JLabel("CNPJ");
+		panel_1.add(lbCNPJ, "cell 3 3,alignx left,growy");
 		
 		JLabel lblNewLabel_3 = new JLabel("ID:");
 		panel_1.add(lblNewLabel_3, "cell 1 5,alignx left,growy");
 		
-		JLabel lblNewLabel_7 = new JLabel("ID");
-		panel_1.add(lblNewLabel_7, "cell 3 5,alignx left,growy");
+		JLabel lbID = new JLabel("ID");
+		panel_1.add(lbID, "cell 3 5,alignx left,growy");
 		
 		JLabel lblNewLabel_4 = new JLabel("Endereço:");
 		panel_1.add(lblNewLabel_4, "cell 1 7,alignx left,growy");
 		
-		JLabel lblNewLabel_8 = new JLabel("ENDEREÇO");
-		panel_1.add(lblNewLabel_8, "cell 3 7,alignx left,growy");
+		JLabel lbEndereco = new JLabel("ENDEREÇO");
+		panel_1.add(lbEndereco, "cell 3 7,alignx left,growy");
 		
-		JButton btnNewButton = new JButton("Excluir");
-		panel.add(btnNewButton, "cell 2 5,grow");
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBackground(new Color(235, 219, 194)); 
+		btnExcluir.setContentAreaFilled(true);
+		btnExcluir.setOpaque(true);
+		btnExcluir.setBorderPainted(false);
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnExcluir, "cell 2 5,grow");
 		
-		JButton btnNewButton_1 = new JButton("Editar");
-		panel.add(btnNewButton_1, "cell 4 5,grow");
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBackground(new Color(235, 219, 194)); 
+		btnEditar.setContentAreaFilled(true);
+		btnEditar.setOpaque(true);
+		btnEditar.setBorderPainted(false);
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnEditar, "cell 4 5,grow");
 
 	}
 
