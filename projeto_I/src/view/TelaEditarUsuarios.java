@@ -13,8 +13,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
 public class TelaEditarUsuarios extends JPanel {
@@ -90,7 +88,7 @@ public class TelaEditarUsuarios extends JPanel {
 		).deriveFont(14f);
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
+		JLabel lblNewLabel_1 = new JLabel("Nome:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		lblNewLabel_1.setFont(fonte2);
@@ -100,7 +98,7 @@ public class TelaEditarUsuarios extends JPanel {
 		panel_1.add(tfNome, "cell 2 1 2 1,growx");
 		tfNome.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Usuário");
+		JLabel lblNewLabel_2 = new JLabel("Usuário:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		lblNewLabel_2.setFont(fonte2);
@@ -109,7 +107,7 @@ public class TelaEditarUsuarios extends JPanel {
 		panel_1.add(tfUsuario, "cell 2 3 2 1,growx");
 		tfUsuario.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Cargo");
+		JLabel lblNewLabel_3 = new JLabel("Cargo:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		lblNewLabel_3.setFont(fonte2);
@@ -118,7 +116,7 @@ public class TelaEditarUsuarios extends JPanel {
 		panel_1.add(tfCargo, "cell 2 5 2 1,growx");
 		tfCargo.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Permissão");
+		JLabel lblNewLabel_4 = new JLabel("Permissão:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_4, "cell 1 7");
 		lblNewLabel_4.setFont(fonte2);

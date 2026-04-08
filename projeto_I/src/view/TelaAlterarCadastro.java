@@ -13,8 +13,6 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaAlterarCadastro extends JPanel {
 
@@ -60,25 +58,36 @@ public class TelaAlterarCadastro extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[grow][grow 60][grow][grow]", "[grow 10][grow][grow 10][grow][grow]"));
 		
-		Font fonte = Font.createFont(
-		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
-		).deriveFont(100f);
-		
-		
-		JLabel lblNewLabel = new JLabel("Alterar Cadastro");
-		lblNewLabel.setForeground(new Color(235, 219, 194));
-		panel.add(lblNewLabel, "cell 1 1,alignx left");
-		lblNewLabel.setFont(fonte);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 2 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow 70][grow 50][grow][grow 30][grow 30][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lbNomeCadastro = new JLabel("Nome");
+		Font fonteJ = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
+		).deriveFont(100f);
+		
+		JLabel lblNewLabel = new JLabel("Alterar Cadastro");
+		lblNewLabel.setForeground(new Color(235, 219, 194));
+		panel.add(lblNewLabel, "cell 1 1,alignx left");
+		lblNewLabel.setFont(fonteJ);
+		
+		JLabel lbNomeCadastro = new JLabel("Nome:");
 		lbNomeCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lbNomeCadastro, "cell 1 1");
+		
+		JLabel lbUsuarioCadastro = new JLabel("Usuário:");
+		lbUsuarioCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(lbUsuarioCadastro, "cell 1 3");
+		
+		JLabel lbCargoCadastro = new JLabel("Cargo:");
+		lbCargoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(lbCargoCadastro, "cell 1 5");
+		
+		JLabel lbPermissaoCadastro = new JLabel("Permissão:");
+		lbPermissaoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(lbPermissaoCadastro, "cell 1 7");
 		
 		tfNome = new JTextField();
 		tfNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -86,29 +95,17 @@ public class TelaAlterarCadastro extends JPanel {
 		panel_1.add(tfNome, "cell 2 1 3 1,growx");
 		tfNome.setColumns(10);
 		
-		JLabel lbUsuarioCadastro = new JLabel("Usuário");
-		lbUsuarioCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lbUsuarioCadastro, "cell 1 3");
-		
 		tfUsuario = new JTextField();
 		tfUsuario.setText("somapa");
 		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfUsuario, "cell 2 3 3 1,growx");
 		tfUsuario.setColumns(10);
 		
-		JLabel lbCargoCadastro = new JLabel("Cargo");
-		lbCargoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lbCargoCadastro, "cell 1 5");
-		
 		tfCargo = new JTextField();
 		tfCargo.setText("Vendedor(a)");
 		tfCargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfCargo, "cell 2 5 3 1,growx");
 		tfCargo.setColumns(10);
-		
-		JLabel lbPermissaoCadastro = new JLabel("Permissão");
-		lbPermissaoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lbPermissaoCadastro, "cell 1 7");
 		
 		JRadioButton rdbUsuario = new JRadioButton("Usuário");
 		rdbUsuario.setBackground(new Color(235, 219, 194));
@@ -130,13 +127,13 @@ public class TelaAlterarCadastro extends JPanel {
 		btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(btnRemover, "cell 1 9 2 1,grow");
 		
-		JButton btnConfirmarAlterações = new JButton("Confirmar Alterações");
-		btnConfirmarAlterações.setBackground(new Color(255, 255, 255)); 
-		btnConfirmarAlterações.setContentAreaFilled(true);
-		btnConfirmarAlterações.setOpaque(true);
-		btnConfirmarAlterações.setBorderPainted(false);
-		btnConfirmarAlterações.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(btnConfirmarAlterações, "cell 4 9 2 1,grow");
+		JButton btnConfirmar = new JButton("Confirmar Alterações");
+		btnConfirmar.setBackground(new Color(255, 255, 255)); 
+		btnConfirmar.setContentAreaFilled(true);
+		btnConfirmar.setOpaque(true);
+		btnConfirmar.setBorderPainted(false);
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1.add(btnConfirmar, "cell 4 9 2 1,grow");
 
 	}
 

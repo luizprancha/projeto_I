@@ -10,14 +10,11 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Color;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class TelaDetalheMateria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btEditar;
 
 	/**
 	 * Create the panel.
@@ -93,25 +90,25 @@ public class TelaDetalheMateria extends JPanel {
 		lblNewLabel_3.setFont(fonteInter);
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		JLabel lbQtdeRolos = new JLabel("5");
-		lbQtdeRolos.setFont(fonteInter);
-		panel_1.add(lbQtdeRolos, "cell 3 5");
+		JLabel lbQuantidade = new JLabel("5");
+		lbQuantidade.setFont(fonteInter);
+		panel_1.add(lbQuantidade, "cell 3 5");
 		
-		JButton btExcluir = new JButton("Excluir");
-		btExcluir.setBackground(new Color(235, 219, 194)); 
-		btExcluir.setContentAreaFilled(true);
-		btExcluir.setOpaque(true);
-		btExcluir.setBorderPainted(false);
-		btExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(btExcluir, "cell 2 5 2 1,growx");
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBackground(new Color(235, 219, 194)); 
+		btnExcluir.setContentAreaFilled(true);
+		btnExcluir.setOpaque(true);
+		btnExcluir.setBorderPainted(false);
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnExcluir, "cell 2 5 2 1,growx");
 		
-		btEditar = new JButton("Editar");
-		btEditar.setBackground(new Color(235, 219, 194)); 
-		btEditar.setContentAreaFilled(true);
-		btEditar.setOpaque(true);
-		btEditar.setBorderPainted(false);
-		btEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(btEditar, "cell 5 5 2 1,growx");
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBackground(new Color(235, 219, 194)); 
+		btnEditar.setContentAreaFilled(true);
+		btnEditar.setOpaque(true);
+		btnEditar.setBorderPainted(false);
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(btnEditar, "cell 5 5 2 1,growx");
 
 	}
 

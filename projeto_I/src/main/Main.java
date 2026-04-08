@@ -2,7 +2,7 @@ package main;
 
 import java.awt.EventQueue;
 
-import view.JFrame;
+import view.Janela;
 
 /**
  * Classe responsável por inicializar os elementos das camadas: model, view e controller.
@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
-				JFrame frame = new JFrame();
+				Janela frame = new Janela();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 			} catch (Exception e) {

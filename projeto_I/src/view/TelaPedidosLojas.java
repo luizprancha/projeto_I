@@ -13,9 +13,6 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class TelaPedidosLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -71,28 +68,28 @@ public class TelaPedidosLojas extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Loja");
+		JLabel lblNewLabel_1 = new JLabel("Loja:");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
 		tfLoja = new JTextField();
 		panel_1.add(tfLoja, "cell 3 1,growx");
 		tfLoja.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças");
+		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças:");
 		panel_1.add(lblNewLabel_3, "cell 1 3");
 		
 		tfQuantidade = new JTextField();
 		panel_1.add(tfQuantidade, "cell 3 3,growx");
 		tfQuantidade.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Data de Entrega");
+		JLabel lblNewLabel_2 = new JLabel("Data de Entrega:");
 		panel_1.add(lblNewLabel_2, "cell 1 5");
 		
 		tfDataEntrega = new JTextField();
 		panel_1.add(tfDataEntrega, "cell 3 5,growx");
 		tfDataEntrega.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Valor Total");
+		JLabel lblNewLabel_5 = new JLabel("Valor Total:");
 		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
 		tfTotal = new JTextField();

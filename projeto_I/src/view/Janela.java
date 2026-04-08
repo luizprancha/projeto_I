@@ -14,7 +14,7 @@ import controller.LoginController;
 import controller.Navegador;
 import model.UsuarioDAO;
 
-public class JFrame extends javax.swing.JFrame {
+public class Janela extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -23,7 +23,7 @@ public class JFrame extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
-				JFrame frame = new JFrame();
+				Janela frame = new Janela();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -31,7 +31,7 @@ public class JFrame extends javax.swing.JFrame {
 		});
 	}
 
-	public JFrame() throws FontFormatException, IOException {
+	public Janela() throws FontFormatException, IOException {
 		setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 675);
 

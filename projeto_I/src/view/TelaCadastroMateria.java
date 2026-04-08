@@ -70,21 +70,21 @@ public class TelaCadastroMateria extends JPanel {
 		panel.add(panel_1, "cell 2 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[][][][grow][]", "[][][][][][][]"));
 		
-		JLabel lbTipoProduto = new JLabel("Tipo de Produto");
+		JLabel lbTipoProduto = new JLabel("Tipo de Produto:");
 		panel_1.add(lbTipoProduto, "cell 1 1");
 		
 		JComboBox<String> cbTipoProduto = new JComboBox<>();
 		cbTipoProduto.setModel(new DefaultComboBoxModel<>(new String[] {"Tecido", "Aviamentos"}));
 		panel_1.add(cbTipoProduto, "cell 3 1,growx");
 		
-		JLabel lbCor = new JLabel("Cor");
+		JLabel lbCor = new JLabel("Cor:");
 		panel_1.add(lbCor, "cell 1 3");
 		
 		tfCor = new JTextField();
 		panel_1.add(tfCor, "cell 3 3,growx");
 		tfCor.setColumns(10);
 		
-		JLabel lbQuantidade = new JLabel("Quantidade (unidade)");
+		JLabel lbQuantidade = new JLabel("Quantidade (unidade):");
 		panel_1.add(lbQuantidade, "cell 1 5");
 		
 		tfQuantidade = new JTextField();

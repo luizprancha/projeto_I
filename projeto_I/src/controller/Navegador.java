@@ -2,16 +2,16 @@ package controller;
 
 import javax.swing.JPanel;
 
-import view.JFrame;
+import view.Janela;
 
 public class Navegador {
-	private JFrame jFrame;
+	private Janela jFrame;
 
 	/**
 	 * Construtor da classe.
 	 * @param janela Referência ao JFrame.
 	 */
-	public Navegador(JFrame jFrame) {
+	public Navegador(Janela jFrame) {
 		this.jFrame = jFrame;
 	}
 

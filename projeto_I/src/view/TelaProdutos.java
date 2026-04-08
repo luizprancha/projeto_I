@@ -10,12 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 import java.awt.event.MouseAdapter;
@@ -65,7 +62,7 @@ public class TelaProdutos extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[::10px][::50px,grow][::20px,grow][::10px][grow][grow]"));
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -75,7 +72,7 @@ public class TelaProdutos extends JPanel {
 		JLabel lbLojas = new JLabel("Produtos");
 		lbLojas.setForeground(new Color(235, 219, 194));
 		lbLojas.setFont(fonte);
-		panel.add(lbLojas, "cell 1 1");
+		panel.add(lbLojas, "cell 1 0 1 3");
 		
 		JButton btnCadastrarProduto = new JButton("Cadastrar produto");
 		btnCadastrarProduto.setBackground(new Color(235, 219, 194)); 
@@ -86,11 +83,11 @@ public class TelaProdutos extends JPanel {
 		panel.add(btnCadastrarProduto, "cell 3 1,growx,aligny center");
 		
 		tfBuscar = new JTextField();
-		panel.add(tfBuscar, "cell 5 1,growx,aligny center");
+		panel.add(tfBuscar, "cell 3 2,growx,aligny center");
 		tfBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 3 5 1,grow");
+		panel.add(scrollPane, "cell 1 4 4 1,grow");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(15, 57, 87));

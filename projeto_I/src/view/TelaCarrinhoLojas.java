@@ -73,11 +73,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Carrinho de pedidos ");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
-		panel.add(lblNewLabel, "cell 1 1 4 1");
+		panel.add(lblNewLabel, "cell 1 1 3 1");
 		lblNewLabel.setFont(fonte);
 		
 		tfBuscar = new JTextField();
-		panel.add(tfBuscar, "cell 5 1,growx");
+		panel.add(tfBuscar, "cell 4 1 2 1,growx");
 		tfBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();

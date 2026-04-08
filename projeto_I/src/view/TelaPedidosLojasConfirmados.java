@@ -99,10 +99,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_2.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
 		JLabel lbLoja1 = new JLabel("Nome da loja");
-		panel_2.add(lbLoja1, "cell 0 1");
+		panel_2.add(lbLoja1, "cell 1 1");
 		
 		JLabel lbCNPJ1 = new JLabel("CNPJ");
-		panel_2.add(lbCNPJ1, "cell 0 3");
+		panel_2.add(lbCNPJ1, "cell 1 3,alignx center");
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(235, 219, 194));
@@ -110,10 +110,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_4.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
 		JLabel lbLoja2 = new JLabel("Nome da loja");
-		panel_4.add(lbLoja2, "cell 0 1");
+		panel_4.add(lbLoja2, "cell 1 1,alignx center");
 		
 		JLabel lbCNPJ2 = new JLabel("CNPJ");
-		panel_4.add(lbCNPJ2, "cell 0 3");
+		panel_4.add(lbCNPJ2, "cell 1 3,alignx center");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(235, 219, 194));
@@ -121,10 +121,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_6.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][][grow][grow][][grow]"));
 		
 		JLabel lbLoja3 = new JLabel("Nome da loja");
-		panel_6.add(lbLoja3, "cell 0 1");
+		panel_6.add(lbLoja3, "cell 1 1,alignx center");
 		
 		JLabel lbCNPJ3 = new JLabel("CNPJ");
-		panel_6.add(lbCNPJ3, "cell 0 4");
+		panel_6.add(lbCNPJ3, "cell 1 4,alignx center");
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(235, 219, 194));
@@ -132,10 +132,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_3.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
 		JLabel lbLoja4 = new JLabel("Nome da loja");
-		panel_3.add(lbLoja4, "cell 0 1");
+		panel_3.add(lbLoja4, "cell 1 1,alignx center");
 		
 		JLabel lbCNPJ4 = new JLabel("CNPJ");
-		panel_3.add(lbCNPJ4, "cell 0 3");
+		panel_3.add(lbCNPJ4, "cell 1 3,alignx center");
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(235, 219, 194));
@@ -143,10 +143,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_5.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
 		JLabel lbLoja5 = new JLabel("Nome da loja");
-		panel_5.add(lbLoja5, "cell 0 1");
+		panel_5.add(lbLoja5, "cell 1 1,alignx center");
 		
 		JLabel lbCNPJ5 = new JLabel("CNPJ");
-		panel_5.add(lbCNPJ5, "cell 0 3");
+		panel_5.add(lbCNPJ5, "cell 1 3,alignx center");
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(235, 219, 194));
@@ -154,10 +154,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel_7.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
 		JLabel lbLoja6 = new JLabel("Nome da loja");
-		panel_7.add(lbLoja6, "cell 0 1");
+		panel_7.add(lbLoja6, "cell 1 1,alignx center");
 		
 		JLabel lbCNPJ6 = new JLabel("CNPJ");
-		panel_7.add(lbCNPJ6, "cell 0 3");
+		panel_7.add(lbCNPJ6, "cell 1 3,alignx center");
 
 	}
 

@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class TelaLogin extends JPanel {
 
@@ -54,7 +53,7 @@ public class TelaLogin extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(14f); 
 		
-		JLabel lbUsuario = new JLabel("Usuário");
+		JLabel lbUsuario = new JLabel("Usuário:");
 		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lbSenha.add(lbUsuario, "cell 1 1,grow");
 		lbUsuario.setFont(fonte2);
@@ -63,7 +62,7 @@ public class TelaLogin extends JPanel {
 		lbSenha.add(tfUsuario, "cell 3 1,grow");
 		tfUsuario.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Senha");
+		JLabel lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lbSenha.add(lblNewLabel_2, "cell 1 3,grow");
 		lblNewLabel_2.setFont(fonte2);

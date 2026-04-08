@@ -10,11 +10,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class TelaDetalhesLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;

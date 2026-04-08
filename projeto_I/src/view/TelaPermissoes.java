@@ -15,9 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class TelaPermissoes extends JPanel {
 
@@ -95,7 +93,7 @@ public class TelaPermissoes extends JPanel {
 		btnVisualizarUsuarios.setOpaque(true);
 		btnVisualizarUsuarios.setBorderPainted(false);
 		btnVisualizarUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		panel.add(btnVisualizarUsuarios, "cell 3 1,growx");
+		panel.add(btnVisualizarUsuarios, "cell 2 1 2 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 3 1,grow");
@@ -103,20 +101,20 @@ public class TelaPermissoes extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(235, 219, 194));
 		scrollPane.setViewportView(panel_1);
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		panel_1.add(lblNewLabel_1, "cell 1 1");
+		JLabel lblNewLabel_1 = new JLabel("Nomes");
+		panel_1.add(lblNewLabel_1, "cell 1 1,alignx center");
 		lblNewLabel_1 .setFont(fonte2);
 		
-		JLabel lblNewLabel_2 = new JLabel("Usuário");
-		panel_1.add(lblNewLabel_2, "cell 3 1");
+		JLabel lblNewLabel_2 = new JLabel("Usuários");
+		panel_1.add(lblNewLabel_2, "cell 3 1,alignx center");
 		lblNewLabel_2.setFont(fonte2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cargo");
-		panel_1.add(lblNewLabel_4, "cell 5 1");
+		panel_1.add(lblNewLabel_4, "cell 5 1,alignx center");
 		lblNewLabel_4.setFont(fonte2);
 		
 		tfNome1 = new JTextField();
@@ -132,9 +130,11 @@ public class TelaPermissoes extends JPanel {
 		tfCargo1.setColumns(10);
 		
 		JButton btSim1 = new JButton("✔️");
+		btSim1.setBackground(new Color(235, 219, 194));
 		panel_1.add(btSim1, "cell 7 3");
 		
 		JButton btNao1 = new JButton("❌");
+		btNao1.setBackground(new Color(235, 219, 194));
 		panel_1.add(btNao1, "cell 9 3");
 		
 		tfNome2 = new JTextField();
@@ -150,9 +150,11 @@ public class TelaPermissoes extends JPanel {
 		tfCargo2.setColumns(10);
 		
 		JButton btSim2 = new JButton("✔️");
+		btSim2.setBackground(new Color(235, 219, 194));
 		panel_1.add(btSim2, "cell 7 5");
 		
 		JButton btNao2 = new JButton("❌");
+		btNao2.setBackground(new Color(235, 219, 194));
 		panel_1.add(btNao2, "cell 9 5");
 		
 		tfNome3 = new JTextField();
@@ -168,9 +170,11 @@ public class TelaPermissoes extends JPanel {
 		tfCargo3.setColumns(10);
 		
 		JButton brSim3 = new JButton("✔️");
+		brSim3.setBackground(new Color(235, 219, 194));
 		panel_1.add(brSim3, "cell 7 7,alignx left");
 		
 		JButton btNao3 = new JButton("❌");
+		btNao3.setBackground(new Color(235, 219, 194));
 		panel_1.add(btNao3, "cell 9 7");
 
 	}

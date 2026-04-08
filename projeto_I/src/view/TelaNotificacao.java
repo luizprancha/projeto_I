@@ -99,14 +99,14 @@ public class TelaNotificacao extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(20f);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_2, "cell 0 0,grow");
-		panel_2.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao1 = new JPanel();
+		notificacao1.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao1, "cell 0 0,grow");
+		notificacao1.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_8 = new JPanel();
 		panel_8.setBackground(new Color(145, 131, 131));
-		panel_2.add(panel_8, BorderLayout.NORTH);
+		notificacao1.add(panel_8, BorderLayout.NORTH);
 		panel_8.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo1 = new JLabel("Nó de Estoque");
@@ -115,19 +115,19 @@ public class TelaNotificacao extends JPanel {
 		panel_8.add(lbNo1, "name_9304160647600");
 		lbNo1.setFont(fonte2);
 		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBackground(new Color(235, 219, 194));
-		panel_2.add(panel_9, BorderLayout.CENTER);
-		panel_9.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel mensagem1 = new JPanel();
+		mensagem1.setBackground(new Color(235, 219, 194));
+		notificacao1.add(mensagem1, BorderLayout.CENTER);
+		mensagem1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_5, "cell 2 0,grow");
-		panel_5.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao2 = new JPanel();
+		notificacao2.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao2, "cell 2 0,grow");
+		notificacao2.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_14 = new JPanel();
 		panel_14.setBackground(new Color(145, 131, 131));
-		panel_5.add(panel_14, BorderLayout.NORTH);
+		notificacao2.add(panel_14, BorderLayout.NORTH);
 		panel_14.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo2 = new JLabel("Nó de Estoque");
@@ -136,18 +136,18 @@ public class TelaNotificacao extends JPanel {
 		panel_14.add(lbNo2, "name_9600362844400");
 		lbNo2.setFont(fonte2);
 		
-		JPanel panel_15 = new JPanel();
-		panel_15.setBackground(new Color(235, 219, 194));
-		panel_5.add(panel_15, BorderLayout.CENTER);
+		JPanel mensagem2 = new JPanel();
+		mensagem2.setBackground(new Color(235, 219, 194));
+		notificacao2.add(mensagem2, BorderLayout.CENTER);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_3, "cell 0 2,grow");
-		panel_3.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao3 = new JPanel();
+		notificacao3.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao3, "cell 0 2,grow");
+		notificacao3.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setBackground(new Color(145, 131, 131));
-		panel_3.add(panel_10, BorderLayout.NORTH);
+		notificacao3.add(panel_10, BorderLayout.NORTH);
 		panel_10.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo3 = new JLabel("Nó de Estoque");
@@ -156,18 +156,18 @@ public class TelaNotificacao extends JPanel {
 		panel_10.add(lbNo3, "name_9655721472700");
 		lbNo3.setFont(fonte2);
 		
-		JPanel panel_11 = new JPanel();
-		panel_11.setBackground(new Color(235, 219, 194));
-		panel_3.add(panel_11, BorderLayout.CENTER);
+		JPanel mensagem3 = new JPanel();
+		mensagem3.setBackground(new Color(235, 219, 194));
+		notificacao3.add(mensagem3, BorderLayout.CENTER);
 		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_6, "cell 2 2,grow");
-		panel_6.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao4 = new JPanel();
+		notificacao4.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao4, "cell 2 2,grow");
+		notificacao4.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_16 = new JPanel();
 		panel_16.setBackground(new Color(145, 131, 131));
-		panel_6.add(panel_16, BorderLayout.NORTH);
+		notificacao4.add(panel_16, BorderLayout.NORTH);
 		panel_16.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo4 = new JLabel("Nó de Estoque");
@@ -176,18 +176,18 @@ public class TelaNotificacao extends JPanel {
 		panel_16.add(lbNo4, "name_9790329387800");
 		lbNo4.setFont(fonte2);
 		
-		JPanel panel_17 = new JPanel();
-		panel_17.setBackground(new Color(235, 219, 194));
-		panel_6.add(panel_17, BorderLayout.CENTER);
+		JPanel mensagem4 = new JPanel();
+		mensagem4.setBackground(new Color(235, 219, 194));
+		notificacao4.add(mensagem4, BorderLayout.CENTER);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_4, "cell 0 4,grow");
-		panel_4.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao5 = new JPanel();
+		notificacao5.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao5, "cell 0 4,grow");
+		notificacao5.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_12 = new JPanel();
 		panel_12.setBackground(new Color(145, 131, 131));
-		panel_4.add(panel_12, BorderLayout.NORTH);
+		notificacao5.add(panel_12, BorderLayout.NORTH);
 		panel_12.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo5 = new JLabel("Nó de Estoque");
@@ -196,18 +196,18 @@ public class TelaNotificacao extends JPanel {
 		panel_12.add(lbNo5, "name_9698410286500");
 		lbNo5.setFont(fonte2);
 		
-		JPanel panel_13 = new JPanel();
-		panel_13.setBackground(new Color(235, 219, 194));
-		panel_4.add(panel_13, BorderLayout.CENTER);
+		JPanel mensagem5 = new JPanel();
+		mensagem5.setBackground(new Color(235, 219, 194));
+		notificacao5.add(mensagem5, BorderLayout.CENTER);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(235, 219, 194));
-		panel_1.add(panel_7, "cell 2 4,grow");
-		panel_7.setLayout(new BorderLayout(0, 0));
+		JPanel notificacao6 = new JPanel();
+		notificacao6.setBackground(new Color(235, 219, 194));
+		panel_1.add(notificacao6, "cell 2 4,grow");
+		notificacao6.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_18 = new JPanel();
 		panel_18.setBackground(new Color(145, 131, 131));
-		panel_7.add(panel_18, BorderLayout.NORTH);
+		notificacao6.add(panel_18, BorderLayout.NORTH);
 		panel_18.setLayout(new CardLayout(0, 0));
 		
 		JLabel lbNo6 = new JLabel("Nó de Estoque");
@@ -216,9 +216,9 @@ public class TelaNotificacao extends JPanel {
 		panel_18.add(lbNo6, "name_9793065763000");
 		lbNo6.setFont(fonte2);
 		
-		JPanel panel_19 = new JPanel();
-		panel_19.setBackground(new Color(235, 219, 194));
-		panel_7.add(panel_19, BorderLayout.CENTER);
+		JPanel mensagem6 = new JPanel();
+		mensagem6.setBackground(new Color(235, 219, 194));
+		notificacao6.add(mensagem6, BorderLayout.CENTER);
 
 	}
 

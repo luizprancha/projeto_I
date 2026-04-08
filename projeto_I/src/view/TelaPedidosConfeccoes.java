@@ -104,7 +104,7 @@ public class TelaPedidosConfeccoes extends JPanel {
 		btnCadastrar.setContentAreaFilled(true);
 		btnCadastrar.setOpaque(true);
 		btnCadastrar.setBorderPainted(false);
-		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel.add(btnCadastrar, "cell 1 5,growx");
 		
 		JButton btnAlterar = new JButton("Alterar");
@@ -112,7 +112,7 @@ public class TelaPedidosConfeccoes extends JPanel {
 		btnAlterar.setContentAreaFilled(true);
 		btnAlterar.setOpaque(true);
 		btnAlterar.setBorderPainted(false);
-		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel.add(btnAlterar, "cell 3 5,growx");
 
 	}

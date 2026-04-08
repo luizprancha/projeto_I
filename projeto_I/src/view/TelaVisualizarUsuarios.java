@@ -15,9 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class TelaVisualizarUsuarios extends JPanel {
 
@@ -107,16 +105,16 @@ public class TelaVisualizarUsuarios extends JPanel {
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		panel_1.add(lblNewLabel_1, "cell 1 1");
+		JLabel lblNewLabel_1 = new JLabel("Nomes");
+		panel_1.add(lblNewLabel_1, "cell 1 1,alignx center");
 		lblNewLabel_1 .setFont(fonte2);
 		
-		JLabel lblNewLabel_2 = new JLabel("Usuário");
-		panel_1.add(lblNewLabel_2, "cell 3 1");
+		JLabel lblNewLabel_2 = new JLabel("Usuários");
+		panel_1.add(lblNewLabel_2, "cell 3 1,alignx center");
 		lblNewLabel_2.setFont(fonte2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cargo");
-		panel_1.add(lblNewLabel_4, "cell 5 1");
+		panel_1.add(lblNewLabel_4, "cell 5 1,alignx center");
 		lblNewLabel_4.setFont(fonte2);
 		
 		tfNome1 = new JTextField();
