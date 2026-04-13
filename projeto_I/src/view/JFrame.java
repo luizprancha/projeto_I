@@ -17,6 +17,8 @@ import controller.CadastroController;
 import controller.LoginController;
 import controller.Navegador;
 import model.UsuarioDAO;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFrame extends javax.swing.JFrame {
 
@@ -50,24 +52,20 @@ public class JFrame extends javax.swing.JFrame {
 
 		
 		Navegador navegador = new Navegador(this);
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
 		adicionarTela("LOGIN", telaLogin);
 
-		
 		TelaCadastro telaCadastro = new TelaCadastro();
 		adicionarTela("CADASTRO", telaCadastro);
-		
 		
 		TelaNotificacao telaNotificacao = new TelaNotificacao();
 		adicionarTela("NOTIFICACAO", telaNotificacao);
 
-		
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
        
 		new LoginController(telaLogin, navegador);
-	
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
 
 		
@@ -76,6 +74,10 @@ public class JFrame extends javax.swing.JFrame {
 		menuBar = new JMenuBar();
 
 		JMenu mnNewMenu = new JMenu("Notificações");
+		mnNewMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		menuBar.add(mnNewMenu);
 
 		JMenu mnNewMenu_1 = new JMenu("Produtos");
