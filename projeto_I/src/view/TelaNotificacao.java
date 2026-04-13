@@ -38,35 +38,6 @@ public class TelaNotificacao extends JPanel {
 	public TelaNotificacao() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(new Color(235, 219, 194));
-		add(menuBar, BorderLayout.NORTH);
-		
-		JMenu mnNewMenu = new JMenu("Notificações");
-		menuBar.add(mnNewMenu);
-		mnNewMenu.setFont(fonte2);
-		
-		
-		JMenu mnNewMenu_1 = new JMenu("Produtos");
-		menuBar.add(mnNewMenu_1);
-		mnNewMenu_1.setFont(fonte2);
-		
-		
-		JMenu mnNewMenu_2 = new JMenu("Confecções");
-		menuBar.add(mnNewMenu_2);
-		mnNewMenu_2.setFont(fonte2);
-		
-		JMenu mnNewMenu_3 = new JMenu("Lojas");
-		menuBar.add(mnNewMenu_3);
-		mnNewMenu_3.setFont(fonte2);
-		
-		JMenu mnNewMenu_4 = new JMenu("Pedidos");
-		menuBar.add(mnNewMenu_4);
-		mnNewMenu_4.setFont(fonte2);
-		
-		JMenu mnNewMenu_5 = new JMenu("Permissões");
-		menuBar.add(mnNewMenu_5);
-		mnNewMenu_5.setFont(fonte2);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(235, 219, 194));

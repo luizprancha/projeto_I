@@ -2,9 +2,6 @@ package view;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.Font;

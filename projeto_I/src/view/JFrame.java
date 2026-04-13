@@ -96,7 +96,7 @@ public class JFrame extends javax.swing.JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Lojas");
 		mnNewMenu_4.add(mntmNewMenuItem_1);
 
-		// 👉 ESSA É A LINHA IMPORTANTE
+		
 		setJMenuBar(menuBar);
 	}
 
