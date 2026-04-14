@@ -9,11 +9,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
 
@@ -54,43 +52,43 @@ public class TelaCadastro extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(begeFundo);
-		panel.setLayout(new MigLayout("", "[grow][][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		add(panel, "cell 2 3 3 1,grow");
 		
-		lbNome = new JLabel("Nome");
+		lbNome = new JLabel("Nome:");
+		lbNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(lbNome, "cell 1 1");
 		tfNome = new JTextField();
-		tfNome.setFont(fonteInter);
-		panel.add(tfNome, "cell 3 1,growx");
+		tfNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(tfNome, "cell 2 1,growx");
 		
-		lbUsuario = new JLabel("Usuário");
+		lbUsuario = new JLabel("Usuário:");
+		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(lbUsuario, "cell 1 3");
 		tfUsuario = new JTextField();
-		tfUsuario.setFont(fonteInter);
-		panel.add(tfUsuario, "cell 3 3,growx");
+		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(tfUsuario, "cell 2 3,growx");
 		
-		lbCargo = new JLabel("Cargo");
+		lbCargo = new JLabel("Cargo:");
+		lbCargo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(lbCargo, "cell 1 5");
 		tfCargo = new JTextField();
-		tfCargo.setFont(fonteInter);
-		panel.add(tfCargo, "cell 3 5,growx");
+		tfCargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(tfCargo, "cell 2 5,growx");
 		
-		lbSenha = new JLabel("Senha");
+		lbSenha = new JLabel("Senha:");
+		lbSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(lbSenha, "cell 1 7");
+		
 		tfSenha = new JPasswordField();
-		panel.add(tfSenha, "cell 3 7,growx");
+		tfSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(tfSenha, "cell 2 7,growx");
 
 		btnCadastro = new JButton("Solicitar Cadastro");
-		btnCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCadastro.setBackground(begeFundo);
+		btnCadastro.setBackground(new Color(235, 219, 194));
 		btnCadastro.setOpaque(true);
 		btnCadastro.setBorderPainted(false);
-		btnCadastro.setFocusPainted(false);
-		btnCadastro.setFont(fonteInter);
-
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		add(btnCadastro, "cell 3 5,grow");
 	}
 

@@ -51,46 +51,40 @@ public class TelaLogin extends JPanel {
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(14f); 
+		).deriveFont(20f); 
 		
-		JLabel lbUsuario = new JLabel("Usuário");
-		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		JLabel lbUsuario = new JLabel("Usuário:");
+		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lbSenha.add(lbUsuario, "cell 1 1,grow");
 		lbUsuario.setFont(fonte2);
 		
 		tfUsuario = new JTextField();
+		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lbSenha.add(tfUsuario, "cell 3 1,grow");
 		tfUsuario.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Senha");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		JLabel lblNewLabel_2 = new JLabel("Senha:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lbSenha.add(lblNewLabel_2, "cell 1 3,grow");
 		lblNewLabel_2.setFont(fonte2);
 		
 		tfSenha = new JTextField();
+		tfSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lbSenha.add(tfSenha, "cell 3 3,grow");
 		tfSenha.setColumns(10);
 		
-		
-		Color begeFundo = new Color(235, 219, 194);
-		
 		btnEntrar = new JButton("Entrar");
-		btnEntrar.setFont(fonte2);
 		btnEntrar.setBackground(new Color(235, 219, 194));
-		btnEntrar.setBackground(begeFundo);
 		btnEntrar.setOpaque(true);
-		btnEntrar.setBorderPainted(false); // opcional
-		btnEntrar.setFocusPainted(false);  // opcional
-		
+		btnEntrar.setBorderPainted(false);
+		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(btnEntrar, "cell 3 5,grow");
 		
 		btnCadastro = new JButton("Solicitar Cadastro");
-		btnCadastro.setFont(fonte2);
-		btnCadastro.setBackground(begeFundo);
+		btnCadastro.setBackground(new Color(235, 219, 194));
 		btnCadastro.setOpaque(true);
-		btnCadastro.setBorderPainted(false); // opcional
-		btnCadastro.setFocusPainted(false);  // opcional
-	
+		btnCadastro.setBorderPainted(false);
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(btnCadastro, "cell 3 7,grow");
 	}
 		

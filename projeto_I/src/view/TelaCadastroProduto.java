@@ -53,52 +53,55 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomePeca = new JLabel("Nome da peça:");
+		lbNomePeca.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbNomePeca, "cell 1 1");
 		
 		tfNomepeca = new JTextField();
+		tfNomepeca.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfNomepeca, "cell 3 1,growx");
 		tfNomepeca.setColumns(10);
 		
 		JLabel lbTipoProduto = new JLabel("Tipo de produto:");
+		lbTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbTipoProduto, "cell 1 3");
 		
 		tfTipoProduto = new JTextField();
+		tfTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfTipoProduto, "cell 3 3,growx");
 		tfTipoProduto.setColumns(10);
 		
 		JLabel lbPreco = new JLabel("Preço R$:");
+		lbPreco.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbPreco, "cell 1 5");
 		
 		tfPreco = new JTextField();
+		tfPreco.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfPreco, "cell 3 5,growx");
 		tfPreco.setColumns(10);
 		
 		JLabel lbQuantidade = new JLabel("Quantidade:");
+		lbQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbQuantidade, "cell 1 7");
 		
 		tfQuantidade = new JTextField();
+		tfQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfQuantidade, "cell 3 7,growx");
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbTamanho = new JLabel("Tamanho:");
+		lbTamanho.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbTamanho, "cell 1 9");
 		
 		tfTamanho = new JTextField();
+		tfTamanho.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfTamanho, "cell 3 9,growx");
 		tfTamanho.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		
-		btnCadastrar.setBackground(new Color(255, 255, 255));
-		btnCadastrar.setContentAreaFilled(false);
-		btnCadastrar.setOpaque(false);
-		btnCadastrar.setBorderPainted(false);
-          
-		btnCadastrar.setContentAreaFilled(true);
+		btnCadastrar.setBackground(new Color(235, 219, 194));
 		btnCadastrar.setOpaque(true);
 		btnCadastrar.setBorderPainted(false);
-
-		btnCadastrar.setBackground(new Color(235, 219, 194 ));
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(btnCadastrar, "cell 3 5,growx");
 
 	}
