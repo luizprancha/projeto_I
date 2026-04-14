@@ -61,28 +61,12 @@ public class TelaPermissoes extends JPanel {
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton brVisualizarUsuarios = new JButton("Visualizar Usuários");
-		brVisualizarUsuarios .setFont(fonte2);
-
-		
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194));
-		brVisualizarUsuarios.setContentAreaFilled(false);
-		brVisualizarUsuarios.setOpaque(false);
-		brVisualizarUsuarios.setBorderPainted(false);
-          
-		brVisualizarUsuarios.setContentAreaFilled(true);
-		brVisualizarUsuarios.setOpaque(true);
-		brVisualizarUsuarios.setBorderPainted(false);
-
-		brVisualizarUsuarios.setBackground(new Color(235, 219, 194 ));
-	
-		brVisualizarUsuarios.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		       
-		    }
-		});
-		
-		panel.add(brVisualizarUsuarios, "cell 3 1,grow");
+		JButton btnVizualizar = new JButton("Visualizar Usuários");
+		btnVizualizar.setBackground(new Color(235, 219, 194));
+		btnVizualizar.setOpaque(true);
+		btnVizualizar.setBorderPainted(false);
+		btnVizualizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(btnVizualizar, "cell 3 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 3 1,grow");
@@ -94,17 +78,17 @@ public class TelaPermissoes extends JPanel {
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
+		JLabel lblNewLabel_1 = new JLabel("Nome:");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
-		lblNewLabel_1 .setFont(fonte2);
+		lblNewLabel_1 .setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblNewLabel_2 = new JLabel("Usuário");
+		JLabel lblNewLabel_2 = new JLabel("Usuário:");
 		panel_1.add(lblNewLabel_2, "cell 3 1");
-		lblNewLabel_2.setFont(fonte2);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblNewLabel_4 = new JLabel("Cargo");
+		JLabel lblNewLabel_4 = new JLabel("Cargo:");
 		panel_1.add(lblNewLabel_4, "cell 5 1");
-		lblNewLabel_4.setFont(fonte2);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		tfNome1 = new JTextField();
 		panel_1.add(tfNome1, "cell 1 3,growx");

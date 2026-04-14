@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaCadastroLoja extends JPanel {
 
@@ -50,43 +48,37 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeLoja = new JLabel("Nome da loja:");
+		lbNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbNomeLoja, "cell 1 1");
 		
 		tfNomeLoja = new JTextField();
+		tfNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfNomeLoja, "cell 3 1,growx");
 		tfNomeLoja.setColumns(10);
 		
 		JLabel lbCNPJ = new JLabel("CNPJ:");
+		lbCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbCNPJ, "cell 1 3");
 		
 		tfCNPJ = new JTextField();
+		tfCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfCNPJ, "cell 3 3,growx");
 		tfCNPJ.setColumns(10);
 		
 		JLabel lbEndereco = new JLabel("Endereço:");
+		lbEndereco.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lbEndereco, "cell 1 5");
 		
 		tfEndereco = new JTextField();
+		tfEndereco.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(tfEndereco, "cell 3 5,growx");
 		tfEndereco.setColumns(10);
 		
 		JButton btnCadastroLoja = new JButton("Cadastrar Loja");
-		
-
-		btnCadastroLoja.setBackground(new Color(255, 255, 255));
-		btnCadastroLoja.setContentAreaFilled(false);
-		btnCadastroLoja.setOpaque(false);
-		btnCadastroLoja.setBorderPainted(false);
-          
-		btnCadastroLoja.setContentAreaFilled(true);
+		btnCadastroLoja.setBackground(new Color(235, 219, 194));
 		btnCadastroLoja.setOpaque(true);
 		btnCadastroLoja.setBorderPainted(false);
-
-		btnCadastroLoja.setBackground(new Color(235, 219, 194 ));
-		btnCadastroLoja.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCadastroLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(btnCadastroLoja, "cell 2 5,growx,aligny center");
 
 	}
