@@ -24,6 +24,7 @@ public class LoginController {
 		        UsuarioDAO usuarioDAO = new UsuarioDAO();
 		        if(usuarioDAO.verificarUsuario(user, senha)) {
 		            navegador.navegarPara("NOTIFICACAO");
+		            navegador.mostrarMenu();
 		        } else {
 		            view.exibirMensagem("Erro", "Usuário ou senha inválidos!", 0);
 		        }

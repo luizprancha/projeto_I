@@ -38,6 +38,11 @@ public class Navegador {
 	public void sair() {
 		this.jFrame.dispose();
 	}
+
+	public void mostrarMenu() {
+		this.jFrame.mostrarMenu();
+		
+	}
 }
 
 

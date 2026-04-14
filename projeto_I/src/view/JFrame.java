@@ -26,6 +26,8 @@ public class JFrame extends javax.swing.JFrame {
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 	protected JMenuBar menuBar;
+	
+	public JMenuItem itemNotificacao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
@@ -63,6 +65,22 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaNotificacao telaNotificacao = new TelaNotificacao();
 		adicionarTela("NOTIFICACAO", telaNotificacao);
+		
+		TelaProdutos telaProduto = new TelaProdutos();
+		adicionarTela("PRODUTO", telaProduto);
+		
+		TelaConfeccoes telaConfeccoes = new TelaConfeccoes();
+		adicionarTela("CONFECCAO", telaConfeccoes);
+		
+		TelaLojas telaLojas = new TelaLojas();
+		adicionarTela("LOJAS", telaLojas);
+		
+		
+		TelaPedidosLojasConfirmados telaPedidosLojas = new TelaPedidosLojasConfirmados();
+		adicionarTela("PEDIDOS_LOJAS", telaPedidosLojas);
+
+		TelaPedidosConfeccoesConfirmados telaPedidosConfeccoes = new TelaPedidosConfeccoesConfirmados();
+		adicionarTela("PEDIDOS_CONFECCOES", telaPedidosConfeccoes);	
 
        
 		new LoginController(telaLogin, navegador);
@@ -73,33 +91,72 @@ public class JFrame extends javax.swing.JFrame {
 		
 		menuBar = new JMenuBar();
 
-		JMenu mnNewMenu = new JMenu("Notificações");
-		mnNewMenu.addActionListener(new ActionListener() {
+		JMenu itemNotificacao = new JMenu("Notificações");
+		menuBar.add(itemNotificacao);
+		
+		JMenuItem ItemNotificacao = new JMenuItem("Notificação");
+		ItemNotificacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("NOTIFICACAO");
 			}
 		});
-		menuBar.add(mnNewMenu);
+		itemNotificacao.add(ItemNotificacao);
 
 		JMenu mnNewMenu_1 = new JMenu("Produtos");
 		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem itemProdutos = new JMenuItem("Produtos");
+		itemProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("PRODUTO");
+			}
+		});
+		mnNewMenu_1.add(itemProdutos);
 
-		JMenu mnNewMenu_2 = new JMenu("Confecções");
-		menuBar.add(mnNewMenu_2);
+		JMenu itemConfeccoes = new JMenu("Confecções");
+		menuBar.add(itemConfeccoes);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Confecções");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("CONFECCAO");
+				
+			}
+		});
+		itemConfeccoes.add(mntmNewMenuItem_3);
 
-		JMenu mnNewMenu_3 = new JMenu("Lojas");
-		menuBar.add(mnNewMenu_3);
+		JMenu itemLojas = new JMenu("Lojas");
+		menuBar.add(itemLojas);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Lojas");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("PEDIDOS_LOJAS");
+			}
+		});
+		itemLojas.add(mntmNewMenuItem_4);
 
-		JMenu mnNewMenu_4 = new JMenu("Pedidos");
-		menuBar.add(mnNewMenu_4);
+		JMenu itemPedidos = new JMenu("Pedidos");
+		menuBar.add(itemPedidos);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Confecções");
-		mnNewMenu_4.add(mntmNewMenuItem);
-
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Lojas");
-		mnNewMenu_4.add(mntmNewMenuItem_1);
+		JMenuItem itemLojasPedidos = new JMenuItem("Lojas");
+		itemLojasPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("PEDIDOS_LOJAS");
+			}
+		});
+		itemPedidos.add(itemLojasPedidos);
+		
+		JMenuItem itemConfeccao = new JMenuItem("Confeccoes");
+		itemConfeccao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("PEDIDOS_CONFECCOES");
+			}
+		});
+		itemPedidos.add(itemConfeccao);
 
 		
-		setJMenuBar(menuBar);
+		//setJMenuBar(menuBar);
 	}
 
 	public void adicionarTela(String nome, JPanel tela) {
@@ -109,5 +166,16 @@ public class JFrame extends javax.swing.JFrame {
 	public void mostrarTela(String nome) {
 		this.cardLayout.show(this.contentPane, nome);
 		this.pack();
+	}
+
+	public void mostrarMenu() {
+		// TODO Auto-generated method stub
+		setJMenuBar(menuBar);
+		validate();
+		repaint();
+		this.pack();
+		
+
+		
 	}
 }
