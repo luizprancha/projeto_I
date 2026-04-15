@@ -69,7 +69,7 @@ public class UsuarioDAO {
 			
 
 		    public void atualizarUsuario(Usuario usuario) {
-		        String sql = "UPDATE usuarios SET nome = ?, senha = ?, cargo = ?, user = ? WHERE id = ?";
+		        String sql = "UPDATE Usuarios SET nome = ?, senha = ?, cargo = ?, user = ? WHERE id = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
@@ -80,7 +80,7 @@ public class UsuarioDAO {
 		            pstm.setString(2, usuario.getSenha());
 		            pstm.setString(3, usuario.getCargo());
 		            pstm.setString(4, usuario.getUser());
-		            pstm.setInt(3, usuario.getId());
+		            pstm.setInt(5, usuario.getId());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();

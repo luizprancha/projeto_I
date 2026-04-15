@@ -27,7 +27,7 @@ public class TelaLogin extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaLogin() throws FontFormatException, IOException {
+	public TelaLogin() throws FontFormatException, IOException {		
 		setBackground(new Color(15, 57, 87));
 		setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow 20][grow][grow 20][grow]"));
 		
