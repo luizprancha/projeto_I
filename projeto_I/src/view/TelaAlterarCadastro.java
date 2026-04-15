@@ -12,12 +12,19 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.JTextField;
 
+import Botao.JButtonOutLine;
+
+import java.awt.event.ActionListener;
+
+
 public class TelaAlterarCadastro extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfNome;
 	private JTextField tfUsuario;
 	private JTextField tfCargo;
+	private JButton btnUsuario;
+	private JButton btnConfirmar;
 
 	/**
 	 * Create the panel.
@@ -96,20 +103,25 @@ public class TelaAlterarCadastro extends JPanel {
 		
 		
 		
-		JButton btnUsuario = new JButton("Remover usuário");
-		btnUsuario.setBackground(new Color(255, 255, 255));
-		btnUsuario.setOpaque(true);
-		btnUsuario.setBorderPainted(false);
+		btnUsuario = new JButtonOutLine();
+		btnUsuario.setText("Remover Usuário");
 		btnUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(btnUsuario, "cell 1 9 2 1,grow");
 		
-		JButton btnConfirmar = new JButton("Confirmar Alterações");
-		btnConfirmar.setBackground(new Color(255, 255, 255));
-		btnConfirmar.setOpaque(true);
-		btnConfirmar.setBorderPainted(false);
+		btnConfirmar = new JButtonOutLine();
+		btnConfirmar.setText("Confirmar Alterações");
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(btnConfirmar, "cell 4 9 2 1,grow");
+		panel_1.add(btnConfirmar, "cell 1 9 2 1,grow");
+		
 
 	}
-
+	
+	
+	public void removerUsuario (ActionListener acao) {
+		btnUsuario.addActionListener(acao);
+	}
+	
+	public void confirmarAlteracoes (ActionListener acao) {
+		btnConfirmar.addActionListener(acao);
+	}
 }
