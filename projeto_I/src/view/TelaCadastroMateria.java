@@ -11,14 +11,21 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroMateria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfCor;
 	private JTextField tfQuantidade;
+	private JButton btnCadastrar;
 
 	/**
 	 * Create the panel.
@@ -44,7 +51,7 @@ public class TelaCadastroMateria extends JPanel {
 		panel.add(lbCadastroMateriaPrima, "cell 1 1 5 1,alignx left");
 		lbCadastroMateriaPrima.setFont(fonte);
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 2 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[][][][grow][]", "[][][][][][][]"));
@@ -76,10 +83,8 @@ public class TelaCadastroMateria extends JPanel {
 		panel_1.add(tfQuantidade, "cell 3 5,growx");
 		tfQuantidade.setColumns(10);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBackground(new Color(235, 219, 194));
-		btnCadastrar.setOpaque(true);
-		btnCadastrar.setBorderPainted(false);
+		btnCadastrar = new JButtonOutLine();
+		btnCadastrar.setText("Cadastrar");
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCadastrar.setBackground(new Color(235, 219, 194 ));
 		

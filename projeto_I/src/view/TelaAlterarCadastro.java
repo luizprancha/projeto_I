@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.swing.JTextField;
 
 import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
 
 import java.awt.event.ActionListener;
 
@@ -46,49 +47,55 @@ public class TelaAlterarCadastro extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(100f);
 		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
+		
 		
 		JLabel lblNewLabel = new JLabel("Alterar Cadastro");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1,alignx left");
 		lblNewLabel.setFont(fonte);
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 2 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow 70][grow 50][grow][grow 30][grow 30][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeCadastro = new JLabel("Nome:");
-		lbNomeCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbNomeCadastro.setFont(fonte2);
 		panel_1.add(lbNomeCadastro, "cell 1 1");
 		
 		tfNome = new JTextField();
-		tfNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNome.setFont(fonte2);
 		tfNome.setText("Sofia Martins Pascoalini");
 		panel_1.add(tfNome, "cell 2 1 3 1,growx");
 		tfNome.setColumns(10);
 		
 		JLabel lbUsuarioCadastro = new JLabel("Usuário:");
-		lbUsuarioCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbUsuarioCadastro.setFont(fonte2);
 		panel_1.add(lbUsuarioCadastro, "cell 1 3");
 		
 		tfUsuario = new JTextField();
 		tfUsuario.setText("somapa");
-		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfUsuario.setFont(fonte2);
 		panel_1.add(tfUsuario, "cell 2 3 3 1,growx");
 		tfUsuario.setColumns(10);
 		
 		JLabel lbCargoCadastro = new JLabel("Cargo:");
-		lbCargoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbCargoCadastro.setFont(fonte2);
 		panel_1.add(lbCargoCadastro, "cell 1 5");
 		
 		tfCargo = new JTextField();
 		tfCargo.setText("Vendedor(a)");
-		tfCargo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfCargo.setFont(fonte2);
 		panel_1.add(tfCargo, "cell 2 5 3 1,growx");
 		tfCargo.setColumns(10);
 		
 		JLabel lbPermissaoCadastro = new JLabel("Permissão:");
-		lbPermissaoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbPermissaoCadastro.setFont(fonte2);
 		panel_1.add(lbPermissaoCadastro, "cell 1 7");
 		
 		JRadioButton rdbUsuario = new JRadioButton("Usuário");
@@ -105,13 +112,13 @@ public class TelaAlterarCadastro extends JPanel {
 		
 		btnUsuario = new JButtonOutLine();
 		btnUsuario.setText("Remover Usuário");
-		btnUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnUsuario.setFont(fonte2);
 		panel_1.add(btnUsuario, "cell 1 9 2 1,grow");
 		
 		btnConfirmar = new JButtonOutLine();
 		btnConfirmar.setText("Confirmar Alterações");
-		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(btnConfirmar, "cell 1 9 2 1,grow");
+		btnConfirmar.setFont(fonte2);
+		panel_1.add(btnConfirmar, "cell 4 9,grow");
 		
 
 	}

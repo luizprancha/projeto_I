@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JTextField;
 
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class TelaCadastroProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +25,7 @@ public class TelaCadastroProduto extends JPanel {
 	private JTextField tfPreco;
 	private JTextField tfQuantidade;
 	private JTextField tfTamanho;
+	private JButton btnCadastrar;
 
 	/**
 	 * Create the panel.
@@ -41,19 +47,24 @@ public class TelaCadastroProduto extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(100f);
 		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
 		JLabel lbCadastro = new JLabel("Cadastro Produto");
 		lbCadastro.setForeground(new Color(235, 219, 194));
 		lbCadastro.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel.add(lbCadastro, "cell 1 1 5 1,alignx left,growy");
 		lbCadastro.setFont(fonte);
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 5 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomePeca = new JLabel("Nome da peça:");
-		lbNomePeca.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbNomePeca.setFont(fonte2);
 		panel_1.add(lbNomePeca, "cell 1 1");
 		
 		tfNomepeca = new JTextField();
@@ -61,35 +72,35 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.add(tfNomepeca, "cell 3 1,growx");
 		tfNomepeca.setColumns(10);
 		
-		JLabel lbTipoProduto = new JLabel("Tipo de produto:");
-		lbTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lbTipoProduto =  new JLabel("Tipo de produto:");
+		lbTipoProduto.setFont(fonte2);
 		panel_1.add(lbTipoProduto, "cell 1 3");
 		
 		tfTipoProduto = new JTextField();
-		tfTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfTipoProduto.setFont(fonte2);
 		panel_1.add(tfTipoProduto, "cell 3 3,growx");
 		tfTipoProduto.setColumns(10);
 		
 		JLabel lbPreco = new JLabel("Preço R$:");
-		lbPreco.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbPreco.setFont(fonte2);
 		panel_1.add(lbPreco, "cell 1 5");
 		
 		tfPreco = new JTextField();
-		tfPreco.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfPreco.setFont(fonte2);
 		panel_1.add(tfPreco, "cell 3 5,growx");
 		tfPreco.setColumns(10);
 		
 		JLabel lbQuantidade = new JLabel("Quantidade:");
-		lbQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbQuantidade.setFont(fonte2);
 		panel_1.add(lbQuantidade, "cell 1 7");
 		
 		tfQuantidade = new JTextField();
-		tfQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfQuantidade.setFont(fonte2);
 		panel_1.add(tfQuantidade, "cell 3 7,growx");
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbTamanho = new JLabel("Tamanho:");
-		lbTamanho.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbTamanho.setFont(fonte2);
 		panel_1.add(lbTamanho, "cell 1 9");
 		
 		tfTamanho = new JTextField();
@@ -97,13 +108,17 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.add(tfTamanho, "cell 3 9,growx");
 		tfTamanho.setColumns(10);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBackground(new Color(235, 219, 194));
-		btnCadastrar.setOpaque(true);
-		btnCadastrar.setBorderPainted(false);
-		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		btnCadastrar = new JButtonOutLine();
+		btnCadastrar.setText("Cadastrar");
+		btnCadastrar.setFont(fonte2);
 		panel.add(btnCadastrar, "cell 3 5,growx");
 
 	}
+	
+	public void removerUsuario (ActionListener acao) {
+		btnCadastrar.addActionListener(acao);
+	}
+	
 
 }

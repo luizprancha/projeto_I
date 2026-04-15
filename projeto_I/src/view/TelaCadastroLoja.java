@@ -6,9 +6,14 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class TelaCadastroLoja extends JPanel {
@@ -17,6 +22,7 @@ public class TelaCadastroLoja extends JPanel {
 	private JTextField tfNomeLoja;
 	private JTextField tfCNPJ;
 	private JTextField tfEndereco;
+	private JButton btnCadastroLoja;
 
 	/**
 	 * Create the panel.
@@ -42,7 +48,7 @@ public class TelaCadastroLoja extends JPanel {
 		panel.add(lblNewLabel, "cell 2 1,alignx center,growy");
 		lblNewLabel.setFont(fonte);
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
@@ -74,13 +80,15 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.add(tfEndereco, "cell 3 5,growx");
 		tfEndereco.setColumns(10);
 		
-		JButton btnCadastroLoja = new JButton("Cadastrar Loja");
-		btnCadastroLoja.setBackground(new Color(235, 219, 194));
-		btnCadastroLoja.setOpaque(true);
-		btnCadastroLoja.setBorderPainted(false);
+		btnCadastroLoja = new JButtonOutLine();
+		btnCadastroLoja.setText("Cadastrar Loja");
 		btnCadastroLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(btnCadastroLoja, "cell 2 5,growx,aligny center");
 
+	}
+	
+	public void cadastro(ActionListener acao) {
+		btnCadastroLoja.addActionListener(acao);
 	}
 
 }
