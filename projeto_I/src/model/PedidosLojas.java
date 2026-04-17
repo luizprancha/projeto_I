@@ -1,19 +1,24 @@
 package model;
 
-public class PedidoLoja {
+public class PedidosLojas {
 
 	private int idPedido;
-	private String status;
+	private String entrega;
 	private int idLoja;
 	private double valorTotal;
 	private String listaProdutos;
-	public PedidoLoja(int idPedido, String status, int idLoja, double valorTotal, String listaProdutos) {
+	private String lojas_CNPJ;
+	public PedidosLojas(int idPedido, String entrega, int idLoja, double valorTotal, String listaProdutos, String lojas_CNPJ) {
 		super();
-		this.idPedido = idPedido;
-		this.status = status;
 		this.idLoja = idLoja;
+		this.idPedido = idPedido;
+		this.entrega = entrega;
 		this.valorTotal = valorTotal;
 		this.listaProdutos = listaProdutos;
+		this.lojas_CNPJ = lojas_CNPJ;
+	}
+	public PedidosLojas() {
+		super();
 	}
 	public int getIdPedido() {
 		return idPedido;
@@ -21,11 +26,11 @@ public class PedidoLoja {
 	public void setIdPedido(int idPedido) {
 		this.idPedido = idPedido;
 	}
-	public String getStatus() {
-		return status;
+	public String getEntrega() {
+		return entrega;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEntrega(String entrega) {
+		this.entrega = entrega;
 	}
 	public int getIdLoja() {
 		return idLoja;
@@ -44,6 +49,12 @@ public class PedidoLoja {
 	}
 	public void setListaProdutos(String listaProdutos) {
 		this.listaProdutos = listaProdutos;
+	}
+	public String getLojas_CNPJ() {
+		return lojas_CNPJ;
+	}
+	public void setLojas_CNPJ(String lojas_CNPJ) {
+		this.lojas_CNPJ = lojas_CNPJ;
 	}
 	
 	

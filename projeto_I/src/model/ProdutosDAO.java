@@ -96,7 +96,7 @@ public class ProdutosDAO {
 		        }
 		    }
 		    
-		    public static void remover(int id) {
+		    public static void removerProdutos(int id) {
 		        String sql = "DELETE FROM Produtos WHERE id=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();

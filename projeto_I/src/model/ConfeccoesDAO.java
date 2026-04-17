@@ -96,7 +96,7 @@ public class ConfeccoesDAO {
 		        }
 		    }
 		    
-		    public static void remover(int id) {
+		    public static void removerConfeccoes(int id) {
 		        String sql = "DELETE FROM Confeccoes WHERE id=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();

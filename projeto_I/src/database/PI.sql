@@ -47,7 +47,7 @@ CREATE TABLE Lojas (
 
 CREATE TABLE PedidosLojas (
   idPedidosL INT NOT NULL AUTO_INCREMENT,
-  data DATE NOT NULL,
+  entrega DATE NOT NULL,
   valor_total DECIMAL(10,2) NOT NULL,
   Lojas_CNPJ CHAR(18) NOT NULL,
   PRIMARY KEY (idPedidosL),
@@ -56,7 +56,7 @@ CREATE TABLE PedidosLojas (
 
 CREATE TABLE PedidosConfeccoes (
   idPedidoC INT NOT NULL AUTO_INCREMENT,
-  data DATE NOT NULL,
+  entrega DATE NOT NULL,
   valor DECIMAL(10,2),
   Confeccoes_CNPJ CHAR(18) NOT NULL,
   forma_pgmt VARCHAR(45),
