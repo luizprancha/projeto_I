@@ -43,6 +43,11 @@ public class TelaCadastroLoja extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(80f);
 		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
 		JLabel lblNewLabel = new JLabel("Cadastro Loja");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 2 1,alignx center,growy");
@@ -54,11 +59,11 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeLoja = new JLabel("Nome da loja:");
-		lbNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbNomeLoja.setFont(fonte2);
 		panel_1.add(lbNomeLoja, "cell 1 1");
 		
 		tfNomeLoja = new JTextField();
-		tfNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNomeLoja.setFont(fonte2);
 		panel_1.add(tfNomeLoja, "cell 3 1,growx");
 		tfNomeLoja.setColumns(10);
 		
@@ -67,22 +72,22 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.add(lbCNPJ, "cell 1 3");
 		
 		tfCNPJ = new JTextField();
-		tfCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfCNPJ.setFont(fonte2);
 		panel_1.add(tfCNPJ, "cell 3 3,growx");
 		tfCNPJ.setColumns(10);
 		
 		JLabel lbEndereco = new JLabel("Endereço:");
-		lbEndereco.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbEndereco.setFont(fonte2);
 		panel_1.add(lbEndereco, "cell 1 5");
 		
 		tfEndereco = new JTextField();
-		tfEndereco.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfEndereco.setFont(fonte2);
 		panel_1.add(tfEndereco, "cell 3 5,growx");
 		tfEndereco.setColumns(10);
 		
 		btnCadastroLoja = new JButtonOutLine();
 		btnCadastroLoja.setText("Cadastrar Loja");
-		btnCadastroLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastroLoja.setFont(fonte2);
 		panel.add(btnCadastroLoja, "cell 2 5,growx,aligny center");
 
 	}
