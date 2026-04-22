@@ -10,6 +10,10 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -35,6 +39,7 @@ public class TelaLogin extends JPanel {
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(140f);
+		
 		JLabel lbTitulo = new JLabel("Nó de Estoque");
 		lbTitulo.setFont(fonte);
 		lbTitulo.setForeground(new Color(235, 219, 194));
@@ -43,48 +48,46 @@ public class TelaLogin extends JPanel {
 		
 		
 		
-		JPanel lbSenha = new JPanel();
+		PainelArredondado lbSenha = new PainelArredondado();
 		lbSenha.setBackground(new Color(235, 219, 194));
 		add(lbSenha, "cell 2 3 3 1,grow");
 		lbSenha.setLayout(new MigLayout("", "[grow][grow][::20px][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		Font fonte2 = Font.createFont(
+	
+		
+		Font fonte3 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(20f); 
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(15f);
 		
 		JLabel lbUsuario = new JLabel("Usuário:");
-		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lbUsuario.setFont(fonte3);
 		lbSenha.add(lbUsuario, "cell 1 1,grow");
-		lbUsuario.setFont(fonte2);
+	
 		
 		tfUsuario = new JTextField();
-		tfUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfUsuario.setFont(fonte3);
 		lbSenha.add(tfUsuario, "cell 3 1,grow");
 		tfUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Senha:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_2.setFont(fonte3);
 		lbSenha.add(lblNewLabel_2, "cell 1 3,grow");
-		lblNewLabel_2.setFont(fonte2);
+
 		
 		tfSenha = new JTextField();
-		tfSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfSenha.setFont(fonte3);
 		lbSenha.add(tfSenha, "cell 3 3,grow");
 		tfSenha.setColumns(10);
 		
-		btnEntrar = new JButton("Entrar");
-		btnEntrar.setBackground(new Color(235, 219, 194));
-		btnEntrar.setOpaque(true);
-		btnEntrar.setBorderPainted(false);
-		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEntrar = new JButtonOutLine();
+		btnEntrar.setText("Entrar");
+		btnEntrar.setFont(fonte3);
 		add(btnEntrar, "cell 3 5,grow");
 		
-		btnCadastro = new JButton("Solicitar Cadastro");
-		btnCadastro.setBackground(new Color(235, 219, 194));
-		btnCadastro.setOpaque(true);
-		btnCadastro.setBorderPainted(false);
-		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCadastro = new JButtonOutLine();
+		btnCadastro.setText("Solicitar Cadastro");
+		btnCadastro.setFont(fonte3);
 		add(btnCadastro, "cell 3 7,grow");
 	}
 		

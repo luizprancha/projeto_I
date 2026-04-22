@@ -31,10 +31,12 @@ public class TelaDetalheMateria extends JPanel {
 		
 
 		
+			
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(50f);
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
+		).deriveFont(100f);
+		
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -58,27 +60,28 @@ public class TelaDetalheMateria extends JPanel {
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel_1 = new JLabel("Tipo do tecido:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
+		
 		JLabel lbTipoTecido = new JLabel("Malha");
-		lbTipoTecido.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbTipoTecido.setFont(fonte2);
 		panel_1.add(lbTipoTecido, "cell 3 1");
 		
 		JLabel lblNewLabel_2 = new JLabel("Cor:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(fonte2);
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
 		JLabel lbCor = new JLabel("Azul");
-		lbCor.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbCor.setFont(fonte2);
 		panel_1.add(lbCor, "cell 3 3");
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de rolos:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
 		JLabel lbQtdRolos = new JLabel("50");
-		lbQtdRolos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbQtdRolos.setFont(fonte2);
 		panel_1.add(lbQtdRolos, "cell 3 5");
 		
 		btExcluir = new JButtonOutLine();

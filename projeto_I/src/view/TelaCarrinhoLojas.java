@@ -29,8 +29,6 @@ public class TelaCarrinhoLojas extends JPanel {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
 	
 	private JButton btnExcluir; 
 	private JButton btnFinalizarPedido; 
@@ -53,13 +51,13 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(40f);
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
+		).deriveFont(80f);
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
-		).deriveFont(18f);
+		).deriveFont(15f);
 		
 		
 		JLabel lblNewLabel = new JLabel("Carrinho de pedidos ");
@@ -77,7 +75,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		scrollPane.setViewportView(panel_1);
-		panel_1.setLayout(new MigLayout("", "[grow 10][grow][grow 10][grow][grow 10][grow][grow 10][grow][grow 10]", "[grow 5][grow][grow 5][grow][grow 5]"));
+		panel_1.setLayout(new MigLayout("", "[grow 10][grow][grow 10][grow][grow 10][grow][grow 10]", "[grow 5][grow][grow 5][][grow 5]"));
 		
 		PainelArredondado panel_2 = new PainelArredondado();
 		panel_2.setBackground(new Color(255, 255, 255));
@@ -120,9 +118,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_9 = new JLabel("Camisa");
 		panel_4.add(lblNewLabel_9, "cell 1 1,alignx center");
+		lblNewLabel_9.setFont(fonte2);
 		
 		JLabel lblNewLabel_10 = new JLabel("Quantidade");
 		panel_4.add(lblNewLabel_10, "cell 1 2,alignx center");
+		lblNewLabel_10.setFont(fonte2);
 		
 		JButton btnNewButton_6 = new JButton("-");
 		panel_4.add(btnNewButton_6, "cell 0 4,alignx right");
@@ -137,9 +137,13 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_11 = new JLabel("Valor");
 		panel_4.add(lblNewLabel_11, "cell 1 6,alignx center");
+		lblNewLabel_11.setFont(fonte2);
+		
 		
 		JLabel lblNewLabel_12 = new JLabel("R$1500,00");
 		panel_4.add(lblNewLabel_12, "cell 1 7,alignx center");
+		lblNewLabel_12.setFont(fonte2);
+		
 		
 		PainelArredondado panel_6 = new PainelArredondado();
 		panel_6.setBackground(new Color(255, 255, 255));
@@ -148,9 +152,12 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_17 = new JLabel("Camisa");
 		panel_6.add(lblNewLabel_17, "cell 1 1,alignx center");
+		lblNewLabel_17.setFont(fonte2);
+		
 		
 		JLabel lblNewLabel_18 = new JLabel("Quantidade");
 		panel_6.add(lblNewLabel_18, "cell 1 2,alignx center");
+		lblNewLabel_18.setFont(fonte2);
 		
 		JButton btnNewButton_10 = new JButton("-");
 		panel_6.add(btnNewButton_10, "cell 0 4,alignx right");
@@ -165,9 +172,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_19 = new JLabel("Valor");
 		panel_6.add(lblNewLabel_19, "cell 1 6,alignx center");
+		lblNewLabel_19.setFont(fonte2);
 		
 		JLabel lblNewLabel_20 = new JLabel("R$1 500,00");
 		panel_6.add(lblNewLabel_20, "cell 1 8,alignx center");
+		lblNewLabel_20.setFont(fonte2);
 		
 		PainelArredondado panel_3= new PainelArredondado();
 		panel_3.setBackground(new Color(255, 255, 255));
@@ -176,9 +185,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_5 = new JLabel("Camisa");
 		panel_3.add(lblNewLabel_5, "cell 1 1,alignx center,aligny center");
+		lblNewLabel_5.setFont(fonte2);
 		
 		JLabel lblNewLabel_6 = new JLabel("Quantidade");
 		panel_3.add(lblNewLabel_6, "cell 1 3,alignx center");
+		lblNewLabel_6.setFont(fonte2);
 		
 		JButton btnNewButton = new JButton("-");
 		panel_3.add(btnNewButton, "cell 0 5,alignx right");
@@ -193,9 +204,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_7 = new JLabel("Valor");
 		panel_3.add(lblNewLabel_7, "cell 1 7,alignx center");
+		lblNewLabel_7.setFont(fonte2);
 		
 		JLabel lblNewLabel_8 = new JLabel("R$1 500,00");
 		panel_3.add(lblNewLabel_8, "cell 1 9,alignx center");
+		lblNewLabel_8.setFont(fonte2);
 		
 		PainelArredondado panel_5 = new PainelArredondado();
 		panel_5.setBackground(new Color(255, 255, 255));
@@ -204,9 +217,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_13 = new JLabel("Camisa");
 		panel_5.add(lblNewLabel_13, "cell 1 1,alignx center");
+		lblNewLabel_13.setFont(fonte2);
 		
 		JLabel lblNewLabel_14 = new JLabel("Quantidade");
 		panel_5.add(lblNewLabel_14, "cell 1 3,alignx center");
+		lblNewLabel_14.setFont(fonte2);
 		
 		JButton btnNewButton_8 = new JButton("-");
 		panel_5.add(btnNewButton_8, "cell 0 5,alignx right");
@@ -221,9 +236,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_15 = new JLabel("Valor");
 		panel_5.add(lblNewLabel_15, "cell 1 7,alignx center");
+		lblNewLabel_15.setFont(fonte2);
 		
 		JLabel lblNewLabel_16 = new JLabel("R$ 1 500,00");
 		panel_5.add(lblNewLabel_16, "cell 1 10,alignx center");
+		lblNewLabel_16.setFont(fonte2);
 		
 		PainelArredondado panel_7 = new PainelArredondado();
 		panel_7.setBackground(new Color(255, 255, 255));
@@ -232,9 +249,12 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_21 = new JLabel("Camisa");
 		panel_7.add(lblNewLabel_21, "cell 1 1,alignx center");
+		lblNewLabel_21.setFont(fonte2);
 		
 		JLabel lblNewLabel_22 = new JLabel("Quantidade");
 		panel_7.add(lblNewLabel_22, "cell 1 3,alignx center");
+		lblNewLabel_22.setFont(fonte2);
+		
 		
 		JButton btnNewButton_12 = new JButton("-");
 		panel_7.add(btnNewButton_12, "cell 0 5,alignx right");
@@ -249,65 +269,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 		JLabel lblNewLabel_23 = new JLabel("Valor");
 		panel_7.add(lblNewLabel_23, "cell 1 7,alignx center");
+		lblNewLabel_23.setFont(fonte2);
 		
 		JLabel lblNewLabel_24 = new JLabel("R$1 500,00");
 		panel_7.add(lblNewLabel_24, "cell 1 9,alignx center");
-		
-		PainelArredondado panel_9= new PainelArredondado();
-		panel_9.setBackground(new Color(255, 255, 255));
-		panel_1.add(panel_9, "cell 7 3,grow");
-		panel_9.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow][][grow][][grow][][grow][][grow][][grow]"));
-		
-		PainelArredondado panel_8 = new PainelArredondado();
-		panel_9.add(panel_8, "cell 1 0");
-		panel_8.setBackground(new Color(255, 255, 255));
-		panel_8.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][][grow][][grow][][grow][][grow][][grow]"));
-		
-		JLabel lblNewLabel_25 = new JLabel("Camisa");
-		panel_8.add(lblNewLabel_25, "cell 1 1,alignx center");
-		
-		JLabel lblNewLabel_26 = new JLabel("Quantidade");
-		panel_8.add(lblNewLabel_26, "cell 1 3,alignx center");
-		
-		JButton btnNewButton_14 = new JButton("-");
-		panel_8.add(btnNewButton_14, "cell 0 5,alignx right");
-		
-		textField_7 = new JTextField();
-		textField_7.setBackground(new Color(240, 240, 240));
-		panel_8.add(textField_7, "cell 1 5,growx");
-		textField_7.setColumns(10);
-		
-		JButton btnNewButton_15 = new JButton("+");
-		panel_8.add(btnNewButton_15, "cell 2 5,alignx left");
-		
-		JLabel lblNewLabel_27 = new JLabel("Valor");
-		panel_8.add(lblNewLabel_27, "cell 1 7,alignx center");
-		
-		JLabel lblNewLabel_28 = new JLabel("R$ 1 500,00");
-		panel_8.add(lblNewLabel_28, "cell 1 9,alignx center");
-		
-		JLabel lblNewLabel_29 = new JLabel("Camisa");
-		panel_9.add(lblNewLabel_29, "cell 1 2,alignx center");
-		
-		JLabel lblNewLabel_30 = new JLabel("Quantidade");
-		panel_9.add(lblNewLabel_30, "cell 1 4,alignx center");
-		
-		JButton btnNewButton_16 = new JButton("-");
-		panel_9.add(btnNewButton_16, "cell 0 6,alignx right");
-		
-		textField_8 = new JTextField();
-		textField_8.setBackground(new Color(240, 240, 240));
-		panel_9.add(textField_8, "cell 1 6,growx");
-		textField_8.setColumns(10);
-		
-		JButton btnNewButton_17 = new JButton("+");
-		panel_9.add(btnNewButton_17, "cell 2 6");
-		
-		JLabel lblNewLabel_31 = new JLabel("Valor");
-		panel_9.add(lblNewLabel_31, "cell 1 8,alignx center");
-		
-		JLabel lblNewLabel_32 = new JLabel("R$1 500,00");
-		panel_9.add(lblNewLabel_32, "cell 1 10,alignx center");
+		lblNewLabel_24.setFont(fonte2);
 		
 		btnExcluir = new JButtonOutLine();
 		btnExcluir.setText("Excluir");
