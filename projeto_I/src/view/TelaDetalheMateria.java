@@ -1,6 +1,10 @@
 package view;
 
 import javax.swing.JPanel;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
@@ -14,6 +18,8 @@ public class TelaDetalheMateria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btEditar;
+	private JButton btExcluir;
+	
 
 	/**
 	 * Create the panel.
@@ -30,6 +36,11 @@ public class TelaDetalheMateria extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(50f);
 		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
@@ -41,7 +52,7 @@ public class TelaDetalheMateria extends JPanel {
 		lbTitulo.setFont(fonte);
 		panel.add(lbTitulo, "cell 1 1 4 1");
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1= new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 3 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
@@ -70,18 +81,14 @@ public class TelaDetalheMateria extends JPanel {
 		lbQtdRolos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(lbQtdRolos, "cell 3 5");
 		
-		JButton btExcluir = new JButton("Excluir");
-		btExcluir.setBackground(new Color(235, 219, 194));
-		btExcluir.setOpaque(true);
-		btExcluir.setBorderPainted(false);
-		btExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btExcluir = new JButtonOutLine();
+		btExcluir.setText("Excluir");
+		btExcluir.setFont(fonte2);
 		panel.add(btExcluir, "cell 2 5 2 1,growx");
 		
-		btEditar = new JButton("Editar");
-		btEditar.setBackground(new Color(235, 219, 194));
-		btEditar.setOpaque(true);
-		btEditar.setBorderPainted(false);
-		btEditar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btEditar = new JButtonOutLine();
+		btEditar.setText("Editar");
+		btEditar.setFont(fonte2);
 		panel.add(btEditar, "cell 5 5 2 1,growx");
 
 	}
