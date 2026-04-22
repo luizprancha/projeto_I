@@ -32,6 +32,10 @@ public class RegistrarAcesso {
 		this.usuario = usuario;
 	}
 	
+	public void registrarEntrada(Usuario usuario) {
+		this.usuario = usuario;
+		this.dataHora = LocalDateTime.now();
+	}
 	
 	
 }

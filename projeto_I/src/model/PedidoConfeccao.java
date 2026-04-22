@@ -1,6 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PedidoConfeccao {
 
@@ -11,9 +13,10 @@ public class PedidoConfeccao {
 	private String listaConfeccoes;
 	private LocalDate dataEntrega;
 	private LocalDate dataDevolucao;
+	private List<Confeccoes> confeccoes = new ArrayList<Confeccoes>();
 	
 	public PedidoConfeccao(int idPedido, String status, int idConfeccao, double valorPedido, String listaConfeccoes,
-			LocalDate dataEntrega, LocalDate dataDevolucao) {
+			LocalDate dataEntrega, LocalDate dataDevolucao, List<Confeccoes> confeccoes) {
 		super();
 		this.idPedido = idPedido;
 		this.status = status;
@@ -22,6 +25,7 @@ public class PedidoConfeccao {
 		this.listaConfeccoes = listaConfeccoes;
 		this.dataEntrega = dataEntrega;
 		this.dataDevolucao = dataDevolucao;
+		this.confeccoes = confeccoes;
 	}
 	
 	public int getIdPedido() {
@@ -66,6 +70,20 @@ public class PedidoConfeccao {
 	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
+
+	public List<Confeccoes> getConfeccoes() {
+		return confeccoes;
+	}
+
+	public void setConfeccoes(List<Confeccoes> confeccoes) {
+		this.confeccoes = confeccoes;
+	}
 	
+	public void adicionarConfeccao(Confeccoes c) {
+		confeccoes.add(c);
+	}
+	public void removerConfeccao(Confeccoes c) {
+		confeccoes.remove(c);
+	}
 	
 }
