@@ -1,38 +1,36 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PedidoLoja {
+public class PedidosLojas {
 
 	private int idPedido;
-	private String status;
+	private String entrega;
 	private int idLoja;
 	private double valorTotal;
-	private List<Produtos> produtos = new ArrayList<Produtos>();
-	private List<Loja> lojas = new ArrayList<Loja>();
-	
-	public PedidoLoja(int idPedido, String status, int idLoja, double valorTotal, List<Produtos> produtos, List<Loja> lojas) {
+	private String listaProdutos;
+	private String lojas_CNPJ;
+	public PedidosLojas(int idPedido, String entrega, int idLoja, double valorTotal, String listaProdutos, String lojas_CNPJ) {
 		super();
-		this.idPedido = idPedido;
-		this.status = status;
 		this.idLoja = idLoja;
+		this.idPedido = idPedido;
+		this.entrega = entrega;
 		this.valorTotal = valorTotal;
-		this.produtos = produtos;
-		this.lojas = lojas;
+		this.listaProdutos = listaProdutos;
+		this.lojas_CNPJ = lojas_CNPJ;
 	}
-	
+	public PedidosLojas() {
+		super();
+	}
 	public int getIdPedido() {
 		return idPedido;
 	}
 	public void setIdPedido(int idPedido) {
 		this.idPedido = idPedido;
 	}
-	public String getStatus() {
-		return status;
+	public String getEntrega() {
+		return entrega;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEntrega(String entrega) {
+		this.entrega = entrega;
 	}
 	public int getIdLoja() {
 		return idLoja;
@@ -53,6 +51,12 @@ public class PedidoLoja {
 
 	public void setProdutos(List<Produtos> produtos) {
 		this.produtos = produtos;
+	}
+	public String getLojas_CNPJ() {
+		return lojas_CNPJ;
+	}
+	public void setLojas_CNPJ(String lojas_CNPJ) {
+		this.lojas_CNPJ = lojas_CNPJ;
 	}
 	
 	public List<Loja> getLojas() {

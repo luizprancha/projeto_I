@@ -1,20 +1,18 @@
 package model;
 
-public class Confeccoes {
+public class Lojas {
 
-
-	private int idConfeccoes;
-	private String nome;
+	private int idLoja;
 	private String cnpj;
+	private String nome;
 	private String responsavel;
 	private String endereco;
 	private String telefone;
 	private String email;
 	
-	public Confeccoes(String nome, String cnpj, String responsavel, int idConfeccoes, String endereco, String telefone, String email) {
+	public Lojas(String nome, String cnpj, int idLoja, String responsavel, String endereco, String telefone, String email) {
 		super();
-
-		this.idConfeccoes = idConfeccoes;
+		this.idLoja = idLoja;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.responsavel = responsavel;
@@ -23,16 +21,8 @@ public class Confeccoes {
 		this.email = email;
 	}
 	
-	public Confeccoes() {
+	public Lojas() {
 		super();
-	}
-
-	public int getIdConfeccoes() {
-		return idConfeccoes;
-	}
-
-	public void setidConfeccoes(int idConfeccoes) {
-		this.idConfeccoes = idConfeccoes;
 	}
 
 	public String getNome() {
@@ -51,11 +41,17 @@ public class Confeccoes {
 		this.cnpj = cnpj;
 	}
 
+	public int getIdLoja() {
+		return idLoja;
+	}
+
+	public void setIdLoja(int idLoja) {
+		this.idLoja = idLoja;
+	}
 
 	public String getResponsavel() {
 		return responsavel;
 	}
-
 
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
@@ -84,10 +80,5 @@ public class Confeccoes {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public void setIdConfeccoes(int idConfeccoes) {
-		this.idConfeccoes = idConfeccoes;
-	}
-	
 	
 }

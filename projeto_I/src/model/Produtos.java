@@ -8,8 +8,9 @@ public class Produtos {
 	private double preco;
 	private int quantidade;
 	private String tamanho;
+	private String cor;
 	
-	public Produtos(String nome, String tipoProduto, int idProduto, double preco, int quantidade, String tamanho) {
+	public Produtos(String nome, String tipoProduto, int idProduto, double preco, int quantidade, String tamanho, String cor) {
 		super();
 		this.nome = nome;
 		this.tipoProduto = tipoProduto;
@@ -17,6 +18,11 @@ public class Produtos {
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.tamanho = tamanho;
+		this.cor = cor;
+	}
+	
+	public Produtos() {
+		super();
 	}
 
 	public String getNome() {
@@ -65,6 +71,14 @@ public class Produtos {
 
 	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 	
 	

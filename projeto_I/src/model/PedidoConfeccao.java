@@ -6,39 +6,39 @@ import java.util.List;
 
 public class PedidoConfeccao {
 
-	private int idPedido;
-	private String status;
+	private int idPedidoC;
+	private String entrega;
 	private int idConfeccao;
 	private double valorPedido;
-	private String listaConfeccoes;
+	private String confeccoesCNPJ;
 	private LocalDate dataEntrega;
 	private LocalDate dataDevolucao;
 	private List<Confeccoes> confeccoes = new ArrayList<Confeccoes>();
 	
-	public PedidoConfeccao(int idPedido, String status, int idConfeccao, double valorPedido, String listaConfeccoes,
-			LocalDate dataEntrega, LocalDate dataDevolucao, List<Confeccoes> confeccoes) {
+	public PedidoConfeccao(int idPedidoC, String entrega, int idConfeccao, double valorPedido, String confeccoesCNPJ,
+			LocalDate dataEntrega, LocalDate dataDevolucao) {
 		super();
-		this.idPedido = idPedido;
-		this.status = status;
+		this.idPedidoC = idPedidoC;
+		this.entrega = entrega;
 		this.idConfeccao = idConfeccao;
 		this.valorPedido = valorPedido;
-		this.listaConfeccoes = listaConfeccoes;
+		this.confeccoesCNPJ = confeccoesCNPJ;
 		this.dataEntrega = dataEntrega;
 		this.dataDevolucao = dataDevolucao;
 		this.confeccoes = confeccoes;
 	}
 	
-	public int getIdPedido() {
-		return idPedido;
+	public int getIdPedidoC() {
+		return idPedidoC;
 	}
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
+	public void setIdPedidoC(int idPedidoC) {
+		this.idPedidoC = idPedidoC;
 	}
-	public String getStatus() {
-		return status;
+	public String getEntrega() {
+		return entrega;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEntrega(String entrega) {
+		this.entrega = entrega;
 	}
 	public int getIdConfeccao() {
 		return idConfeccao;
@@ -52,11 +52,11 @@ public class PedidoConfeccao {
 	public void setValorPedido(double valorPedido) {
 		this.valorPedido = valorPedido;
 	}
-	public String getListaConfeccoes() {
-		return listaConfeccoes;
+	public String getconfeccoesCNPJ() {
+		return confeccoesCNPJ;
 	}
-	public void setListaConfeccoes(String listaConfeccoes) {
-		this.listaConfeccoes = listaConfeccoes;
+	public void setconfeccoesCNPJ(String confeccoesCNPJ) {
+		this.confeccoesCNPJ = confeccoesCNPJ;
 	}
 	public LocalDate getDataEntrega() {
 		return dataEntrega;
