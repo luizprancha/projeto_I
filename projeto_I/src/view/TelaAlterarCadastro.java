@@ -1,0 +1,135 @@
+package view;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
+import java.awt.event.ActionListener;
+
+
+public class TelaAlterarCadastro extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField tfNome;
+	private JTextField tfUsuario;
+	private JTextField tfCargo;
+	private JButton btnUsuario;
+	private JButton btnConfirmar;
+
+	/**
+	 * Create the panel.
+	 * @throws IOException 
+	 * @throws FontFormatException 
+	 */
+	public TelaAlterarCadastro() throws FontFormatException, IOException {
+		setLayout(new BorderLayout(0, 0));
+		
+	
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(15, 57, 87));
+		add(panel, BorderLayout.CENTER);
+		panel.setLayout(new MigLayout("", "[grow][grow 60][grow][grow]", "[grow 10][grow][grow 10][grow][grow]"));
+		
+		Font fonte = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
+		).deriveFont(100f);
+		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("Alterar Cadastro");
+		lblNewLabel.setForeground(new Color(235, 219, 194));
+		panel.add(lblNewLabel, "cell 1 1,alignx left");
+		lblNewLabel.setFont(fonte);
+		
+		PainelArredondado panel_1 = new PainelArredondado();
+		panel_1.setBackground(new Color(235, 219, 194));
+		panel.add(panel_1, "cell 1 3 2 1,grow");
+		panel_1.setLayout(new MigLayout("", "[grow][grow 70][grow 50][grow][grow 30][grow 30][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		
+		JLabel lbNomeCadastro = new JLabel("Nome:");
+		lbNomeCadastro.setFont(fonte2);
+		panel_1.add(lbNomeCadastro, "cell 1 1");
+		
+		tfNome = new JTextField();
+		tfNome.setFont(fonte2);
+		tfNome.setText("Sofia Martins Pascoalini");
+		panel_1.add(tfNome, "cell 2 1 3 1,growx");
+		tfNome.setColumns(10);
+		
+		JLabel lbUsuarioCadastro = new JLabel("Usuário:");
+		lbUsuarioCadastro.setFont(fonte2);
+		panel_1.add(lbUsuarioCadastro, "cell 1 3");
+		
+		tfUsuario = new JTextField();
+		tfUsuario.setText("somapa");
+		tfUsuario.setFont(fonte2);
+		panel_1.add(tfUsuario, "cell 2 3 3 1,growx");
+		tfUsuario.setColumns(10);
+		
+		JLabel lbCargoCadastro = new JLabel("Cargo:");
+		lbCargoCadastro.setFont(fonte2);
+		panel_1.add(lbCargoCadastro, "cell 1 5");
+		
+		tfCargo = new JTextField();
+		tfCargo.setText("Vendedor(a)");
+		tfCargo.setFont(fonte2);
+		panel_1.add(tfCargo, "cell 2 5 3 1,growx");
+		tfCargo.setColumns(10);
+		
+		JLabel lbPermissaoCadastro = new JLabel("Permissão:");
+		lbPermissaoCadastro.setFont(fonte2);
+		panel_1.add(lbPermissaoCadastro, "cell 1 7");
+		
+		JRadioButton rdbUsuario = new JRadioButton("Usuário");
+		rdbUsuario.setBackground(new Color(235, 219, 194));
+		rdbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(rdbUsuario, "cell 2 7,alignx left");
+		
+		JRadioButton rdbAdministrador = new JRadioButton("Administrador");
+		rdbAdministrador.setBackground(new Color(235, 219, 194));
+		rdbAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(rdbAdministrador, "cell 4 7 2 1,alignx left");
+		
+		
+		
+		btnUsuario = new JButtonOutLine();
+		btnUsuario.setText("Remover Usuário");
+		btnUsuario.setFont(fonte2);
+		panel_1.add(btnUsuario, "cell 1 9 2 1,grow");
+		
+		btnConfirmar = new JButtonOutLine();
+		btnConfirmar.setText("Confirmar Alterações");
+		btnConfirmar.setFont(fonte2);
+		panel_1.add(btnConfirmar, "cell 4 9,grow");
+		
+
+	}
+	
+	
+	public void removerUsuario (ActionListener acao) {
+		btnUsuario.addActionListener(acao);
+	}
+	
+	public void confirmarAlteracoes (ActionListener acao) {
+		btnConfirmar.addActionListener(acao);
+	}
+}
