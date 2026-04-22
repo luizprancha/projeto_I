@@ -43,9 +43,10 @@ CREATE TABLE Lojas (
 
 CREATE TABLE PedidosLojas (
   idPedidosL INT AUTO_INCREMENT PRIMARY KEY,
-  entrega DATE NOT NULL,
+  data_entrega DATE NOT NULL,
   valor_total DECIMAL(10,2) NOT NULL,
   Lojas_CNPJ CHAR(18) NOT NULL,
+  endereco VARCHAR(50) NOT NULL,
   FOREIGN KEY (Lojas_CNPJ) REFERENCES Lojas(CNPJ)
 ) ENGINE=InnoDB;
 
