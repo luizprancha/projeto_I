@@ -153,6 +153,18 @@ public class JFrame extends javax.swing.JFrame {
 			}
 		});
 		itemPedidos.add(itemConfeccao);
+		
+		JMenu itemDeslogar = new JMenu("Deslogar");
+		menuBar.add(itemDeslogar);
+		
+		JMenuItem ItemDeslogar = new JMenuItem("Deslogar");
+		ItemDeslogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaLogin.limparCampos(); 
+				navegador.navegarPara("LOGIN");
+			}
+		});
+		itemDeslogar.add(ItemDeslogar);
 
 		
 		//setJMenuBar(menuBar);

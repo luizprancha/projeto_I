@@ -99,10 +99,10 @@ INSERT INTO Lojas (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('11.222.333/0001-20', 'Moda Center', 'Ana Pereira', 'Rua B, 200', '51988880002', 'vendas@modacenter.com'),
 ('22.333.444/0001-30', 'Trendy Store', 'Carlos Souza', 'Rua C, 300', '51977770003', 'trendy@store.com');
 
-INSERT INTO PedidosLojas (entrega, valor_total, Lojas_CNPJ) VALUES
-('2025-01-10', 450.00, '00.111.222/0001-10'),
-('2025-01-12', 799.90, '11.222.333/0001-20'),
-('2025-01-15', 359.70, '22.333.444/0001-30');
+INSERT INTO PedidosLojas (data_entrega, valor_total, endereco, Lojas_CNPJ) VALUES
+('2025-01-10', 450.00, 'Rua D,101' ,'00.111.222/0001-10'),
+('2025-01-12', 799.90, 'Rua E, 200', '11.222.333/0001-20'),
+('2025-01-15', 359.70, 'Rua F, 300', '22.333.444/0001-30');
 
 INSERT INTO PedidosConfeccoes (entrega, valor, Confeccoes_CNPJ, forma_pgmt) VALUES
 ('2025-01-05', 1200.00, '55.666.777/0001-40', 'Pix'),

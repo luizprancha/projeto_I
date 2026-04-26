@@ -107,6 +107,10 @@ public class TelaLogin extends JPanel {
 			return tfSenha.getText();
 		}
 		
+		public void limparCampos() {
+		    tfUsuario.setText("");
+		    tfSenha.setText("");
+		}
 	
 
 		public void exibirMensagem(String titulo, String mensagem, int tipo) {
