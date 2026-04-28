@@ -116,7 +116,7 @@ public class TelaCadastroProduto extends JPanel {
 
 	}
 	
-	public void removerUsuario (ActionListener acao) {
+	public void cadastrarProduto (ActionListener acao) {
 		btnCadastrar.addActionListener(acao);
 	}
 	

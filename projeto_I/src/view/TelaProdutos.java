@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,6 +25,7 @@ public class TelaProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfBuscar;
+	private JButton btnCadastrar; 
 
 	/**
 	 * Create the panel.
@@ -40,19 +44,24 @@ public class TelaProdutos extends JPanel {
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(80f);
 		
+		
+		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(15f);
+		 
 		JLabel lbLojas = new JLabel("Produtos");
 		lbLojas.setForeground(new Color(235, 219, 194));
 		lbLojas.setFont(fonte);
 		panel.add(lbLojas, "cell 1 1");
 		
-		JButton btnCadastrar = new JButton("Cadastrar produto");
-		btnCadastrar.setBackground(new Color(235, 219, 194));
-		btnCadastrar.setOpaque(true);
-		btnCadastrar.setBorderPainted(false);
-		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    btnCadastrar = new JButtonOutLine();
+	    btnCadastrar.setText("Cadastrar produto");
+		btnCadastrar.setFont(fonte2);
 		panel.add(btnCadastrar, "cell 3 1,growx,aligny center");
 		
 		tfBuscar = new JTextField();
@@ -62,23 +71,26 @@ public class TelaProdutos extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 3 5 1,grow");
 		
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(15, 57, 87));
 		scrollPane.setViewportView(panel_1);
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-		JPanel panel_2 = new JPanel();
+		PainelArredondado panel_2 = new PainelArredondado();
 		panel_2.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_2, "cell 0 0,grow");
 		panel_2.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lbNomePeca = new JLabel("Nome da peça");
 		panel_2.add(lbNomePeca, "cell 1 0");
+		lbNomePeca.setFont(fonte2);
 		
 		JLabel lbPreco = new JLabel("Preço");
 		panel_2.add(lbPreco, "cell 1 2");
+		lbPreco.setFont(fonte2);
 		
-		JPanel panel_7 = new JPanel();
+		PainelArredondado panel_7 = new PainelArredondado();
 		panel_7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -91,87 +103,112 @@ public class TelaProdutos extends JPanel {
 		
 		JLabel lblNewLabel_2 = new JLabel("Nome da peça");
 		panel_7.add(lblNewLabel_2, "cell 1 0");
+		lblNewLabel_2.setFont(fonte2);
+		
 		
 		JLabel lblNewLabel_3 = new JLabel("Preço");
 		panel_7.add(lblNewLabel_3, "cell 1 2");
+		lblNewLabel_3.setFont(fonte2);
 		
-		JPanel panel_6 = new JPanel();
+		PainelArredondado panel_6 = new PainelArredondado();
 		panel_6.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_6, "cell 4 0,grow");
 		panel_6.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_4 = new JLabel("Nome da peça");
 		panel_6.add(lblNewLabel_4, "cell 1 0");
+		lblNewLabel_4.setFont(fonte2);
+		
 		
 		JLabel lblNewLabel_5 = new JLabel("Preço");
 		panel_6.add(lblNewLabel_5, "cell 1 2");
+		lblNewLabel_5.setFont(fonte2);
 		
-		JPanel panel_4 = new JPanel();
+		PainelArredondado panel_4 = new PainelArredondado();
 		panel_4.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_4, "cell 0 2,grow");
 		panel_4.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_6 = new JLabel("Nome da peça");
 		panel_4.add(lblNewLabel_6, "cell 1 0");
+		lblNewLabel_6.setFont(fonte2);
 		
 		JLabel lblNewLabel_8 = new JLabel("Preço");
 		panel_4.add(lblNewLabel_8, "cell 1 2");
+		lblNewLabel_8.setFont(fonte2);
 		
-		JPanel panel_5 = new JPanel();
+		PainelArredondado panel_5 = new PainelArredondado();
 		panel_5.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_5, "cell 2 2,grow");
 		panel_5.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_7 = new JLabel("Nome da peça");
 		panel_5.add(lblNewLabel_7, "cell 1 0");
+		lblNewLabel_7.setFont(fonte2);
 		
 		JLabel lblNewLabel_9 = new JLabel("Preço");
 		panel_5.add(lblNewLabel_9, "cell 1 2");
+		lblNewLabel_9.setFont(fonte2);
 		
-		JPanel panel_8 = new JPanel();
+		PainelArredondado panel_8 = new PainelArredondado();
 		panel_8.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_8, "cell 4 2,grow");
 		panel_8.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_10 = new JLabel("Nome da peça");
 		panel_8.add(lblNewLabel_10, "cell 1 0");
+		lblNewLabel_10.setFont(fonte2);
+		
 		
 		JLabel lblNewLabel_11 = new JLabel("Preço");
 		panel_8.add(lblNewLabel_11, "cell 1 2");
+		lblNewLabel_11.setFont(fonte2);
 		
-		JPanel panel_3 = new JPanel();
+		
+		PainelArredondado panel_3 = new PainelArredondado();
 		panel_3.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_3, "cell 0 4,grow");
 		panel_3.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_12 = new JLabel("Nome da peça");
 		panel_3.add(lblNewLabel_12, "cell 1 0");
+		lblNewLabel_12.setFont(fonte2);
 		
 		JLabel lblNewLabel_13 = new JLabel("Preço");
 		panel_3.add(lblNewLabel_13, "cell 1 2");
+		lblNewLabel_13.setFont(fonte2);
 		
-		JPanel panel_9 = new JPanel();
+		
+		PainelArredondado panel_9 = new PainelArredondado();
 		panel_9.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_9, "cell 2 4,grow");
 		panel_9.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_14 = new JLabel("Nome da peça");
 		panel_9.add(lblNewLabel_14, "cell 1 0");
+		lblNewLabel_14.setFont(fonte2);
 		
 		JLabel lblNewLabel_15 = new JLabel("Preço");
 		panel_9.add(lblNewLabel_15, "cell 1 2");
+		lblNewLabel_15.setFont(fonte2);
 		
-		JPanel panel_10 = new JPanel();
+		PainelArredondado panel_10 = new PainelArredondado();
 		panel_10.setBackground(new Color(235, 219, 194));
 		panel_1.add(panel_10, "cell 4 4,grow");
 		panel_10.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow]"));
 		
 		JLabel lblNewLabel_16 = new JLabel("Nome da peça");
 		panel_10.add(lblNewLabel_16, "cell 1 0");
+		lblNewLabel_16.setFont(fonte2);
 		
 		JLabel lblNewLabel_17 = new JLabel("Preço");
 		panel_10.add(lblNewLabel_17, "cell 1 2");
+		lblNewLabel_17.setFont(fonte2);
 
+	}
+	
+	public void cadastrarProduto(ActionListener acao) {
+		btnCadastrar.addActionListener(acao);
 	}
 
 }
