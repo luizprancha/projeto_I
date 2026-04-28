@@ -14,6 +14,7 @@ import Botao.PainelArredondado;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class TelaCadastroConfeccao extends JPanel {
@@ -91,5 +92,22 @@ public class TelaCadastroConfeccao extends JPanel {
 		panel.add(btnCadastrarConfeccao, "cell 2 5,growx,aligny center");
 
 	}
+	
+	public String getEndereco() {
+		return tfEndereço.getText();
+	}
+	
+	public String getCNPJ() {
+		return tfCNPJ.getText();
+	}
+	
+	public String getNomeConfeccao() {
+		return tfNomeConfecção.getText();
+	}
+	
+	public void cadastrarConfeccao (ActionListener acao) {
+		btnCadastrarConfeccao.addActionListener(acao);
+	}
+	
 
 }

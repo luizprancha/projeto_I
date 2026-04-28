@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -28,6 +31,7 @@ public class TelaVisualizarUsuarios extends JPanel {
 	private JTextField tfCargo1;
 	private JTextField tfCargo2;
 	private JTextField tfCargo3;
+	private JButton btnEditarUsuario;
 
 	/**
 	 * Create the panel.
@@ -47,11 +51,11 @@ public class TelaVisualizarUsuarios extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
 		).deriveFont(80f);
 		
+	
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(14f);
-		
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(15f);
 		
 		JLabel lblNewLabel = new JLabel("Usuários");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
@@ -59,11 +63,9 @@ public class TelaVisualizarUsuarios extends JPanel {
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton btnEditarUsuario = new JButton("Editar Usuários");
-		btnEditarUsuario.setBackground(new Color(235, 219, 194));
-		btnEditarUsuario.setOpaque(true);
-		btnEditarUsuario.setBorderPainted(false);
-		btnEditarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    btnEditarUsuario = new JButtonOutLine();
+	    btnEditarUsuario.setText("Editar Usuários");
+		btnEditarUsuario.setFont(fonte2);
 		panel.add(btnEditarUsuario, "cell 3 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -78,15 +80,15 @@ public class TelaVisualizarUsuarios extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome:");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
-		lblNewLabel_1 .setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1 .setFont(fonte2);
 		
 		JLabel lblNewLabel_2 = new JLabel("Usuário:");
 		panel_1.add(lblNewLabel_2, "cell 3 1");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(fonte2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cargo:");
 		panel_1.add(lblNewLabel_4, "cell 5 1");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_4.setFont(fonte2);
 		
 		tfNome1 = new JTextField();
 		panel_1.add(tfNome1, "cell 1 3,growx");
@@ -124,6 +126,10 @@ public class TelaVisualizarUsuarios extends JPanel {
 		panel_1.add(tfCargo3, "cell 5 7,growx");
 		tfCargo3.setColumns(10);
 
+	}
+	
+	public void editarCadastro(ActionListener acao) {
+		btnEditarUsuario.addActionListener(acao);
 	}
 
 }

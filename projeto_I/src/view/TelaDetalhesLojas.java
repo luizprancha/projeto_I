@@ -10,6 +10,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -98,6 +99,14 @@ public class TelaDetalhesLojas extends JPanel {
 		btnEditar.setFont(fonte2);
 		panel.add(btnEditar, "cell 4 5,growx");
 
+	}
+	
+	public void excluir (ActionListener acao) {
+		btnExcluir.addActionListener(acao);
+	}
+	
+	public void editar (ActionListener acao) {
+		btnEditar.addActionListener(acao);
 	}
 
 }
