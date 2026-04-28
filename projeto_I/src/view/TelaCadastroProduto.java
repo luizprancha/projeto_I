@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -26,6 +27,7 @@ public class TelaCadastroProduto extends JPanel {
 	private JTextField tfQuantidade;
 	private JTextField tfTamanho;
 	private JButton btnCadastrar;
+	private JTextField tfCor;
 
 	/**
 	 * Create the panel.
@@ -61,7 +63,7 @@ public class TelaCadastroProduto extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 5 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][][grow][grow]"));
 		
 		JLabel lbNomePeca = new JLabel("Nome da peça:");
 		lbNomePeca.setFont(fonte2);
@@ -104,9 +106,18 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.add(lbTamanho, "cell 1 9");
 		
 		tfTamanho = new JTextField();
-		tfTamanho.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfTamanho.setFont(fonte2);
 		panel_1.add(tfTamanho, "cell 3 9,growx");
 		tfTamanho.setColumns(10);
+		
+		JLabel lbCor = new JLabel("Cor:");
+		panel_1.add(lbCor, "cell 1 11");
+		lbCor.setFont(fonte2);
+		
+		tfCor = new JTextField();
+		panel_1.add(tfCor, "cell 3 11,growx");
+		tfCor.setColumns(10);
+		tfCor.setFont(fonte2);
 		
 		
 		btnCadastrar = new JButtonOutLine();
@@ -116,9 +127,39 @@ public class TelaCadastroProduto extends JPanel {
 
 	}
 	
-	public void removerUsuario (ActionListener acao) {
+	public void cadastrarProduto (ActionListener acao) {
 		btnCadastrar.addActionListener(acao);
 	}
+	public String getNomeProduto() {
+		return tfNomepeca.getText();
+	}
+	public String getTipoProduto() {
+		return tfTipoProduto.getText();
+	}
+	public double getPreco() {
+		return Double.parseDouble(tfPreco.getText());
+	}
+	public int getQuantidade() {
+		return Integer.parseInt(tfQuantidade.getText());
+	}
+	public String getTamanho() {
+		return tfTamanho.getText();
+	}
+	public String getCor() {
+		return tfCor.getText();
+	}
 	
+	public void limparCampos() {
+	    tfNomepeca.setText("");
+	    tfTipoProduto.setText("");
+	    tfPreco.setText("");
+	    tfQuantidade.setText("");
+	    tfTamanho.setText("");
+	    tfCor.setText("");
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
+	}
 
 }

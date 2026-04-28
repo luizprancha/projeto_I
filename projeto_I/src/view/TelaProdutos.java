@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class TelaProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfBuscar;
+	JButton btnCadastrar;
 
 	/**
 	 * Create the panel.
@@ -48,7 +50,7 @@ public class TelaProdutos extends JPanel {
 		lbLojas.setFont(fonte);
 		panel.add(lbLojas, "cell 1 1");
 		
-		JButton btnCadastrar = new JButton("Cadastrar produto");
+		btnCadastrar = new JButton("Cadastrar produto");
 		btnCadastrar.setBackground(new Color(235, 219, 194));
 		btnCadastrar.setOpaque(true);
 		btnCadastrar.setBorderPainted(false);
@@ -173,5 +175,11 @@ public class TelaProdutos extends JPanel {
 		panel_10.add(lblNewLabel_17, "cell 1 2");
 
 	}
+	
+	public void cadastrarProduto (ActionListener acao) {
+		btnCadastrar.addActionListener(acao);
+	}
+
+
 
 }
