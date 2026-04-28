@@ -13,8 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.CadastroController;
+import controller.CadastroProdutosController;
 import controller.LoginController;
 import controller.Navegador;
+import controller.ProdutosController;
+import model.ProdutosDAO;
 import model.UsuarioDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,6 +57,7 @@ public class JFrame extends javax.swing.JFrame {
 		
 		Navegador navegador = new Navegador(this);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ProdutosDAO produtosDAO = new ProdutosDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -67,6 +71,10 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaProdutos telaProduto = new TelaProdutos();
 		adicionarTela("PRODUTO", telaProduto);
+		
+		
+		TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto ();
+		adicionarTela("CADASTRO_PRODUTO", telaCadastroProduto);
 		
 		TelaConfeccoes telaConfeccoes = new TelaConfeccoes();
 		adicionarTela("CONFECCAO", telaConfeccoes);
@@ -84,6 +92,8 @@ public class JFrame extends javax.swing.JFrame {
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
+		new ProdutosController(telaProduto, produtosDAO, navegador);
+		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 
 		
 		mostrarTela("LOGIN");

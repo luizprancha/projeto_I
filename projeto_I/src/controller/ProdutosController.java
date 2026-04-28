@@ -29,7 +29,7 @@ public class ProdutosController {
 		//Define o que será executado quando o botão 'Cadastrar Produto' da TelaProdutos for clicado.
 		this.view.cadastrarProduto(e -> {
 			
-			this.navegador.navegarPara("PRODUTO");
+			this.navegador.navegarPara("CADASTRO_PRODUTO");
 			
 		});
 	

@@ -42,9 +42,9 @@ public class CadastroController {
 				Usuario u= new Usuario(usuario, senha, cargo, nome);
 				
 				this.model.adicionarUsuario(u);
-
-				this.view.limparFormulario();
 				this.view.exibirMensagem("Sucesso", " Usuario Salvo", 1);
+				
+			    view.limparFormulario(); 
 			}
 			
 			else {
