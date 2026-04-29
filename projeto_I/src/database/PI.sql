@@ -59,6 +59,13 @@ CREATE TABLE PedidosConfeccoes (
   FOREIGN KEY (Confeccoes_CNPJ) REFERENCES Confeccoes(CNPJ)
 ) ENGINE=InnoDB;
 
+CREATE TABLE MateriaPrima (
+	idMateriaPrima INT AUTO_INCREMENT PRIMARY KEY,
+	NomeTecido VARCHAR(20) NOT NULL,
+	cor VARCHAR(20) NOT NULL,
+	quantidade INT NOT NULL
+) ENGINE=InnoDB;
+
 CREATE TABLE PedidosConfeccoes_Produtos (
   PedidosConfeccoes_idPedidoC INT,
   Produtos_idProdutos INT,

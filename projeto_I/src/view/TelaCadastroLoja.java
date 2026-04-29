@@ -92,6 +92,18 @@ public class TelaCadastroLoja extends JPanel {
 
 	}
 	
+	public String getEndereco() {
+		return tfEndereco.getText();
+	}
+	
+	public String getCNPJ() {
+		return tfCNPJ.getText();
+	}
+	
+	public String getNomeConfeccao() {
+		return tfNomeLoja.getText();
+	}
+	
 	public void cadastro(ActionListener acao) {
 		btnCadastroLoja.addActionListener(acao);
 	}
