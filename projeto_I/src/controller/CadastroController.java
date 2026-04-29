@@ -28,38 +28,36 @@ public class CadastroController {
 
 		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastro for clicado.
 		this.view.cadastrar(e -> {
-			String nome = view.getNome();
-			String usuario = view.getUsuario();
-			String cargo = view.getCargo();
-			String senha = view.getSenha();
+			String nome = view.getNome().trim();
+			String usuario = view.getUsuario().trim();
+			String cargo = view.getCargo().trim();
+			String senha = view.getSenha().trim();
 
-			if(!nome.equals("") &&
-					!cargo.equals("") &&
-					!senha.equals("") &&
-			        !usuario.equals("")){
-				
-
-				Usuario u= new Usuario(usuario, senha, cargo, nome);
-				
-				this.model.adicionarUsuario(u);
-				this.view.exibirMensagem("Sucesso", " Usuario Salvo", 1);
-				
-			    view.limparFormulario(); 
-			}
-			
-			else {
+			if (nome.isEmpty() || usuario.isEmpty() || cargo.isEmpty() || senha.isEmpty()) {
 				this.view.exibirMensagem("Erro", "Preencha todos os campos!", 0);
 			}
-			
+			else if (nome.length() < 3) {
+				this.view.exibirMensagem("Erro", "Nome muito curto!", 0);
+			}
+			else if (usuario.length() < 3) {
+				this.view.exibirMensagem("Erro", "Usuário muito curto!", 0);
+			}
+			else if (senha.length() < 4) {
+				this.view.exibirMensagem("Erro", "Senha muito curta!", 0);
+			}
+			else if (!nome.matches("[a-zA-ZÀ-ÿ ]+")) {
+				this.view.exibirMensagem("Erro", "Nome inválido!", 0);
+			}
+			else {
+				Usuario u = new Usuario(usuario, senha, cargo, nome);
+				this.model.adicionarUsuario(u);
+				this.view.limparFormulario();
+				this.view.exibirMensagem("Sucesso", "Usuario salvo!", 1);
+			}
 		});
-		
+
 		view.irParaLogin(e -> {
 			navegador.navegarPara("LOGIN");
 		});
-
-	
-
 	}
-
 }
-
