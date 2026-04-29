@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
 import controller.CadastroProdutosController;
+import controller.ConfeccaoController;
 import controller.LoginController;
 import controller.Navegador;
 import controller.ProdutosController;
@@ -99,6 +100,7 @@ public class JFrame extends javax.swing.JFrame {
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
 		new ProdutosController(telaProduto, produtosDAO, navegador);
+		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
 

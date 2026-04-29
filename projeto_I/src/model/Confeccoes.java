@@ -11,10 +11,10 @@ public class Confeccoes {
 	private String telefone;
 	private String email;
 	
-	public Confeccoes(String nome, String cnpj, String responsavel, int idConfeccoes, String endereco, String telefone, String email) {
+	public Confeccoes(String nome, String cnpj, String responsavel, String endereco, String telefone, String email) {
 		super();
 
-		this.idConfeccoes = idConfeccoes;
+	;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.responsavel = responsavel;

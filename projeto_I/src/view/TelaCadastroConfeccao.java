@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -20,10 +21,13 @@ import java.io.IOException;
 public class TelaCadastroConfeccao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfNomeConfecção;
-	private JTextField tfCNPJ;
-	private JTextField tfEndereço;
+	private JTextField tfResponsavel;
+	private JTextField tfEndereco;
+	private JTextField tfEmail;
 	private JButton btnCadastrarConfeccao;
+	private JTextField tfTelefone;
+	private JTextField tfNomeConfeccao;
+	private JTextField tfCNPJ;
 
 	/**
 	 * Create the panel.
@@ -57,58 +61,108 @@ public class TelaCadastroConfeccao extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeConfeccao = new JLabel("Nome da confecção:");
 		lbNomeConfeccao.setFont(fonte2);
-		panel_1.add(lbNomeConfeccao, "cell 1 1");
+		panel_1.add(lbNomeConfeccao, "cell 2 1");
 		
-		tfNomeConfecção = new JTextField();
-		tfNomeConfecção.setFont(fonte2);
-		panel_1.add(tfNomeConfecção, "cell 3 1,growx");
-		tfNomeConfecção.setColumns(10);
+		tfNomeConfeccao = new JTextField();
+		panel_1.add(tfNomeConfeccao, "cell 4 1,growx");
+		tfNomeConfeccao.setColumns(10);
+		
+		JLabel lbResponsavel = new JLabel("Responsável");
+		panel_1.add(lbResponsavel, "cell 2 3");
+		lbResponsavel.setFont(fonte2);
+		
+		tfResponsavel = new JTextField();
+		tfResponsavel.setFont(fonte2);
+		panel_1.add(tfResponsavel, "cell 4 3,growx");
+		tfResponsavel.setColumns(10);
+		
+		JLabel lbTelefone = new JLabel("Telefone");
+		panel_1.add( lbTelefone, "cell 2 5");
+		 lbTelefone.setFont(fonte2);
+		
+		tfTelefone = new JTextField();
+		panel_1.add(tfTelefone, "cell 4 5,grow");
+		tfTelefone.setColumns(10);
 		
 		JLabel lbCNPJ = new JLabel("CNPJ:");
 		lbCNPJ.setFont(fonte2);
-		panel_1.add(lbCNPJ, "cell 1 3");
+		panel_1.add(lbCNPJ, "cell 2 7");
 		
-		tfCNPJ = new JTextField();
-		tfCNPJ.setFont(fonte2);
-		panel_1.add(tfCNPJ, "cell 3 3,growx");
+	    tfCNPJ = new JTextField();
+		panel_1.add(tfCNPJ, "cell 4 7,grow");
 		tfCNPJ.setColumns(10);
 		
-		JLabel lbEndereco = new JLabel("Endereço:");
-		lbEndereco.setFont(fonte2);
-		panel_1.add(lbEndereco, "cell 1 5");
+		JLabel lbEndereco = new JLabel("Endereço");
+		panel_1.add( lbEndereco, "cell 2 9");
+		 lbEndereco.setFont(fonte2);
+		 
+		tfEndereco = new JTextField();
+		tfEndereco.setFont(fonte2);
+		panel_1.add(tfEndereco, "cell 4 9,growx");
+		tfEndereco.setColumns(10);
 		
-		tfEndereço = new JTextField();
-		tfEndereço.setFont(fonte2);
-		panel_1.add(tfEndereço, "cell 3 5,growx");
-		tfEndereço.setColumns(10);
+		JLabel lblNewLabel_2 = new JLabel("Email");
+		panel_1.add(lblNewLabel_2, "cell 2 11");
+		lblNewLabel_2.setFont(fonte2);
+		
+		tfEmail = new JTextField();
+		tfEmail.setFont(fonte2);
+		panel_1.add(tfEmail, "cell 4 11,growx");
+		tfEmail.setColumns(10);
 		
 		btnCadastrarConfeccao = new JButtonOutLine();
 		btnCadastrarConfeccao.setText("Cadastrar Confecção");
-		btnCadastrarConfeccao.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastrarConfeccao.setFont(fonte2);
 		panel.add(btnCadastrarConfeccao, "cell 2 5,growx,aligny center");
 
 	}
 	
 	public String getEndereco() {
-		return tfEndereço.getText();
+		return tfEndereco.getText();
 	}
 	
-	public String getCNPJ() {
+	public String getEmail() {
+		return tfEmail.getText();
+	}
+	
+	public String getCnpj() {
 		return tfCNPJ.getText();
 	}
 	
-	public String getNomeConfeccao() {
-		return tfNomeConfecção.getText();
+	public String getNome() {
+		return tfNomeConfeccao.getText();
 	}
+	
+	public String getResponsavel() {
+		return tfResponsavel.getText();
+	}
+	
+	public String getTelefone() {
+		return tfTelefone.getText();
+	}
+	
+	
 	
 	public void cadastrarConfeccao (ActionListener acao) {
 		btnCadastrarConfeccao.addActionListener(acao);
 	}
 	
+	public void limparCampos() {
+		tfEndereco.setText("");
+		tfEmail.setText("");
+		tfCNPJ.setText("");
+		tfNomeConfeccao.setText("");
+		tfResponsavel.setText("");
+		tfTelefone.setText("");
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
+	}
 	
 
 }

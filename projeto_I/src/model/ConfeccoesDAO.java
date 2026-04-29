@@ -10,7 +10,7 @@ import java.util.List;
 public class ConfeccoesDAO {
 	
 	public void adicionarConfeccoes(Confeccoes confeccao) {
-		String sql = "INSERT INTO Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		

@@ -23,16 +23,19 @@ public class CadastroConfeccaoController {
 
 		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
 		view.cadastrarConfeccao(e -> {
-			String nomeConfeccao = view.getNomeConfeccao().trim();
-			String CNPJ = view.getCNPJ().trim();
-			String Endereco = view.getEndereco().trim();
+			String nome = view.getNome().trim();
+			String CNPJ = view.getCnpj().trim();
+			String endereco = view.getEndereco().trim();
+			String telefone = view.getTelefone().trim();
+			String email = view.getEmail().trim();
+			String responsavel = view.getResponsavel().trim();
 		
 
 			StringBuilder erros = new StringBuilder();
 
-			if (nomeConfeccao.isEmpty()) {
+			if (nome.isEmpty()) {
 			    erros.append("Nome é obrigatório\n");
-			} else if (nomeConfeccao.length() < 3) {
+			} else if (nome.length() < 3) {
 			    erros.append("Nome muito curto\n");
 			}
 
@@ -42,18 +45,30 @@ public class CadastroConfeccaoController {
 			    erros.append("Tipo inválido\n");
 			}
 
-			if (Endereco.isEmpty()) {
+			if (endereco.isEmpty()) {
 			    erros.append("Endereço é obrigatório\n");
-			} else if (!Endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
-			    erros.append("Endereço inválido\n");
+//			} else if (!endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
+//			    erros.append("Endereço inválido\n");
+	}
+			
+			if (telefone.isEmpty()) {
+			    erros.append("Tipo é obrigatório\n");
+			} else if (telefone.length() < 9) {
+			    erros.append("Tipo inválido\n");
+			}
+			
+			if (email.isEmpty()) {
+			    erros.append("Tipo é obrigatório\n");
+			} else if (email.length() < 10) {
+			    erros.append("Tipo inválido\n");
 			}
 
 			if (erros.length() > 0) {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			    
 			} else {
-			    Confeccoes c = new Confeccoes(nomeConfeccao, CNPJ, Endereco);
-			    model.adicionarProduto(p);
+			    Confeccoes c = new Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email);
+			    model.adicionarConfeccoes(c);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
 			}
