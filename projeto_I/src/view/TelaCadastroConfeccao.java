@@ -109,5 +109,6 @@ public class TelaCadastroConfeccao extends JPanel {
 		btnCadastrarConfeccao.addActionListener(acao);
 	}
 	
+	
 
 }
