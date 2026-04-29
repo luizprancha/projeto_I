@@ -137,10 +137,18 @@ public class TelaCadastroProduto extends JPanel {
 		return tfTipoProduto.getText();
 	}
 	public double getPreco() {
-		return Double.parseDouble(tfPreco.getText());
+	    try {
+	        return Double.parseDouble(tfPreco.getText());
+	    } catch (NumberFormatException e) {
+	        return -1; 
+	    }
 	}
 	public int getQuantidade() {
-		return Integer.parseInt(tfQuantidade.getText());
+	    try {
+	        return Integer.parseInt(tfQuantidade.getText());
+	    } catch (NumberFormatException e) {
+	        return -1;
+	    }
 	}
 	public String getTamanho() {
 		return tfTamanho.getText();
