@@ -61,9 +61,9 @@ public class TelaCadastroMateria extends JPanel {
 		panel.add(panel_1, "cell 2 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[][][][grow][]", "[][][][][][][]"));
 		
-		JLabel lbTipoProduto = new JLabel("Tipo de Produto:");
-		lbTipoProduto.setFont(fonte2);
-		panel_1.add(lbTipoProduto, "cell 1 1");
+		JLabel lbNome = new JLabel("Nome:");
+		lbNome.setFont(fonte2);
+		panel_1.add(lbNome, "cell 1 1");
 		
 		JComboBox<String> cbTipoProduto = new JComboBox<>();
 		cbTipoProduto.setFont(fonte2);
