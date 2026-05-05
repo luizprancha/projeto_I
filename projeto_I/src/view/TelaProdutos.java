@@ -42,7 +42,7 @@ public class TelaProdutos extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
-		add(panel, BorderLayout.CENTER);
+		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
 		
 		Font fonte = Font.createFont(

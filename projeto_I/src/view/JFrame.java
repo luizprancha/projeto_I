@@ -18,12 +18,17 @@ import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
 import controller.LoginController;
 import controller.Navegador;
+import controller.PedidoLojasController;
+import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
 import model.ConfeccoesDAO;
+import model.PedidosLojasDAO;
 import model.ProdutosDAO;
 import model.UsuarioDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class JFrame extends javax.swing.JFrame {
 
@@ -62,6 +67,7 @@ public class JFrame extends javax.swing.JFrame {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		ProdutosDAO produtosDAO = new ProdutosDAO();
 		ConfeccoesDAO confeccaoDAO = new ConfeccoesDAO();
+		PedidosLojasDAO pedidolojaDAO = new PedidosLojasDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -89,6 +95,8 @@ public class JFrame extends javax.swing.JFrame {
 		TelaLojas telaLojas = new TelaLojas();
 		adicionarTela("LOJAS", telaLojas);
 		
+		TelaPedidosLojas telapedidoloja= new TelaPedidosLojas();
+		adicionarTela("PEDIDOS_LOJAS_VIZU", telapedidoloja);
 		
 		TelaPedidosLojasConfirmados telaPedidosLojas = new TelaPedidosLojasConfirmados();
 		adicionarTela("PEDIDOS_LOJAS", telaPedidosLojas);
@@ -103,6 +111,8 @@ public class JFrame extends javax.swing.JFrame {
 		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
+		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
+		new PedidoLojasController(telapedidoloja, pedidolojaDAO, navegador);
 
 		
 		mostrarTela("LOGIN");
@@ -145,14 +155,6 @@ public class JFrame extends javax.swing.JFrame {
 
 		JMenu itemLojas = new JMenu("Lojas");
 		menuBar.add(itemLojas);
-		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Lojas");
-		mntmNewMenuItem_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				navegador.navegarPara("PEDIDOS_LOJAS");
-			}
-		});
-		itemLojas.add(mntmNewMenuItem_4);
 
 		JMenu itemPedidos = new JMenu("Pedidos");
 		menuBar.add(itemPedidos);
@@ -173,6 +175,20 @@ public class JFrame extends javax.swing.JFrame {
 		});
 		itemPedidos.add(itemConfeccao);
 		
+		JMenu itemMateriaPrima = new JMenu("Matéria Prima");
+		menuBar.add( itemMateriaPrima );
+		
+		JMenuItem itensMateriaPrima = new JMenuItem("Matéria Prima");
+		 itensMateriaPrima.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaLogin.limparCampos(); 
+				navegador.navegarPara("LOGIN");
+			}
+		});
+		 itemMateriaPrima.add(itensMateriaPrima);
+		
+
+		
 		JMenu itemDeslogar = new JMenu("Deslogar");
 		menuBar.add(itemDeslogar);
 		
@@ -180,10 +196,12 @@ public class JFrame extends javax.swing.JFrame {
 		ItemDeslogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				telaLogin.limparCampos(); 
+				esconderMenu();
 				navegador.navegarPara("LOGIN");
 			}
 		});
 		itemDeslogar.add(ItemDeslogar);
+		
 
 		
 		//setJMenuBar(menuBar);
@@ -204,6 +222,16 @@ public class JFrame extends javax.swing.JFrame {
 		validate();
 		repaint();
 		this.pack();
+		menuBar.setVisible(true);
+		
+
+		
+	}
+	public void esconderMenu() {
+		// TODO Auto-generated method stub
+		if (menuBar != null ) {
+			menuBar.setVisible(false);
+		}
 		
 
 		

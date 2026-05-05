@@ -1,4 +1,4 @@
-package controller;
+		package controller;
 
 import model.Confeccoes;
 import model.ConfeccoesDAO;
@@ -47,9 +47,7 @@ public class CadastroConfeccaoController {
 
 			if (endereco.isEmpty()) {
 			    erros.append("Endereço é obrigatório\n");
-//			} else if (!endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
-//			    erros.append("Endereço inválido\n");
-	}
+			}
 			
 			if (telefone.isEmpty()) {
 			    erros.append("Tipo é obrigatório\n");
@@ -70,7 +68,7 @@ public class CadastroConfeccaoController {
 			    Confeccoes c = new Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email);
 			    model.adicionarConfeccoes(c);
 			    view.limparCampos();
-			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
+			    view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);
 			}
 			});
 

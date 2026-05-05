@@ -1,11 +1,11 @@
 package controller;
 
-
 import model.PedidosLojasDAO;
-import view.TelaPedidosLojasConfirmados;
+import view.TelaPedidosLojas;
 
-public class PedidosLojasConfirmadosController {
-	private final TelaPedidosLojasConfirmados view;
+public class PedidoLojasController {
+	
+	private final TelaPedidosLojas view;
 	private final PedidosLojasDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
@@ -16,19 +16,17 @@ public class PedidosLojasConfirmadosController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public PedidosLojasConfirmadosController(TelaPedidosLojasConfirmados view, PedidosLojasDAO model, Navegador navegador) {
+	public PedidoLojasController(TelaPedidosLojas view, PedidosLojasDAO model, Navegador navegador) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
 
 		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
-		this.view.realizarPedido(e -> {
+		this.view.finalizarPedido(e -> {
 				
 				this.navegador.navegarPara("PEDIDOS_LOJAS_VIZU");
 				
 			});
 
-
+	}
 }
-}
-
