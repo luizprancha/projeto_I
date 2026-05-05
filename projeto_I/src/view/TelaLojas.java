@@ -190,7 +190,11 @@ public class TelaLojas extends JPanel {
 		JLabel lblNewLabel_17 = new JLabel("CNPJ");
 		lblNewLabel_17.setFont(fonte3);
 		panel_10.add(lblNewLabel_17, "cell 1 2");
-
+		
+	}
+	
+	public void novaLoja(ActionListener acao) {
+		btnCadastrarLoja.addActionListener(acao);
 	}
 
 }

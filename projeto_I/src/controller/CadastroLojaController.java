@@ -18,7 +18,10 @@ public class CadastroLojaController {
 		view.cadastroLoja(e ->{
 			String nomeLoja = view.getNomeLoja().trim();
 			String CNPJ = view.getCNPJ().trim();
-			String Endereco = view.getEndereco().trim();
+			String responsavel = view.getResponsavel().trim();
+			String endereco = view.getEndereco().trim();
+			String telefone = view.getTelefone().trim();
+			String email = view.getEmail().trim();
 			
 			StringBuilder erros = new StringBuilder();
 			
@@ -29,14 +32,14 @@ public class CadastroLojaController {
 			}
 
 			if (CNPJ.isEmpty()) {
-			    erros.append("Tipo é obrigatório\n");
+			    erros.append("CNPJ é obrigatório\n");
 			} else if (CNPJ.length() < 14) {
-			    erros.append("Tipo inválido\n");
+			    erros.append("CNPJ inválido\n");
 			}
 
-			if (Endereco.isEmpty()) {
+			if (endereco.isEmpty()) {
 			    erros.append("Endereço é obrigatório\n");
-			} else if (!Endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
+			} else if (!endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
 			    erros.append("Endereço inválido\n");
 			}
 			
@@ -44,10 +47,10 @@ public class CadastroLojaController {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			    
 			} else {
-			    Lojas l = new Lojas(nomeLoja, CNPJ, Endereco);
+			    Lojas l = new Lojas(nomeLoja, CNPJ, responsavel, endereco, telefone, email);
 			    model.adicionarLojas(l);
 			    view.limparCampos();
-			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
+			    view.exibirMensagem("Sucesso", "Loja salva!", 1);
 			}
 			
 		});

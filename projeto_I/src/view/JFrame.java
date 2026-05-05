@@ -14,14 +14,17 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
+import controller.CadastroLojaController;
 import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
 import controller.LoginController;
+import controller.LojasController;
 import controller.Navegador;
 import controller.ProdutosController;
 import model.ConfeccoesDAO;
 import model.ProdutosDAO;
 import model.UsuarioDAO;
+import model.LojasDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -62,6 +65,7 @@ public class JFrame extends javax.swing.JFrame {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		ProdutosDAO produtosDAO = new ProdutosDAO();
 		ConfeccoesDAO confeccaoDAO = new ConfeccoesDAO();
+		LojasDAO lojasDAO = new LojasDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -89,6 +93,8 @@ public class JFrame extends javax.swing.JFrame {
 		TelaLojas telaLojas = new TelaLojas();
 		adicionarTela("LOJAS", telaLojas);
 		
+		TelaCadastroLoja telacadastrolojas = new TelaCadastroLoja();
+		adicionarTela("CADASTRO_LOJAS", telacadastrolojas);
 		
 		TelaPedidosLojasConfirmados telaPedidosLojas = new TelaPedidosLojasConfirmados();
 		adicionarTela("PEDIDOS_LOJAS", telaPedidosLojas);
@@ -103,6 +109,8 @@ public class JFrame extends javax.swing.JFrame {
 		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
+		new LojasController(telaLojas, lojasDAO, navegador);
+		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 
 		
 		mostrarTela("LOGIN");
@@ -149,7 +157,7 @@ public class JFrame extends javax.swing.JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Lojas");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				navegador.navegarPara("PEDIDOS_LOJAS");
+				navegador.navegarPara("LOJAS");
 			}
 		});
 		itemLojas.add(mntmNewMenuItem_4);
