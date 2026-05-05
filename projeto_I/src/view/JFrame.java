@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
 import controller.CadastroLojaController;
+import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
 import controller.LoginController;
@@ -22,6 +23,7 @@ import controller.LojasController;
 import controller.Navegador;
 import controller.ProdutosController;
 import model.ConfeccoesDAO;
+import model.MateriaPrimaDAO;
 import model.ProdutosDAO;
 import model.UsuarioDAO;
 import model.LojasDAO;
@@ -66,6 +68,7 @@ public class JFrame extends javax.swing.JFrame {
 		ProdutosDAO produtosDAO = new ProdutosDAO();
 		ConfeccoesDAO confeccaoDAO = new ConfeccoesDAO();
 		LojasDAO lojasDAO = new LojasDAO();
+		MateriaPrimaDAO materiaDAO = new MateriaPrimaDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -101,6 +104,9 @@ public class JFrame extends javax.swing.JFrame {
 
 		TelaPedidosConfeccoesConfirmados telaPedidosConfeccoes = new TelaPedidosConfeccoesConfirmados();
 		adicionarTela("PEDIDOS_CONFECCOES", telaPedidosConfeccoes);	
+		
+		TelaCadastroMateria telaCadastroMateria = new TelaCadastroMateria();
+		adicionarTela("CADASTRO_MATERIA", telaCadastroMateria);	
 
        
 		new LoginController(telaLogin, navegador);
@@ -109,6 +115,7 @@ public class JFrame extends javax.swing.JFrame {
 		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
+		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 

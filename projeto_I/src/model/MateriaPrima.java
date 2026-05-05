@@ -6,10 +6,12 @@ public class MateriaPrima {
 	private int quantidade;
 	private String cor;
 	private int idMateriaPrima;
+	private String tipo;
 	
-	public MateriaPrima(String nome, int quantidade, String cor) {
+	public MateriaPrima(String nome, int quantidade, String cor, String tipo) {
 		super();
 		this.nome = nome;
+		this.tipo = tipo;
 		this.quantidade = quantidade;
 		this.cor = cor;
 	}
@@ -44,6 +46,14 @@ public class MateriaPrima {
 
 	public int getIdMateriaPrima() {
 		return idMateriaPrima;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setIdMateriaPrima(int idMateriaPrima) {

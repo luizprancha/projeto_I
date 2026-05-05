@@ -11,7 +11,7 @@ import model.MateriaPrima;
 public class MateriaPrimaDAO {
 		
 		public void adicionarMateriaPrima(MateriaPrima materiaPrima) {
-			String sql = "INSERT INTO MateriaPrima(nome, cor, quantidade) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO MateriaPrima(nome, cor, quantidade, tipo) VALUES (?, ?, ?, ?)";
 			Connection conexao = null;
 			PreparedStatement pstm = null;
 			
@@ -21,7 +21,8 @@ public class MateriaPrimaDAO {
 				pstm = conexao.prepareStatement(sql);
 				pstm.setString(1, materiaPrima.getNome());
 				pstm.setString(2, materiaPrima.getCor());
-				pstm.setInt(3, materiaPrima.getQuantidade());				
+				pstm.setInt(3, materiaPrima.getQuantidade());
+				pstm.setString(4, materiaPrima.getTipo());
 				pstm.execute();
 				
 			} catch (SQLException e) {
@@ -55,6 +56,7 @@ public class MateriaPrimaDAO {
 							materiaPrima.setNome(rset.getString("nome"));
 							materiaPrima.setCor(rset.getString("cor"));
 							materiaPrima.setQuantidade(rset.getInt("quantidade"));
+							materiaPrima.setTipo(rset.getString("tipo"));
 							MateriaPrima.add(materiaPrima);
 						}
 						
@@ -68,7 +70,7 @@ public class MateriaPrimaDAO {
 				
 
 			    public void atualizarMateriaPrima(MateriaPrima materiaPrima) {
-			        String sql = "UPDATE MateriaPrima SET nome = ?, cor = ?, quantidade = ?, WHERE idMateriaPrima = ?";
+			        String sql = "UPDATE MateriaPrima SET nome = ?, cor = ?, quantidade = ?, tipo = ?, WHERE idMateriaPrima = ?";
 			        Connection conexao = null;
 			        PreparedStatement pstm = null;
 
@@ -78,7 +80,8 @@ public class MateriaPrimaDAO {
 			            pstm.setString(1, materiaPrima.getNome());
 			            pstm.setString(2, materiaPrima.getCor());
 			            pstm.setInt(3, materiaPrima.getQuantidade());
-			            pstm.setInt(4, materiaPrima.getIdMateriaPrima());
+			            pstm.setString(4, materiaPrima.getTipo());
+			            pstm.setInt(5, materiaPrima.getIdMateriaPrima());
 
 			            pstm.executeUpdate();
 			        } catch (SQLException e) {
