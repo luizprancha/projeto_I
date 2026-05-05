@@ -38,15 +38,16 @@ public class TelaConfeccoes extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
 		
+		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(70f);
+		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
+		).deriveFont(80f);
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
-		).deriveFont(18f);
+		).deriveFont(15f);
 		
 		
 		JLabel lbLojas = new JLabel("Confecções");

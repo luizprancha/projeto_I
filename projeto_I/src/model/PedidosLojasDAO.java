@@ -9,8 +9,8 @@ import java.util.List;
 
 public class PedidosLojasDAO {
 	
-	public void adicionarLojas(Lojas lojas) {
-		String sql = "INSERT INTO Lojas(CNPJ, nome, responsavel, endereco, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
+	public void adicionarPedidosLojas(PedidosLojas pedidoslojas) {
+		String sql = "INSERT INTO PedidosLojas(data_entrega, valor_total, Lojas_CNPJ, endereco) VALUES (?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		
@@ -18,12 +18,10 @@ public class PedidosLojasDAO {
 			
 			conexao = database.BancoDeDados.conectar();
 			pstm = conexao.prepareStatement(sql);
-			pstm.setString(1, lojas.getCnpj());
-			pstm.setString(2, lojas.getNome());
-			pstm.setString(3, lojas.getResponsavel());
-			pstm.setString(4, lojas.getEndereco());
-			pstm.setString(5, lojas.getTelefone());
-			pstm.setString(6, lojas.getEmail());
+			pstm.setString(1, pedidoslojas.getEntrega());
+			pstm.setDouble(2, pedidoslojas.getValorTotal());
+			pstm.setString(3, pedidoslojas.getLojas_CNPJ());
+			pstm.setString(4, pedidoslojas.getEndereco());
 			
 			pstm.execute();
 			
@@ -41,9 +39,9 @@ public class PedidosLojasDAO {
 		}
 	}
 	
-			public List<Lojas> listarLojas(){
-				String sql = "SELECT * FROM Lojas";
-				List<Lojas> loja = new ArrayList<>();
+			public List<PedidosLojas> listarPedidosLojas(){
+				String sql = "SELECT * FROM PedidosLojas";
+				List<PedidosLojas> pedidolojas = new ArrayList<>();
 				Connection conexao = null;
 				PreparedStatement pstm = null;
 				ResultSet rset = null;
@@ -54,14 +52,12 @@ public class PedidosLojasDAO {
 					rset = pstm.executeQuery();
 					
 					while(rset.next()) {
-						Lojas lojas = new Lojas();
-						lojas.setCnpj(rset.getString("CNPJ"));
-						lojas.setNome(rset.getString("nome"));
-						lojas.setResponsavel(rset.getString("responsavel"));
-						lojas.setEndereco(rset.getString("endereco"));
-						lojas.setTelefone(rset.getString("telefone"));
-						lojas.setEmail(rset.getString("email"));
-						loja.add(lojas);
+						PedidosLojas pedidoslojas = new PedidosLojas();
+						pedidoslojas.setEntrega(rset.getString("data_entrega"));
+						pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
+						pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
+						pedidoslojas.setEndereco(rset.getString("endereco"));
+						pedidolojas.add(pedidoslojas);
 					}
 					
 				} catch (SQLException e) {
@@ -69,25 +65,23 @@ public class PedidosLojasDAO {
 				}finally {
 					database.BancoDeDados.desconectar(conexao);
 				}
-				return loja;
+				return pedidolojas;
 			}
 			
 
-		    public void atualizarLojas(Lojas lojas) {
-		        String sql = "UPDATE Lojas SET CNPJ = ?, nome = ?, responsavel = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
+		    public void atualizarPedidosLojas(PedidosLojas pedidoslojas) {
+		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ?, endereco = ? WHERE id = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
 		        try {
 		            conexao = database.BancoDeDados.conectar();
 		            pstm = conexao.prepareStatement(sql);
-		            pstm.setString(1, lojas.getCnpj());
-		            pstm.setString(2, lojas.getNome());
-		            pstm.setString(3, lojas.getResponsavel());
-		            pstm.setString(4, lojas.getEndereco());
-		            pstm.setString(5, lojas.getTelefone());
-		            pstm.setString(6, lojas.getEmail());
-		            pstm.setInt(7, lojas.getIdLoja());
+		            pstm.setString(1, pedidoslojas.getEntrega());
+		            pstm.setDouble(2, pedidoslojas.getValorTotal());
+		            pstm.setString(3, pedidoslojas.getLojas_CNPJ());
+		            pstm.setString(4, pedidoslojas.getEndereco());
+		            pstm.setInt(5, pedidoslojas.getIdPedidoL());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
@@ -96,8 +90,8 @@ public class PedidosLojasDAO {
 		        }
 		    }
 		    
-		    public static void removerLojas(int id) {
-		        String sql = "DELETE FROM Confeccoes WHERE id=?";
+		    public static void removerPedidosLojas(int id) {
+		        String sql = "DELETE FROM PedidosLojas WHERE id=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();
 		             PreparedStatement stmt = conn.prepareStatement(sql)) {

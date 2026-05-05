@@ -12,9 +12,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.CadastroConfeccaoController;
 import controller.CadastroController;
+import controller.CadastroProdutosController;
+import controller.ConfeccaoController;
 import controller.LoginController;
 import controller.Navegador;
+import controller.ProdutosController;
+import model.ConfeccoesDAO;
+import model.ProdutosDAO;
 import model.UsuarioDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,6 +60,8 @@ public class JFrame extends javax.swing.JFrame {
 		
 		Navegador navegador = new Navegador(this);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ProdutosDAO produtosDAO = new ProdutosDAO();
+		ConfeccoesDAO confeccaoDAO = new ConfeccoesDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -68,8 +76,15 @@ public class JFrame extends javax.swing.JFrame {
 		TelaProdutos telaProduto = new TelaProdutos();
 		adicionarTela("PRODUTO", telaProduto);
 		
+		
+		TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto ();
+		adicionarTela("CADASTRO_PRODUTO", telaCadastroProduto);
+		
 		TelaConfeccoes telaConfeccoes = new TelaConfeccoes();
 		adicionarTela("CONFECCAO", telaConfeccoes);
+		
+		TelaCadastroConfeccao telaCadastroConfeccao = new TelaCadastroConfeccao ();
+		adicionarTela("CADASTRO_CONFECCAO", telaCadastroConfeccao);
 		
 		TelaLojas telaLojas = new TelaLojas();
 		adicionarTela("LOJAS", telaLojas);
@@ -84,6 +99,10 @@ public class JFrame extends javax.swing.JFrame {
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
+		new ProdutosController(telaProduto, produtosDAO, navegador);
+		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
+		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
+		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
 
 		
 		mostrarTela("LOGIN");
@@ -153,6 +172,18 @@ public class JFrame extends javax.swing.JFrame {
 			}
 		});
 		itemPedidos.add(itemConfeccao);
+		
+		JMenu itemDeslogar = new JMenu("Deslogar");
+		menuBar.add(itemDeslogar);
+		
+		JMenuItem ItemDeslogar = new JMenuItem("Deslogar");
+		ItemDeslogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaLogin.limparCampos(); 
+				navegador.navegarPara("LOGIN");
+			}
+		});
+		itemDeslogar.add(ItemDeslogar);
 
 		
 		//setJMenuBar(menuBar);

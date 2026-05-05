@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -28,6 +31,7 @@ public class TelaPermissoes extends JPanel {
 	private JTextField tfCargo1;
 	private JTextField tfCargo2;
 	private JTextField tfCargo3;
+	private JButton btnVizualizar;
 
 	/**
 	 * Create the panel.
@@ -51,8 +55,8 @@ public class TelaPermissoes extends JPanel {
 		
 		Font fonte2 = Font.createFont(
 		        Font.TRUETYPE_FONT,
-		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
-		).deriveFont(14f);
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(15f);
 		
 		
 		JLabel lblNewLabel = new JLabel("Permissões");
@@ -61,11 +65,9 @@ public class TelaPermissoes extends JPanel {
 		lblNewLabel .setFont(fonte);
 		
 		
-		JButton btnVizualizar = new JButton("Visualizar Usuários");
-		btnVizualizar.setBackground(new Color(235, 219, 194));
-		btnVizualizar.setOpaque(true);
-		btnVizualizar.setBorderPainted(false);
-		btnVizualizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		 btnVizualizar = new JButtonOutLine();
+		btnVizualizar.setText("Visualizar Usuários");
+		btnVizualizar.setFont(fonte2);
 		panel.add(btnVizualizar, "cell 3 1,growx");
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -80,15 +82,15 @@ public class TelaPermissoes extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome:");
 		panel_1.add(lblNewLabel_1, "cell 1 1");
-		lblNewLabel_1 .setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1 .setFont(fonte2);
 		
 		JLabel lblNewLabel_2 = new JLabel("Usuário:");
 		panel_1.add(lblNewLabel_2, "cell 3 1");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(fonte2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cargo:");
 		panel_1.add(lblNewLabel_4, "cell 5 1");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_4.setFont(fonte2);
 		
 		tfNome1 = new JTextField();
 		panel_1.add(tfNome1, "cell 1 3,growx");
@@ -144,6 +146,9 @@ public class TelaPermissoes extends JPanel {
 		JButton btNao3 = new JButton("❌");
 		panel_1.add(btNao3, "cell 9 7");
 
+	}
+	public void visualizarUsuarios(ActionListener acao) {
+		btnVizualizar.addActionListener(acao);
 	}
 
 }

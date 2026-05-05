@@ -13,10 +13,11 @@ public class PedidoConfeccao {
 	private String confeccoesCNPJ;
 	private LocalDate dataEntrega;
 	private LocalDate dataDevolucao;
+	private String forma_pgm;
 	private List<Confeccoes> confeccoes = new ArrayList<Confeccoes>();
 	
 	public PedidoConfeccao(int idPedidoC, String entrega, int idConfeccao, double valorPedido, String confeccoesCNPJ,
-			LocalDate dataEntrega, LocalDate dataDevolucao) {
+			LocalDate dataEntrega, LocalDate dataDevolucao, String forma_pgm) {
 		super();
 		this.idPedidoC = idPedidoC;
 		this.entrega = entrega;
@@ -25,7 +26,10 @@ public class PedidoConfeccao {
 		this.confeccoesCNPJ = confeccoesCNPJ;
 		this.dataEntrega = dataEntrega;
 		this.dataDevolucao = dataDevolucao;
-		this.confeccoes = confeccoes;
+		this.forma_pgm = forma_pgm;
+	}
+	public PedidoConfeccao() {
+		super();
 	}
 	
 	public int getIdPedidoC() {
@@ -52,10 +56,11 @@ public class PedidoConfeccao {
 	public void setValorPedido(double valorPedido) {
 		this.valorPedido = valorPedido;
 	}
-	public String getconfeccoesCNPJ() {
+	public String getConfeccoesCNPJ() {
 		return confeccoesCNPJ;
 	}
-	public void setconfeccoesCNPJ(String confeccoesCNPJ) {
+
+	public void setConfeccoesCNPJ(String confeccoesCNPJ) {
 		this.confeccoesCNPJ = confeccoesCNPJ;
 	}
 	public LocalDate getDataEntrega() {
@@ -85,5 +90,15 @@ public class PedidoConfeccao {
 	public void removerConfeccao(Confeccoes c) {
 		confeccoes.remove(c);
 	}
+
+	public String getForma_pgm() {
+		return forma_pgm;
+	}
+
+	public void setForma_pgm(String forma_pgm) {
+		this.forma_pgm = forma_pgm;
+	}
+	
+	
 	
 }

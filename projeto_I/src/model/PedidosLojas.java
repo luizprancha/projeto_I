@@ -1,30 +1,34 @@
 package model;
 
+import java.util.ArrayList;
+
 public class PedidosLojas {
 
-	private int idPedido;
+	private int idPedidoL;
 	private String entrega;
-	private int idLoja;
 	private double valorTotal;
-	private String listaProdutos;
 	private String lojas_CNPJ;
-	public PedidosLojas(int idPedido, String entrega, int idLoja, double valorTotal, String listaProdutos, String lojas_CNPJ) {
+	private ArrayList<String> listaProdutos;
+	private int idLoja;
+	private String endereco;
+	public PedidosLojas(int idPedidoL, String entrega, int idLoja, double valorTotal, ArrayList<String> listaProdutos, String lojas_CNPJ, String endereco) {
 		super();
 		this.idLoja = idLoja;
-		this.idPedido = idPedido;
+		this.idPedidoL = idPedidoL;
 		this.entrega = entrega;
 		this.valorTotal = valorTotal;
-		this.listaProdutos = listaProdutos;
 		this.lojas_CNPJ = lojas_CNPJ;
+		this.listaProdutos = listaProdutos;
+		this.endereco = endereco;
 	}
 	public PedidosLojas() {
 		super();
 	}
-	public int getIdPedido() {
-		return idPedido;
+	public int getIdPedidoL() {
+		return idPedidoL;
 	}
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
+	public void setIdPedidoL(int idPedidoL) {
+		this.idPedidoL = idPedidoL;
 	}
 	public String getEntrega() {
 		return entrega;
@@ -44,14 +48,6 @@ public class PedidosLojas {
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
-	public List<Produtos> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produtos> produtos) {
-		this.produtos = produtos;
-	}
 	public String getLojas_CNPJ() {
 		return lojas_CNPJ;
 	}
@@ -59,19 +55,17 @@ public class PedidosLojas {
 		this.lojas_CNPJ = lojas_CNPJ;
 	}
 	
-	public List<Loja> getLojas() {
-		return lojas;
+	public ArrayList<String> getListaProdutos() {
+		return listaProdutos;
 	}
-
-	public void setLojas(List<Loja> lojas) {
-		this.lojas = lojas;
+	public void setListaProdutos(ArrayList<String> listaProdutos) {
+		this.listaProdutos = listaProdutos;
 	}
-
-	public void adicionarProduto(Produtos p) {
-		produtos.add(p);
+	public String getEndereco() {
+		return endereco;
 	}
-	public void removerProduto(Produtos p) {
-		produtos.remove(p);
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	
 	

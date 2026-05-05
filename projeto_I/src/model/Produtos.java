@@ -10,16 +10,14 @@ public class Produtos {
 	private String tamanho;
 	private String cor;
 	
-	public Produtos(String nome, String tipoProduto, int idProduto, double preco, int quantidade, String tamanho, String cor) {
-		super();
+	public Produtos(String nome, String tipoProduto, double preco, String tamanho, int quantidade, String cor) {
 		this.nome = nome;
 		this.tipoProduto = tipoProduto;
-		this.idProduto = idProduto;
 		this.preco = preco;
-		this.quantidade = quantidade;
 		this.tamanho = tamanho;
+		this.quantidade = quantidade;
 		this.cor = cor;
-	}
+}
 	
 	public Produtos() {
 		super();

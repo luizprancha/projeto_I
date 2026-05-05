@@ -97,7 +97,7 @@ public class LojasDAO {
 		    }
 		    
 		    public static void removerLojas(int id) {
-		        String sql = "DELETE FROM Confeccoes WHERE id=?";
+		        String sql = "DELETE FROM Lojas WHERE id=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();
 		             PreparedStatement stmt = conn.prepareStatement(sql)) {

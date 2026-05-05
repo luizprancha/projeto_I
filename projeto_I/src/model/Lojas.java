@@ -10,9 +10,8 @@ public class Lojas {
 	private String telefone;
 	private String email;
 	
-	public Lojas(String nome, String cnpj, int idLoja, String responsavel, String endereco, String telefone, String email) {
+	public Lojas(String nome, String cnpj, String responsavel, String endereco, String telefone, String email) {
 		super();
-		this.idLoja = idLoja;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.responsavel = responsavel;
