@@ -167,9 +167,20 @@ public class JFrame extends javax.swing.JFrame {
 			}
 		});
 		itemConfeccoes.add(mntmNewMenuItem_3);
+		
+
 
 		JMenu itemLojas = new JMenu("Lojas");
 		menuBar.add(itemLojas);
+		
+
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Lojas");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navegador.navegarPara("LOJAS");
+			}
+		});
+		itemLojas.add( mntmNewMenuItem_4);
 
 		JMenu itemPedidos = new JMenu("Pedidos");
 		menuBar.add(itemPedidos);
