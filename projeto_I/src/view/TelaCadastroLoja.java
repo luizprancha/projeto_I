@@ -63,56 +63,56 @@ public class TelaCadastroLoja extends JPanel {
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeLoja = new JLabel("Nome da loja:");
-		lbNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbNomeLoja.setFont(fonte2);
 		panel_1.add(lbNomeLoja, "cell 1 1");
 		
 		tfNomeLoja = new JTextField();
-		tfNomeLoja.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNomeLoja.setFont(fonte2);
 		panel_1.add(tfNomeLoja, "cell 3 1,growx");
 		tfNomeLoja.setColumns(10);
 		
 		JLabel lbCNPJ = new JLabel("CNPJ:");
-		lbCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbCNPJ.setFont(fonte2);
 		panel_1.add(lbCNPJ, "cell 1 3");
 		
 		tfCNPJ = new JTextField();
-		tfCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfCNPJ.setFont(fonte2);
 		panel_1.add(tfCNPJ, "cell 3 3,growx");
 		tfCNPJ.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Responsável:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 5");
 		
 		tfResponsavel = new JTextField();
-		tfResponsavel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfResponsavel.setFont(fonte2);
 		panel_1.add(tfResponsavel, "cell 3 5,growx");
 		tfResponsavel.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Endereço:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(fonte2);
 		panel_1.add(lblNewLabel_2, "cell 1 7");
 		
 		tfEndereco = new JTextField();
-		tfEndereco.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfEndereco.setFont(fonte2);
 		panel_1.add(tfEndereco, "cell 3 7,growx");
 		tfEndereco.setColumns(10);
 		
 		JLabel lbEndereco = new JLabel("Telefone:");
-		lbEndereco.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbEndereco.setFont(fonte2);
 		panel_1.add(lbEndereco, "cell 1 9");
 		
 		tfTelefone = new JTextField();
-		tfTelefone.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfTelefone.setFont(fonte2);
 		panel_1.add(tfTelefone, "cell 3 9,growx");
 		tfTelefone.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Email:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 11");
 		
 		tfEmail = new JTextField();
-		tfEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfEmail.setFont(fonte2);
 		panel_1.add(tfEmail, "cell 3 11,growx");
 		tfEmail.setColumns(10);
 		

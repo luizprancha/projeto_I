@@ -20,6 +20,7 @@ import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
 import controller.LoginController;
 import controller.LojasController;
+import controller.MateriaPrimaController;
 import controller.Navegador;
 import controller.PedidoLojasController;
 import controller.PedidosLojasConfirmadosController;
@@ -57,8 +58,9 @@ public class JFrame extends javax.swing.JFrame {
 
 	public JFrame() throws FontFormatException, IOException {
 		setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 675);
+		setBounds(100, 100, 900, 675);
 
+		setLocationRelativeTo(null);
 		
 		this.cardLayout = new CardLayout();
 
@@ -89,7 +91,6 @@ public class JFrame extends javax.swing.JFrame {
 		TelaProdutos telaProduto = new TelaProdutos();
 		adicionarTela("PRODUTO", telaProduto);
 		
-		
 		TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto ();
 		adicionarTela("CADASTRO_PRODUTO", telaCadastroProduto);
 		
@@ -104,6 +105,7 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaPedidosLojas telapedidoloja= new TelaPedidosLojas();
 		adicionarTela("PEDIDOS_LOJAS_VIZU", telapedidoloja);
+		
 		TelaCadastroLoja telacadastrolojas = new TelaCadastroLoja();
 		adicionarTela("CADASTRO_LOJAS", telacadastrolojas);
 		
@@ -115,6 +117,12 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaCadastroMateria telaCadastroMateria = new TelaCadastroMateria();
 		adicionarTela("CADASTRO_MATERIA", telaCadastroMateria);	
+		
+		TelaMateriaPrima telaMateriaPrima = new TelaMateriaPrima();
+		adicionarTela("MATERIA_PRIMA", telaMateriaPrima);
+		
+		TelaDetalheProduto telaDetalhesProdutos = new TelaDetalheProduto();
+		adicionarTela("DETALHES_PRODUTOS", telaDetalhesProdutos);
 
        
 		new LoginController(telaLogin, navegador);
@@ -128,7 +136,8 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
-
+		new MateriaPrimaController(telaMateriaPrima , materiaDAO ,  navegador);
+		
 		
 		mostrarTela("LOGIN");
 		
@@ -207,8 +216,7 @@ public class JFrame extends javax.swing.JFrame {
 		JMenuItem itensMateriaPrima = new JMenuItem("Matéria Prima");
 		 itensMateriaPrima.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				telaLogin.limparCampos(); 
-				navegador.navegarPara("LOGIN");
+				navegador.navegarPara("MATERIA_PRIMA");
 			}
 		});
 		 itemMateriaPrima.add(itensMateriaPrima);
@@ -237,17 +245,17 @@ public class JFrame extends javax.swing.JFrame {
 		this.contentPane.add(tela, nome);
 	}
 
-	public void mostrarTela(String nome) {
+	    public void mostrarTela(String nome) {
 		this.cardLayout.show(this.contentPane, nome);
-		this.pack();
+		
 	}
+
 
 	public void mostrarMenu() {
 		// TODO Auto-generated method stub
 		setJMenuBar(menuBar);
 		validate();
 		repaint();
-		this.pack();
 		menuBar.setVisible(true);
 		
 
