@@ -18,6 +18,7 @@ import controller.CadastroLojaController;
 import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
+import controller.DetalhesLojasController;
 import controller.LoginController;
 import controller.LojasController;
 import controller.Navegador;
@@ -104,6 +105,7 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaPedidosLojas telapedidoloja= new TelaPedidosLojas();
 		adicionarTela("PEDIDOS_LOJAS_VIZU", telapedidoloja);
+		
 		TelaCadastroLoja telacadastrolojas = new TelaCadastroLoja();
 		adicionarTela("CADASTRO_LOJAS", telacadastrolojas);
 		
@@ -115,6 +117,9 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaCadastroMateria telaCadastroMateria = new TelaCadastroMateria();
 		adicionarTela("CADASTRO_MATERIA", telaCadastroMateria);	
+		
+		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
+		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
 
        
 		new LoginController(telaLogin, navegador);
@@ -128,6 +133,7 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
+		new DetalhesLojasController(telaDetalhesLojas, lojasDAO, navegador);
 
 		
 		mostrarTela("LOGIN");

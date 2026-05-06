@@ -8,6 +8,8 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
@@ -20,6 +22,7 @@ public class TelaDetalhesLojas extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnEditar;
 	private JButton btnExcluir;
+	private int id;
 
 	/**
 	 * Create the panel.
@@ -109,4 +112,15 @@ public class TelaDetalhesLojas extends JPanel {
 		btnEditar.addActionListener(acao);
 	}
 
+	public void setId(int id) {
+	    this.id = id;
+	}
+
+	public int getId() {
+	    return id;
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
+	}
 }
