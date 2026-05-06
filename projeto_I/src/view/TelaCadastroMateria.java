@@ -133,5 +133,11 @@ public class TelaCadastroMateria extends JPanel {
 	public String getCor() {
 		return tfCor.getText();
 	}
+	
+	public void limparCampos() {
+	    tfNome.setText("");
+	    tfQuantidade.setText("");
+	    tfCor.setText("");
+	}
 
 }
