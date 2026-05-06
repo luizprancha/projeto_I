@@ -1,8 +1,16 @@
 package controller;
 
+import java.awt.FontFormatException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.List;
+
 import model.Produtos;
 
 import model.ProdutosDAO;
+import view.Painel;
+import view.TelaDetalheProduto;
 import view.TelaProdutos;
 
 
@@ -25,6 +33,18 @@ public class ProdutosController {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		
+		
+		List<Produtos> lista = model.listarProdutos();
+		try {
+			criarPaineis(lista);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		//Define o que será executado quando o botão 'Cadastrar Produto' da TelaProdutos for clicado.
 		this.view.cadastrarProduto(e -> {
@@ -34,6 +54,34 @@ public class ProdutosController {
 		});
 	
 
+	}
+	
+	public void criarPaineis(List<Produtos> lista) throws FontFormatException, IOException{
+		int linha = 0;
+		int coluna = 0;
+		
+		for(int i=0; i<lista.size(); i++) {
+			Produtos prod = lista.get(i);
+			Painel p = new Painel(prod);
+			if(coluna > 4) {
+				coluna = 0;
+				linha = linha + 2;
+			}
+			
+			p.addMouseListener(new MouseAdapter() {
+				
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					  System.out.println("Painel clicado!");
+					  ProdutosController.this.navegador.navegarPara("DETALHES_PRODUTOS");
+					
+				}
+			});
+			this.view.addPanel(p, "cell "+coluna+" "+linha+",grow");
+			coluna = coluna+2;
+		}
+		
 	}
 
 }
