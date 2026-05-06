@@ -160,5 +160,9 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		
 
 	}
+	 
+	public void realizarPedido (ActionListener acao) {
+		btnRealizar.addActionListener(acao);
+	}
 
 }

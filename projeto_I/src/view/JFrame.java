@@ -22,10 +22,12 @@ import controller.LoginController;
 import controller.LojasController;
 import controller.Navegador;
 import controller.PedidoLojasController;
+import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
 import model.ConfeccoesDAO;
 import model.MateriaPrimaDAO;
+import model.PedidoConfeccaoDAO;
 import model.PedidosLojasDAO;
 import model.ProdutosDAO;
 import model.UsuarioDAO;
@@ -75,6 +77,7 @@ public class JFrame extends javax.swing.JFrame {
 		PedidosLojasDAO pedidolojaDAO = new PedidosLojasDAO();
 		LojasDAO lojasDAO = new LojasDAO();
 		MateriaPrimaDAO materiaDAO = new MateriaPrimaDAO();
+		PedidoConfeccaoDAO pedidoconfeccaoDAO = new PedidoConfeccaoDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -104,17 +107,21 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaPedidosLojas telapedidoloja= new TelaPedidosLojas();
 		adicionarTela("PEDIDOS_LOJAS_VIZU", telapedidoloja);
+		
 		TelaCadastroLoja telacadastrolojas = new TelaCadastroLoja();
 		adicionarTela("CADASTRO_LOJAS", telacadastrolojas);
 		
 		TelaPedidosLojasConfirmados telaPedidosLojas = new TelaPedidosLojasConfirmados();
 		adicionarTela("PEDIDOS_LOJAS", telaPedidosLojas);
 
-		TelaPedidosConfeccoesConfirmados telaPedidosConfeccoes = new TelaPedidosConfeccoesConfirmados();
-		adicionarTela("PEDIDOS_CONFECCOES", telaPedidosConfeccoes);	
+		TelaPedidosConfeccoesConfirmados telaPedidosConfeccoesconfirmados = new TelaPedidosConfeccoesConfirmados();
+		adicionarTela("PEDIDOS_CONFECCOES", telaPedidosConfeccoesconfirmados);	
 		
 		TelaCadastroMateria telaCadastroMateria = new TelaCadastroMateria();
 		adicionarTela("CADASTRO_MATERIA", telaCadastroMateria);	
+		
+		TelaPedidosConfeccoes telapedidosconfeccoes = new TelaPedidosConfeccoes();
+		adicionarTela("PEDIDOS_CONFECCOES_VIZU", telapedidosconfeccoes);
 
        
 		new LoginController(telaLogin, navegador);
@@ -128,6 +135,8 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
+		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
+		
 
 		
 		mostrarTela("LOGIN");

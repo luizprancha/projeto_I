@@ -56,6 +56,8 @@ CREATE TABLE PedidosConfeccoes (
   valor DECIMAL(10,2),
   Confeccoes_CNPJ CHAR(18) NOT NULL,
   forma_pgmt VARCHAR(45),
+  confeccao VARCHAR(40) NOT NULL,
+  quantidade INT NOT NULL,
   FOREIGN KEY (Confeccoes_CNPJ) REFERENCES Confeccoes(CNPJ)
 ) ENGINE=InnoDB;
 

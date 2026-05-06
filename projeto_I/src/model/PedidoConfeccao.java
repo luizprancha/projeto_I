@@ -14,10 +14,12 @@ public class PedidoConfeccao {
 	private LocalDate dataEntrega;
 	private LocalDate dataDevolucao;
 	private String forma_pgm;
+	private String confeccao;
+	private int quantidade;
 	private List<Confeccoes> confeccoes = new ArrayList<Confeccoes>();
 	
 	public PedidoConfeccao(int idPedidoC, String entrega, int idConfeccao, double valorPedido, String confeccoesCNPJ,
-			LocalDate dataEntrega, LocalDate dataDevolucao, String forma_pgm) {
+			LocalDate dataEntrega, LocalDate dataDevolucao, String forma_pgm, String confeccao, int quantidade) {
 		super();
 		this.idPedidoC = idPedidoC;
 		this.entrega = entrega;
@@ -27,11 +29,25 @@ public class PedidoConfeccao {
 		this.dataEntrega = dataEntrega;
 		this.dataDevolucao = dataDevolucao;
 		this.forma_pgm = forma_pgm;
+		this.confeccao = confeccao;
+		this.quantidade = quantidade;
 	}
 	public PedidoConfeccao() {
 		super();
 	}
 	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	public String getConfeccao() {
+		return confeccao;
+	}
+	public void setConfeccao(String confeccao) {
+		this.confeccao = confeccao;
+	}
 	public int getIdPedidoC() {
 		return idPedidoC;
 	}

@@ -29,7 +29,7 @@ public class PedidosLojasDAO {
 			e.printStackTrace();
 		}finally {
 			database.BancoDeDados.desconectar(conexao);
-			if (pstm != null) {
+			if (pstm != null) { 
 				try {
 					pstm.close();
 				} catch (SQLException e) {

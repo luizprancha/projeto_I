@@ -10,7 +10,7 @@ import java.util.List;
 public class PedidoConfeccaoDAO {
 		
 		public void adicionarPedidosConfeccoes(PedidoConfeccao pedidoconfeccao) {
-			String sql = "INSERT INTO PedidosConfeccoes(entrega, valor, Confeccoes_CNPJ, forma_pgmt) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO PedidosConfeccoes(entrega, valor, Confeccoes_CNPJ, forma_pgmt, confeccao, quantidade) VALUES (?, ?, ?, ?, ?, ?)";
 			Connection conexao = null;
 			PreparedStatement pstm = null;
 			
@@ -22,6 +22,8 @@ public class PedidoConfeccaoDAO {
 				pstm.setDouble(2, pedidoconfeccao.getValorPedido());
 				pstm.setString(3, pedidoconfeccao.getConfeccoesCNPJ());
 				pstm.setString(4, pedidoconfeccao.getForma_pgm());
+				pstm.setString(5, pedidoconfeccao.getConfeccao());
+				pstm.setInt(6, pedidoconfeccao.getQuantidade());
 				
 				pstm.execute();
 				
@@ -57,6 +59,8 @@ public class PedidoConfeccaoDAO {
 							pedidoconfeccao.setValorPedido(rset.getDouble("valor"));
 							pedidoconfeccao.setConfeccoesCNPJ(rset.getString("Confeccoes_CNPJ"));
 							pedidoconfeccao.setForma_pgm(rset.getString("forma_pgmt"));
+							pedidoconfeccao.setConfeccao(rset.getString("confeccao"));
+							pedidoconfeccao.setQuantidade(rset.getInt("quantidade"));
 							PedidosConfeccao.add(pedidoconfeccao);
 						}
 						
@@ -70,7 +74,7 @@ public class PedidoConfeccaoDAO {
 				
 
 			    public void atualizarPedidoConfeccao(PedidoConfeccao pedidoconfeccao) {
-			        String sql = "UPDATE PedidosConfeccoes SET entrega = ?, valor = ?, Confeccoes_CNPJ = ?, forma_pgmt = ? WHERE id = ?";
+			        String sql = "UPDATE PedidosConfeccoes SET entrega = ?, valor = ?, Confeccoes_CNPJ = ?, forma_pgmt = ?, confeccao = ?, quantidade = ?, WHERE id = ?";
 			        Connection conexao = null;
 			        PreparedStatement pstm = null;
 
@@ -81,7 +85,9 @@ public class PedidoConfeccaoDAO {
 			            pstm.setDouble(2, pedidoconfeccao.getValorPedido());
 			            pstm.setString(3, pedidoconfeccao.getConfeccoesCNPJ());
 			            pstm.setString(4, pedidoconfeccao.getForma_pgm());
-			            pstm.setInt(5, pedidoconfeccao.getIdPedidoC());
+			            pstm.setString(5, pedidoconfeccao.getConfeccao());
+			            pstm.setInt(6, pedidoconfeccao.getQuantidade());
+			            pstm.setInt(7, pedidoconfeccao.getIdPedidoC());
 			            pstm.executeUpdate();
 			        } catch (SQLException e) {
 			            e.printStackTrace();
