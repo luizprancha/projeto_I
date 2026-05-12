@@ -57,6 +57,8 @@ public class ProdutosController {
 	}
 	
 	public void criarPaineis(List<Produtos> lista) throws FontFormatException, IOException{
+		this.view.limparPaineis();
+
 		int linha = 0;
 		int coluna = 0;
 		
@@ -103,6 +105,13 @@ public class ProdutosController {
 			this.view.addPanel(p, "cell "+coluna+" "+linha+",grow");
 			coluna = coluna+2;
 		}
+		
+	}
+
+	public void recriarPaineis() throws FontFormatException, IOException {
+		List<Produtos> lista = model.listarProdutos();
+		criarPaineis(lista);
+		
 		
 	}
 

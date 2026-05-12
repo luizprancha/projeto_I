@@ -64,7 +64,7 @@ public class JFrame extends javax.swing.JFrame {
 		setBounds(100, 100, 900, 675);
 
 		setLocationRelativeTo(null);
-		
+		 
 		this.cardLayout = new CardLayout();
 
 		this.contentPane = new JPanel(this.cardLayout);
@@ -133,11 +133,11 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
 		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
-
+		
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
-		new ProdutosController(telaProduto, produtosDAO, navegador);
+		ProdutosController prodCont = new ProdutosController(telaProduto, produtosDAO, navegador);
 		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
@@ -173,6 +173,15 @@ public class JFrame extends javax.swing.JFrame {
 		itemProdutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("PRODUTO");
+				try {
+					prodCont.recriarPaineis();
+				} catch (FontFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		mnNewMenu_1.add(itemProdutos);
