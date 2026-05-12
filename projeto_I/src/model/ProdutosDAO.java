@@ -61,6 +61,7 @@ public class ProdutosDAO {
 						produto.setQuantidade(rset.getInt("qtde_estoque"));
 						produto.setPreco(rset.getDouble("preco"));
 						produto.setTipoProduto(rset.getString("tipo_produto"));
+						produto.setIdProduto(rset.getInt("idProdutos"));
 						produtos.add(produto);
 					}
 					
@@ -97,14 +98,16 @@ public class ProdutosDAO {
 		    }
 		    
 		    public static void removerProdutos(int id) {
-		        String sql = "DELETE FROM Produtos WHERE id=?";
+		        String sql = "DELETE FROM Produtos WHERE idProdutos=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();
 		             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 		            stmt.setInt(1, id);
-		            stmt.executeUpdate();
+		            System.out.println(stmt);
+		            int res = stmt.executeUpdate();
 
+		            System.out.println(res);
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }

@@ -115,9 +115,28 @@ public class TelaProdutos extends JPanel {
 
 
 	public void addPanel(Painel p, String param) {
+		
 		panel_1.add(p, param);
 		
 	}
+
+
+
+
+
+
+
+	public void limparPaineis() {
+		panel_1.removeAll();
+
+	    panel_1.repaint();
+
+	    panel_1.revalidate();
+
+		
+	}
+	
+	
 
 
 }
