@@ -91,7 +91,7 @@ public class MateriaPrimaDAO {
 			        }
 			    }
 			    
-			    public static void removerPedidoConfeccao(int id) {
+			    public static void removerMateria(int id) {
 			        String sql = "DELETE FROM MateriaPrima WHERE idMateriaPrima=?";
 
 			        try (Connection conn = database.BancoDeDados.conectar();

@@ -73,9 +73,31 @@ public class ProdutosController {
 				
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					  System.out.println("Painel clicado!");
 					  ProdutosController.this.navegador.navegarPara("DETALHES_PRODUTOS");
+					  TelaDetalheProduto telaDetalhe;
+					try {
+						telaDetalhe = new TelaDetalheProduto();
 					
+						  new DetalhesProdutosController(telaDetalhe, model, navegador, prod);
+
+					       ProdutosController.this.navegador.adicionarPainel(
+					           "DETALHES_PRODUTOS",
+					           telaDetalhe
+					       );
+
+					       ProdutosController.this.navegador.navegarPara(
+					           "DETALHES_PRODUTOS"
+					       );
+
+					} catch (FontFormatException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+				     					
 				}
 			});
 			this.view.addPanel(p, "cell "+coluna+" "+linha+",grow");

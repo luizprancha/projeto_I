@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import view.JFrame;
 
 /**
- * Classe responsável por inicializar os elementos das camadas: model, view e controller.
  * A execução do programa começa por aqui.
  */
 public class Main {

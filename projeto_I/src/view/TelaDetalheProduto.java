@@ -4,11 +4,13 @@ import javax.swing.JPanel;
 
 import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
+import model.Produtos;
 
 import java.awt.BorderLayout;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
@@ -21,6 +23,13 @@ public class TelaDetalheProduto extends JPanel {
 	private JButton btnExcluir;
 	private JButton btnEditar;
 	private JButton btnAdicionar;
+	private JLabel lbNomepeca;
+	private JLabel lbTipo;
+	private JLabel lbPreco;
+	private JLabel lbQuantidade;
+	private JLabel lbTamanho;
+	private JLabel lbID;
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -66,7 +75,7 @@ public class TelaDetalheProduto extends JPanel {
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		JLabel lbNomepeca = new JLabel("New label");
+		lbNomepeca = new JLabel("New label");
 		lbNomepeca.setFont(fonte2);
 		panel_1.add(lbNomepeca, "cell 3 1");
 		
@@ -74,15 +83,15 @@ public class TelaDetalheProduto extends JPanel {
 		lblNewLabel_2.setFont(fonte2);
 		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
-		JLabel ldTipo = new JLabel("New label");
-		ldTipo.setFont(fonte2);
-		panel_1.add(ldTipo, "cell 3 3");
+		lbTipo = new JLabel("New label");
+		lbTipo.setFont(fonte2);
+		panel_1.add(lbTipo, "cell 3 3");
 		
 		JLabel lblNewLabel_3 = new JLabel("Preço R$:");
 		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		JLabel lbPreco = new JLabel("New label");
+		lbPreco = new JLabel("New label");
 		lbPreco.setFont(fonte2);
 		panel_1.add(lbPreco, "cell 3 5");
 		
@@ -90,7 +99,7 @@ public class TelaDetalheProduto extends JPanel {
 		lblNewLabel_4.setFont(fonte2);
 		panel_1.add(lblNewLabel_4, "cell 1 7");
 		
-		JLabel lbQuantidade = new JLabel("New label");
+		lbQuantidade = new JLabel("New label");
 		lbQuantidade.setFont(fonte2);
 		panel_1.add(lbQuantidade, "cell 3 7");
 		
@@ -98,7 +107,7 @@ public class TelaDetalheProduto extends JPanel {
 		lblNewLabel_5.setFont(fonte2);
 		panel_1.add(lblNewLabel_5, "cell 1 9");
 		
-		JLabel lbTamanho = new JLabel("New label");
+		lbTamanho = new JLabel("New label");
 		lbTamanho.setFont(fonte2);
 		panel_1.add(lbTamanho, "cell 3 9");
 		
@@ -106,7 +115,7 @@ public class TelaDetalheProduto extends JPanel {
 		lblNewLabel_6.setFont(fonte2);
 		panel_1.add(lblNewLabel_6, "cell 1 11");
 		
-		JLabel lbID = new JLabel("New label");
+		lbID = new JLabel("New label");
 		lbID.setFont(fonte2);
 		panel_1.add(lbID, "cell 3 11");
 		
@@ -137,6 +146,20 @@ public class TelaDetalheProduto extends JPanel {
 	
 	public void adicionarProduto(ActionListener acao) {
 		btnAdicionar.addActionListener(acao);
+	}
+	
+	public void setProduto(Produtos produto) {
+
+	    lbNomepeca.setText(produto.getNome());
+	    lbTipo.setText(produto.getTipoProduto());
+	    lbPreco.setText(String.valueOf(produto.getPreco()));
+	    lbQuantidade.setText(String.valueOf(produto.getQuantidade()));
+	    lbTamanho.setText(produto.getTamanho());
+	    lbID.setText(String.valueOf(produto.getIdProduto()));
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
 	}
 
 }
