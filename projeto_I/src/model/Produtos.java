@@ -78,6 +78,7 @@ public class Produtos {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
+
 	
 	
 	
