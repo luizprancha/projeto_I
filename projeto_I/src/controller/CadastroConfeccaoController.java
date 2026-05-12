@@ -65,7 +65,7 @@ public class CadastroConfeccaoController {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			    
 			} else {
-			    Confeccoes c = new Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email);
+			    Confeccoes c = new Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email, responsavel);
 			    model.adicionarConfeccoes(c);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);

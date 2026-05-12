@@ -24,7 +24,7 @@ CREATE TABLE Produtos (
 CREATE TABLE Confeccoes (
   idConfeccoes INT AUTO_INCREMENT PRIMARY KEY,
   CNPJ CHAR(18) NOT NULL UNIQUE,
-  nome VARCHAR(100) NOT NULL,
+  confeccao VARCHAR(100) NOT NULL,
   responsavel VARCHAR(100),
   endereco VARCHAR(150),
   telefone VARCHAR(20),
@@ -56,7 +56,6 @@ CREATE TABLE PedidosConfeccoes (
   valor DECIMAL(10,2),
   Confeccoes_CNPJ CHAR(18) NOT NULL,
   forma_pgmt VARCHAR(45),
-  confeccao VARCHAR(40) NOT NULL,
   quantidade INT NOT NULL,
   FOREIGN KEY (Confeccoes_CNPJ) REFERENCES Confeccoes(CNPJ)
 ) ENGINE=InnoDB;
