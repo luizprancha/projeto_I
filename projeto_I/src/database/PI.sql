@@ -16,7 +16,6 @@ CREATE TABLE Produtos (
   tamanho VARCHAR(20),
   cor VARCHAR(50),
   qtde_estoque INT DEFAULT 0,
-  vendasSN TINYINT NOT NULL,
   preco DECIMAL(10,2) NOT NULL,
   tipo_produto VARCHAR(50)
 ) ENGINE=InnoDB;
@@ -93,10 +92,10 @@ INSERT INTO Usuarios VALUES
 (null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
 (null,"Maicon Douglas", "maicon2000", "Limpeza", "123456789");
 
-INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, vendasSN, preco) VALUES
-('Camiseta Básica', 'M', 'Branca', 150, 1, 39.90),
-('Calça Jeans', '42', 'Azul', 80, 1, 119.90),
-('Moletom Unissex', 'G', 'Preto', 60, 0, 149.90);
+INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, tipo_produto, preco) VALUES
+('Camiseta Básica', 'M', 'Branca', 150, 'roupa', 39.90),
+('Calça Jeans', '42', 'Azul', 80, 'aviamentos', 119.90),
+('Moletom Unissex', 'G', 'Preto', 60, 'tecido', 149.90);
 
 INSERT INTO Confeccoes (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('55.666.777/0001-40', 'Confecção Alfa', 'João Mendes', 'Av Brasil, 500', '51966660001', 'alfa@conf.com'),
@@ -113,7 +112,7 @@ INSERT INTO PedidosLojas (data_entrega, valor_total, endereco, Lojas_CNPJ) VALUE
 ('2025-01-12', 799.90, 'Rua E, 200', '11.222.333/0001-20'),
 ('2025-01-15', 359.70, 'Rua F, 300', '22.333.444/0001-30');
 
-INSERT INTO PedidosConfeccoes (entrega, valor, Confeccoes_CNPJ, forma_pgmt) VALUES
-('2025-01-05', 1200.00, '55.666.777/0001-40', 'Pix'),
-('2025-01-07', 1850.50, '66.777.888/0001-50', 'Boleto'),
-('2025-01-09', 980.90, '77.888.999/0001-60', 'Cartão');
+INSERT INTO PedidosConfeccoes (entrega, valor, Confeccoes_CNPJ,confeccao, forma_pgmt, quantidade) VALUES
+('2025-01-05', 1200.00, '55.666.777/0001-40', 'Cleide Confecções', 'Pix',10),
+('2025-01-07', 1850.50, '66.777.888/0001-50','Royal', 'Boleto', 20),
+('2025-01-09', 980.90, '77.888.999/0001-60', 'Mablu confec', 'Cartão', 7);

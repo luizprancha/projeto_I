@@ -100,6 +100,9 @@ public class JFrame extends javax.swing.JFrame {
 		
 		TelaConfeccoes telaConfeccoes = new TelaConfeccoes();
 		adicionarTela("CONFECCAO", telaConfeccoes);
+	     
+		TelaDetalhesConfeccoes telaDetalheaConf = new 	TelaDetalhesConfeccoes();
+		adicionarTela("DETALHES_CONFECCOES", telaDetalheaConf);
 		
 		TelaCadastroConfeccao telaCadastroConfeccao = new TelaCadastroConfeccao ();
 		adicionarTela("CADASTRO_CONFECCAO", telaCadastroConfeccao);
@@ -138,7 +141,7 @@ public class JFrame extends javax.swing.JFrame {
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
 		ProdutosController prodCont = new ProdutosController(telaProduto, produtosDAO, navegador);
-		new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
+		ConfeccaoController confCont = new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
 		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
@@ -193,6 +196,15 @@ public class JFrame extends javax.swing.JFrame {
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("CONFECCAO");
+				try {
+					confCont.recriarPaineis();
+				} catch (FontFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});

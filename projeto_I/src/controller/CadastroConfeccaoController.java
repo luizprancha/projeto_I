@@ -40,9 +40,9 @@ public class CadastroConfeccaoController {
 			}
 
 			if (CNPJ.isEmpty()) {
-			    erros.append("Tipo é obrigatório\n");
+			    erros.append("Cnpj é obrigatório\n");
 			} else if (CNPJ.length() < 14) {
-			    erros.append("Tipo inválido\n");
+			    erros.append("CNPJ inválido\n");
 			}
 
 			if (endereco.isEmpty()) {
@@ -50,9 +50,9 @@ public class CadastroConfeccaoController {
 			}
 			
 			if (telefone.isEmpty()) {
-			    erros.append("Tipo é obrigatório\n");
+			    erros.append("Telefone é obrigatório\n");
 			} else if (telefone.length() < 9) {
-			    erros.append("Tipo inválido\n");
+			    erros.append("Telefone inválido\n");
 			}
 			
 			if (email.isEmpty()) {
@@ -65,7 +65,7 @@ public class CadastroConfeccaoController {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			    
 			} else {
-			    Confeccoes c = new Confeccoes(CNPJ, nome, responsavel, endereco, telefone, email, responsavel);
+			    Confeccoes c = new Confeccoes(nome, CNPJ, responsavel, endereco, telefone, email);
 			    model.adicionarConfeccoes(c);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);
