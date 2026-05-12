@@ -80,6 +80,9 @@ public class ProdutosController {
 			});
 			this.view.addPanel(p, "cell "+coluna+" "+linha+",grow");
 			coluna = coluna+2;
+			
+			this.view.revalidate();
+			this.view.repaint();
 		}
 		
 	}
