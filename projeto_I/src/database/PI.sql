@@ -87,6 +87,15 @@ CREATE TABLE PedidosLojas_Produtos (
   FOREIGN KEY (Produtos_idProdutos) REFERENCES Produtos(idProdutos)
 ) ENGINE=InnoDB;
 
+CREATE TABLE Carrinho(
+
+   id_carrinho INT PRIMARY KEY AUTO_INCREMENT,
+   id_produto INT NOT NULL,
+   nome_produto VARCHAR(255) NOT NULL,
+   preco DECIMAL(10,2) NOT NULL,
+   quantidade INT NOT NULL
+) ENGINE=InnoDB;
+
 INSERT INTO Usuarios VALUES
 (null, "Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
 (null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
