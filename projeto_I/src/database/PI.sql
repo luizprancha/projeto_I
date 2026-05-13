@@ -23,7 +23,7 @@ CREATE TABLE Produtos (
 CREATE TABLE Confeccoes (
   idConfeccoes INT AUTO_INCREMENT PRIMARY KEY,
   CNPJ CHAR(18) NOT NULL UNIQUE,
-  confeccao VARCHAR(100) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   responsavel VARCHAR(100),
   endereco VARCHAR(150),
   telefone VARCHAR(20),
@@ -97,7 +97,7 @@ INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, tipo_produto, preco) VAL
 ('Calça Jeans', '42', 'Azul', 80, 'aviamentos', 119.90),
 ('Moletom Unissex', 'G', 'Preto', 60, 'tecido', 149.90);
 
-INSERT INTO Confeccoes (CNPJ, confeccao, responsavel, endereco, telefone, email) VALUES
+INSERT INTO Confeccoes (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('55.666.777/0001-40', 'Confecção Alfa', 'João Mendes', 'Av Brasil, 500', '51966660001', 'alfa@conf.com'),
 ('66.777.888/0001-50', 'Confecção Beta', 'Julia Castro', 'Av Central, 600', '51955550002', 'beta@conf.com'),
 ('77.888.999/0001-60', 'Confecção Gamma', 'Pedro Rodrigues', 'Av Sul, 700', '51944440003', 'gamma@conf.com');
