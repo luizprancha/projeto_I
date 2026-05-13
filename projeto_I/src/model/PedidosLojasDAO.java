@@ -10,7 +10,7 @@ import java.util.List;
 public class PedidosLojasDAO {
 	
 	public void adicionarPedidosLojas(PedidosLojas pedidoslojas) {
-		String sql = "INSERT INTO PedidosLojas(data_entrega, valor_total, Lojas_CNPJ, endereco) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO PedidosLojas(data_entrega, valor_total, Lojas_CNPJ, endereco,quantidade) VALUES (?, ?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		

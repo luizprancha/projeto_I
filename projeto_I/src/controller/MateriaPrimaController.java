@@ -1,8 +1,16 @@
 package controller;
 
+import java.awt.FontFormatException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.List;
+
+import model.Confeccoes;
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import model.ProdutosDAO;
+import view.Painel2;
 import view.TelaMateriaPrima;
 import view.TelaProdutos;
 
@@ -26,6 +34,17 @@ public class MateriaPrimaController {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		
+		List<MateriaPrima> lista = model.listarMateriasPrimas();
+		try {
+			criarPaineis(lista);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		//Define o que será executado quando o botão 'Cadastrar Produto' da TelaProdutos for clicado.
 		this.view.novaMateria(e -> {
@@ -36,6 +55,48 @@ public class MateriaPrimaController {
 	
 
 	}
+	
+	public void criarPaineis(List<MateriaPrima> lista) throws FontFormatException, IOException{
+		
+		this.view.limparPaineis();
+		int linha = 0;
+		int coluna = 0;
+		
+		for(int i=0; i<lista.size(); i++) {
+			Confeccoes conf = lista.get(i);
+			Painel2 p2 = new Painel2(conf);
+			if(coluna > 4) {
+				coluna = 0;
+				linha = linha + 2;
+			}
+			
+			p2.addMouseListener(new MouseAdapter() {
+				
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					  System.out.println("Painel clicado!");
+					  MateriaPrimaController.this.navegador.navegarPara("DETALHES_CONFECCOES");
+					
+				}
+			});
+			this.view.addPanel2(p2, "cell "+coluna+" "+linha+",grow");
+			coluna = coluna+2;
+			
+		
+		}
+		
+		
+		}
+		
+	public void recriarPaineis() throws FontFormatException, IOException {
+		
+		List<Confeccoes> lista = model.listarConfeccoes();
+		criarPaineis(lista);
+	}
+}
+
+
 
 }
 
