@@ -147,7 +147,7 @@ public class JFrame extends javax.swing.JFrame {
 		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
 		new PedidoLojasController(telapedidoloja, pedidolojaDAO, navegador);
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
-		new LojasController(telaLojas, lojasDAO, navegador);
+		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 		new MateriaPrimaController(telaMateriaPrima , materiaDAO ,  navegador);
 		new DetalhesLojasController(telaDetalhesLojas, lojasDAO, navegador);

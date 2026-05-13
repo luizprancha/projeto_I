@@ -12,7 +12,7 @@ public class Confeccoes {
 	private String telefone;
 	private String email;
 	
-	public Confeccoes(String nome, String cnpj, String responsavel, String endereco, String telefone, String email, String servico) {
+	public Confeccoes(String nome, String cnpj, String responsavel, String endereco, String telefone, String email) {
 		super();
 
 	;
