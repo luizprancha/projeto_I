@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import database.BancoDeDados;
 
 public class ConfeccoesDAO {
 	
@@ -63,6 +62,7 @@ public class ConfeccoesDAO {
 						confeccao.setEndereco(rset.getString("endereco"));
 						confeccao.setTelefone(rset.getString("telefone"));
 						confeccao.setEmail(rset.getString("email"));
+						confeccao.setIdConfeccoes(rset.getInt("idConfeccoes"));
 						confeccoes.add(confeccao);
 					}
 					
@@ -99,14 +99,16 @@ public class ConfeccoesDAO {
 		    }
 		    
 		    public static void removerConfeccoes(int id) {
-		        String sql = "DELETE FROM Confeccoes WHERE id=?";
+		        String sql = "DELETE FROM Confeccoes WHERE idConfeccoes=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();
 		             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 		            stmt.setInt(1, id);
-		            stmt.executeUpdate();
+		            System.out.println(stmt);
+		            int res = stmt.executeUpdate();
 
+		            System.out.println(res);
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }

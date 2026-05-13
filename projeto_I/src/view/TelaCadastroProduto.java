@@ -17,17 +17,19 @@ import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaCadastroProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfNomepeca;
-	private JTextField tfTipoProduto;
 	private JTextField tfPreco;
 	private JTextField tfQuantidade;
 	private JTextField tfTamanho;
 	private JButton btnCadastrar;
 	private JTextField tfCor;
+	private JComboBox<String> cbTipoProduto;
 
 	/**
 	 * Create the panel.
@@ -78,10 +80,9 @@ public class TelaCadastroProduto extends JPanel {
 		lbTipoProduto.setFont(fonte2);
 		panel_1.add(lbTipoProduto, "cell 1 3");
 		
-		tfTipoProduto = new JTextField();
-		tfTipoProduto.setFont(fonte2);
-		panel_1.add(tfTipoProduto, "cell 3 3,growx");
-		tfTipoProduto.setColumns(10);
+	    cbTipoProduto = new JComboBox();
+		cbTipoProduto.setModel(new DefaultComboBoxModel(new String[] {"Aviamento", "Roupa", "Tecido"}));
+		panel_1.add(cbTipoProduto, "flowx,cell 3 3,grow");
 		
 		JLabel lbPreco = new JLabel("Preço R$:");
 		lbPreco.setFont(fonte2);
@@ -134,7 +135,7 @@ public class TelaCadastroProduto extends JPanel {
 		return tfNomepeca.getText();
 	}
 	public String getTipoProduto() {
-		return tfTipoProduto.getText();
+	    return cbTipoProduto.getSelectedItem().toString();
 	}
 	public double getPreco() {
 	    try {
@@ -159,7 +160,7 @@ public class TelaCadastroProduto extends JPanel {
 	
 	public void limparCampos() {
 	    tfNomepeca.setText("");
-	    tfTipoProduto.setText("");
+	    cbTipoProduto.setSelectedIndex(0);
 	    tfPreco.setText("");
 	    tfQuantidade.setText("");
 	    tfTamanho.setText("");

@@ -3,6 +3,7 @@ package view;
 import javax.swing.JPanel;
 
 import Botao.PainelArredondado;
+import model.Confeccoes;
 import model.Produtos;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
@@ -41,8 +42,28 @@ public class Painel extends PainelArredondado {
 		JLabel lbPreco = new JLabel(preco);
 		add(lbPreco, "cell 1 3");
 		lbPreco.setFont(fonte2);
+	}
+	
+	public Painel(Confeccoes conf) throws FontFormatException, IOException {
+		setBackground(new Color(235, 219, 194));
+		setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
 		
-
+		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(13f);
+		
+		JLabel lbNomeLoja = new JLabel(conf.getNome());
+		add(lbNomeLoja, "cell 1 1");
+		lbNomeLoja.setFont(fonte2);
+		String cnpj = String.format(conf.getCnpj());
+		
+		JLabel lblNewLabel = new JLabel("");
+		add(lblNewLabel, "flowx,cell 1 3");
+		JLabel lbCNPJ = new JLabel(cnpj);
+		add(lbCNPJ, "cell 1 3");
+		lbCNPJ.setFont(fonte2);
 	}
 
 }

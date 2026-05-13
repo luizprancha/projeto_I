@@ -6,28 +6,14 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Panel;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-
 import Botao.JButtonOutLine;
-import Botao.PainelArredondado;
-import model.Produtos;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class TelaProdutos extends JPanel {
 
@@ -90,28 +76,13 @@ public class TelaProdutos extends JPanel {
 		panel_1.setBackground(new Color(15, 57, 87));
 		scrollPane.setViewportView(panel_1);
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow]"));
-		
-		
-
-		
-		
 
 	}
-	
-
-	
-	
-	
 
 
 	public void cadastrarProduto(ActionListener acao) {
 		btnCadastrar.addActionListener(acao);
 	}
-
-
-
-
-
 
 
 	public void addPanel(Painel p, String param) {
@@ -121,19 +92,12 @@ public class TelaProdutos extends JPanel {
 	}
 
 
-
-
-
-
-
 	public void limparPaineis() {
 		panel_1.removeAll();
 
 	    panel_1.repaint();
 
 	    panel_1.revalidate();
-
-		
 	}
 	
 	
