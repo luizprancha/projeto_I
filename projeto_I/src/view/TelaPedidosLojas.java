@@ -10,6 +10,7 @@ import java.io.IOException;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Botao.JButtonOutLine;
@@ -24,6 +25,9 @@ public class TelaPedidosLojas extends JPanel {
 	private JTextField tfLoja;
 	private JTextField tfEntrega;
 	private JButton btnFinalizar;
+	private JLabel lbQuantidade;
+	private JLabel lbValorTotal;
+	private JTextField tfEndereco;
 
 	/**
 	 * Create the panel.
@@ -56,7 +60,7 @@ public class TelaPedidosLojas extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel_1 = new JLabel("Loja:");
 		lblNewLabel_1.setFont(fonte3);
@@ -64,14 +68,14 @@ public class TelaPedidosLojas extends JPanel {
 		
 		tfLoja = new JTextField();
 		tfLoja.setFont(fonte3);
-		panel_1.add(tfLoja, "cell 3 1,growx");
+		panel_1.add(tfLoja, "cell 3 1,w 160!,h 30!");
 		tfLoja.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças:");
 		lblNewLabel_3.setFont(fonte3);
 		panel_1.add(lblNewLabel_3, "cell 1 3");
 		
-		JLabel lbQuantidade = new JLabel("20");
+	    lbQuantidade = new JLabel("20");
 		lbQuantidade.setFont(fonte3);
 		panel_1.add(lbQuantidade, "cell 3 3");
 		
@@ -81,16 +85,24 @@ public class TelaPedidosLojas extends JPanel {
 		
 		tfEntrega = new JTextField();
 		tfEntrega.setFont(fonte3);
-		panel_1.add(tfEntrega, "cell 3 5,growx");
+		panel_1.add(tfEntrega, "cell 3 5,w 160!,h 30!");
 		tfEntrega.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Valor Total:");
 		lblNewLabel_5.setFont(fonte3);
 		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
-		JLabel lbValorTotal = new JLabel("R$1.500,00");
+	    lbValorTotal = new JLabel("R$1.500,00");
 		lbValorTotal.setFont(fonte3);
 		panel_1.add(lbValorTotal, "cell 3 7");
+		
+		JLabel lbEnderco = new JLabel("Endereço:");
+		panel_1.add(lbEnderco, "cell 1 9");
+		lbEnderco.setFont(fonte3);
+		
+		tfEndereco = new JTextField();
+		panel_1.add(tfEndereco, "cell 3 9,w 160!,h 30!");
+		tfEndereco.setColumns(10);
 		
 	    btnFinalizar = new JButtonOutLine();
         btnFinalizar.setText("Finalizar pedido");
@@ -100,16 +112,18 @@ public class TelaPedidosLojas extends JPanel {
 	}
 	
 
-	public String getLoja() {
-		return tfLoja.getText();
-	}
-	
-	public String getEntrega() {
-		return tfEntrega.getText();
-	}
-	
 	public void finalizarPedido(ActionListener al) {
 		btnFinalizar.addActionListener(al);
+	}
+	
+	public void limparCampos() {
+		tfLoja.setText("");
+		tfEntrega.setText("");
+		
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
 	}
 
 

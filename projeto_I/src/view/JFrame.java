@@ -23,7 +23,6 @@ import controller.LoginController;
 import controller.LojasController;
 import controller.MateriaPrimaController;
 import controller.Navegador;
-import controller.PedidoLojasController;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
@@ -145,7 +144,6 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
 		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
-		new PedidoLojasController(telapedidoloja, pedidolojaDAO, navegador);
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
@@ -220,6 +218,15 @@ public class JFrame extends javax.swing.JFrame {
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("LOJAS");
+				try {
+					lojaCont.recriarPaineis();
+				} catch (FontFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		itemLojas.add( mntmNewMenuItem_4);
