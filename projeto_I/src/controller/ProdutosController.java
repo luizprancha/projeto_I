@@ -114,8 +114,6 @@ public class ProdutosController {
 	public void recriarPaineis() throws FontFormatException, IOException {
 		List<Produtos> lista = model.listarProdutos();
 		criarPaineis(lista);
-		
-		
 	}
 
 }

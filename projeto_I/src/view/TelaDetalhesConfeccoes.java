@@ -99,14 +99,6 @@ public class TelaDetalhesConfeccoes extends JPanel {
 		lbEndereco.setFont(fonte2);
 		panel_1.add(lbEndereco, "cell 3 7,alignx left,growy");
 		
-		JLabel lblNewLabel_9 = new JLabel("Prestando serviço:");
-		lblNewLabel_9.setFont(fonte2);
-		panel_1.add(lblNewLabel_9, "cell 1 9,grow");
-		
-		JLabel lbServico = new JLabel("SIM/NÃO");
-		lbServico.setFont(fonte2);
-		panel_1.add(lbServico, "cell 3 9,grow");
-		
 		btnEditar = new JButtonOutLine();
 		btnEditar.setText("Editar");
 		btnEditar.setFont(fonte2);
@@ -133,7 +125,6 @@ public class TelaDetalhesConfeccoes extends JPanel {
 		lbCNPJ.setText(confeccao.getCnpj());
 		lbID.setText(String.valueOf(confeccao.getIdConfeccoes()));
 		lbEndereco.setText(confeccao.getEndereco());
-		lbServico.setText(confeccao.getServico());
 	}
 	
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {

@@ -21,14 +21,13 @@ public class CadastroConfeccaoController {
 		this.model = model;
 		this.navegador = navegador;
 
-		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
 		view.cadastrarConfeccao(e -> {
 			String nome = view.getNome().trim();
 			String CNPJ = view.getCnpj().trim();
+			String responsavel = view.getResponsavel().trim();
 			String endereco = view.getEndereco().trim();
 			String telefone = view.getTelefone().trim();
 			String email = view.getEmail().trim();
-			String responsavel = view.getResponsavel().trim();
 		
 
 			StringBuilder erros = new StringBuilder();

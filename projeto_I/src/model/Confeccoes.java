@@ -6,7 +6,6 @@ public class Confeccoes {
 	private int idConfeccoes;
 	private String nome;
 	private String cnpj;
-	private String servico;
 	private String responsavel;
 	private String endereco;
 	private String telefone;
@@ -14,15 +13,12 @@ public class Confeccoes {
 	
 	public Confeccoes(String nome, String cnpj, String responsavel, String endereco, String telefone, String email) {
 		super();
-
-	;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.responsavel = responsavel;
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.email = email;
-		this.servico = servico;
 	}
 	
 	public Confeccoes() {
@@ -89,14 +85,6 @@ public class Confeccoes {
 
 	public void setIdConfeccoes(int idConfeccoes) {
 		this.idConfeccoes = idConfeccoes;
-	}
-
-	public String getServico() {
-		return servico;
-	}
-
-	public void setServico(String servico) {
-		this.servico = servico;
 	}
 	
 	

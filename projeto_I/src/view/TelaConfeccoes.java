@@ -77,15 +77,15 @@ public class TelaConfeccoes extends JPanel {
 		btnCadastrarConfeccao.addActionListener(acao);
 	}
 	
-	public void addPanel2(Painel2 p2, String param) {
-		panel_2.add(p2, param);
-		
-	}
-	
 	public void limparPaineis() {
 		panel_2.removeAll();
 		panel_2.repaint();
-		panel_2.revalidate();}
+		panel_2.revalidate();
+	}
+	
+	public void addPanel(Painel p, String param) {
+		panel_2.add(p, param);
+	}
 	
 
 }

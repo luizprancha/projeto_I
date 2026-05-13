@@ -290,10 +290,8 @@ public class JFrame extends javax.swing.JFrame {
 		validate();
 		repaint();
 		menuBar.setVisible(true);
-		
-
-		
 	}
+	
 	public void esconderMenu() {
 		// TODO Auto-generated method stub
 		if (menuBar != null ) {
