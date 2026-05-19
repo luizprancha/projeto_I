@@ -10,7 +10,13 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaPedidosConfeccoes extends JPanel {
 
@@ -19,8 +25,10 @@ public class TelaPedidosConfeccoes extends JPanel {
 	private JTextField tfEntrega;
 	private JButton btnFinalizar;
 	private JTextField tfCNPJ;
-	private JTextField tfFormaPgmt;
-
+	private JTextField tfQtdePecas;
+	private JTextField tfValorTotal;
+	private JComboBox cbPgmt;
+	
 	/**
 	 * Create the panel.
 	 * @throws IOException 
@@ -74,9 +82,10 @@ public class TelaPedidosConfeccoes extends JPanel {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lblNewLabel_2, "cell 1 6");
 		
-		JLabel lbQuantidade = new JLabel("Quantidade de peças");
-		lbQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lbQuantidade, "cell 3 6");
+		tfQtdePecas = new JTextField();
+		tfQtdePecas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1.add(tfQtdePecas, "cell 3 6,growx");
+		tfQtdePecas.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -91,18 +100,19 @@ public class TelaPedidosConfeccoes extends JPanel {
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lblNewLabel_4, "cell 1 10");
 		
-		JLabel lbValor = new JLabel("valor");
-		lbValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(lbValor, "cell 3 10");
+		tfValorTotal = new JTextField();
+		tfValorTotal.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_1.add(tfValorTotal, "cell 3 10,growx");
+		tfValorTotal.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Forma de Pagamento:");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel_1.add(lblNewLabel_6, "cell 1 12");
 		
-		tfFormaPgmt = new JTextField();
-		tfFormaPgmt.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfFormaPgmt, "cell 3 12,growx");
-		tfFormaPgmt.setColumns(10);
+		cbPgmt = new JComboBox();
+		cbPgmt.setModel(new DefaultComboBoxModel(new String[] {"", "Boleto", "Pix", "Cartao Crédito", "Cartao Debito"}));
+		cbPgmt.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel_1.add(cbPgmt, "cell 3 12,growx");
 		
 		btnFinalizar = new JButton("Finalizar Pedido");
 		btnFinalizar.setBackground(new Color(235, 219, 194));
@@ -116,5 +126,31 @@ public class TelaPedidosConfeccoes extends JPanel {
 		public void finalizarPedido (ActionListener acao) {
 			btnFinalizar.addActionListener(acao);
 		}
+		
+		public String getConfeccao() {
+			return tfConfeccao.getText();
+		}
+		
+		public String getCNPJ() {
+			return tfCNPJ.getText();
+		}
+		
+		public int getQtdePecas() {
+			return Integer.parseInt(tfQtdePecas.getText()); 
+		}
+		
+		public LocalDate getDataEntrega() {
+		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		    return LocalDate.parse(tfEntrega.getText(), formatter);
+		}
+		
+		public double getValorTotal() {
+			return Double.parseDouble(tfValorTotal.getText());
+		}
+		
+		public String getFormaPgmt() {
+			return cbPgmt.getSelectedItem().toString();
+		}
+		
 
 }

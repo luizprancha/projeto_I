@@ -3,7 +3,7 @@ package controller;
 import model.PedidoConfeccaoDAO;
 import model.PedidosLojasDAO;
 import view.TelaCarrinhoLojas;
-import view.TelaPedidosConfeccoesAlterar;
+import view.TelaPedidosConfeccoesCadastrar;
 import view.TelaPedidosConfeccoesConfirmados;
 import view.TelaPedidosLojasAlterar;
 import view.TelaPedidosLojasConfirmados;

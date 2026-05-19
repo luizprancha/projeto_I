@@ -2,14 +2,14 @@ package controller;
 
 import model.PedidoConfeccaoDAO;
 import model.PedidosLojasDAO;
-import view.TelaPedidosConfeccoesAlterar;
+import view.TelaPedidosConfeccoesCadastrar;
 import view.TelaPedidosConfeccoesConfirmados;
 import view.TelaPedidosLojasAlterar;
 import view.TelaPedidosLojasConfirmados;
 
 public class PedidosConfeccoesAlterarController {
 	
-	private final TelaPedidosConfeccoesAlterar view;
+	private final TelaPedidosConfeccoesCadastrar view;
 	private final PedidoConfeccaoDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
@@ -20,7 +20,7 @@ public class PedidosConfeccoesAlterarController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public PedidosConfeccoesAlterarController(TelaPedidosConfeccoesAlterar view, PedidoConfeccaoDAO model, Navegador navegador) {
+	public PedidosConfeccoesAlterarController(TelaPedidosConfeccoesCadastrar view, PedidoConfeccaoDAO model, Navegador navegador) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
