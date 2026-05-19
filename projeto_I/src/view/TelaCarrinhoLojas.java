@@ -148,16 +148,11 @@ public class TelaCarrinhoLojas extends JPanel {
 		PainelArredondado panel_6 = new PainelArredondado();
 		panel_6.setBackground(new Color(255, 255, 255));
 		panel_1.add(panel_6, "cell 5 1,grow");
-		panel_6.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_6.setLayout(new MigLayout("", "[grow][grow][][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel_17 = new JLabel("Camisa");
 		panel_6.add(lblNewLabel_17, "cell 1 1,alignx center");
 		lblNewLabel_17.setFont(fonte2);
-		
-		
-		JLabel lblNewLabel_18 = new JLabel("Quantidade");
-		panel_6.add(lblNewLabel_18, "cell 1 2,alignx center");
-		lblNewLabel_18.setFont(fonte2);
 		
 		JButton btnNewButton_10 = new JButton("-");
 		panel_6.add(btnNewButton_10, "cell 0 4,alignx right");
@@ -167,8 +162,13 @@ public class TelaCarrinhoLojas extends JPanel {
 		panel_6.add(textField_5, "cell 1 4,growx");
 		textField_5.setColumns(10);
 		
+		
+		JLabel lblNewLabel_18 = new JLabel("Quantidade");
+		panel_6.add(lblNewLabel_18, "cell 2 4,alignx center");
+		lblNewLabel_18.setFont(fonte2);
+		
 		JButton btnNewButton_11 = new JButton("+");
-		panel_6.add(btnNewButton_11, "cell 2 4,alignx left");
+		panel_6.add(btnNewButton_11, "cell 3 4,alignx left");
 		
 		JLabel lblNewLabel_19 = new JLabel("Valor");
 		panel_6.add(lblNewLabel_19, "cell 1 6,alignx center");

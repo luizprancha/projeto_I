@@ -7,107 +7,140 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.BancoDeDados;
+
 public class CarrinhoDAO {
-	
-	public void adicionarLojas(Lojas lojas) {
-		String sql = "INSERT INTO carrinho(CNPJ, nome, responsavel, endereco, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
-		Connection conexao = null;
-		PreparedStatement pstm = null;
-		
-		try {
-			
-			conexao = database.BancoDeDados.conectar();
-			pstm = conexao.prepareStatement(sql);
-			pstm.setString(1, lojas.getCnpj());
-			pstm.setString(2, lojas.getNome());
-			pstm.setString(3, lojas.getResponsavel());
-			pstm.setString(4, lojas.getEndereco());
-			pstm.setString(5, lojas.getTelefone());
-			pstm.setString(6, lojas.getEmail());
-			
-			pstm.execute();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			database.BancoDeDados.desconectar(conexao);
-			if (pstm != null) {
-				try {
-					pstm.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	
-			public List<Lojas> listarLojas(){
-				String sql = "SELECT * FROM Lojas";
-				List<Lojas> loja = new ArrayList<>();
-				Connection conexao = null;
-				PreparedStatement pstm = null;
-				ResultSet rset = null;
-				
-				try {
-					conexao = database.BancoDeDados.conectar();
-					pstm = conexao.prepareStatement(sql);
-					rset = pstm.executeQuery();
-					
-					while(rset.next()) {
-						Lojas lojas = new Lojas();
-						lojas.setCnpj(rset.getString("CNPJ"));
-						lojas.setNome(rset.getString("nome"));
-						lojas.setResponsavel(rset.getString("responsavel"));
-						lojas.setEndereco(rset.getString("endereco"));
-						lojas.setTelefone(rset.getString("telefone"));
-						lojas.setEmail(rset.getString("email"));
-						loja.add(lojas);
-					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}finally {
-					database.BancoDeDados.desconectar(conexao);
-				}
-				return loja;
-			}
-			
 
-		    public void atualizarLojas(Lojas lojas) {
-		        String sql = "UPDATE Lojas SET CNPJ = ?, nome = ?, responsavel = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
-		        Connection conexao = null;
-		        PreparedStatement pstm = null;
+    /**
+     * Adiciona um novo item ao carrinho no banco de dados.
+     * @param carrinho Objeto contendo os dados do produto.
+     */
+    public void adicionarCarrinho(Carrinho carrinho) {
+        String sql = "INSERT INTO Carrinho(id_produto, nome_produto, preco, quantidade) VALUES (?, ?, ?, ?)";
+        Connection conexao = null;
+        PreparedStatement pstm = null;
 
-		        try {
-		            conexao = database.BancoDeDados.conectar();
-		            pstm = conexao.prepareStatement(sql);
-		            pstm.setString(1, lojas.getCnpj());
-		            pstm.setString(2, lojas.getNome());
-		            pstm.setString(3, lojas.getResponsavel());
-		            pstm.setString(4, lojas.getEndereco());
-		            pstm.setString(5, lojas.getTelefone());
-		            pstm.setString(6, lojas.getEmail());
-		            pstm.setInt(7, lojas.getIdLoja());
-		            pstm.executeUpdate();
-		        } catch (SQLException e) {
-		            e.printStackTrace();
-		        } finally {
-		        	database.BancoDeDados.desconectar(conexao);
-		        }
-		    }
-		    
-		    public static void removerLojas(int id) {
-		        String sql = "DELETE FROM Lojas WHERE id=?";
+        try {
+            conexao = BancoDeDados.conectar();
+            pstm = conexao.prepareStatement(sql);
+            pstm.setInt(1, carrinho.getIdProduto());
+            pstm.setString(2, carrinho.getNomeProduto());
+            pstm.setDouble(3, carrinho.getPreco());
+            pstm.setInt(4, carrinho.getQuantidade());
 
-		        try (Connection conn = database.BancoDeDados.conectar();
-		             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            pstm.execute();
 
-		            stmt.setInt(1, id);
-		            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BancoDeDados.desconectar(conexao);
+            if (pstm != null) {
+                try {
+                    pstm.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        }
-		    }
+    /**
+     * Lista todos os itens presentes na tabela Carrinho.
+     * @return Uma lista de objetos Carrinho.
+     */
+    public List<Carrinho> listarCarrinho() {
+        String sql = "SELECT * FROM Carrinho";
+        List<Carrinho> itensCarrinho = new ArrayList<>();
+        Connection conexao = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
 
+        try {
+            conexao = BancoDeDados.conectar();
+            pstm = conexao.prepareStatement(sql);
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+                Carrinho carrinho = new Carrinho();
+                carrinho.setIdCarrinho(rset.getInt("id_carrinho"));
+                carrinho.setIdProduto(rset.getInt("id_produto"));
+                carrinho.setNomeProduto(rset.getString("nome_produto"));
+                carrinho.setPreco(rset.getDouble("preco"));
+                carrinho.setQuantidade(rset.getInt("quantidade"));
+                itensCarrinho.add(carrinho);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BancoDeDados.desconectar(conexao);
+            if (pstm != null) {
+                try {
+                    pstm.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return itensCarrinho;
+    }
+
+    /**
+     * Atualiza os dados de um item já existente no carrinho.
+     * @param carrinho Objeto com os dados atualizados e o id_carrinho preenchido.
+     */
+    public void atualizarCarrinho(Carrinho carrinho) {
+        String sql = "UPDATE Carrinho SET id_produto = ?, nome_produto = ?, preco = ?, quantidade = ? WHERE id_carrinho = ?";
+        Connection conexao = null;
+        PreparedStatement pstm = null;
+
+        try {
+            conexao = BancoDeDados.conectar();
+            pstm = conexao.prepareStatement(sql);
+            pstm.setInt(1, carrinho.getIdProduto());
+            pstm.setString(2, carrinho.getNomeProduto());
+            pstm.setDouble(3, carrinho.getPreco());
+            pstm.setInt(4, carrinho.getQuantidade());
+            pstm.setInt(5, carrinho.getIdCarrinho());
+
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BancoDeDados.desconectar(conexao);
+            if (pstm != null) {
+                try {
+                    pstm.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * Remove um item do carrinho pelo seu ID.
+     * @param id O id_carrinho do item a ser removido.
+     */
+    public void removerCarrinho(int id) {
+        String sql = "DELETE FROM Carrinho WHERE id_carrinho = ?";
+
+        try (Connection conn = BancoDeDados.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
