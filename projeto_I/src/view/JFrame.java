@@ -147,7 +147,7 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
 		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
-		new MateriaPrimaController(telaMateriaPrima , materiaDAO ,  navegador);
+		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new DetalhesLojasController(telaDetalhesLojas, lojasDAO, navegador);
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 		
@@ -257,6 +257,15 @@ public class JFrame extends javax.swing.JFrame {
 		 itensMateriaPrima.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("MATERIA_PRIMA");
+				try {
+					materiaConf.recriarPaineis();
+				} catch (FontFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		 itemMateriaPrima.add(itensMateriaPrima);

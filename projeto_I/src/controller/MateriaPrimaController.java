@@ -11,6 +11,7 @@ import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import model.ProdutosDAO;
 import view.Painel2;
+import view.Painel4;
 import view.TelaMateriaPrima;
 import view.TelaProdutos;
 
@@ -63,14 +64,14 @@ public class MateriaPrimaController {
 		int coluna = 0;
 		
 		for(int i=0; i<lista.size(); i++) {
-			Confeccoes conf = lista.get(i);
-			Painel2 p2 = new Painel2(conf);
+			MateriaPrima materia = lista.get(i);
+			Painel4 p4 = new Painel4(materia);
 			if(coluna > 4) {
 				coluna = 0;
 				linha = linha + 2;
 			}
 			
-			p2.addMouseListener(new MouseAdapter() {
+			p4.addMouseListener(new MouseAdapter() {
 				
 				
 				@Override
@@ -80,7 +81,7 @@ public class MateriaPrimaController {
 					
 				}
 			});
-			this.view.addPanel2(p2, "cell "+coluna+" "+linha+",grow");
+			this.view.addPanel4(p4, "cell "+coluna+" "+linha+",grow");
 			coluna = coluna+2;
 			
 		
@@ -91,12 +92,12 @@ public class MateriaPrimaController {
 		
 	public void recriarPaineis() throws FontFormatException, IOException {
 		
-		List<Confeccoes> lista = model.listarConfeccoes();
+		List<MateriaPrima> lista = model.listarMateriasPrimas();
 		criarPaineis(lista);
 	}
 }
 
 
 
-}
+
 

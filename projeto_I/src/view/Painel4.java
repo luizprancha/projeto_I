@@ -31,13 +31,13 @@ public class Painel4 extends PainelArredondado {
 		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
 		).deriveFont(13f);
 		
-		JLabel lbNomeLoja = new JLabel(loja.getNome());
-		add(lbNomeLoja, "cell 1 1");
-		lbNomeLoja.setFont(fonte2);
+		JLabel lbNomeMateria = new JLabel(materia.getNome());
+		add(lbNomeMateria, "cell 1 1");
+		lbNomeMateria.setFont(fonte2);
 
-		JLabel lbCNPJ = new JLabel(loja.getCnpj());
-		add(lbCNPJ, "cell 1 2");
-		lbCNPJ.setFont(fonte2);
+		JLabel lbCor = new JLabel(materia.getCor());
+		add(lbCor, "cell 1 2");
+		lbCor.setFont(fonte2);
 		
 		
 
