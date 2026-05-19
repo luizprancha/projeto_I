@@ -97,17 +97,32 @@ public class LojasDAO {
 		    }
 		    
 		    public static void removerLojas(int id) {
-		        String sql = "DELETE FROM Lojas WHERE id=?";
 
-		        try (Connection conn = database.BancoDeDados.conectar();
-		             PreparedStatement stmt = conn.prepareStatement(sql)) {
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
 
-		            stmt.setInt(1, id);
-		            stmt.executeUpdate();
+		        try {
+
+		            conexao = database.BancoDeDados.conectar();
+
+		            // remove pedidos ligados à loja
+		            String sqlPedidos = "DELETE FROM PedidosLojas WHERE idPedidosL = ?";
+
+		            pstm = conexao.prepareStatement(sqlPedidos);
+		            pstm.setInt(1, id);
+		            pstm.executeUpdate();
+
+		            // remove a loja
+		            String sqlLoja = "DELETE FROM Lojas WHERE idLoja = ?";
+
+		            pstm = conexao.prepareStatement(sqlLoja);
+		            pstm.setInt(1, id);
+		            pstm.executeUpdate();
 
 		        } catch (Exception e) {
+
 		            e.printStackTrace();
+
 		        }
 		    }
-
 }

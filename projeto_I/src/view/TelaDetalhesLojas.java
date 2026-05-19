@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 
 import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
+import model.Confeccoes;
+import model.Lojas;
 import net.miginfocom.swing.MigLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +24,10 @@ public class TelaDetalhesLojas extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnEditar;
 	private JButton btnExcluir;
-	private int id;
+	private JLabel lbID;
+	private JLabel lbLoja;
+	private JLabel lbCNPJ;
+	private JLabel lbEndereco;
 
 	/**
 	 * Create the panel.
@@ -64,7 +69,7 @@ public class TelaDetalhesLojas extends JPanel {
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1,alignx left,growy");
 		
-		JLabel lbLoja = new JLabel("LOJA");
+		lbLoja = new JLabel("LOJA");
 		lbLoja.setFont(fonte2);
 		panel_1.add(lbLoja, "cell 3 1,alignx left,growy");
 		
@@ -72,7 +77,7 @@ public class TelaDetalhesLojas extends JPanel {
 		lblNewLabel_2.setFont(fonte2);
 		panel_1.add(lblNewLabel_2, "cell 1 3,alignx left,growy");
 		
-		JLabel lbCNPJ = new JLabel("CNPJ");
+		lbCNPJ = new JLabel("CNPJ");
 		lbCNPJ.setFont(fonte2);
 		panel_1.add(lbCNPJ, "cell 3 3,alignx left,growy");
 		
@@ -80,7 +85,7 @@ public class TelaDetalhesLojas extends JPanel {
 		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 5,alignx left,growy");
 		
-		JLabel lbID = new JLabel("ID");
+		lbID = new JLabel("ID");
 		lbID.setFont(fonte2);
 		panel_1.add(lbID, "cell 3 5,alignx left,growy");
 		
@@ -88,7 +93,7 @@ public class TelaDetalhesLojas extends JPanel {
 		lblNewLabel_4.setFont(fonte2);
 		panel_1.add(lblNewLabel_4, "cell 1 7,alignx left,growy");
 		
-		JLabel lbEndereco = new JLabel("ENDEREÇO");
+		lbEndereco = new JLabel("ENDEREÇO");
 		lbEndereco.setFont(fonte2);
 		panel_1.add(lbEndereco, "cell 3 7,alignx left,growy");
 		
@@ -98,7 +103,7 @@ public class TelaDetalhesLojas extends JPanel {
 		panel.add(btnExcluir, "cell 2 5,growx");
 		
 		btnEditar = new JButtonOutLine();
-		btnEditar.setText("Excluir");
+		btnEditar.setText("Editar");
 		btnEditar.setFont(fonte2);
 		panel.add(btnEditar, "cell 4 5,growx");
 
@@ -111,14 +116,16 @@ public class TelaDetalhesLojas extends JPanel {
 	public void editar (ActionListener acao) {
 		btnEditar.addActionListener(acao);
 	}
+	
+	public void setConfeccao(Lojas Lojas) {
 
-	public void setId(int id) {
-	    this.id = id;
+		lbLoja.setText(Lojas.getNome());
+		lbCNPJ.setText(Lojas.getCnpj());
+		lbID.setText(String.valueOf(Lojas.getIdLoja()));
+		lbEndereco.setText(Lojas.getEndereco());
 	}
-
-	public int getId() {
-	    return id;
-	}
+	
+	
 	
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
 		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);

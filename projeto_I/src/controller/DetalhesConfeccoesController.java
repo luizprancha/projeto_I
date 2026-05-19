@@ -5,9 +5,6 @@ import java.io.IOException;
 
 import model.Confeccoes;
 import model.ConfeccoesDAO;
-import model.Produtos;
-import model.ProdutosDAO;
-import view.TelaDetalheProduto;
 import view.TelaDetalhesConfeccoes;
 
 public class DetalhesConfeccoesController {

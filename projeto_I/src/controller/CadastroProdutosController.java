@@ -28,6 +28,7 @@ public class CadastroProdutosController {
 		this.navegador = navegador;
 
 		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
+		
 		view.cadastrarProduto(e -> {
 			String nomeProduto = view.getNomeProduto().trim();
 			String tipoProduto = view.getTipoProduto().trim();

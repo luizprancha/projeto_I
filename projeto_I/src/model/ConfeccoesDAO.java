@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.BancoDeDados;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 
 public class ConfeccoesDAO {
 	
@@ -76,7 +81,7 @@ public class ConfeccoesDAO {
 			
 
 		    public void atualizarConfeccoes(Confeccoes confeccao) {
-		        String sql = "UPDATE Confeccoes SET CNPJ = ?, nome = ?, responsavel = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
+		        String sql = "UPDATE Confeccoes SET CNPJ = ?, nome = ?, responsavel = ?, endereco = ?, telefone = ?, email = ? WHERE idConfeccoes = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
@@ -99,18 +104,32 @@ public class ConfeccoesDAO {
 		    }
 		    
 		    public static void removerConfeccoes(int id) {
-		        String sql = "DELETE FROM Confeccoes WHERE idConfeccoes=?";
 
-		        try (Connection conn = database.BancoDeDados.conectar();
-		             PreparedStatement stmt = conn.prepareStatement(sql)) {
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
 
-		            stmt.setInt(1, id);
-		            System.out.println(stmt);
-		            int res = stmt.executeUpdate();
+		        try {
 
-		            System.out.println(res);
+		            conexao = database.BancoDeDados.conectar();
+
+		            // remove pedidos ligados à confecção
+		            String sqlPedidos = "DELETE FROM PedidosConfeccoes WHERE idPedidoC = ?";
+
+		            pstm = conexao.prepareStatement(sqlPedidos);
+		            pstm.setInt(1, id);
+		            pstm.executeUpdate();
+
+		            // remove a confecção
+		            String sqlConfeccao = "DELETE FROM Confeccoes WHERE idConfeccoes = ?";
+
+		            pstm = conexao.prepareStatement(sqlConfeccao);
+		            pstm.setInt(1, id);
+		            pstm.executeUpdate();
+
 		        } catch (Exception e) {
+
 		            e.printStackTrace();
+
 		        }
 		    }
 
