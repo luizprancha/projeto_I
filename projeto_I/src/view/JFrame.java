@@ -17,8 +17,8 @@ import controller.CadastroController;
 import controller.CadastroLojaController;
 import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
+import controller.CarrinhoLojasController;
 import controller.ConfeccaoController;
-import controller.DetalhesLojasController;
 import controller.LoginController;
 import controller.LojasController;
 import controller.MateriaPrimaController;
@@ -26,6 +26,7 @@ import controller.Navegador;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
+import model.CarrinhoDAO;
 import model.ConfeccoesDAO;
 import model.MateriaPrimaDAO;
 import model.PedidoConfeccaoDAO;
@@ -35,8 +36,7 @@ import model.UsuarioDAO;
 import model.LojasDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
+
 
 public class JFrame extends javax.swing.JFrame {
 
@@ -44,6 +44,7 @@ public class JFrame extends javax.swing.JFrame {
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 	protected JMenuBar menuBar;
+	private CarrinhoLojasController carrinhocont;
 	
 	public JMenuItem itemNotificacao;
 
@@ -80,6 +81,7 @@ public class JFrame extends javax.swing.JFrame {
 		LojasDAO lojasDAO = new LojasDAO();
 		MateriaPrimaDAO materiaDAO = new MateriaPrimaDAO();
 		PedidoConfeccaoDAO pedidoconfeccaoDAO = new PedidoConfeccaoDAO();
+		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -136,6 +138,9 @@ public class JFrame extends javax.swing.JFrame {
 		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
 		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
 		
+		TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
+		adicionarTela("CARRINHO", telaCarrinho);
+		
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
@@ -149,6 +154,7 @@ public class JFrame extends javax.swing.JFrame {
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
+	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador );
 		
 		
 		mostrarTela("LOGIN");
