@@ -3,6 +3,7 @@ package controller;
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaDetalheProduto;
+import view.TelaProdutos;
 
 public class DetalhesProdutosController {
 
@@ -47,8 +48,28 @@ public class DetalhesProdutosController {
                 "Produto excluído!",
                 1
             );
+            
+            try {
 
-            navegador.navegarPara("PRODUTOS");
+                TelaProdutos telaProdutos = new TelaProdutos();
+
+                ProdutosController controller = new ProdutosController(
+                    telaProdutos,
+                    model,
+                    navegador
+                );
+
+                controller.recriarPaineis();
+
+                navegador.adicionarPainel("PRODUTO", telaProdutos);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            
+         
+
+            navegador.navegarPara("PRODUTO");
 
         });
 
