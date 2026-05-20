@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Botao.JButtonOutLine;
@@ -130,6 +131,10 @@ public void addPanel5(Painel5 p5, String param) {
 	    panel_5.repaint();
 
 	    panel_5.revalidate();
+	}
+	
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
 	}
 
 }

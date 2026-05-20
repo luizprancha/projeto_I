@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.List;
 import model.Carrinho;
 import model.CarrinhoDAO;
+import model.ProdutosDAO;
 import view.Painel5;
 import view.TelaCarrinhoLojas;
+import view.TelaProdutos;
 
 
 public class CarrinhoLojasController {
@@ -15,6 +17,8 @@ public class CarrinhoLojasController {
 	private final  CarrinhoDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	
+	private final Carrinho carrinho;
 
 	/**
 	 * Construtor da classe
@@ -36,6 +40,44 @@ public class CarrinhoLojasController {
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
+        
+        this.view.excluir(e -> {
+
+            try {
+
+                int id = carrinho.getIdCarrinho();
+
+                ProdutosDAO.removerProdutos(id);
+
+                view.exibirMensagem(
+                    "Sucesso",
+                    "Produto excluído!",
+                    1
+                );
+
+                TelaCarrinhoLojas telaCarrinhoLojas = new TelaCarrinhoLojas();
+
+                CarrinhoLojasController controller = new CarrinhoLojasController(
+                    telaCarrinhoLojas,
+                    model,
+                    navegador
+                );
+
+                controller.recriarPaineis();
+
+                navegador.adicionarPainel("PRODUTO", tela);
+
+                navegador.navegarPara("PRODUTO");
+
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        });
+
+      
 
       
 
@@ -73,13 +115,11 @@ public class CarrinhoLojasController {
         this.view.revalidate();
         this.view.repaint();
     }
-    
-
-
 
     public void recriarPaineis() throws FontFormatException, IOException {
     		List<Carrinho> lista = model.listarCarrinho();
     		criarPaineis(lista);
     	}
-
+    
+	
 }
