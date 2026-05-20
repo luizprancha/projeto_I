@@ -14,121 +14,108 @@ import view.TelaLojas;
 
 public class LojasController {
 
-	private final TelaLojas view;
-	private final LojasDAO model;
-	private final Navegador navegador;
+    private final TelaLojas view;
+    private final LojasDAO model;
+    private final Navegador navegador;
 
-	/**
-	 * Construtor da classe
-	 * @param view Referência à tela que controla.
-	 * @param model Referência ao modelo de dados.
-	 * @param navegador Responsável pela navegação.
-	 */
-	public LojasController(
-			TelaLojas view,
-			LojasDAO model,
-			Navegador navegador) {
+    public LojasController(
+            TelaLojas view,
+            LojasDAO model,
+            Navegador navegador) {
 
-		this.view = view;
-		this.model = model;
-		this.navegador = navegador;
+        this.view = view;
+        this.model = model;
+        this.navegador = navegador;
 
-		List<Lojas> lista = model.listarLojas();
+        List<Lojas> lista = model.listarLojas();
 
-		try {
+        try {
+            criarPaineis(lista);
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
-			criarPaineis(lista);
+        // Botão nova loja
+        this.view.novaLoja(e -> {
 
-		} catch (FontFormatException e) {
+            this.navegador.navegarPara("CADASTRO_LOJAS");
 
-			e.printStackTrace();
+        });
 
-		} catch (IOException e) {
+    }
 
-			e.printStackTrace();
-		}
+    public void criarPaineis(List<Lojas> lista)
+            throws FontFormatException, IOException {
 
-		// NOVA LOJA
-		this.view.novaLoja(e -> {
+        this.view.limparPaineis();
 
-			this.navegador.navegarPara(
-				"CADASTRO_LOJAS"
-			);
+        int linha = 0;
+        int coluna = 0;
 
-		});
-	}
+        for (int i = 0; i < lista.size(); i++) {
 
-	public void criarPaineis(List<Lojas> lista)
-			throws FontFormatException, IOException {
+            Lojas loja = lista.get(i);
 
-		this.view.limparPaineis();
+            Painel3 p3 = new Painel3(loja);
 
-		int linha = 0;
-		int coluna = 0;
+            if (coluna > 4) {
+                coluna = 0;
+                linha = linha + 2;
+            }
 
-		for (int i = 0; i < lista.size(); i++) {
+            p3.addMouseListener(new MouseAdapter() {
 
-			Lojas loja = lista.get(i);
+                @Override
+                public void mouseClicked(MouseEvent e) {
 
-			Painel3 p3 = new Painel3(loja);
+                    try {
 
-			if (coluna > 4) {
+                        TelaDetalhesLojas telaDetalhe =
+                                new TelaDetalhesLojas();
 
-				coluna = 0;
-				linha = linha + 2;
-			}
+                        new DetalhesLojasController(
+                                telaDetalhe,
+                                model,
+                                navegador,
+                                loja,
+                                LojasController.this
+                        );
 
-			p3.addMouseListener(new MouseAdapter() {
+                        LojasController.this.navegador.adicionarPainel(
+                                "DETALHES_LOJAS",
+                                telaDetalhe
+                        );
 
-				@Override
-				public void mouseClicked(MouseEvent e) {
+                        LojasController.this.navegador.navegarPara(
+                                "DETALHES_LOJAS"
+                        );
 
-					try {
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
 
-						System.out.println("Painel clicado!");
+                }
+            });
 
-						TelaDetalhesLojas telaDetalhes =
-								new TelaDetalhesLojas();
+            this.view.addPanel3(
+                    p3,
+                    "cell " + coluna + " " + linha + ",grow"
+            );
 
-						// PASSA A LOJA COMPLETA
-						telaDetalhes.setConfeccao(loja);
+            coluna = coluna + 2;
 
-						new DetalhesLojasController(
-								telaDetalhes,
-								model,
-								navegador
-						);
+            this.view.revalidate();
+            this.view.repaint();
+        }
 
-						navegador.adicionarPainel(
-								"DETALHES_LOJAS",
-								telaDetalhes
-						);
+    }
 
-						navegador.navegarPara(
-								"DETALHES_LOJAS"
-						);
+    public void recriarPaineis()
+            throws FontFormatException, IOException {
 
-					} catch (Exception ex) {
+        List<Lojas> lista = model.listarLojas();
 
-						ex.printStackTrace();
-					}
-				}
-			});
+        criarPaineis(lista);
+    }
 
-			this.view.addPanel3(
-					p3,
-					"cell " + coluna + " " + linha + ",grow"
-			);
-
-			coluna = coluna + 2;
-		}
-	}
-
-	public void recriarPaineis()
-			throws FontFormatException, IOException {
-
-		List<Lojas> lista = model.listarLojas();
-
-		criarPaineis(lista);
-	}
 }

@@ -1,61 +1,72 @@
 package controller;
 
+import java.awt.FontFormatException;
+import java.io.IOException;
+
+import model.Lojas;
 import model.LojasDAO;
 import view.TelaDetalhesLojas;
 
 public class DetalhesLojasController {
 
-	private final TelaDetalhesLojas view;
-	private final LojasDAO model;
-	private final Navegador navegador;
+    private final TelaDetalhesLojas view;
+    private final LojasDAO model;
+    private final Navegador navegador;
+    private final LojasController lojasController;
+    private Lojas loja;
 
-	public DetalhesLojasController(
-			TelaDetalhesLojas view,
-			LojasDAO model,
-			Navegador navegador) {
+    public DetalhesLojasController(
+            TelaDetalhesLojas view,
+            LojasDAO model,
+            Navegador navegador,
+            Lojas loja,
+            LojasController lojasController) {
 
-		this.view = view;
-		this.model = model;
-		this.navegador = navegador;
+        this.view = view;
+        this.model = model;
+        this.navegador = navegador;
+        this.loja = loja;
+        this.lojasController = lojasController;
 
-		// EXCLUIR
-		this.view.excluir(e -> {
+        carregarDados();
+        configurarEventos();
+    }
 
-			try {
+    private void carregarDados() {
 
-				int id = lojas.getIdLoja();
+        view.setLojas(loja);
 
-				LojasDAO.removerLojas(id);
+    }
 
-				view.exibirMensagem(
-					"Sucesso",
-					"Loja excluída!",
-					1
-				);
+    private void configurarEventos() {
 
-				navegador.navegarPara(
-					"LOJAS"
-				);
+        this.view.excluir(e -> {
 
-			} catch (Exception ex) {
+            int id = loja.getIdLoja();
 
-				ex.printStackTrace();
+            LojasDAO.removerLojas(id);
 
-				view.exibirMensagem(
-					"Erro",
-					"Erro ao excluir loja!",
-					0
-				);
-			}
-		});
+            view.exibirMensagem(
+                "Sucesso",
+                "Loja excluída!",
+                1
+            );
 
-		// EDITAR
-		this.view.editar(e -> {
+            navegador.navegarPara("LOJAS");
 
-			this.navegador.navegarPara(
-				"CADASTRO_LOJA"
-			);
+            try {
+                lojasController.recriarPaineis();
+            } catch (FontFormatException | IOException e1) {
+                e1.printStackTrace();
+            }
 
-		});
-	}
+        });
+
+        this.view.editar(e -> {
+
+            navegador.navegarPara("CADASTRO_LOJAS");
+
+        });
+
+    }
 }
