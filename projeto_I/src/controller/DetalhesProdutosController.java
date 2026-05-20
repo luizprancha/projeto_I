@@ -44,37 +44,33 @@ public class DetalhesProdutosController {
                 int id = produto.getIdProduto();
                 ProdutosDAO.removerProdutos(id);
 
-                view.exibirMensagem(
-                    "Sucesso",
-                    "Produto excluído!",
-                    1
-                );
+            view.exibirMensagem(
+                "Sucesso",
+                "Produto excluído!",
+                1
+            );
+            
+            try {
 
-                // recria a tela produtos
                 TelaProdutos telaProdutos = new TelaProdutos();
 
                 ProdutosController controller = new ProdutosController(
                     telaProdutos,
-                    new ProdutosDAO(),
+                    model,
                     navegador
                 );
 
-                navegador.adicionarPainel(
-                    "PRODUTOS",
-                    telaProdutos
-                );
+                controller.recriarPaineis();
 
-                navegador.navegarPara("PRODUTOS");
+                navegador.adicionarPainel("PRODUTO", telaProdutos);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
-
-                view.exibirMensagem(
-                    "Erro",
-                    "Erro ao excluir produto!",
-                    0
-                );
             }
+            
+         
+
+            navegador.navegarPara("PRODUTO");
 
         });
 

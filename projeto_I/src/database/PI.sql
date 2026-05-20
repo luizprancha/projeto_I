@@ -61,10 +61,10 @@ CREATE TABLE PedidosConfeccoes (
 
 CREATE TABLE MateriaPrima (
 	idMateriaPrima INT AUTO_INCREMENT PRIMARY KEY,
-	NomeTecido VARCHAR(20) NOT NULL,
+	nome VARCHAR(20) NOT NULL,
 	cor VARCHAR(20) NOT NULL,
 	quantidade INT NOT NULL,
-	tipo INT NOT NULL
+	tipo VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE PedidosConfeccoes_Produtos (
