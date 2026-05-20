@@ -117,12 +117,12 @@ public class TelaDetalhesLojas extends JPanel {
 		btnEditar.addActionListener(acao);
 	}
 	
-	public void setLojas(Lojas Lojas) {
+	public void setLojas(Lojas lojas) {
 
-		lbLoja.setText(Lojas.getNome());
-		lbCNPJ.setText(Lojas.getCnpj());
-		lbID.setText(String.valueOf(Lojas.getIdLoja()));
-		lbEndereco.setText(Lojas.getEndereco());
+		lbLoja.setText(lojas.getNome());
+		lbCNPJ.setText(lojas.getCnpj());
+		lbID.setText(String.valueOf(lojas.getIdLoja()));
+		lbEndereco.setText(lojas.getEndereco());
 	}
 	
 	
