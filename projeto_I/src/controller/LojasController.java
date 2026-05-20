@@ -17,6 +17,7 @@ public class LojasController {
     private final TelaLojas view;
     private final LojasDAO model;
     private final Navegador navegador;
+    
 
     public LojasController(
             TelaLojas view,

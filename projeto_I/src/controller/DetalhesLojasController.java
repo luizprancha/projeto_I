@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import model.Lojas;
 import model.LojasDAO;
+import view.TelaAlterarLoja;
 import view.TelaDetalhesLojas;
 
 public class DetalhesLojasController {
@@ -64,7 +65,24 @@ public class DetalhesLojasController {
 
         this.view.editar(e -> {
 
-            navegador.navegarPara("CADASTRO_LOJAS");
+            try {
+
+                TelaAlterarLoja tela = new TelaAlterarLoja();
+
+                new AlterarLojaController(
+                        tela,
+                        model,
+                        navegador,
+                        loja, 
+                        lojasController
+                );
+
+                navegador.adicionarPainel("ALTERAR_LOJA", tela);
+                navegador.navegarPara("ALTERAR_LOJA");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
         });
 
