@@ -23,7 +23,7 @@ public class TelaDetalhesConfeccoes extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnExcluir;
 	private JButton btnEditar;
-	private JLabel lbNomeLoja;
+	private JLabel lbNomeConfeccao;
 	private JLabel lbCNPJ;
 	private JLabel lbID;
 	private JLabel lbEndereco;
@@ -71,9 +71,9 @@ public class TelaDetalhesConfeccoes extends JPanel {
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1,alignx left,growy");
 		
-		lbNomeLoja = new JLabel("LOJA");
-		lbNomeLoja.setFont(fonte2);
-		panel_1.add(lbNomeLoja, "cell 3 1,alignx left,growy");
+		lbNomeConfeccao = new JLabel("LOJA");
+		lbNomeConfeccao.setFont(fonte2);
+		panel_1.add(lbNomeConfeccao, "cell 3 1,alignx left,growy");
 		
 		JLabel lblNewLabel_2 = new JLabel("CNPJ:");
 		lblNewLabel_2.setFont(fonte2);
@@ -121,7 +121,7 @@ public class TelaDetalhesConfeccoes extends JPanel {
 	
 	public void setConfeccao(Confeccoes confeccao) {
 
-		lbNomeLoja.setText(confeccao.getNome());
+		lbNomeConfeccao.setText(confeccao.getNome());
 		lbCNPJ.setText(confeccao.getCnpj());
 		lbID.setText(String.valueOf(confeccao.getIdConfeccoes()));
 		lbEndereco.setText(confeccao.getEndereco());

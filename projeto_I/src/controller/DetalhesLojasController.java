@@ -1,54 +1,72 @@
 package controller;
 
-import model.ConfeccoesDAO;
+import java.awt.FontFormatException;
+import java.io.IOException;
+
 import model.Lojas;
 import model.LojasDAO;
-import model.ProdutosDAO;
-import view.TelaConfeccoes;
 import view.TelaDetalhesLojas;
-import view.TelaProdutos;
 
 public class DetalhesLojasController {
-	
-	private final TelaDetalhesLojas view;
-	private final LojasDAO model;
-	@SuppressWarnings("unused")
-	private final Navegador navegador;
-	
-	Lojas loja = new Lojas();
 
-	/**
-	 * Construtor da classe
-	 * @param view Referência à tela que controla (TelaCadastroProdutos).
-	 * @param model Referência ao modelo de dados (ProdutosDAO).
-	 * @param navegador Referência ao elemento que faz a transição de telas.
-	 */
-	public DetalhesLojasController(TelaDetalhesLojas view, LojasDAO model, Navegador navegador) {
-		this.view = view;
-		this.model = model;
-		this.navegador = navegador;
+    private final TelaDetalhesLojas view;
+    private final LojasDAO model;
+    private final Navegador navegador;
+    private final LojasController lojasController;
+    private Lojas loja;
 
-		//Define o que será executado quando o botão 'Cadastrar Produto' da TelaProdutos for clicado.
-		view.setId(loja.getIdLoja());
-		this.view.excluir(e -> {
-		    int id = view.getId();
+    public DetalhesLojasController(
+            TelaDetalhesLojas view,
+            LojasDAO model,
+            Navegador navegador,
+            Lojas loja,
+            LojasController lojasController) {
 
-		    model.removerLojas(id);
+        this.view = view;
+        this.model = model;
+        this.navegador = navegador;
+        this.loja = loja;
+        this.lojasController = lojasController;
 
-		    view.exibirMensagem("Sucesso", "Loja excluída!", 1);
-		    navegador.navegarPara("LOJAS");
-		});
-		
-		this.view.editar(e -> {
-			
-			this.navegador.navegarPara("CADASTRO_CONFECCAO");
-			
-		});
-	
-	
+        carregarDados();
+        configurarEventos();
+    }
 
-	}
+    private void carregarDados() {
 
+        view.setLojas(loja);
+
+    }
+
+    private void configurarEventos() {
+
+        this.view.excluir(e -> {
+
+            int id = loja.getIdLoja();
+
+            LojasDAO.removerLojas(id);
+
+            view.exibirMensagem(
+                "Sucesso",
+                "Loja excluída!",
+                1
+            );
+
+            navegador.navegarPara("LOJAS");
+
+            try {
+                lojasController.recriarPaineis();
+            } catch (FontFormatException | IOException e1) {
+                e1.printStackTrace();
+            }
+
+        });
+
+        this.view.editar(e -> {
+
+            navegador.navegarPara("CADASTRO_LOJAS");
+
+        });
+
+    }
 }
-
-

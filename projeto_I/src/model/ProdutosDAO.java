@@ -75,7 +75,7 @@ public class ProdutosDAO {
 			
 
 		    public void atualizarProdutos(Produtos produto) {
-		        String sql = "UPDATE Produtos SET nome = ?, tamanho = ?, cor = ?, qtde_estoque = ?, preco = ?, tipo_produto = ? WHERE id = ?";
+		        String sql = "UPDATE Produtos SET nome = ?, tamanho = ?, cor = ?, qtde_estoque = ?, preco = ?, tipo_produto = ? WHERE idProdutos = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 

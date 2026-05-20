@@ -3,6 +3,7 @@ package controller;
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaDetalheProduto;
+import view.TelaProdutos;
 
 public class DetalhesProdutosController {
 
@@ -38,17 +39,42 @@ public class DetalhesProdutosController {
 
         this.view.excluirProduto(e -> {
 
-            int id = produto.getIdProduto();
+            try {
 
-            ProdutosDAO.removerProdutos(id);
+                int id = produto.getIdProduto();
+                ProdutosDAO.removerProdutos(id);
 
-            view.exibirMensagem(
-                "Sucesso",
-                "Produto excluído!",
-                1
-            );
+                view.exibirMensagem(
+                    "Sucesso",
+                    "Produto excluído!",
+                    1
+                );
 
-            navegador.navegarPara("PRODUTOS");
+                // recria a tela produtos
+                TelaProdutos telaProdutos = new TelaProdutos();
+
+                ProdutosController controller = new ProdutosController(
+                    telaProdutos,
+                    new ProdutosDAO(),
+                    navegador
+                );
+
+                navegador.adicionarPainel(
+                    "PRODUTOS",
+                    telaProdutos
+                );
+
+                navegador.navegarPara("PRODUTOS");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+                view.exibirMensagem(
+                    "Erro",
+                    "Erro ao excluir produto!",
+                    0
+                );
+            }
 
         });
 
