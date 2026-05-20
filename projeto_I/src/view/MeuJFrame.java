@@ -17,6 +17,7 @@ import controller.CadastroController;
 import controller.CadastroLojaController;
 import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
+import controller.CarrinhoLojasController;
 import controller.ConfeccaoController;
 import controller.LoginController;
 import controller.LojasController;
@@ -25,6 +26,7 @@ import controller.Navegador;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
+import model.CarrinhoDAO;
 import model.ConfeccoesDAO;
 import model.MateriaPrimaDAO;
 import model.PedidoConfeccaoDAO;
@@ -41,6 +43,7 @@ public class MeuJFrame extends JFrame {
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 	protected JMenuBar menuBar;
+	private CarrinhoLojasController carrinhocont;
 	
 	public JMenuItem itemNotificacao;
 
@@ -84,6 +87,7 @@ public class MeuJFrame extends JFrame {
 		LojasDAO lojasDAO = new LojasDAO();
 		MateriaPrimaDAO materiaDAO = new MateriaPrimaDAO();
 		PedidoConfeccaoDAO pedidoconfeccaoDAO = new PedidoConfeccaoDAO();
+		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -140,6 +144,9 @@ public class MeuJFrame extends JFrame {
 		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
 		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
 		
+		TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
+		adicionarTela("CARRINHO", telaCarrinho);
+		
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
@@ -153,6 +160,7 @@ public class MeuJFrame extends JFrame {
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
+	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador );
 		
 		
 		mostrarTela("LOGIN");

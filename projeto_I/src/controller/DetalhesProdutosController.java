@@ -1,7 +1,10 @@
 package controller;
 
+import model.Carrinho;
+import model.CarrinhoDAO;
 import model.Produtos;
 import model.ProdutosDAO;
+import view.TelaCarrinhoLojas;
 import view.TelaDetalheProduto;
 import view.TelaProdutos;
 
@@ -77,6 +80,52 @@ public class DetalhesProdutosController {
 
             navegador.navegarPara("CADASTRO_PRODUTO");
 
+        });
+        
+        this.view.adicionarProduto(e -> {
+        	
+        	 Carrinho carrinho = new Carrinho();
+
+        	    carrinho.setIdProduto(produto.getIdProduto());
+
+        	    carrinho.setNomeProduto(produto.getNome());
+
+        	    carrinho.setPreco(produto.getPreco());
+
+        	    carrinho.setQuantidade(1);
+
+        	    CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+
+        	    carrinhoDAO.adicionarCarrinho(carrinho);
+        	    
+        	    try {
+
+        	        TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
+
+        	        CarrinhoLojasController controller =
+        	            new CarrinhoLojasController(
+        	                telaCarrinho,
+        	                carrinhoDAO,
+        	                navegador
+        	            );
+
+        	        controller.recriarPaineis();
+
+        	        navegador.adicionarPainel(
+        	            "CARRINHO",
+        	            telaCarrinho
+        	        );
+
+        	    } catch (Exception ex) {
+
+        	        ex.printStackTrace();
+
+        	    }
+
+        	   
+
+        	  navegador.navegarPara("CARRINHO");
+        	
         });
 
     }
