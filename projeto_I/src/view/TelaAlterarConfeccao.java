@@ -18,7 +18,7 @@ import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class TelaCadastroConfeccao extends JPanel {
+public class TelaAlterarConfeccao extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfResponsavel;
@@ -34,7 +34,7 @@ public class TelaCadastroConfeccao extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaCadastroConfeccao() throws FontFormatException, IOException {
+	public TelaAlterarConfeccao() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 				JPanel panel = new JPanel();
@@ -53,7 +53,7 @@ public class TelaCadastroConfeccao extends JPanel {
 		).deriveFont(18f);
 		
 		
-		JLabel lblNewLabel = new JLabel("Cadastro Confecção");
+		JLabel lblNewLabel = new JLabel("Editar Confecção");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1 3 1,alignx center,growy");
 		lblNewLabel.setFont(fonte);
@@ -115,7 +115,7 @@ public class TelaCadastroConfeccao extends JPanel {
 		tfEmail.setColumns(10);
 		
 		btnCadastrarConfeccao = new JButtonOutLine();
-		btnCadastrarConfeccao.setText("Cadastrar Confecção");
+		btnCadastrarConfeccao.setText("Confirmar Edição");
 		btnCadastrarConfeccao.setFont(fonte2);
 		panel.add(btnCadastrarConfeccao, "cell 2 5,growx,aligny center");
 

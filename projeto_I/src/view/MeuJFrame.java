@@ -4,21 +4,20 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FontFormatException;
+import java.awt.Toolkit;
 import java.io.IOException;
-
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
 import controller.CadastroLojaController;
 import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
 import controller.ConfeccaoController;
-import controller.DetalhesLojasController;
 import controller.LoginController;
 import controller.LojasController;
 import controller.MateriaPrimaController;
@@ -35,10 +34,8 @@ import model.UsuarioDAO;
 import model.LojasDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
 
-public class JFrame extends javax.swing.JFrame {
+public class MeuJFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -50,7 +47,7 @@ public class JFrame extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
-				JFrame frame = new JFrame();
+				MeuJFrame frame = new MeuJFrame();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -58,9 +55,16 @@ public class JFrame extends javax.swing.JFrame {
 		});
 	}
 
-	public JFrame() throws FontFormatException, IOException {
+	public MeuJFrame() throws FontFormatException, IOException {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MeuJFrame.class.getResource("/imagem/logo.png")));
 		setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 675);
+		setTitle("Nó de Estoque");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 
 		setLocationRelativeTo(null);
 		 
