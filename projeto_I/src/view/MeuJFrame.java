@@ -12,6 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import controller.AlterarLojaController;
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
 import controller.CadastroLojaController;
@@ -144,9 +145,10 @@ public class MeuJFrame extends JFrame {
 		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
 		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
 		
+		TelaAlterarLoja telaAlterarLoja = new TelaAlterarLoja();
+		adicionarTela("ALTERAR_LOJA", telaAlterarLoja);
 		TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
 		adicionarTela("CARRINHO", telaCarrinho);
-		
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
@@ -161,7 +163,6 @@ public class MeuJFrame extends JFrame {
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador );
-		
 		
 		mostrarTela("LOGIN");
 		
