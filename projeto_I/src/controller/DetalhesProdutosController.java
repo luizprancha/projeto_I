@@ -30,7 +30,7 @@ public class DetalhesProdutosController {
     }
 
     private void carregarDados() {
-    	
+
         view.setProduto(produto);
 
     }
@@ -42,15 +42,14 @@ public class DetalhesProdutosController {
             try {
 
                 int id = produto.getIdProduto();
+
                 ProdutosDAO.removerProdutos(id);
 
-            view.exibirMensagem(
-                "Sucesso",
-                "Produto excluído!",
-                1
-            );
-            
-            try {
+                view.exibirMensagem(
+                    "Sucesso",
+                    "Produto excluído!",
+                    1
+                );
 
                 TelaProdutos telaProdutos = new TelaProdutos();
 
@@ -64,13 +63,13 @@ public class DetalhesProdutosController {
 
                 navegador.adicionarPainel("PRODUTO", telaProdutos);
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            
-         
+                navegador.navegarPara("PRODUTO");
 
-            navegador.navegarPara("PRODUTO");
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+
+            }
 
         });
 
