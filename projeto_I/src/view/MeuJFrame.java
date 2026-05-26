@@ -27,6 +27,7 @@ import controller.Navegador;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.ProdutosController;
+import model.Carrinho;
 import model.CarrinhoDAO;
 import model.ConfeccoesDAO;
 import model.MateriaPrimaDAO;
@@ -45,6 +46,7 @@ public class MeuJFrame extends JFrame {
 	private CardLayout cardLayout;
 	protected JMenuBar menuBar;
 	private CarrinhoLojasController carrinhocont;
+	private Carrinho carrinho;
 	
 	public JMenuItem itemNotificacao;
 
@@ -162,7 +164,7 @@ public class MeuJFrame extends JFrame {
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
-	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador );
+	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador, carrinho );
 		
 		mostrarTela("LOGIN");
 		

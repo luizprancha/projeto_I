@@ -106,7 +106,7 @@ public class DetalhesProdutosController {
         	            new CarrinhoLojasController(
         	                telaCarrinho,
         	                carrinhoDAO,
-        	                navegador
+        	                navegador, carrinho
         	            );
 
         	        controller.recriarPaineis();
