@@ -61,7 +61,8 @@ public class CarrinhoLojasController {
                 CarrinhoLojasController controller = new CarrinhoLojasController(
                     telaCarrinhoLojas,
                     model,
-                    navegador, carrinho
+                    navegador, 
+                    carrinho
                 );
 
                 controller.recriarPaineis();
