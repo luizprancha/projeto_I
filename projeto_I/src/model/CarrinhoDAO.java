@@ -15,7 +15,7 @@ public class CarrinhoDAO {
      * Adiciona um novo item ao carrinho no banco de dados.
      * @param carrinho Objeto contendo os dados do produto.
      */
-    public void adicionarCarrinho(Carrinho carrinho) {
+    public void adicionarCarrinho(Carrinho carrinho) throws SQLException  {
         String sql = "INSERT INTO Carrinho( id_produto,id_carrinho, nome_produto, preco, quantidade) VALUES (?, ?, ?, ?, ?)";
         Connection conexao = null;
         PreparedStatement pstm = null;
@@ -31,17 +31,13 @@ public class CarrinhoDAO {
 
             pstm.execute();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         } finally {
-            BancoDeDados.desconectar(conexao);
+
             if (pstm != null) {
-                try {
-                    pstm.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                pstm.close();
             }
+
+            BancoDeDados.desconectar(conexao);
         }
     }
 

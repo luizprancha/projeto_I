@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.SQLException;
+
 import model.Carrinho;
 import model.CarrinhoDAO;
 import model.Produtos;
@@ -32,6 +34,7 @@ public class DetalhesProdutosController {
         configurarEventos();
     }
 
+    
     private void carregarDados() {
 
         view.setProduto(produto);
@@ -81,53 +84,65 @@ public class DetalhesProdutosController {
             navegador.navegarPara("CADASTRO_PRODUTO");
 
         });
-        
+
         this.view.adicionarProduto(e -> {
-        	
-        	 Carrinho carrinho = new Carrinho();
 
-        	    carrinho.setIdProduto(produto.getIdProduto());
+            Carrinho carrinho = new Carrinho();
 
-        	    carrinho.setNomeProduto(produto.getNome());
+            carrinho.setIdProduto(produto.getIdProduto());
 
-        	    carrinho.setPreco(produto.getPreco());
+            carrinho.setNomeProduto(produto.getNome());
 
-        	    carrinho.setQuantidade(1);
+            carrinho.setPreco(produto.getPreco());
 
-        	    CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+            carrinho.setQuantidade(1);
 
-        	    carrinhoDAO.adicionarCarrinho(carrinho);
-        	    
-        	    try {
+            CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 
-        	        TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
+            try {
 
-        	        CarrinhoLojasController controller =
-        	            new CarrinhoLojasController(
-        	                telaCarrinho,
-        	                carrinhoDAO,
-        	                navegador,
-        	                carrinho
-        	            
-        	            );
+                carrinhoDAO.adicionarCarrinho(carrinho);
 
-        	        controller.recriarPaineis();
+                view.exibirMensagem(
+                    "Sucesso",
+                    "Produto adicionado ao carrinho!",
+                    1
+                );
 
-        	        navegador.adicionarPainel(
-        	            "CARRINHO",
-        	            telaCarrinho
-        	        );
+                TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
 
-        	    } catch (Exception ex) {
+                CarrinhoLojasController controller =
+                    new CarrinhoLojasController(
+                        telaCarrinho,
+                        carrinhoDAO,
+                        navegador,
+                        carrinho
+                    );
 
-        	        ex.printStackTrace();
+                controller.recriarPaineis();
 
-        	    }
+                navegador.adicionarPainel(
+                    "CARRINHO",
+                    telaCarrinho
+                );
 
-        	   
+                navegador.navegarPara("CARRINHO");
 
-        	  navegador.navegarPara("CARRINHO");
-        	
+            } catch (SQLException ex) {
+
+                view.exibirMensagem(
+                    "Erro",
+                    "Produto já existe no carrinho!",
+                    0
+                );
+
+               
+
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+            }
+
         });
 
     }
