@@ -68,6 +68,7 @@ public class MeuJFrame extends JFrame {
 		setTitle("Nó de Estoque");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setMinimumSize(new Dimension(550, 450));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -149,8 +150,12 @@ public class MeuJFrame extends JFrame {
 		
 		TelaAlterarLoja telaAlterarLoja = new TelaAlterarLoja();
 		adicionarTela("ALTERAR_LOJA", telaAlterarLoja);
+		
 		TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
 		adicionarTela("CARRINHO", telaCarrinho);
+		
+		TelaAlterarProdutos telaAlterarProdutos = new TelaAlterarProdutos();
+		adicionarTela("ALTERAR_PRODUTOS", telaAlterarProdutos);
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);

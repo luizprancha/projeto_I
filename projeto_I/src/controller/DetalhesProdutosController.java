@@ -4,6 +4,7 @@ import model.Carrinho;
 import model.CarrinhoDAO;
 import model.Produtos;
 import model.ProdutosDAO;
+import view.TelaAlterarProdutos;
 import view.TelaCarrinhoLojas;
 import view.TelaDetalheProduto;
 import view.TelaProdutos;
@@ -78,7 +79,15 @@ public class DetalhesProdutosController {
 
         this.view.editarProduto(e -> {
 
-            navegador.navegarPara("CADASTRO_PRODUTO");
+        	int id = produto.getIdProduto();
+        	Produtos produto = model.buscarPorId(id);
+
+        	TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
+
+        	telaAlterar.setProdutos(produto);
+        	
+        	navegador.navegarPara("ALTERAR_PRODUTOS");
+            
 
         });
         
