@@ -26,10 +26,11 @@ public class CarrinhoLojasController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CarrinhoLojasController(TelaCarrinhoLojas view, CarrinhoDAO model, Navegador navegador) {
+	public CarrinhoLojasController(TelaCarrinhoLojas view, CarrinhoDAO model, Navegador navegador, Carrinho carrinho) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.carrinho = carrinho;
 		
 
 
@@ -60,12 +61,13 @@ public class CarrinhoLojasController {
                 CarrinhoLojasController controller = new CarrinhoLojasController(
                     telaCarrinhoLojas,
                     model,
-                    navegador
+                    navegador, 
+                    carrinho
                 );
 
                 controller.recriarPaineis();
 
-                navegador.adicionarPainel("PRODUTO", tela);
+                navegador.adicionarPainel("PRODUTO", view);
 
                 navegador.navegarPara("PRODUTO");
 

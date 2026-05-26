@@ -16,7 +16,7 @@ public class CarrinhoDAO {
      * @param carrinho Objeto contendo os dados do produto.
      */
     public void adicionarCarrinho(Carrinho carrinho) {
-        String sql = "INSERT INTO Carrinho( id_carrinho,id_produto, nome_produto, preco, quantidade) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Carrinho( id_produto,id_carrinho, nome_produto, preco, quantidade) VALUES (?, ?, ?, ?, ?)";
         Connection conexao = null;
         PreparedStatement pstm = null;
 
@@ -24,10 +24,10 @@ public class CarrinhoDAO {
             conexao = BancoDeDados.conectar();
             pstm = conexao.prepareStatement(sql);
             pstm.setInt(1, carrinho.getIdProduto());
-            pstm.setInt(1, carrinho.getIdCarrinho());
-            pstm.setString(2, carrinho.getNomeProduto());
-            pstm.setDouble(3, carrinho.getPreco());
-            pstm.setInt(4, carrinho.getQuantidade());
+            pstm.setInt(2, carrinho.getIdCarrinho());
+            pstm.setString(3, carrinho.getNomeProduto());
+            pstm.setDouble(4, carrinho.getPreco());
+            pstm.setInt(5, carrinho.getQuantidade());
 
             pstm.execute();
 
