@@ -48,9 +48,21 @@ public class CadastroLojaController {
 			    
 			} else {
 			    Lojas l = new Lojas(nomeLoja, CNPJ, responsavel, endereco, telefone, email);
-			    model.adicionarLojas(l);
-			    view.limparCampos();
-			    view.exibirMensagem("Sucesso", "Loja salva!", 1);
+			    if (model.existeCNPJ(CNPJ)) {
+
+			    	view.exibirMensagem(
+			    		"Erro",
+			    		"Já existe uma loja cadastrada com esse CNPJ",
+			    		0
+			    	);
+
+			    	return;
+			    }
+			    else {
+			    	model.adicionarLojas(l);
+			    	view.limparCampos();
+			    	view.exibirMensagem("Sucesso", "Loja salva!", 1);
+			    }
 			}
 			
 		});

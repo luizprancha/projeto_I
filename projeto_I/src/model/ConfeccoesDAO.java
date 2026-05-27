@@ -132,5 +132,38 @@ public class ConfeccoesDAO {
 
 		        }
 		    }
+		    
+		    public boolean existeCNPJ(String cnpj) {
+
+		    	String sql = "SELECT * FROM Confeccao WHERE cnpj = ?";
+
+		    	Connection conexao = null;
+		    	PreparedStatement pstm = null;
+		    	ResultSet rset = null;
+
+		    	try {
+
+		    		conexao = database.BancoDeDados.conectar();
+
+		    		pstm = conexao.prepareStatement(sql);
+
+		    		pstm.setString(1, cnpj);
+
+		    		rset = pstm.executeQuery();
+
+		    		return rset.next();
+
+		    	} catch (SQLException e) {
+
+		    		e.printStackTrace();
+
+		    		return false;
+
+		    	} finally {
+
+		    		database.BancoDeDados.desconectar(conexao);
+
+		    	}
+		    }
 
 }
