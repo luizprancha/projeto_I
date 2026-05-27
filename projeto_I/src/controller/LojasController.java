@@ -64,15 +64,14 @@ public class LojasController {
                 linha = linha + 2;
             }
 
-            p3.addMouseListener(new MouseAdapter() {
+            p3.addMouseListener(new MouseAdapter() { 
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
 
                     try {
 
-                        TelaDetalhesLojas telaDetalhe =
-                                new TelaDetalhesLojas();
+                        TelaDetalhesLojas telaDetalhe = new TelaDetalhesLojas();
 
                         new DetalhesLojasController(
                                 telaDetalhe,

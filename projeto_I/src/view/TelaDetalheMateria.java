@@ -27,6 +27,7 @@ public class TelaDetalheMateria extends JPanel {
 	private JLabel lbCor;
 	private JLabel lbQtdRolos;
 	private JLabel lbID;
+	private JLabel lblNome;
 
 	/**
 	 * Create the panel.
@@ -64,9 +65,9 @@ public class TelaDetalheMateria extends JPanel {
 		PainelArredondado panel_1= new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 3 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow]", "[grow][grow][grow][][][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Tipo do tecido:");
+		JLabel lblNewLabel_1 = new JLabel("Tipo:");
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
@@ -75,29 +76,37 @@ public class TelaDetalheMateria extends JPanel {
 		lbTipoTecido.setFont(fonte2);
 		panel_1.add(lbTipoTecido, "cell 3 1");
 		
+		JLabel lblNewLabel_4 = new JLabel("Nome:");
+		lblNewLabel_4.setFont(fonte2);
+		panel_1.add(lblNewLabel_4, "cell 1 3");
+		
+		lblNome = new JLabel("New label");
+		lblNome.setFont(fonte2);
+		panel_1.add(lblNome, "cell 3 3");
+		
 		JLabel lblNewLabel_2 = new JLabel("Cor:");
 		lblNewLabel_2.setFont(fonte2);
-		panel_1.add(lblNewLabel_2, "cell 1 3");
+		panel_1.add(lblNewLabel_2, "cell 1 5");
 		
 		lbCor = new JLabel("Azul");
 		lbCor.setFont(fonte2);
-		panel_1.add(lbCor, "cell 3 3");
+		panel_1.add(lbCor, "cell 3 5");
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de rolos:");
 		lblNewLabel_3.setFont(fonte2);
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		panel_1.add(lblNewLabel_3, "cell 1 7");
 		
 		lbQtdRolos = new JLabel("50");
 		lbQtdRolos.setFont(fonte2);
-		panel_1.add(lbQtdRolos, "cell 3 5");
+		panel_1.add(lbQtdRolos, "cell 3 7");
 		
 		JLabel lblNewLabel = new JLabel("ID:");
 		lblNewLabel.setFont(fonte2);
-		panel_1.add(lblNewLabel, "cell 1 7");
+		panel_1.add(lblNewLabel, "cell 1 9");
 		
 		lbID = new JLabel("ID");
 		lbID.setFont(fonte2);
-		panel_1.add(lbID, "cell 3 7");
+		panel_1.add(lbID, "cell 3 9");
 		
 		btExcluir = new JButtonOutLine();
 		btExcluir.setText("Excluir");
@@ -120,7 +129,7 @@ public class TelaDetalheMateria extends JPanel {
 	}
 	
 	public void setMateria(MateriaPrima materia) {
-
+		lblNome.setText(materia.getNome());
 		lbTipoTecido.setText(materia.getTipo());
 		lbCor.setText(materia.getCor());
 		lbQtdRolos.setText(String.valueOf(materia.getQuantidade()));

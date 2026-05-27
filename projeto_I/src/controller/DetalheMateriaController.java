@@ -1,12 +1,19 @@
 package controller;
 
+import model.LojasDAO;
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaAlterarConfeccao;
+import view.TelaAlterarLoja;
+import view.TelaAlterarMateria;
 import view.TelaDetalheMateria;
 import view.TelaDetalheProduto;
+
+import java.awt.FontFormatException;
+import java.io.IOException;
+
 import controller.AlterarMateriaController;
 
 public class DetalheMateriaController {
@@ -51,35 +58,40 @@ public class DetalheMateriaController {
 
             view.exibirMensagem(
                 "Sucesso",
-                "Produto excluído!",
+                "Materia prima excluída!",
                 1
             );
 
-            navegador.navegarPara("PRODUTOS");
+            navegador.navegarPara("MATERIA_PRIMA");
+
+            try {
+            	materiaprimacontroller.recriarPaineis();
+            } catch (FontFormatException | IOException e1) {
+                e1.printStackTrace();
+            }
 
         });
 
         this.view.EditarMateria(e -> {
 
-        	try {
+            try {
 
-                TelaAlterarConfeccao tela = new TelaAlterarConfeccao();
+                TelaAlterarMateria tela = new TelaAlterarMateria();
 
-//                new AlterarMateriaController(
-//                        tela,
-//                        model,
-//                        navegador,
-//                        materiaprima, 
-//                        materiaprimacontroller
-//                );
+                new AlterarMateriaController(
+                        tela,
+                        model,
+                        navegador,
+                        materiaprima, 
+                        materiaprimacontroller
+                );
 
-                navegador.adicionarPainel("ALTERAR_CONFECCAO", tela);
-                navegador.navegarPara("ALTERAR_CONFECCAO");
+                navegador.adicionarPainel("ALTERAR_MATERIA", tela);
+                navegador.navegarPara("ALTERAR_MATERIA");
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
 
         });
 

@@ -162,6 +162,9 @@ public class MeuJFrame extends JFrame {
 		
 		TelaAlterarConfeccao telaalterarconfeccao = new TelaAlterarConfeccao();
 		adicionarTela("ALTERAR_CONFECCAO", telaalterarconfeccao);
+		
+		TelaAlterarMateria telaalterarmateria = new TelaAlterarMateria();
+		adicionarTela("ALTERAR_MATERIA", telaalterarmateria);
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);

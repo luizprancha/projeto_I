@@ -57,6 +57,7 @@ public class MateriaPrimaDAO {
 							materiaPrima.setCor(rset.getString("cor"));
 							materiaPrima.setQuantidade(rset.getInt("quantidade"));
 							materiaPrima.setTipo(rset.getString("tipo"));
+							materiaPrima.setIdMateriaPrima(rset.getInt("idMateriaPrima"));
 							MateriaPrima.add(materiaPrima);
 						}
 						
@@ -70,7 +71,7 @@ public class MateriaPrimaDAO {
 				
 
 			    public void atualizarMateriaPrima(MateriaPrima materiaPrima) {
-			        String sql = "UPDATE MateriaPrima SET nome = ?, cor = ?, quantidade = ?, tipo = ?, WHERE idMateriaPrima = ?";
+			        String sql = "UPDATE MateriaPrima SET nome = ?, cor = ?, quantidade = ?, tipo = ? WHERE idMateriaPrima = ?";
 			        Connection conexao = null;
 			        PreparedStatement pstm = null;
 
