@@ -21,6 +21,7 @@ public class Painel5 extends PainelArredondado  {
 	private int quantidade = 1; 
 	private JLabel lbpreco;
 	private Carrinho carrinhos;
+	public int selected;
 
 	/**
 	 * Create the panel.

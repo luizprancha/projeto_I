@@ -97,21 +97,36 @@ public class ProdutosDAO {
 		        }
 		    }
 		    
-		    public static void removerProdutos(int id) {
-		        String sql = "DELETE FROM Produtos WHERE idProdutos=?";
+		    public void removerProdutos(int id) {
 
-		        try (Connection conn = database.BancoDeDados.conectar();
-		             PreparedStatement stmt = conn.prepareStatement(sql)) {
+		        String sql = "DELETE FROM Produtos WHERE idProdutos = ?";
 
-		            stmt.setInt(1, id);
-		            System.out.println(stmt);
-		            int res = stmt.executeUpdate();
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
 
-		            System.out.println(res);
-		        } catch (Exception e) {
+		        try {
+		            conexao = database.BancoDeDados.conectar();
+		            pstm = conexao.prepareStatement(sql);
+		            pstm.setInt(1, id);
+		            pstm.executeUpdate();
+
+		        } catch (SQLException e) {
 		            e.printStackTrace();
+		        } finally {
+		            database.BancoDeDados.desconectar(conexao);
+		            if (pstm != null) {
+
+		                try {
+		                    pstm.close();
+		                } catch (SQLException e) {
+		                    e.printStackTrace();
+
+		                }
+		            }
 		        }
 		    }
+		    
+		    
 
 		    public Produtos buscarPorId(int id) {
 

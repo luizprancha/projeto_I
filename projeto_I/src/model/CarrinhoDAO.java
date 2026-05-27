@@ -16,19 +16,15 @@ public class CarrinhoDAO {
      * @param carrinho Objeto contendo os dados do produto.
      */
     public void adicionarCarrinho(Carrinho carrinho) throws SQLException  {
-        String sql = "INSERT INTO Carrinho( id_produto,id_carrinho, nome_produto, preco, quantidade) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Carrinho( id_carrinho) VALUES ( ?)";
         Connection conexao = null;
         PreparedStatement pstm = null;
 
         try {
             conexao = BancoDeDados.conectar();
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, carrinho.getIdProduto());
             pstm.setInt(2, carrinho.getIdCarrinho());
-            pstm.setString(3, carrinho.getNomeProduto());
-            pstm.setDouble(4, carrinho.getPreco());
-            pstm.setInt(5, carrinho.getQuantidade());
-
+           
             pstm.execute();
 
         } finally {
@@ -60,10 +56,6 @@ public class CarrinhoDAO {
             while (rset.next()) {
                 Carrinho carrinho = new Carrinho();
                 carrinho.setIdCarrinho(rset.getInt("id_carrinho"));
-                carrinho.setIdProduto(rset.getInt("id_produto"));
-                carrinho.setNomeProduto(rset.getString("nome_produto"));
-                carrinho.setPreco(rset.getDouble("preco"));
-                carrinho.setQuantidade(rset.getInt("quantidade"));
                 itensCarrinho.add(carrinho);
             }
 
@@ -94,17 +86,13 @@ public class CarrinhoDAO {
      * @param carrinho Objeto com os dados atualizados e o id_carrinho preenchido.
      */
     public void atualizarCarrinho(Carrinho carrinho) {
-        String sql = "UPDATE Carrinho SET id_produto = ?, nome_produto = ?, preco = ?, quantidade = ? WHERE id_carrinho = ?";
+        String sql = "UPDATE Carrinho SET  id_carrinho = ?";
         Connection conexao = null;
         PreparedStatement pstm = null;
 
         try {
             conexao = BancoDeDados.conectar();
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, carrinho.getIdProduto());
-            pstm.setString(2, carrinho.getNomeProduto());
-            pstm.setDouble(3, carrinho.getPreco());
-            pstm.setInt(4, carrinho.getQuantidade());
             pstm.setInt(5, carrinho.getIdCarrinho());
 
             pstm.executeUpdate();

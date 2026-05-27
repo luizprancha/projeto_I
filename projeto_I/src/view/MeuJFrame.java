@@ -305,6 +305,17 @@ public class MeuJFrame extends JFrame {
 		 itemMateriaPrima.add(itensMateriaPrima);
 		
 
+			JMenu itemCarrinho = new JMenu("Carrinho de Compras");
+			menuBar.add(itemCarrinho);
+			
+			JMenuItem ItemCarrinhos = new JMenuItem("Carrinho de Compras");
+			ItemCarrinhos.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					navegador.navegarPara("CARRINHO");
+				}
+			});
+			itemCarrinho.add(ItemCarrinhos);
+			
 		
 		JMenu itemDeslogar = new JMenu("Deslogar");
 		menuBar.add(itemDeslogar);
