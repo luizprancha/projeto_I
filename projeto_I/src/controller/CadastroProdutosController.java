@@ -15,6 +15,7 @@ public class CadastroProdutosController {
 	private final ProdutosDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	private final ProdutosController produtoscontroller;
 
 	/**
 	 * Construtor da classe
@@ -22,10 +23,11 @@ public class CadastroProdutosController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CadastroProdutosController(TelaCadastroProduto view, ProdutosDAO model, Navegador navegador) {
+	public CadastroProdutosController(TelaCadastroProduto view, ProdutosDAO model, Navegador navegador, ProdutosController produtoscontroller) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.produtoscontroller = produtoscontroller;
 
 		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
 		
@@ -78,6 +80,22 @@ public class CadastroProdutosController {
 			    model.adicionarProduto(p);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
+			    try {
+
+			    	produtoscontroller.recriarPaineis();
+
+				    navegador.navegarPara("CONFECCAO");
+
+				} catch (Exception ex) {
+
+				    view.exibirMensagem(
+				            "Erro",
+				            "Erro ao atualizar a tela",
+				            0
+				    );
+
+				    ex.printStackTrace();
+				}
 			}
 			});
 

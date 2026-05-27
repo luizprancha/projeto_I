@@ -9,6 +9,7 @@ public class CadastroConfeccaoController {
 	private final ConfeccoesDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	private final ConfeccaoController confeccaocontroller;
 
 	/**
 	 * Construtor da classe
@@ -16,10 +17,11 @@ public class CadastroConfeccaoController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CadastroConfeccaoController(TelaCadastroConfeccao view, ConfeccoesDAO model, Navegador navegador) {
+	public CadastroConfeccaoController(TelaCadastroConfeccao view, ConfeccoesDAO model, Navegador navegador, ConfeccaoController confeccaocontroller) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.confeccaocontroller = confeccaocontroller;
 
 		view.cadastrarConfeccao(e -> {
 			String nome = view.getNome().trim();

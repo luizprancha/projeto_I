@@ -9,11 +9,13 @@ public class CadastroLojaController {
 	private final TelaCadastroLoja view;
 	private final LojasDAO model;
 	private final Navegador navegador;
+	private final LojasController lojascontroller;
 	
-	public CadastroLojaController(TelaCadastroLoja view, LojasDAO model, Navegador navegador) {
+	public CadastroLojaController(TelaCadastroLoja view, LojasDAO model, Navegador navegador, LojasController lojascontroller) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.lojascontroller = lojascontroller;
 		
 		view.cadastroLoja(e ->{
 			String nomeLoja = view.getNomeLoja().trim();

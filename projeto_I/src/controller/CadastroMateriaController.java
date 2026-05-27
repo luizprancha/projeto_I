@@ -9,11 +9,14 @@ public class CadastroMateriaController {
 	private final MateriaPrimaDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	private final MateriaPrimaController materiaPrimaController;
 
-	public CadastroMateriaController(TelaCadastroMateria view, MateriaPrimaDAO model, Navegador navegador) {
+	public CadastroMateriaController(TelaCadastroMateria view, MateriaPrimaDAO model, Navegador navegador, MateriaPrimaController materiaPrimaController) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.materiaPrimaController = materiaPrimaController;
+		
 
 		this.view.cadastro(e -> {
 
@@ -49,6 +52,22 @@ public class CadastroMateriaController {
 				model.adicionarMateriaPrima(m);
 				view.limparCampos();
 				view.exibirMensagem("Sucesso", "Matéria-Prima salva!", 1);
+				try {
+
+				    materiaPrimaController.recriarPaineis();
+
+				    navegador.navegarPara("MATERIA_PRIMA");
+
+				} catch (Exception ex) {
+
+				    view.exibirMensagem(
+				            "Erro",
+				            "Erro ao atualizar a tela",
+				            0
+				    );
+
+				    ex.printStackTrace();
+				}
 			}
 		});
 	}
