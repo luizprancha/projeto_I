@@ -111,7 +111,7 @@ public class TelaAlterarProdutos extends JPanel {
 		panel_1.add(tfTamanho, "cell 3 9,growx");
 		tfTamanho.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Email:");
+		JLabel lblNewLabel_3 = new JLabel("Cor:");
 		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 11");
 		

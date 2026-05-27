@@ -100,6 +100,11 @@ public class TelaProdutos extends JPanel {
 	    panel_1.revalidate();
 	}
 	
+	public void recriarPaineis(Painel p, String param) {
+		limparPaineis();
+		panel_1.add(p, param);
+		
+	}
 	
 
 
