@@ -1,6 +1,8 @@
 package controller;
 
+import java.awt.FontFormatException;
 import java.sql.SQLException;
+import java.io.IOException;
 
 import model.Carrinho;
 import model.CarrinhoDAO;
@@ -85,11 +87,25 @@ public class DetalhesProdutosController {
         	int id = produto.getIdProduto();
         	Produtos produto = model.buscarPorId(id);
 
-        	TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
+        	try {
 
-        	telaAlterar.setProdutos(produto);
-        	
-        	navegador.navegarPara("ALTERAR_PRODUTOS");
+        		TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
+
+        		telaAlterar.setProdutos(produto);
+
+        		navegador.adicionarPainel("ALTERAR_PRODUTOS", telaAlterar);
+
+        		navegador.navegarPara("ALTERAR_PRODUTOS");
+
+        	} catch (FontFormatException erro) {
+
+        		erro.printStackTrace();
+
+        	} catch (IOException erro) {
+
+        		erro.printStackTrace();
+
+        	}
             
 
         });

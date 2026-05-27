@@ -113,6 +113,50 @@ public class ProdutosDAO {
 		        }
 		    }
 
+		    public Produtos buscarPorId(int id) {
+
+		    	String sql = "SELECT * FROM Produtos WHERE idProdutos = ?";
+
+		    	Connection conexao = null;
+		    	PreparedStatement pstm = null;
+		    	ResultSet rset = null;
+
+		    	Produtos produto = null;
+
+		    	try {
+
+		    		conexao = database.BancoDeDados.conectar();
+		    		pstm = conexao.prepareStatement(sql);
+
+		    		pstm.setInt(1, id);
+
+		    		rset = pstm.executeQuery();
+
+		    		if (rset.next()) {
+
+		    			produto = new Produtos();
+
+		    			produto.setIdProduto(rset.getInt("idProdutos"));
+		    			produto.setNome(rset.getString("nome"));
+		    			produto.setTipoProduto(rset.getString("tipo_produto"));
+		    			produto.setPreco(rset.getDouble("preco"));
+		    			produto.setQuantidade(rset.getInt("qtde_estoque"));
+		    			produto.setTamanho(rset.getString("tamanho"));
+		    			produto.setCor(rset.getString("cor"));
+		    		}
+
+		    	} catch (SQLException e) {
+
+		    		e.printStackTrace();
+
+		    	} finally {
+
+		    		database.BancoDeDados.desconectar(conexao);
+
+		    	}
+
+		    	return produto;
+		    }
 			
 		    
 }
