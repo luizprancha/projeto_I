@@ -8,10 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
 import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
-
+import model.Confeccoes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -24,7 +23,7 @@ public class TelaAlterarConfeccao extends JPanel {
 	private JTextField tfResponsavel;
 	private JTextField tfEndereco;
 	private JTextField tfEmail;
-	private JButton btnCadastrarConfeccao;
+	private JButton btnAlterarConfeccao;
 	private JTextField tfTelefone;
 	private JTextField tfNomeConfeccao;
 	private JTextField tfCNPJ;
@@ -114,43 +113,44 @@ public class TelaAlterarConfeccao extends JPanel {
 		panel_1.add(tfEmail, "cell 4 11,growx");
 		tfEmail.setColumns(10);
 		
-		btnCadastrarConfeccao = new JButtonOutLine();
-		btnCadastrarConfeccao.setText("Confirmar Edição");
-		btnCadastrarConfeccao.setFont(fonte2);
-		panel.add(btnCadastrarConfeccao, "cell 2 5,growx,aligny center");
+		btnAlterarConfeccao = new JButtonOutLine();
+		btnAlterarConfeccao.setText("Confirmar Edição");
+		btnAlterarConfeccao.setFont(fonte2);
+		panel.add(btnAlterarConfeccao, "cell 2 5,growx,aligny center");
 
 	}
 	
-	public String getEndereco() {
-		return tfEndereco.getText();
-	}
-	
-	public String getEmail() {
-		return tfEmail.getText();
-	}
-	
-	public String getCnpj() {
-		return tfCNPJ.getText();
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
 	}
 	
 	public String getNome() {
 		return tfNomeConfeccao.getText();
 	}
 	
+	public String getCNPJ() {
+		return tfCNPJ.getText();
+	}
+	
 	public String getResponsavel() {
 		return tfResponsavel.getText();
+	}
+	
+	public String getEndereco() {
+		return tfEndereco.getText();
 	}
 	
 	public String getTelefone() {
 		return tfTelefone.getText();
 	}
 	
-	
-	
-	public void cadastrarConfeccao (ActionListener acao) {
-		btnCadastrarConfeccao.addActionListener(acao);
+	public String getEmail() {
+		return tfEmail.getText();
 	}
 	
+	public void alterarConfeccao (ActionListener acao) {
+		btnAlterarConfeccao.addActionListener(acao);
+	}
 	public void limparCampos() {
 		tfEndereco.setText("");
 		tfEmail.setText("");
@@ -160,9 +160,16 @@ public class TelaAlterarConfeccao extends JPanel {
 		tfTelefone.setText("");
 	}
 	
-	public void exibirMensagem(String titulo, String mensagem, int tipo) {
-		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
+	
+	public void setConfeccao(Confeccoes confeccao) {
+		tfNomeConfeccao.setText(confeccao.getNome());
+		tfCNPJ.setText(confeccao.getCnpj());
+		tfResponsavel.setText(confeccao.getResponsavel());
+		tfEndereco.setText(confeccao.getEndereco());
+		tfTelefone.setText(confeccao.getTelefone());
+		tfEmail.setText(confeccao.getEmail());
 	}
+	
 	
 
 }
