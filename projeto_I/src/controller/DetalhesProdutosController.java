@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import model.Carrinho;
 import model.CarrinhoDAO;
+import model.ItensCarrinho;
+import model.ItensCarrinhoDAO;
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaAlterarProdutos;
@@ -20,24 +22,26 @@ public class DetalhesProdutosController {
     private final Navegador navegador;
 
     private Produtos produto;
+    private Carrinho carrinho;
 
     public DetalhesProdutosController(
             TelaDetalheProduto view,
             ProdutosDAO model,
             Navegador navegador,
-            Produtos produto) {
+            Produtos produto,
+            Carrinho carrinho) {
 
         this.view = view;
         this.model = model;
         this.navegador = navegador;
         this.produto = produto;
+        this.carrinho = carrinho;
 
         carregarDados();
 
         configurarEventos();
     }
 
-    
     private void carregarDados() {
 
         view.setProduto(produto);
@@ -50,9 +54,9 @@ public class DetalhesProdutosController {
 
             try {
 
-                int id = produto.getIdProduto();
+            	int id = produto.getIdProduto();
 
-                ProdutosDAO.removerProdutos(id);
+            	model.removerProdutos(id);
 
                 view.exibirMensagem(
                     "Sucesso",
@@ -84,49 +88,51 @@ public class DetalhesProdutosController {
 
         this.view.editarProduto(e -> {
 
-        	int id = produto.getIdProduto();
-        	Produtos produto = model.buscarPorId(id);
+            int id = produto.getIdProduto();
+            Produtos produto = model.buscarPorId(id);
 
-        	try {
+            try {
 
-        		TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
+                TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
 
-        		telaAlterar.setProdutos(produto);
+                telaAlterar.setProdutos(produto);
 
-        		navegador.adicionarPainel("ALTERAR_PRODUTOS", telaAlterar);
+                navegador.adicionarPainel(
+                    "ALTERAR_PRODUTOS",
+                    telaAlterar
+                );
 
-        		navegador.navegarPara("ALTERAR_PRODUTOS");
+                navegador.navegarPara("ALTERAR_PRODUTOS");
 
-        	} catch (FontFormatException erro) {
+            } catch (FontFormatException erro) {
 
-        		erro.printStackTrace();
+                erro.printStackTrace();
 
-        	} catch (IOException erro) {
+            } catch (IOException erro) {
 
-        		erro.printStackTrace();
+                erro.printStackTrace();
 
-        	}
-            
+            }
 
         });
 
         this.view.adicionarProduto(e -> {
 
-            Carrinho carrinho = new Carrinho();
-
-            carrinho.setIdProduto(produto.getIdProduto());
-
-            carrinho.setNomeProduto(produto.getNome());
-
-            carrinho.setPreco(produto.getPreco());
-
-            carrinho.setQuantidade(1);
-
-            CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-
             try {
 
-                carrinhoDAO.adicionarCarrinho(carrinho);
+             
+                ItensCarrinho item = new ItensCarrinho();
+
+                item.setIdCarrinho(carrinho.getIdCarrinho());
+                item.setIdProduto(produto.getIdProduto());
+                item.setNomeProduto(produto.getNome());
+                item.setPreco(produto.getPreco());
+                item.setQuantidade(1);
+
+               
+                ItensCarrinhoDAO itensDAO = new ItensCarrinhoDAO();
+
+                itensDAO.adicionarItensCarrinho(item);
 
                 view.exibirMensagem(
                     "Sucesso",
@@ -134,7 +140,10 @@ public class DetalhesProdutosController {
                     1
                 );
 
-                TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
+                TelaCarrinhoLojas telaCarrinho =
+                    new TelaCarrinhoLojas();
+
+                CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 
                 CarrinhoLojasController controller =
                     new CarrinhoLojasController(
@@ -161,11 +170,10 @@ public class DetalhesProdutosController {
                     0
                 );
 
-               
-
             } catch (Exception ex) {
 
                 ex.printStackTrace();
+
             }
 
         });
