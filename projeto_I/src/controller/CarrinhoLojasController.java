@@ -1,15 +1,20 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.FontFormatException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.BorderFactory;
+
 import model.Carrinho;
 import model.CarrinhoDAO;
 import model.ProdutosDAO;
 import view.Painel5;
 import view.TelaCarrinhoLojas;
-import view.TelaProdutos;
-
 
 public class CarrinhoLojasController {
 	
@@ -17,8 +22,8 @@ public class CarrinhoLojasController {
 	private final  CarrinhoDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
-	
 	private final Carrinho carrinho;
+	private ArrayList<Painel5> listaPaineis = new ArrayList<Painel5>();
 
 	/**
 	 * Construtor da classe
@@ -31,6 +36,7 @@ public class CarrinhoLojasController {
 		this.model = model;
 		this.navegador = navegador;
 		this.carrinho = carrinho;
+		
 		
 
 
@@ -78,8 +84,30 @@ public class CarrinhoLojasController {
             }
 
         });
+        
+        this.view.continuarCompra(e ->{ 
+        	
+        	
+        });
+        
+       
+        
 
-      
+        this.view.alterarPedido(e ->{ 
+        	
+        	
+        });
+        
+
+        this.view.alterarPedido(e ->{ 
+        	
+        	
+        });
+        
+        this.view.finalizarPedido(e ->{ 
+        	
+        	
+        });
 
       
 
@@ -95,9 +123,25 @@ public class CarrinhoLojasController {
 
         for (int i = 0; i < lista.size(); i++) {
 
-            Carrinho car= lista.get(i);
-
+            Carrinho car= lista.get(i); 
+          
             Painel5 p5 = new Painel5(car);
+            listaPaineis.add(p5);
+            p5.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+            
+            p5.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                	for (int j = 0; j < listaPaineis.size(); j++) {
+                		if(listaPaineis.get(j).selected == 1) {
+                			listaPaineis.get(j).setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+                		}
+                	}
+                	p5.selected = 1;
+                	p5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                }
+            });
+
 
             if (coluna > 4) {
                 coluna = 0;

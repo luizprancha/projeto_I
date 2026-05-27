@@ -97,6 +97,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		
 	     btnContinuarCompra = new JButtonOutLine();
 	     btnContinuarCompra.setText ("Continuar Compra");
+	     btnContinuarCompra.setFont(fonte2);
 		panel.add(btnContinuarCompra, "cell 7 5,growx,aligny center");
 
 	}
