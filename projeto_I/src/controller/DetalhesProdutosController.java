@@ -18,6 +18,7 @@ public class DetalhesProdutosController {
     private final TelaDetalheProduto view;
     private final ProdutosDAO model;
     private final Navegador navegador;
+    private final ProdutosController produtosController;
 
     private Produtos produto;
 
@@ -25,12 +26,14 @@ public class DetalhesProdutosController {
             TelaDetalheProduto view,
             ProdutosDAO model,
             Navegador navegador,
-            Produtos produto) {
+            Produtos produto,
+            ProdutosController produtosController) {
 
         this.view = view;
         this.model = model;
         this.navegador = navegador;
         this.produto = produto;
+		this.produtosController = produtosController;
 
         carregarDados();
 
@@ -92,6 +95,17 @@ public class DetalhesProdutosController {
         		TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
 
         		telaAlterar.setProdutos(produto);
+        		
+        		
+        		TelaProdutos telaP = new TelaProdutos();
+
+        		new AlterarProdutosController(
+        			telaAlterar,
+        			model,
+        			navegador,
+        			produto,
+        			telaP, produtosController
+        		);
 
         		navegador.adicionarPainel("ALTERAR_PRODUTOS", telaAlterar);
 

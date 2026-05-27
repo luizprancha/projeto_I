@@ -30,6 +30,7 @@ public class TelaDetalheProduto extends JPanel {
 	private JLabel lbTamanho;
 	private JLabel lbID;
 	
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -161,5 +162,7 @@ public class TelaDetalheProduto extends JPanel {
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
 		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
 	}
-
+	
+	
+	
 }

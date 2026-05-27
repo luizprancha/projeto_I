@@ -80,8 +80,13 @@ public class ProdutosController {
 					try {
 						telaDetalhe = new TelaDetalheProduto();
 					
-						  new DetalhesProdutosController(telaDetalhe, model, navegador, prod);
-
+						new DetalhesProdutosController(
+								telaDetalhe,
+								model,
+								navegador,
+								prod,
+								ProdutosController.this
+							);
 					       ProdutosController.this.navegador.adicionarPainel(
 					           "DETALHES_PRODUTOS",
 					           telaDetalhe

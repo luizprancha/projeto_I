@@ -65,9 +65,20 @@ public class CadastroConfeccaoController {
 			    
 			} else {
 			    Confeccoes c = new Confeccoes(nome, CNPJ, responsavel, endereco, telefone, email);
-			    model.adicionarConfeccoes(c);
-			    view.limparCampos();
-			    view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);
+			    if (model.existeCNPJ(CNPJ)) {
+			    	view.exibirMensagem(
+			    		"Erro",
+			    		"Já existe uma confecção cadastrada com esse CNPJ",
+			    		0
+			    	);
+
+			    	return;
+			    }
+			    else {
+			    	model.adicionarConfeccoes(c);
+			    	view.limparCampos();
+			    	view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);
+			    }
 			}
 			});
 
