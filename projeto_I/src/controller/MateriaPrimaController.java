@@ -6,14 +6,11 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
-import model.Confeccoes;
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
-import model.ProdutosDAO;
-import view.Painel2;
 import view.Painel4;
+import view.TelaDetalheMateria;
 import view.TelaMateriaPrima;
-import view.TelaProdutos;
 
 
 /**
@@ -22,7 +19,6 @@ import view.TelaProdutos;
 public class MateriaPrimaController {
 	private final TelaMateriaPrima view;
 	private final MateriaPrimaDAO model;
-	@SuppressWarnings("unused")
 	private final Navegador navegador;
 
 	/**
@@ -63,7 +59,7 @@ public class MateriaPrimaController {
 		int linha = 0;
 		int coluna = 0;
 		
-		for(int i=0; i<lista.size(); i++) {
+		for(int i=0; i<lista.size(); i++) {			
 			MateriaPrima materia = lista.get(i);
 			Painel4 p4 = new Painel4(materia);
 			if(coluna > 4) {
@@ -72,15 +68,39 @@ public class MateriaPrimaController {
 			}
 			
 			p4.addMouseListener(new MouseAdapter() {
-				
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					  System.out.println("Painel clicado!");
-					  MateriaPrimaController.this.navegador.navegarPara("DETALHE_MATERIA");
-					
-				}
+
+			    @Override
+			    public void mouseClicked(MouseEvent e) {
+
+			        try {
+
+			            TelaDetalheMateria telaDetalhe =
+			                    new TelaDetalheMateria();
+
+			            new DetalheMateriaController(
+			                    telaDetalhe,
+			                    model,
+			                    navegador,
+			                    materia,
+			                    MateriaPrimaController.this
+			            );
+
+			            MateriaPrimaController.this.navegador
+			                    .adicionarPainel(
+			                            "DETALHE_MATERIA",
+			                            telaDetalhe
+			                    );
+
+			            MateriaPrimaController.this.navegador
+			                    .navegarPara("DETALHE_MATERIA");
+
+			        } catch (Exception ex) {
+			            ex.printStackTrace();
+			        }
+			    }
 			});
+			
+			
 			this.view.addPanel4(p4, "cell "+coluna+" "+linha+",grow");
 			coluna = coluna+2;
 			
