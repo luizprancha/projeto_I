@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import model.Confeccoes;
 import model.ConfeccoesDAO;
+import view.TelaAlterarConfeccao;
+import view.TelaAlterarLoja;
 import view.TelaDetalhesConfeccoes;
 
 public class DetalhesConfeccoesController {
@@ -65,7 +67,24 @@ public class DetalhesConfeccoesController {
 
         this.view.editarConfeccao(e -> {
 
-            navegador.navegarPara("CADASTRO_CONFECCAO");
+            try {
+
+                TelaAlterarConfeccao tela = new TelaAlterarConfeccao();
+
+                new AlterarConfeccaoController(
+                        tela,
+                        model,
+                        navegador,
+                        confeccoes, 
+                        confeccaoController
+                );
+
+                navegador.adicionarPainel("ALTERAR_CONFECCAO", tela);
+                navegador.navegarPara("ALTERAR_CONFECCAO");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
         });
 

@@ -77,7 +77,7 @@ public class MateriaPrimaController {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					  System.out.println("Painel clicado!");
-					  MateriaPrimaController.this.navegador.navegarPara("DETALHES_CONFECCOES");
+					  MateriaPrimaController.this.navegador.navegarPara("DETALHE_MATERIA");
 					
 				}
 			});

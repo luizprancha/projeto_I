@@ -4,27 +4,31 @@ import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import model.Produtos;
 import model.ProdutosDAO;
+import view.TelaAlterarConfeccao;
 import view.TelaDetalheMateria;
 import view.TelaDetalheProduto;
+import controller.AlterarMateriaController;
 
 public class DetalheMateriaController {
 
     private final TelaDetalheMateria view;
     private final MateriaPrimaDAO model;
     private final Navegador navegador;
-
-    private MateriaPrima materiaprima;
+    private final MateriaPrima materiaprima;
+    private final MateriaPrimaController materiaprimacontroller;
 
     public DetalheMateriaController(
     		TelaDetalheMateria view,
     		MateriaPrimaDAO model,
             Navegador navegador,
-            MateriaPrima materiaprima) {
+            MateriaPrima materiaprima,
+            MateriaPrimaController materiaprimacontroller) {
 
         this.view = view;
         this.model = model;
         this.navegador = navegador;
         this.materiaprima = materiaprima;
+        this.materiaprimacontroller = materiaprimacontroller;
 
         carregarDados();
 
@@ -57,7 +61,25 @@ public class DetalheMateriaController {
 
         this.view.EditarMateria(e -> {
 
-            navegador.navegarPara("CADASTRO_PRODUTO");
+        	try {
+
+                TelaAlterarConfeccao tela = new TelaAlterarConfeccao();
+
+//                new AlterarMateriaController(
+//                        tela,
+//                        model,
+//                        navegador,
+//                        materiaprima, 
+//                        materiaprimacontroller
+//                );
+
+                navegador.adicionarPainel("ALTERAR_CONFECCAO", tela);
+                navegador.navegarPara("ALTERAR_CONFECCAO");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
 
         });
 

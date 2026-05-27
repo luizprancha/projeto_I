@@ -9,6 +9,7 @@ public class CadastroConfeccaoController {
 	private final ConfeccoesDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	private final ConfeccaoController confeccaocontroller;
 
 	/**
 	 * Construtor da classe
@@ -16,10 +17,11 @@ public class CadastroConfeccaoController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CadastroConfeccaoController(TelaCadastroConfeccao view, ConfeccoesDAO model, Navegador navegador) {
+	public CadastroConfeccaoController(TelaCadastroConfeccao view, ConfeccoesDAO model, Navegador navegador, ConfeccaoController confeccaocontroller) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.confeccaocontroller = confeccaocontroller;
 
 		view.cadastrarConfeccao(e -> {
 			String nome = view.getNome().trim();
@@ -68,6 +70,22 @@ public class CadastroConfeccaoController {
 			    model.adicionarConfeccoes(c);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Confecção Cadastratada", 1);
+			    try {
+
+			    	confeccaocontroller.recriarPaineis();
+
+				    navegador.navegarPara("CONFECCAO");
+
+				} catch (Exception ex) {
+
+				    view.exibirMensagem(
+				            "Erro",
+				            "Erro ao atualizar a tela",
+				            0
+				    );
+
+				    ex.printStackTrace();
+				}
 			}
 			});
 

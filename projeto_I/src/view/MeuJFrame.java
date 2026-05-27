@@ -139,6 +139,9 @@ public class MeuJFrame extends JFrame {
 		TelaMateriaPrima telaMateriaPrima = new TelaMateriaPrima();
 		adicionarTela("MATERIA_PRIMA", telaMateriaPrima);
 		
+		TelaDetalheMateria teladetalhemateria = new TelaDetalheMateria();
+		adicionarTela("DETALHE_MATERIA", teladetalhemateria);
+		
 		TelaDetalheProduto telaDetalhesProdutos = new TelaDetalheProduto();
 		adicionarTela("DETALHES_PRODUTOS", telaDetalhesProdutos);
 		
@@ -156,18 +159,27 @@ public class MeuJFrame extends JFrame {
 		
 		TelaAlterarProdutos telaAlterarProdutos = new TelaAlterarProdutos();
 		adicionarTela("ALTERAR_PRODUTOS", telaAlterarProdutos);
+		
+		TelaAlterarConfeccao telaalterarconfeccao = new TelaAlterarConfeccao();
+		adicionarTela("ALTERAR_CONFECCAO", telaalterarconfeccao);
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
+		
 		ProdutosController prodCont = new ProdutosController(telaProduto, produtosDAO, navegador);
+		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador, prodCont);
+		
 		ConfeccaoController confCont = new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
-		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador);
-		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador );
+		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador, confCont);
+		
 		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
-		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador);
-		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);
-		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador);
+		
+		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);		
+		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador, lojaCont);
+		
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
+		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador, materiaConf);
+		
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador, carrinho );
 		

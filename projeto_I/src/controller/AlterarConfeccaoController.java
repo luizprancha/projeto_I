@@ -80,10 +80,12 @@ public class AlterarConfeccaoController {
                 1
         );
 
-        navegador.navegarPara("CONFECCOES");
-
         try {
+
             confeccaoController.recriarPaineis();
+
+            navegador.navegarPara("CONFECCAO");
+
         } catch (FontFormatException | IOException ex) {
 
             view.exibirMensagem(
@@ -137,7 +139,6 @@ public class AlterarConfeccaoController {
     }
 
     private void carregarDados() {
-
         view.setConfeccao(confeccao);
     }
 }
