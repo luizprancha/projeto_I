@@ -1,7 +1,6 @@
 package controller;
 
 import javax.swing.JPanel;
-
 import view.MeuJFrame;
 
 public class Navegador {

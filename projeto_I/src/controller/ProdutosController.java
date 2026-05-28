@@ -1,6 +1,8 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -53,6 +55,28 @@ public class ProdutosController {
 			
 			this.navegador.navegarPara("CADASTRO_PRODUTO");
 			
+		});
+		
+		this.view.buscar(new KeyAdapter() {
+
+		    public void keyReleased(KeyEvent e) {
+
+		        String textoBusca = view.getTextoBusca();
+
+		        List<Produtos> lista;
+
+		        if (textoBusca.isEmpty()) {
+		            lista = model.listarProdutos();
+		        } else {
+		            lista = model.buscarProdutos(textoBusca);
+		        }
+
+		        try {
+		            criarPaineis(lista);
+		        } catch (FontFormatException | IOException ex) {
+		            ex.printStackTrace();
+		        }
+		    }
 		});
 	
 

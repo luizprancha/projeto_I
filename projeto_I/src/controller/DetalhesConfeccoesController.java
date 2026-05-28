@@ -2,11 +2,9 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
-
 import model.Confeccoes;
 import model.ConfeccoesDAO;
 import view.TelaAlterarConfeccao;
-import view.TelaAlterarLoja;
 import view.TelaDetalhesConfeccoes;
 
 public class DetalhesConfeccoesController {

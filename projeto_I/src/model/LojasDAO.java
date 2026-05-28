@@ -195,5 +195,51 @@ public class LojasDAO {
 
     	}
     }
+    
+    
+    
+    public List<Lojas> buscarLojas(String nomeBusca) {
+
+        String sql = "SELECT * FROM Lojas WHERE nome LIKE ?";
+
+        List<Lojas> lojas = new ArrayList<>();
+
+        Connection conexao = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try {
+
+            conexao = database.BancoDeDados.conectar();
+
+            pstm = conexao.prepareStatement(sql);
+
+            pstm.setString(1, "%" + nomeBusca + "%");
+
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+
+                Lojas loja = new Lojas();
+
+                loja.setCnpj(rset.getString("CNPJ"));
+                loja.setNome(rset.getString("nome"));
+                loja.setResponsavel(rset.getString("responsavel"));
+                loja.setEndereco(rset.getString("endereco"));
+                loja.setTelefone(rset.getString("telefone"));
+                loja.setEmail(rset.getString("email"));
+                loja.setIdLoja(rset.getInt("idLoja"));
+
+                lojas.add(loja);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            database.BancoDeDados.desconectar(conexao);
+        }
+
+        return lojas;
+    }
 
 }

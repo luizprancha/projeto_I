@@ -29,10 +29,6 @@ public class Confeccoes {
 		return idConfeccoes;
 	}
 
-	public void setidConfeccoes(int idConfeccoes) {
-		this.idConfeccoes = idConfeccoes;
-	}
-
 	public String getNome() {
 		return nome;
 	}

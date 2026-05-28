@@ -1,11 +1,12 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
-
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import view.Painel4;
@@ -48,6 +49,34 @@ public class MateriaPrimaController {
 			
 			this.navegador.navegarPara("CADASTRO_MATERIA");
 			
+		});
+		
+		this.view.buscar(new KeyAdapter() {
+
+		    public void keyReleased(KeyEvent e) {
+
+		        String textoBusca = view.getTextoBusca();
+
+		        List<MateriaPrima> lista;
+
+		        if (textoBusca.isEmpty()) {
+
+		            lista = model.listarMateriasPrimas();
+
+		        } else {
+
+		            lista = model.buscarMateria(textoBusca);
+		        }
+
+		        try {
+
+		            criarPaineis(lista);
+
+		        } catch (FontFormatException | IOException ex) {
+
+		            ex.printStackTrace();
+		        }
+		    }
 		});
 	
 

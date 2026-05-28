@@ -29,7 +29,6 @@ public class TelaCadastroProduto extends JPanel {
 	private JTextField tfTamanho;
 	private JButton btnCadastrar;
 	private JTextField tfCor;
-	private JComboBox<String> cbTipoProduto;
 
 	/**
 	 * Create the panel.
@@ -65,7 +64,7 @@ public class TelaCadastroProduto extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 5 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][][grow][grow]"));
 		
 		JLabel lbNomePeca = new JLabel("Nome da peça:");
 		lbNomePeca.setFont(fonte2);
@@ -76,47 +75,39 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.add(tfNomepeca, "cell 3 1,growx");
 		tfNomepeca.setColumns(10);
 		
-		JLabel lbTipoProduto =  new JLabel("Tipo de produto:");
-		lbTipoProduto.setFont(fonte2);
-		panel_1.add(lbTipoProduto, "cell 1 3");
-		
-	    cbTipoProduto = new JComboBox();
-		cbTipoProduto.setModel(new DefaultComboBoxModel(new String[] {"Aviamento", "Roupa", "Tecido"}));
-		panel_1.add(cbTipoProduto, "flowx,cell 3 3,grow");
-		
 		JLabel lbPreco = new JLabel("Preço R$:");
 		lbPreco.setFont(fonte2);
-		panel_1.add(lbPreco, "cell 1 5");
+		panel_1.add(lbPreco, "cell 1 3");
 		
 		tfPreco = new JTextField();
 		tfPreco.setFont(fonte2);
-		panel_1.add(tfPreco, "cell 3 5,growx");
+		panel_1.add(tfPreco, "cell 3 3,growx");
 		tfPreco.setColumns(10);
 		
 		JLabel lbQuantidade = new JLabel("Quantidade:");
 		lbQuantidade.setFont(fonte2);
-		panel_1.add(lbQuantidade, "cell 1 7");
+		panel_1.add(lbQuantidade, "cell 1 5");
 		
 		tfQuantidade = new JTextField();
 		tfQuantidade.setFont(fonte2);
-		panel_1.add(tfQuantidade, "cell 3 7,growx");
+		panel_1.add(tfQuantidade, "cell 3 5,growx");
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbTamanho = new JLabel("Tamanho:");
 		lbTamanho.setFont(fonte2);
-		panel_1.add(lbTamanho, "cell 1 9");
+		panel_1.add(lbTamanho, "cell 1 7");
 		
 		tfTamanho = new JTextField();
 		tfTamanho.setFont(fonte2);
-		panel_1.add(tfTamanho, "cell 3 9,growx");
+		panel_1.add(tfTamanho, "cell 3 7,growx");
 		tfTamanho.setColumns(10);
 		
 		JLabel lbCor = new JLabel("Cor:");
-		panel_1.add(lbCor, "cell 1 11");
+		panel_1.add(lbCor, "cell 1 9");
 		lbCor.setFont(fonte2);
 		
 		tfCor = new JTextField();
-		panel_1.add(tfCor, "cell 3 11,growx");
+		panel_1.add(tfCor, "cell 3 9,growx");
 		tfCor.setColumns(10);
 		tfCor.setFont(fonte2);
 		
@@ -133,9 +124,6 @@ public class TelaCadastroProduto extends JPanel {
 	}
 	public String getNomeProduto() {
 		return tfNomepeca.getText();
-	}
-	public String getTipoProduto() {
-	    return cbTipoProduto.getSelectedItem().toString();
 	}
 	public double getPreco() {
 	    try {
@@ -160,7 +148,6 @@ public class TelaCadastroProduto extends JPanel {
 	
 	public void limparCampos() {
 	    tfNomepeca.setText("");
-	    cbTipoProduto.setSelectedIndex(0);
 	    tfPreco.setText("");
 	    tfQuantidade.setText("");
 	    tfTamanho.setText("");

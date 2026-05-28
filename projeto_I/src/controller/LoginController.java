@@ -3,7 +3,6 @@ package controller;
 import model.UsuarioDAO;
 import view.TelaLogin;
 
-
 public class LoginController {
 	
 	@SuppressWarnings("unused")

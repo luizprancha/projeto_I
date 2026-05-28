@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
+import javax.swing.JTextField;
 
 
 public class TelaConfeccoes extends JPanel {
@@ -24,6 +27,7 @@ public class TelaConfeccoes extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnCadastrarConfeccao;
 	private JComponent panel_2; 
+	private JTextField tfBuscar;
 
 
 	/**
@@ -38,7 +42,7 @@ public class TelaConfeccoes extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
 		
 		
 		Font fonte = Font.createFont(
@@ -62,8 +66,13 @@ public class TelaConfeccoes extends JPanel {
 		btnCadastrarConfeccao.setFont(fonte2);
 		panel.add(btnCadastrarConfeccao, "cell 3 1,growx,aligny center");
 		
+		tfBuscar = new JTextField();
+		tfBuscar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(tfBuscar, "cell 5 1,growx");
+		tfBuscar.setColumns(10);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 3 3 1,grow");
+		panel.add(scrollPane, "cell 1 3 5 1,grow");
 		
 	    panel_2 = new JPanel();
 		panel_2.setBackground(new Color(15, 57, 87));
@@ -87,5 +96,12 @@ public class TelaConfeccoes extends JPanel {
 		panel_2.add(p, param);
 	}
 	
+	public String getTextoBusca() {
+	    return tfBuscar.getText();
+	}
+
+	public void buscar(KeyListener acao) {
+	    tfBuscar.addKeyListener(acao);
+	}
 
 }

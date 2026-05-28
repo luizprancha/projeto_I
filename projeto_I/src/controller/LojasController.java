@@ -1,11 +1,12 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
-
 import model.Lojas;
 import model.LojasDAO;
 import view.Painel3;
@@ -41,6 +42,35 @@ public class LojasController {
 
             this.navegador.navegarPara("CADASTRO_LOJAS");
 
+        });
+        
+        this.view.buscar(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                String textoBusca = view.getTextoBusca();
+
+                List<Lojas> lista;
+
+                if (textoBusca.isEmpty()) {
+
+                    lista = model.listarLojas();
+
+                } else {
+
+                    lista = model.buscarLojas(textoBusca);
+                }
+
+                try {
+
+                    criarPaineis(lista);
+
+                } catch (FontFormatException | IOException ex) {
+
+                    ex.printStackTrace();
+                }
+            }
         });
 
     }

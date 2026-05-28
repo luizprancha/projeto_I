@@ -1,11 +1,12 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
-
 import model.Confeccoes;
 import model.ConfeccoesDAO;
 import view.Painel;
@@ -46,6 +47,28 @@ public class ConfeccaoController {
 
             this.navegador.navegarPara("CADASTRO_CONFECCAO");
 
+        });
+        
+        this.view.buscar(new KeyAdapter() {
+
+            public void keyReleased(KeyEvent e) {
+
+                String textoBusca = view.getTextoBusca();
+
+                List<Confeccoes> lista;
+
+                if (textoBusca.isEmpty()) {
+                    lista = model.listarConfeccoes();
+                } else {
+                    lista = model.buscarConfeccoes(textoBusca);
+                }
+
+                try {
+                    criarPaineis(lista);
+                } catch (FontFormatException | IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         });
 
     }

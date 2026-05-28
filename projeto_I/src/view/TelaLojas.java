@@ -18,15 +18,18 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class TelaLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnCadastrarLoja;
 	private JComponent panel_3; 
+	private JTextField tfBuscar;
 
 	/**
 	 * Create the panel.
@@ -40,7 +43,7 @@ public class TelaLojas extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow 50]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow 50]"));
 		
 
 		Font fonte3 = Font.createFont(
@@ -64,8 +67,12 @@ public class TelaLojas extends JPanel {
 		btnCadastrarLoja.setFont(fonte3);
 		panel.add(btnCadastrarLoja, "cell 3 1,growx,aligny center");
 		
+		tfBuscar = new JTextField();
+		panel.add(tfBuscar, "cell 5 1,growx,aligny center");
+		tfBuscar.setColumns(10);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 3 3 1,grow");
+		panel.add(scrollPane, "cell 1 3 5 1,grow");
 		
 	    panel_3 = new JPanel();
 		panel_3.setBackground(new Color(15, 57, 87));
@@ -88,4 +95,12 @@ public class TelaLojas extends JPanel {
 		panel_3.removeAll();
 		panel_3.repaint();
 		panel_3.revalidate();}
+	
+	public String getTextoBusca() {
+	    return tfBuscar.getText();
+	}
+
+	public void buscar(KeyListener acao) {
+	    tfBuscar.addKeyListener(acao);
+	}
 }
