@@ -91,12 +91,13 @@ CREATE TABLE Carrinho(
    id_carrinho INT PRIMARY KEY AUTO_INCREMENT
   );
   
-  CREATE TABLE  ItensCarrinho(
-
+   CREATE TABLE  ItensCarrinho(
    id_item INT PRIMARY KEY AUTO_INCREMENT,
    id_carrinho INT NOT NULL,
    id_produto INT NOT NULL,
    quantidade INT NOT NULL,
+   nome_produto VARCHAR(50) NOT NULL,
+   preco DECIMAL(10,2) NOT NULL,
    FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
    FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos)
 
