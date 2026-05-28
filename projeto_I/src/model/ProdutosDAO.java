@@ -97,7 +97,7 @@ public class ProdutosDAO {
 		        }
 		    }
 		    
-		    public void removerProdutos(int id) {
+		    public static void removerProdutos(int id) {
 
 		        String sql = "DELETE FROM Produtos WHERE idProdutos = ?";
 

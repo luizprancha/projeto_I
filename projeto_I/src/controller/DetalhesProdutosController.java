@@ -30,7 +30,7 @@ public class DetalhesProdutosController {
             ProdutosDAO model,
             Navegador navegador,
             Produtos produto,
-            ProdutosController produtosController) {
+            ProdutosController produtosController,
             Carrinho carrinho) {
 
         this.view = view;

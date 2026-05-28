@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
+import model.Carrinho;
 import model.Produtos;
 
 import model.ProdutosDAO;
@@ -22,6 +23,7 @@ public class ProdutosController {
 	private final ProdutosDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	
 
 	/**
 	 * Construtor da classe
@@ -80,12 +82,14 @@ public class ProdutosController {
 					try {
 						telaDetalhe = new TelaDetalheProduto();
 					
+						Carrinho carrinho= new Carrinho();
 						new DetalhesProdutosController(
 								telaDetalhe,
 								model,
 								navegador,
 								prod,
-								ProdutosController.this
+								ProdutosController.this,
+								carrinho
 							);
 					       ProdutosController.this.navegador.adicionarPainel(
 					           "DETALHES_PRODUTOS",
