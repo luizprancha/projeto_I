@@ -40,7 +40,7 @@ public class CarrinhoLojasController {
 		
 
 
-        List<Carrinho> lista = model.listarCarrinho();
+        List<Carrinho> lista = model.listarItensCarrinho();
 
         try {
             criarPaineis(lista);
@@ -163,7 +163,7 @@ public class CarrinhoLojasController {
     }
 
     public void recriarPaineis() throws FontFormatException, IOException {
-    		List<Carrinho> lista = model.listarCarrinho();
+    		List<Carrinho> lista = model.listarItensCarrinho();
     		criarPaineis(lista);
     	}
     

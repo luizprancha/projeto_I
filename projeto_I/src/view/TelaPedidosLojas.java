@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 public class TelaPedidosLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfLoja;
+	private JTextField tfCNPJLoja;
 	private JTextField tfEntrega;
 	private JButton btnFinalizar;
 	private JLabel lbQuantidade;
@@ -62,14 +62,14 @@ public class TelaPedidosLojas extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Loja:");
+		JLabel lblNewLabel_1 = new JLabel("CNPJ da Loja:");
 		lblNewLabel_1.setFont(fonte3);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		tfLoja = new JTextField();
-		tfLoja.setFont(fonte3);
-		panel_1.add(tfLoja, "cell 3 1,w 160!,h 30!");
-		tfLoja.setColumns(10);
+		tfCNPJLoja = new JTextField();
+		tfCNPJLoja.setFont(fonte3);
+		panel_1.add(tfCNPJLoja, "cell 3 1,w 160!,h 30!");
+		tfCNPJLoja.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças:");
 		lblNewLabel_3.setFont(fonte3);
@@ -117,7 +117,7 @@ public class TelaPedidosLojas extends JPanel {
 	}
 	
 	public void limparCampos() {
-		tfLoja.setText("");
+		tfCNPJLoja.setText("");
 		tfEntrega.setText("");
 		
 	}
@@ -125,6 +125,19 @@ public class TelaPedidosLojas extends JPanel {
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
 		JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
 	}
+
+	public String getCNPJLoja() {
+		return tfCNPJLoja.getText();
+	}
+	
+	public String getEntrega() {
+		return tfEntrega.getText();
+	}
+
+	public String getEndereco() {
+		return tfEndereco.getText();
+	}
+	
 
 
 }

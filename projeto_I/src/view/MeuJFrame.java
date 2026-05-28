@@ -26,6 +26,7 @@ import controller.MateriaPrimaController;
 import controller.Navegador;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
+import controller.PedidosLojasController;
 import controller.ProdutosController;
 import model.Carrinho;
 import model.CarrinhoDAO;
@@ -185,6 +186,8 @@ public class MeuJFrame extends JFrame {
 		
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, carrinhoDAO, navegador, carrinho );
+	    
+	    new PedidosLojasController(telapedidoloja, pedidolojaDAO,navegador);
 		
 		mostrarTela("LOGIN");
 		

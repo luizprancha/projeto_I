@@ -97,6 +97,7 @@ CREATE TABLE Carrinho(
    id_carrinho INT NOT NULL,
    id_produto INT NOT NULL,
    quantidade INT NOT NULL,
+   preco DECIMAL(10,2) NOT NULL,
    FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
    FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos)
 

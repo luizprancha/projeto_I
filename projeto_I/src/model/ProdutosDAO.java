@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.BancoDeDados;
+
 public class ProdutosDAO {
 	
 	public void adicionarProduto(Produtos produto) {
@@ -171,6 +173,40 @@ public class ProdutosDAO {
 		    	}
 
 		    	return produto;
+		    }
+		    
+		    public void atualizarEstoque(
+		    		int idProduto,
+		    		int quantidade) {
+
+		    	String sql =
+		    	"UPDATE Produtos " +
+		    	"SET qtde_estoque = qtde_estoque - ? " +
+		    	"WHERE idProdutos = ?";
+
+		    	Connection conexao = null;
+		    	PreparedStatement pstm = null;
+
+		    	try {
+
+		    		conexao = BancoDeDados.conectar();
+
+		    		pstm = conexao.prepareStatement(sql);
+
+		    		pstm.setInt(1, quantidade);
+
+		    		pstm.setInt(2, idProduto);
+
+		    		pstm.executeUpdate();
+
+		    	} catch (Exception e) {
+
+		    		e.printStackTrace();
+
+		    	} finally {
+
+		    		BancoDeDados.desconectar(conexao);
+		    	}
 		    }
 			
 		    
