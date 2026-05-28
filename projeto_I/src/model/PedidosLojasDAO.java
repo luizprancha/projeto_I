@@ -7,37 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.BancoDeDados;
+
 public class PedidosLojasDAO {
-	
-	public void adicionarPedidosLojas(PedidosLojas pedidoslojas) {
-		String sql = "INSERT INTO PedidosLojas(data_entrega, valor_total, Lojas_CNPJ, endereco,quantidade) VALUES (?, ?, ?, ?, ?)";
-		Connection conexao = null;
-		PreparedStatement pstm = null;
-		
-		try {
-			
-			conexao = database.BancoDeDados.conectar();
-			pstm = conexao.prepareStatement(sql);
-			pstm.setString(1, pedidoslojas.getEntrega());
-			pstm.setDouble(2, pedidoslojas.getValorTotal());
-			pstm.setString(3, pedidoslojas.getLojas_CNPJ());
-			pstm.setString(4, pedidoslojas.getEndereco());
-			
-			pstm.execute();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			database.BancoDeDados.desconectar(conexao);
-			if (pstm != null) { 
-				try {
-					pstm.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
 	
 			public List<PedidosLojas> listarPedidosLojas(){
 				String sql = "SELECT * FROM PedidosLojas";
@@ -53,7 +25,8 @@ public class PedidosLojasDAO {
 					
 					while(rset.next()) {
 						PedidosLojas pedidoslojas = new PedidosLojas();
-						pedidoslojas.setEntrega(rset.getString("data_entrega"));
+						pedidoslojas.setEntrega(
+						rset.getDate("data_entrega").toLocalDate());
 						pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
 						pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
 						pedidoslojas.setEndereco(rset.getString("endereco"));
@@ -70,14 +43,14 @@ public class PedidosLojasDAO {
 			
 
 		    public void atualizarPedidosLojas(PedidosLojas pedidoslojas) {
-		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ?, endereco = ? WHERE id = ?";
+		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ?, endereco = ? WHERE idPedidosL = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
 		        try {
 		            conexao = database.BancoDeDados.conectar();
 		            pstm = conexao.prepareStatement(sql);
-		            pstm.setString(1, pedidoslojas.getEntrega());
+		            pstm.setDate(1, java.sql.Date.valueOf(pedidoslojas.getEntrega()));
 		            pstm.setDouble(2, pedidoslojas.getValorTotal());
 		            pstm.setString(3, pedidoslojas.getLojas_CNPJ());
 		            pstm.setString(4, pedidoslojas.getEndereco());
@@ -91,7 +64,7 @@ public class PedidosLojasDAO {
 		    }
 		    
 		    public static void removerPedidosLojas(int id) {
-		        String sql = "DELETE FROM PedidosLojas WHERE id=?";
+		        String sql = "DELETE FROM PedidosLojas WHERE idPedidosL=?";
 
 		        try (Connection conn = database.BancoDeDados.conectar();
 		             PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -102,6 +75,53 @@ public class PedidosLojasDAO {
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }
+		    }
+		    
+		    public int adicionarPedidosLojas(PedidosLojas pedido) {
+
+		    	String sql =
+		    	"INSERT INTO PedidosLojas(data_entrega, valor_total, endereco, Lojas_CNPJ) VALUES (?, ?, ?, ?)";
+
+		    	Connection conexao = null;
+		    	PreparedStatement pstm = null;
+		    	ResultSet generatedKeys = null;
+
+		    	try {
+
+		    		conexao = BancoDeDados.conectar();
+
+		    		pstm = conexao.prepareStatement(
+		    				sql,
+		    				PreparedStatement.RETURN_GENERATED_KEYS
+		    		);
+
+		    		pstm.setDate(1, java.sql.Date.valueOf(pedido.getEntrega()));
+
+		    		pstm.setDouble(2, pedido.getValorTotal());
+
+		    		pstm.setString(3, pedido.getEndereco());
+
+		    		pstm.setString(4, pedido.getLojas_CNPJ());
+
+		    		pstm.executeUpdate();
+
+		    		generatedKeys = pstm.getGeneratedKeys();
+
+		    		if (generatedKeys.next()) {
+
+		    			return generatedKeys.getInt(1);
+		    		}
+
+		    	} catch (Exception e) {
+
+		    		e.printStackTrace();
+
+		    	} finally {
+
+		    		BancoDeDados.desconectar(conexao);
+		    	}
+
+		    	return -1;
 		    }
 
 }
