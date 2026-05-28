@@ -7,9 +7,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
-
 import model.Carrinho;
 import model.CarrinhoDAO;
 import model.ProdutosDAO;

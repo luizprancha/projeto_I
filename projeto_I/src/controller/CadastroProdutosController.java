@@ -1,11 +1,8 @@
 package controller;
 
 import model.Produtos;
-
 import model.ProdutosDAO;
-import model.Usuario;
 import view.TelaCadastroProduto;
-
 
 /**
  * Classe responsável pela comunicação entre a view (TelaCadastro) e o model (candidatoDAO).
@@ -33,7 +30,6 @@ public class CadastroProdutosController {
 		
 		view.cadastrarProduto(e -> {
 			String nomeProduto = view.getNomeProduto().trim();
-			String tipoProduto = view.getTipoProduto().trim();
 			double preco = view.getPreco();
 			String tamanho = view.getTamanho().trim();
 			int quantidade = view.getQuantidade();
@@ -46,13 +42,7 @@ public class CadastroProdutosController {
 			} else if (nomeProduto.length() < 3) {
 			    erros.append("Nome muito curto\n");
 			}
-
-			if (tipoProduto.isEmpty()) {
-			    erros.append("Tipo é obrigatório\n");
-			} else if (tipoProduto.length() < 3) {
-			    erros.append("Tipo inválido\n");
-			}
-
+			
 			if (preco <= 0) {
 			    erros.append("Preço inválido\n");
 			}
@@ -76,7 +66,7 @@ public class CadastroProdutosController {
 			if (erros.length() > 0) {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			} else {
-			    Produtos p = new Produtos(nomeProduto, tipoProduto, preco, tamanho, quantidade, cor);
+			    Produtos p = new Produtos(nomeProduto, preco, tamanho, quantidade, cor);
 			    model.adicionarProduto(p);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
@@ -84,7 +74,7 @@ public class CadastroProdutosController {
 
 			    	produtoscontroller.recriarPaineis();
 
-				    navegador.navegarPara("CONFECCAO");
+				    navegador.navegarPara("PRODUTO");
 
 				} catch (Exception ex) {
 

@@ -105,5 +105,48 @@ public class MateriaPrimaDAO {
 			            e.printStackTrace();
 			        }
 			    }
+			    
+			    
+			    public List<MateriaPrima> buscarMateria(String nomeBusca) {
+
+			        String sql = "SELECT * FROM MateriaPrima WHERE nome LIKE ?";
+
+			        List<MateriaPrima> materiaprima = new ArrayList<>();
+
+			        Connection conexao = null;
+			        PreparedStatement pstm = null;
+			        ResultSet rset = null;
+
+			        try {
+
+			            conexao = database.BancoDeDados.conectar();
+
+			            pstm = conexao.prepareStatement(sql);
+
+			            pstm.setString(1, "%" + nomeBusca + "%");
+
+			            rset = pstm.executeQuery();
+
+			            while (rset.next()) {
+
+			                MateriaPrima materia = new MateriaPrima();
+
+			                materia.setNome(rset.getString("nome"));
+							materia.setCor(rset.getString("cor"));
+							materia.setQuantidade(rset.getInt("quantidade"));
+							materia.setTipo(rset.getString("tipo"));
+							materia.setIdMateriaPrima(rset.getInt("idMateriaPrima"));
+
+			                materiaprima.add(materia);
+			            }
+
+			        } catch (SQLException e) {
+			            e.printStackTrace();
+			        } finally {
+			            database.BancoDeDados.desconectar(conexao);
+			        }
+
+			        return materiaprima;
+			    }
 
 	}

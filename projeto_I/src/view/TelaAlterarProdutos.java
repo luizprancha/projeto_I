@@ -24,7 +24,6 @@ import javax.swing.DefaultComboBoxModel;
 public class TelaAlterarProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	JComboBox cbTipoProduto;
 	private JTextField tfNomeProduto;
 	private JTextField tfTamanho;
 	private JButton btnAlterarProduto;
@@ -64,7 +63,7 @@ public class TelaAlterarProdutos extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lbNomeProdutos = new JLabel("Nome do Produto:");
 		lbNomeProdutos.setFont(fonte2);
@@ -75,49 +74,40 @@ public class TelaAlterarProdutos extends JPanel {
 		panel_1.add(tfNomeProduto, "cell 3 1,growx");
 		tfNomeProduto.setColumns(10);
 		
-		JLabel lbCNPJ = new JLabel("Tipo Produto:");
-		lbCNPJ.setFont(fonte2);
-		panel_1.add(lbCNPJ, "cell 1 3");
-		
-		cbTipoProduto = new JComboBox();
-		cbTipoProduto.setModel(new DefaultComboBoxModel(new String[] {"Aviamento", "Roupa", "Tecido"}));
-		cbTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(cbTipoProduto, "cell 3 3,growx");
-		
 		JLabel lblNewLabel_1 = new JLabel("Preço R$:");
 		lblNewLabel_1.setFont(fonte2);
-		panel_1.add(lblNewLabel_1, "cell 1 5");
+		panel_1.add(lblNewLabel_1, "cell 1 3");
 		
 		tfPreco = new JTextField();
 		tfPreco.setFont(fonte2);
-		panel_1.add(tfPreco, "cell 3 5,growx");
+		panel_1.add(tfPreco, "cell 3 3,growx");
 		tfPreco.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade:");
 		lblNewLabel_2.setFont(fonte2);
-		panel_1.add(lblNewLabel_2, "cell 1 7");
+		panel_1.add(lblNewLabel_2, "cell 1 5");
 		
 		tfQuantidade = new JTextField();
 		tfQuantidade.setFont(fonte2);
-		panel_1.add(tfQuantidade, "cell 3 7,growx");
+		panel_1.add(tfQuantidade, "cell 3 5,growx");
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbTamanho = new JLabel("Tamanho:");
 		lbTamanho.setFont(fonte2);
-		panel_1.add(lbTamanho, "cell 1 9");
+		panel_1.add(lbTamanho, "cell 1 7");
 		
 		tfTamanho = new JTextField();
 		tfTamanho.setFont(fonte2);
-		panel_1.add(tfTamanho, "cell 3 9,growx");
+		panel_1.add(tfTamanho, "cell 3 7,growx");
 		tfTamanho.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Cor:");
 		lblNewLabel_3.setFont(fonte2);
-		panel_1.add(lblNewLabel_3, "cell 1 11");
+		panel_1.add(lblNewLabel_3, "cell 1 9");
 		
 		tfCor = new JTextField();
 		tfCor.setFont(fonte2);
-		panel_1.add(tfCor, "cell 3 11,growx");
+		panel_1.add(tfCor, "cell 3 9,growx");
 		tfCor.setColumns(10);
 		
 		btnAlterarProduto = new JButtonOutLine();
@@ -129,10 +119,6 @@ public class TelaAlterarProdutos extends JPanel {
 	
 	public String getNomeProduto() {
 		return tfNomeProduto.getText();
-	}
-	
-	public String getTipoProduto() {
-		return cbTipoProduto.getSelectedItem().toString();
 	}
 	
 	public String getPreco() {
@@ -168,7 +154,6 @@ public class TelaAlterarProdutos extends JPanel {
 	
 	public void setProdutos(Produtos p) {
 		tfNomeProduto.setText(p.getNome());
-		cbTipoProduto.setSelectedItem(p.getTipoProduto());
 		tfPreco.setText(String.valueOf(p.getPreco()));
 		tfQuantidade.setText(String.valueOf(p.getQuantidade()));
 		tfTamanho.setText(String.valueOf(p.getTamanho()));

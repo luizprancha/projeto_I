@@ -24,7 +24,6 @@ public class TelaDetalheProduto extends JPanel {
 	private JButton btnEditar;
 	private JButton btnAdicionar;
 	private JLabel lbNomepeca;
-	private JLabel lbTipo;
 	private JLabel lbPreco;
 	private JLabel lbQuantidade;
 	private JLabel lbTamanho;
@@ -67,7 +66,7 @@ public class TelaDetalheProduto extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 5 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 	
 
@@ -80,45 +79,37 @@ public class TelaDetalheProduto extends JPanel {
 		lbNomepeca.setFont(fonte2);
 		panel_1.add(lbNomepeca, "cell 3 1");
 		
-		JLabel lblNewLabel_2 = new JLabel("Tipo de produto:");
-		lblNewLabel_2.setFont(fonte2);
-		panel_1.add(lblNewLabel_2, "cell 1 3");
-		
-		lbTipo = new JLabel("New label");
-		lbTipo.setFont(fonte2);
-		panel_1.add(lbTipo, "cell 3 3");
-		
 		JLabel lblNewLabel_3 = new JLabel("Preço R$:");
 		lblNewLabel_3.setFont(fonte2);
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		panel_1.add(lblNewLabel_3, "cell 1 3");
 		
 		lbPreco = new JLabel("New label");
 		lbPreco.setFont(fonte2);
-		panel_1.add(lbPreco, "cell 3 5");
+		panel_1.add(lbPreco, "cell 3 3");
 		
 		JLabel lblNewLabel_4 = new JLabel("Quantidade em estoque:");
 		lblNewLabel_4.setFont(fonte2);
-		panel_1.add(lblNewLabel_4, "cell 1 7");
+		panel_1.add(lblNewLabel_4, "cell 1 5");
 		
 		lbQuantidade = new JLabel("New label");
 		lbQuantidade.setFont(fonte2);
-		panel_1.add(lbQuantidade, "cell 3 7");
+		panel_1.add(lbQuantidade, "cell 3 5");
 		
 		JLabel lblNewLabel_5 = new JLabel("Tamanho:");
 		lblNewLabel_5.setFont(fonte2);
-		panel_1.add(lblNewLabel_5, "cell 1 9");
+		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
 		lbTamanho = new JLabel("New label");
 		lbTamanho.setFont(fonte2);
-		panel_1.add(lbTamanho, "cell 3 9");
+		panel_1.add(lbTamanho, "cell 3 7");
 		
 		JLabel lblNewLabel_6 = new JLabel("ID produto:");
 		lblNewLabel_6.setFont(fonte2);
-		panel_1.add(lblNewLabel_6, "cell 1 11");
+		panel_1.add(lblNewLabel_6, "cell 1 9");
 		
 		lbID = new JLabel("New label");
 		lbID.setFont(fonte2);
-		panel_1.add(lbID, "cell 3 11");
+		panel_1.add(lbID, "cell 3 9");
 		
 		btnExcluir = new JButtonOutLine();
 		btnExcluir.setText("Excluir");
@@ -152,7 +143,6 @@ public class TelaDetalheProduto extends JPanel {
 	public void setProduto(Produtos produto) {
 
 	    lbNomepeca.setText(produto.getNome());
-	    lbTipo.setText(produto.getTipoProduto());
 	    lbPreco.setText(String.valueOf(produto.getPreco()));
 	    lbQuantidade.setText(String.valueOf(produto.getQuantidade()));
 	    lbTamanho.setText(produto.getTamanho());

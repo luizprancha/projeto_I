@@ -18,15 +18,18 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class TelaMateriaPrima extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnNovaMateria;
 	private JComponent panel_4; 
+	private JTextField tfBusca;
 
 	/**
 	 * Create the panel.
@@ -40,7 +43,7 @@ public class TelaMateriaPrima extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[::10px][::90px,grow][::10px][grow][grow]"));
 		
 		Font fonte1 = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -65,8 +68,13 @@ public class TelaMateriaPrima extends JPanel {
 		btnNovaMateria.setFont(fonte2);
 		panel.add(btnNovaMateria, "cell 3 1,growx,aligny center");
 		
+		tfBusca = new JTextField();
+		tfBusca.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(tfBusca, "cell 5 1,growx");
+		tfBusca.setColumns(10);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 3 4 1,grow");
+		panel.add(scrollPane, "cell 1 3 5 1,grow");
 		
 	    panel_4 = new JPanel();
 		panel_4.setBackground(new Color(15, 57, 87));
@@ -90,6 +98,14 @@ public class TelaMateriaPrima extends JPanel {
 		panel_4.removeAll();
 		panel_4.repaint();
 		panel_4.revalidate();}
+	
+	public String getTextoBusca() {
+	    return tfBusca.getText();
+	}
+
+	public void buscar(KeyListener acao) {
+	    tfBusca.addKeyListener(acao);
+	}
 }
 
 

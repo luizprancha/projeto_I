@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
-
 import model.Lojas;
 import model.LojasDAO;
 import view.TelaAlterarLoja;

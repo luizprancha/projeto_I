@@ -165,5 +165,49 @@ public class ConfeccoesDAO {
 
 		    	}
 		    }
+		    
+		    public List<Confeccoes> buscarConfeccoes(String nomeBusca) {
+
+		        String sql = "SELECT * FROM Confeccoes WHERE nome LIKE ?";
+
+		        List<Confeccoes> confeccoes = new ArrayList<>();
+
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
+		        ResultSet rset = null;
+
+		        try {
+
+		            conexao = database.BancoDeDados.conectar();
+
+		            pstm = conexao.prepareStatement(sql);
+
+		            pstm.setString(1, "%" + nomeBusca + "%");
+
+		            rset = pstm.executeQuery();
+
+		            while (rset.next()) {
+
+		            	Confeccoes confeccao = new Confeccoes();
+
+		            	confeccao.setCnpj(rset.getString("CNPJ"));
+						confeccao.setNome(rset.getString("nome"));
+						confeccao.setResponsavel(rset.getString("responsavel"));
+						confeccao.setEndereco(rset.getString("endereco"));
+						confeccao.setTelefone(rset.getString("telefone"));
+						confeccao.setEmail(rset.getString("email"));
+						confeccao.setIdConfeccoes(rset.getInt("idConfeccoes"));
+
+		                confeccoes.add(confeccao);
+		            }
+
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        } finally {
+		            database.BancoDeDados.desconectar(conexao);
+		        }
+
+		        return confeccoes;
+		    }
 
 }

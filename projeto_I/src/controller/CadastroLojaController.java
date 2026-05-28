@@ -1,6 +1,5 @@
 package controller;
 
-import model.Confeccoes;
 import model.Lojas;
 import model.LojasDAO;
 import view.TelaCadastroLoja;

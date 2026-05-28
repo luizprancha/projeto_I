@@ -2,12 +2,8 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
-
-import model.Lojas;
-import model.LojasDAO;
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
-import view.TelaAlterarLoja;
 import view.TelaAlterarMateria;
 
 public class AlterarMateriaController {
@@ -18,12 +14,7 @@ public class AlterarMateriaController {
 	private final MateriaPrima materiaprima;
 	private final MateriaPrimaController materiaprimacontroller;
 
-	public AlterarMateriaController(
-			TelaAlterarMateria view,
-			MateriaPrimaDAO model,
-			Navegador navegador,
-			MateriaPrima materiaprima,
-			MateriaPrimaController materiaprimacontroller) {
+	public AlterarMateriaController(TelaAlterarMateria view, MateriaPrimaDAO model, Navegador navegador, MateriaPrima materiaprima, MateriaPrimaController materiaprimacontroller) {
 
 		this.view = view;
 		this.model = model;

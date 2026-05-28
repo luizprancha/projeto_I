@@ -1,7 +1,6 @@
 package controller;
 
 import model.Usuario;
-
 import model.UsuarioDAO;
 import view.TelaCadastro;
 

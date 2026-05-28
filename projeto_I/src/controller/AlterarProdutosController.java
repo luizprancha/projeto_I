@@ -37,7 +37,6 @@ public class AlterarProdutosController {
 		view.alterarProduto(e -> {
 
 			String nome = view.getNomeProduto().trim();
-			String tipoProduto = view.getTipoProduto().trim();
 			double preco = Double.parseDouble(view.getPreco().trim());
 			int quantidade = Integer.parseInt(view.getQuantidade().trim());
 			String tamanho = view.getTamanho().trim();
@@ -49,10 +48,6 @@ public class AlterarProdutosController {
 				erros.append("Nome é obrigatório\n");
 			} else if (nome.length() < 3) {
 				erros.append("Nome muito curto\n");
-			}
-
-			if (tipoProduto.isEmpty()) {
-				erros.append("Tipo do produto é obrigatório\n");
 			}
 
 			if (String.valueOf(preco).isEmpty()) {
@@ -75,7 +70,6 @@ public class AlterarProdutosController {
 
 				Produtos p = new Produtos(
 						nome,
-						tipoProduto,
 						preco,
 						tamanho,
 						quantidade,

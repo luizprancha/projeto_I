@@ -23,7 +23,6 @@ public class ProdutosDAO {
 			pstm.setString(3, produto.getCor());
 			pstm.setInt(4, produto.getQuantidade());
 			pstm.setDouble(5, produto.getPreco());
-			pstm.setString(6, produto.getTipoProduto());
 			
 			pstm.execute();
 			
@@ -60,7 +59,6 @@ public class ProdutosDAO {
 						produto.setCor(rset.getString("cor"));
 						produto.setQuantidade(rset.getInt("qtde_estoque"));
 						produto.setPreco(rset.getDouble("preco"));
-						produto.setTipoProduto(rset.getString("tipo_produto"));
 						produto.setIdProduto(rset.getInt("idProdutos"));
 						produtos.add(produto);
 					}
@@ -75,7 +73,7 @@ public class ProdutosDAO {
 			
 
 		    public void atualizarProdutos(Produtos produto) {
-		        String sql = "UPDATE Produtos SET nome = ?, tamanho = ?, cor = ?, qtde_estoque = ?, preco = ?, tipo_produto = ? WHERE idProdutos = ?";
+		        String sql = "UPDATE Produtos SET nome = ?, tamanho = ?, cor = ?, qtde_estoque = ?, preco = ? WHERE idProdutos = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
@@ -87,7 +85,6 @@ public class ProdutosDAO {
 		            pstm.setString(3, produto.getCor());
 		            pstm.setInt(4, produto.getQuantidade());
 		            pstm.setDouble(5, produto.getPreco());
-		            pstm.setString(6, produto.getTipoProduto());
 		            pstm.setInt(7, produto.getIdProduto());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
@@ -153,7 +150,6 @@ public class ProdutosDAO {
 
 		    			produto.setIdProduto(rset.getInt("idProdutos"));
 		    			produto.setNome(rset.getString("nome"));
-		    			produto.setTipoProduto(rset.getString("tipo_produto"));
 		    			produto.setPreco(rset.getDouble("preco"));
 		    			produto.setQuantidade(rset.getInt("qtde_estoque"));
 		    			produto.setTamanho(rset.getString("tamanho"));
@@ -171,6 +167,48 @@ public class ProdutosDAO {
 		    	}
 
 		    	return produto;
+		    }
+		    
+		    public List<Produtos> buscarProdutos(String nomeBusca) {
+
+		        String sql = "SELECT * FROM Produtos WHERE nome LIKE ?";
+
+		        List<Produtos> produtos = new ArrayList<>();
+
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
+		        ResultSet rset = null;
+
+		        try {
+
+		            conexao = database.BancoDeDados.conectar();
+		            pstm = conexao.prepareStatement(sql);
+
+		            pstm.setString(1, "%" + nomeBusca + "%");
+
+		            rset = pstm.executeQuery();
+
+		            while (rset.next()) {
+
+		                Produtos produto = new Produtos();
+
+		                produto.setNome(rset.getString("nome"));
+		                produto.setTamanho(rset.getString("tamanho"));
+		                produto.setCor(rset.getString("cor"));
+		                produto.setQuantidade(rset.getInt("qtde_estoque"));
+		                produto.setPreco(rset.getDouble("preco"));
+		                produto.setIdProduto(rset.getInt("idProdutos"));
+
+		                produtos.add(produto);
+		            }
+
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        } finally {
+		            database.BancoDeDados.desconectar(conexao);
+		        }
+
+		        return produtos;
 		    }
 			
 		    

@@ -1,20 +1,11 @@
 package controller;
 
-import model.LojasDAO;
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
-import model.Produtos;
-import model.ProdutosDAO;
-import view.TelaAlterarConfeccao;
-import view.TelaAlterarLoja;
 import view.TelaAlterarMateria;
 import view.TelaDetalheMateria;
-import view.TelaDetalheProduto;
-
 import java.awt.FontFormatException;
 import java.io.IOException;
-
-import controller.AlterarMateriaController;
 
 public class DetalheMateriaController {
 
