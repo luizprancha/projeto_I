@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import Botao.PainelArredondado;
 import model.Carrinho;
+import model.ItensCarrinho;
 import model.Produtos;
 import java.awt.Color;
 import java.awt.FontFormatException;
@@ -20,21 +21,21 @@ public class Painel5 extends PainelArredondado  {
 	private JTextField tFQuantidade;
 	private int quantidade = 1; 
 	private JLabel lbpreco;
-	private Carrinho carrinhos;
+	private ItensCarrinho itenscarrinhos;
 	public int selected;
 
 	/**
 	 * Create the panel.
 	 */
-	public Painel5(Carrinho carrinhos ) throws FontFormatException, IOException {
+	public Painel5(ItensCarrinho itenscarrinhos ) throws FontFormatException, IOException {
 		
-	    this.carrinhos = carrinhos;
+	    this.itenscarrinhos = itenscarrinhos;
 	    
 	    
 		setBackground(new Color(255, 255, 255));
 		setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lbProduto = new JLabel(carrinhos.getNomeProduto());
+		JLabel lbProduto = new JLabel(itenscarrinhos.getNomeProduto());
 		add(lbProduto, "cell 3 1,alignx center");
 		
 		JLabel lbQuantidade = new JLabel("Quantidade:");
@@ -86,7 +87,7 @@ public class Painel5 extends PainelArredondado  {
 	    private void atualizarQuantidade() {
 	     
 	        tFQuantidade.setText(String.valueOf(quantidade));
-	        double total = carrinhos.getPreco() * quantidade;
+	        double total = itenscarrinhos.getPreco() * quantidade;
 	        lbpreco.setText(String.format("R$ %.2f", total));
 	    }
 	}

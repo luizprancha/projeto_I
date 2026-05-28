@@ -23,6 +23,7 @@ public class DetalhesProdutosController {
 
     private Produtos produto;
     private Carrinho carrinho;
+    private ItensCarrinho itenscarrinho;
 
     public DetalhesProdutosController(
             TelaDetalheProduto view,
@@ -115,22 +116,25 @@ public class DetalhesProdutosController {
 
         });
 
+
         this.view.adicionarProduto(e -> {
 
             try {
 
-             
+           
                 ItensCarrinho item = new ItensCarrinho();
 
                 item.setIdCarrinho(carrinho.getIdCarrinho());
                 item.setIdProduto(produto.getIdProduto());
                 item.setNomeProduto(produto.getNome());
-                item.setPreco(produto.getPreco());
+                item.setPreco(produto.getPreco() );
                 item.setQuantidade(1);
 
                
-                ItensCarrinhoDAO itensDAO = new ItensCarrinhoDAO();
+              
+                ItensCarrinhoDAO itensDAO =new ItensCarrinhoDAO();
 
+           
                 itensDAO.adicionarItensCarrinho(item);
 
                 view.exibirMensagem(
@@ -139,17 +143,18 @@ public class DetalhesProdutosController {
                     1
                 );
 
+              
                 TelaCarrinhoLojas telaCarrinho =
                     new TelaCarrinhoLojas();
 
-                CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-
+                // controller do carrinho
                 CarrinhoLojasController controller =
                     new CarrinhoLojasController(
                         telaCarrinho,
-                        carrinhoDAO,
-                        navegador,
-                        carrinho
+                        itensDAO,
+                        navegador, 
+                        itenscarrinho,
+                        carrinho 
                     );
 
                 controller.recriarPaineis();

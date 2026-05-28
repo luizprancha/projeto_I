@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import model.Carrinho;
-import model.CarrinhoDAO;
+
+import model.ItensCarrinhoDAO;
+import model.ItensCarrinho;
 import model.ProdutosDAO;
 import view.Painel5;
 import view.TelaCarrinhoLojas;
@@ -17,10 +19,12 @@ import view.TelaCarrinhoLojas;
 public class CarrinhoLojasController {
 	
 	private final TelaCarrinhoLojas view;
-	private final  CarrinhoDAO model;
+	//private final  CarrinhoDAO model;
+	private final ItensCarrinhoDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
 	private final Carrinho carrinho;
+	private final ItensCarrinho itenscarrinho;
 	private ArrayList<Painel5> listaPaineis = new ArrayList<Painel5>();
 
 	/**
@@ -29,16 +33,17 @@ public class CarrinhoLojasController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CarrinhoLojasController(TelaCarrinhoLojas view, CarrinhoDAO model, Navegador navegador, Carrinho carrinho) {
+	public CarrinhoLojasController(TelaCarrinhoLojas view, ItensCarrinhoDAO model, Navegador navegador, ItensCarrinho itenscarrinho, Carrinho carrinho) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
-		this.carrinho = carrinho;
+		this.itenscarrinho = itenscarrinho;
+		this.carrinho =carrinho;
 		
 		
 
 
-        List<Carrinho> lista = model.listarItensCarrinho();
+        List<ItensCarrinho> lista = model.listarItensCarrinho();
 
         try {
             criarPaineis(lista);
@@ -50,9 +55,9 @@ public class CarrinhoLojasController {
 
             try {
 
-                int id = carrinho.getIdCarrinho();
+            	int id = itenscarrinho.getIdItem();
 
-                ProdutosDAO.removerProdutos(id);
+            	ItensCarrinhoDAO.removerItensCarrinho(id);
 
                 view.exibirMensagem(
                     "Sucesso",
@@ -66,6 +71,7 @@ public class CarrinhoLojasController {
                     telaCarrinhoLojas,
                     model,
                     navegador, 
+                    itenscarrinho,
                     carrinho
                 );
 
@@ -111,7 +117,7 @@ public class CarrinhoLojasController {
 
     }
 
-    public void criarPaineis(List<Carrinho> lista)
+    public void criarPaineis(List<ItensCarrinho> lista)
             throws FontFormatException, IOException {
 
         this.view.limparPaineis();
@@ -121,7 +127,7 @@ public class CarrinhoLojasController {
 
         for (int i = 0; i < lista.size(); i++) {
 
-            Carrinho car= lista.get(i); 
+            ItensCarrinho car= lista.get(i); 
           
             Painel5 p5 = new Painel5(car);
             listaPaineis.add(p5);
@@ -161,7 +167,7 @@ public class CarrinhoLojasController {
     }
 
     public void recriarPaineis() throws FontFormatException, IOException {
-    		List<Carrinho> lista = model.listarItensCarrinho();
+    		List<ItensCarrinho> lista = model.listarItensCarrinho();
     		criarPaineis(lista);
     	}
     
