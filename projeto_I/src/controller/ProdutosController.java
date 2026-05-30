@@ -106,7 +106,9 @@ public class ProdutosController {
 					try {
 						telaDetalhe = new TelaDetalheProduto();
 					
-						Carrinho carrinho= new Carrinho();
+						Carrinho carrinho = new Carrinho();
+						carrinho.setIdCarrinho(1);
+						
 						new DetalhesProdutosController(
 								telaDetalhe,
 								model,

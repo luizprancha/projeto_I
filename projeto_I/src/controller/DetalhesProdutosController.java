@@ -133,6 +133,9 @@ public class DetalhesProdutosController {
                
               
                 ItensCarrinhoDAO itensDAO =new ItensCarrinhoDAO();
+                
+                System.out.println("ID Carrinho: " + item.getIdCarrinho());
+                System.out.println("ID Produto: " + item.getIdProduto());
 
            
                 itensDAO.adicionarItensCarrinho(item);
@@ -166,13 +169,22 @@ public class DetalhesProdutosController {
 
                 navegador.navegarPara("CARRINHO");
 
-            } catch (SQLException ex) {
+            } catch (SQLException exsso) {
 
-                view.exibirMensagem(
-                    "Erro",
-                    "Produto já existe no carrinho!",
-                    0
-                );
+                if (exsso.getErrorCode() == 1062) {
+                    view.exibirMensagem(
+                        "Erro",
+                        "Produto já existe no carrinho!",
+                        0
+                    );
+                } else {
+                    view.exibirMensagem(
+                        "Erro",
+                        "Não foi possível adicionar o produto ao carrinho: " + exsso.getMessage(),
+                        0
+                    );
+                    exsso.printStackTrace();
+                }
 
             } catch (Exception ex) {
 

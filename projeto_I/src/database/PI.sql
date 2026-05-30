@@ -16,6 +16,7 @@ CREATE TABLE Produtos (
   tamanho VARCHAR(20),
   cor VARCHAR(50),
   qtde_estoque INT DEFAULT 0,
+  tipo_produto Varchar(20),
   preco DECIMAL(10,2) NOT NULL
 ) ENGINE=InnoDB;
 
@@ -90,17 +91,27 @@ CREATE TABLE Carrinho(
    id_carrinho INT PRIMARY KEY AUTO_INCREMENT
   );
   
-  CREATE TABLE  ItensCarrinho(
+ CREATE TABLE  ItensCarrinho(
 
    id_item INT PRIMARY KEY AUTO_INCREMENT,
    id_carrinho INT NOT NULL,
    id_produto INT NOT NULL,
+   nome_produto Varchar(50) NOT NULL,
    quantidade INT NOT NULL,
    preco DECIMAL(10,2) NOT NULL,
+   
    FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
-   FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos)
+   FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos),
+   
+   FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos),
+
+    CONSTRAINT uk_carrinho_produto UNIQUE (id_carrinho, id_produto)
 
 );
+
+INSERT INTO Carrinho (id_carrinho) VALUES (1);
+  
   
 
 INSERT INTO Usuarios VALUES

@@ -14,56 +14,40 @@ import java.sql.PreparedStatement;
 
 
 public class ItensCarrinhoDAO {
-	
-	public void adicionarItensCarrinho(ItensCarrinho itenscarrinho)
-	        throws SQLException {
+	public void adicionarItensCarrinho(ItensCarrinho itenscarrinho) throws SQLException {
 
-	    String verificar = "SELECT * FROM ItensCarrinho " +"WHERE id_carrinho = ? AND id_produto = ?";
-
-	    String sql ="INSERT INTO ItensCarrinho " +"(id_carrinho, id_produto, quantidade, nome_produtos, preco) " +"VALUES (?, ?, ?, ?, ?)";
+	    String sql = "INSERT INTO ItensCarrinho "
+	               + "(id_carrinho, id_produto, quantidade, nome_produto, preco) "
+	               + "VALUES (?, ?, ?, ?, ?)";
 
 	    Connection conexao = null;
-	    PreparedStatement pstmVerificar = null;
 	    PreparedStatement pstm = null;
-	    ResultSet rset = null;
 
 	    try {
 
 	        conexao = BancoDeDados.conectar();
-
-
-	        pstmVerificar =conexao.prepareStatement(verificar);
-	        pstmVerificar.setInt( 1, itenscarrinho.getIdCarrinho());
-	        pstmVerificar.setInt( 2, itenscarrinho.getIdProduto()  );
-	        rset = pstmVerificar.executeQuery();
-
-	        // já existe
-	        if (rset.next()) { throw new SQLException("Produto já existe no carrinho!" );
-	        }
-
-	        // insert
 	        pstm = conexao.prepareStatement(sql);
 
-	        pstm.setInt(1,itenscarrinho.getIdCarrinho());
-	        pstm.setInt(2,itenscarrinho.getIdProduto());
-	        pstm.setInt( 3, itenscarrinho.getQuantidade() );
-	        pstm.setString( 4,itenscarrinho.getNomeProduto() );
-	        pstm.setDouble(5,itenscarrinho.getPreco());
+	        pstm.setInt(1, itenscarrinho.getIdCarrinho());
+	        pstm.setInt(2, itenscarrinho.getIdProduto());
+	        pstm.setInt(3, itenscarrinho.getQuantidade());
+	        pstm.setString(4, itenscarrinho.getNomeProduto());
+	        pstm.setDouble(5, itenscarrinho.getPreco());
 
-	        pstm.execute();
+	        pstm.executeUpdate();
+
+	    } catch (SQLException e) {
+
+	        throw e;
 
 	    } finally {
 
-	        if (rset != null) {
-	            rset.close();
-	        }
-
-	        if (pstmVerificar != null) {
-	            pstmVerificar.close();
-	        }
-
 	        if (pstm != null) {
-	            pstm.close();
+	            try {
+	                pstm.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
 	        }
 
 	        BancoDeDados.desconectar(conexao);
