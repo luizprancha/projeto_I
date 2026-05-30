@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Produtos {
 
 	private String nome;
@@ -8,14 +10,24 @@ public class Produtos {
 	private int quantidade;
 	private String tamanho;
 	private String cor;
+	private LocalDate dataCadastro;
 	
-	public Produtos(String nome, double preco, String tamanho, int quantidade, String cor) {
+	public Produtos(String nome, double preco, String tamanho, int quantidade, String cor, LocalDate dataCadastro) {
 		this.nome = nome;
 		this.preco = preco;
 		this.tamanho = tamanho;
 		this.quantidade = quantidade;
 		this.cor = cor;
-}
+		this.dataCadastro = dataCadastro;
+	}
+	
+	public LocalDate getDataCadastro() {
+	    return dataCadastro;
+	}
+	
+	public LocalDate setDataCadastro(LocalDate dataCadastro) {
+		return dataCadastro;
+	}
 	
 	public Produtos() {
 		super();

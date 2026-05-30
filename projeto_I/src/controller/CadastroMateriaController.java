@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import view.TelaCadastroMateria;
@@ -48,7 +50,7 @@ public class CadastroMateriaController {
 			if (erros.length() > 0) {
 				view.exibirMensagem("Erro", erros.toString(), 0);
 			} else {
-				MateriaPrima m = new MateriaPrima(nome, quantidade, cor, tipo);
+				MateriaPrima m = new MateriaPrima(nome, quantidade, cor, tipo, LocalDate.now());
 				model.adicionarMateriaPrima(m);
 				view.limparCampos();
 				view.exibirMensagem("Sucesso", "Matéria-Prima salva!", 1);

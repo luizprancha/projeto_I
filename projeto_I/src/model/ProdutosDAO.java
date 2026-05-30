@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import database.BancoDeDados;
 public class ProdutosDAO {
 	
 	public void adicionarProduto(Produtos produto) {
-		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco, tipo_produto) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco, dataCadastro) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		
@@ -25,6 +26,7 @@ public class ProdutosDAO {
 			pstm.setString(3, produto.getCor());
 			pstm.setInt(4, produto.getQuantidade());
 			pstm.setDouble(5, produto.getPreco());
+			pstm.setDate(6, java.sql.Date.valueOf(LocalDate.now()));
 			
 			pstm.execute();
 			
@@ -62,6 +64,7 @@ public class ProdutosDAO {
 						produto.setQuantidade(rset.getInt("qtde_estoque"));
 						produto.setPreco(rset.getDouble("preco"));
 						produto.setIdProduto(rset.getInt("idProdutos"));
+						produto.setDataCadastro(rset.getDate("dataCadastro").toLocalDate());
 						produtos.add(produto);
 					}
 					
@@ -87,7 +90,7 @@ public class ProdutosDAO {
 		            pstm.setString(3, produto.getCor());
 		            pstm.setInt(4, produto.getQuantidade());
 		            pstm.setDouble(5, produto.getPreco());
-		            pstm.setInt(7, produto.getIdProduto());
+		            pstm.setInt(6, produto.getIdProduto());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
@@ -245,6 +248,48 @@ public class ProdutosDAO {
 
 		    		BancoDeDados.desconectar(conexao);
 		    	}
+		    }
+		    
+		    public List<Produtos> buscarProdutosParados() {
+
+		        List<Produtos> lista = new ArrayList<>();
+
+		        String sql =
+		            "SELECT * FROM Produtos " +
+		            "WHERE dataCadastro <= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
+
+		        try {
+
+		            Connection con = BancoDeDados.conectar();
+
+		            PreparedStatement stmt =
+		                    con.prepareStatement(sql);
+
+		            ResultSet rs =
+		                    stmt.executeQuery();
+
+		            while(rs.next()) {
+
+		                Produtos produto =new Produtos();
+		                produto.setIdProduto(rs.getInt("idProdutos"));
+		                produto.setNome(rs.getString("nome"));
+		                produto.setQuantidade(rs.getInt("qtde_estoque"));
+		                produto.setCor(rs.getString("cor"));
+		                produto.setTamanho(rs.getString("tamanho"));
+		                produto.setPreco(rs.getDouble("preco"));
+		                lista.add(produto);
+		            }
+
+		            rs.close();
+		            stmt.close();
+		            con.close();
+
+		        } catch(Exception e) {
+
+		            e.printStackTrace();
+		        }
+
+		        return lista;
 		    }
 			
 		    

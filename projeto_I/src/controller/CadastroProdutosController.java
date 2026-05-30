@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaCadastroProduto;
@@ -66,7 +68,7 @@ public class CadastroProdutosController {
 			if (erros.length() > 0) {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			} else {
-			    Produtos p = new Produtos(nomeProduto, preco, tamanho, quantidade, cor);
+			    Produtos p = new Produtos(nomeProduto, preco, tamanho, quantidade, cor, LocalDate.now());
 			    model.adicionarProduto(p);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);

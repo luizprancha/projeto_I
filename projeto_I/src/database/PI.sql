@@ -16,7 +16,8 @@ CREATE TABLE Produtos (
   tamanho VARCHAR(20),
   cor VARCHAR(50),
   qtde_estoque INT DEFAULT 0,
-  preco DECIMAL(10,2) NOT NULL
+  preco DECIMAL(10,2) NOT NULL,
+  dataCadastro DATE NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE Confeccoes (
@@ -63,7 +64,8 @@ CREATE TABLE MateriaPrima (
 	nome VARCHAR(20) NOT NULL,
 	cor VARCHAR(20) NOT NULL,
 	quantidade INT NOT NULL,
-	tipo VARCHAR(20) NOT NULL
+	tipo VARCHAR(20) NOT NULL,
+	dataCadastro DATE NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE PedidosConfeccoes_Produtos (
@@ -107,11 +109,6 @@ INSERT INTO Usuarios VALUES
 (null, "Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
 (null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
 (null,"Maicon Douglas", "maicon2000", "Limpeza", "123456789");
-
-INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, tipo_produto, preco) VALUES
-('Camiseta Básica', 'M', 'Branca', 150, 'roupa', 39.90),
-('Calça Jeans', '42', 'Azul', 80, 'aviamentos', 119.90),
-('Moletom Unissex', 'G', 'Preto', 60, 'tecido', 149.90);
 
 INSERT INTO Confeccoes (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('55.666.777/0001-40', 'Confecção Alfa', 'João Mendes', 'Av Brasil, 500', '51966660001', 'alfa@conf.com'),

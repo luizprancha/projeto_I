@@ -24,6 +24,7 @@ import controller.LoginController;
 import controller.LojasController;
 import controller.MateriaPrimaController;
 import controller.Navegador;
+import controller.NotificacaoController;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.PedidosLojasController;
@@ -170,6 +171,10 @@ public class MeuJFrame extends JFrame {
 		
 		TelaAlterarMateria telaalterarmateria = new TelaAlterarMateria();
 		adicionarTela("ALTERAR_MATERIA", telaalterarmateria);
+		
+
+		
+		new NotificacaoController(telaNotificacao, materiaDAO, produtosDAO);
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
