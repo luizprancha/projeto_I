@@ -97,16 +97,7 @@ public class CarrinhoLojasController {
        
         
 
-        this.view.alterarPedido(e ->{ 
-        	
-        	
-        });
-        
-
-        this.view.alterarPedido(e ->{ 
-        	
-        	
-        });
+    
         
         this.view.finalizarPedido(e ->{ 
         	

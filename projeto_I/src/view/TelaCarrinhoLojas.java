@@ -30,7 +30,6 @@ public class TelaCarrinhoLojas extends JPanel {
 	
 	private JButton btnExcluir; 
 	private JButton btnFinalizarPedido; 
-	private JButton btnAlterarPedido;
 	private JButton btnContinuarCompra;
 	private JComponent panel_5; 
 
@@ -47,7 +46,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
 		
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -66,39 +65,34 @@ public class TelaCarrinhoLojas extends JPanel {
 		lblNewLabel.setFont(fonte);
 		
 		tfBuscar = new JTextField();
-		panel.add(tfBuscar, "cell 7 1,growx");
+		panel.add(tfBuscar, "cell 6 1,growx");
 		tfBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 3 7 1,grow");
+		panel.add(scrollPane, "cell 1 3 6 1,grow");
 		
 	    panel_5 = new PainelArredondado();
 		panel_5.setBackground(new Color(235, 219, 194));
 		scrollPane.setViewportView(panel_5);
 		panel_5.setLayout(new MigLayout("", "[grow 10][grow][grow 10][grow][grow 10][grow][grow 10]", "[grow 5][grow][grow 5][][grow 5]"));
-		
+	     
 
-		
-		btnExcluir = new JButtonOutLine();
-		btnExcluir.setText("Excluir");
-		btnExcluir.setFont(fonte2);
-		panel.add(btnExcluir, "cell 1 5,growx,aligny center");
-		
+	     
+	     btnExcluir = new JButtonOutLine();
+	     btnExcluir.setText("Excluir");
+	     btnExcluir.setFont(fonte2);
+	     panel.add(btnExcluir, "cell 1 5 2 1,growx,aligny center");
+	     
 
-		btnFinalizarPedido = new JButtonOutLine();
-		btnFinalizarPedido.setText("Finalizar Pedido");
-		btnFinalizarPedido.setFont(fonte2);
-		panel.add(btnFinalizarPedido, "cell 3 5,growx,aligny center");
-		
-		btnAlterarPedido = new JButtonOutLine();
-		btnAlterarPedido.setText("Alterar Pedido");
-		btnAlterarPedido.setFont(fonte2);
-		panel.add(btnAlterarPedido, "cell 5 5,growx,aligny center");
-		
+	     btnFinalizarPedido = new JButtonOutLine();
+	     btnFinalizarPedido.setText("Finalizar Pedido");
+	     btnFinalizarPedido.setFont(fonte2);
+	     panel.add(btnFinalizarPedido, "cell 4 5,growx,aligny center");
+	     
 	     btnContinuarCompra = new JButtonOutLine();
 	     btnContinuarCompra.setText ("Continuar Compra");
 	     btnContinuarCompra.setFont(fonte2);
-		panel.add(btnContinuarCompra, "cell 7 5,growx,aligny center");
+	     panel.add(btnContinuarCompra, "cell 6 5,growx,aligny center");
 
 	}
 	
@@ -110,9 +104,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		btnFinalizarPedido.addActionListener(acao);
 	}
 	
-	public void alterarPedido (ActionListener acao) {
-		btnAlterarPedido.addActionListener(acao);
-	}
+	
 	
 	public void continuarCompra (ActionListener acao) {
 		btnContinuarCompra.addActionListener(acao);
