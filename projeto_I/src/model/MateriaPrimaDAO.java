@@ -161,7 +161,7 @@ public class MateriaPrimaDAO {
 
 			        String sql =
 			            "SELECT * FROM MateriaPrima " +
-			            "WHERE dataCadastro <= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
+			            "WHERE UNIX_TIMESTAMP(dataCadastro) <= UNIX_TIMESTAMP(NOW()) - (10)";
 
 			        try {
 			            Connection con = database.BancoDeDados.conectar();

@@ -90,7 +90,8 @@ public class TelaMateriaPrima extends JPanel {
 	
 	public void addPanel4(Painel4 p4, String param) {
 		panel_4.add(p4, param);
-		
+//		panel_4.revalidate();
+//		panel_4.repaint();
 	}
 	
 	

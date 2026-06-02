@@ -255,8 +255,8 @@ public class ProdutosDAO {
 		        List<Produtos> lista = new ArrayList<>();
 
 		        String sql =
-		            "SELECT * FROM Produtos " +
-		            "WHERE dataCadastro <= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
+		        	"SELECT * FROM Produtos " +
+		        	"WHERE UNIX_TIMESTAMP(dataCadastro) <= UNIX_TIMESTAMP(NOW()) - (10)";
 
 		        try {
 
