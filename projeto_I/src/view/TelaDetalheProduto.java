@@ -150,7 +150,7 @@ public class TelaDetalheProduto extends JPanel {
 	}
 	
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
-		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
+	    TelaMensagem.mostrar(titulo, mensagem);
 	}
 	
 	

@@ -118,10 +118,10 @@ INSERT INTO Usuarios VALUES
 (null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
 (null,"Maicon Douglas", "maicon2000", "Limpeza", "123456789");
 
-INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, tipo_produto, preco) VALUES
-('Camiseta Básica', 'M', 'Branca', 150, 'roupa', 39.90),
-('Calça Jeans', '42', 'Azul', 80, 'aviamentos', 119.90),
-('Moletom Unissex', 'G', 'Preto', 60, 'tecido', 149.90);
+INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, preco) VALUES
+('Camiseta Básica', 'M', 'Branca', 150, 39.90),
+('Calça Jeans', '42', 'Azul', 80, 119.90),
+('Moletom Unissex', 'G', 'Preto', 60, 149.90);
 
 INSERT INTO Confeccoes (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('55.666.777/0001-40', 'Confecção Alfa', 'João Mendes', 'Av Brasil, 500', '51966660001', 'alfa@conf.com'),
