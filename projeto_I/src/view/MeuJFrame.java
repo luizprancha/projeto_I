@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import controller.AlterarLojaController;
+import controller.AlterarProdutosController;
 import controller.CadastroConfeccaoController;
 import controller.CadastroController;
 import controller.CadastroLojaController;
@@ -36,6 +37,7 @@ import model.ItensCarrinhoDAO;
 import model.MateriaPrimaDAO;
 import model.PedidoConfeccaoDAO;
 import model.PedidosLojasDAO;
+import model.Produtos;
 import model.ProdutosDAO;
 import model.UsuarioDAO;
 import model.LojasDAO;
@@ -51,6 +53,7 @@ public class MeuJFrame extends JFrame {
 	private CarrinhoLojasController carrinhocont;
 	private Carrinho carrinho;
 	private ItensCarrinho itenscarrinho;
+	private Produtos produto;
 	
 	public JMenuItem itemNotificacao;
 
@@ -191,7 +194,8 @@ public class MeuJFrame extends JFrame {
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, itenscarrinhoDAO, navegador, itenscarrinho, carrinho );
 	    new PedidosLojasController(telapedidoloja, pedidolojaDAO,navegador);
-		
+	    
+
 		mostrarTela("LOGIN");
 		
 		menuBar = new JMenuBar();

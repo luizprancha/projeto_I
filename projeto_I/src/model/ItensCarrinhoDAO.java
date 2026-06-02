@@ -132,5 +132,33 @@ public class ItensCarrinhoDAO {
 
 		        }
 		    }
+		    
+		    public static void removerItensPorProduto(int idProduto) {
+
+		        Connection conexao = null;
+		        PreparedStatement pstm = null;
+
+		        try {
+
+		            conexao = BancoDeDados.conectar();
+
+		            String sql =
+		                "DELETE FROM ItensCarrinho WHERE id_produto = ?";
+
+		            pstm = conexao.prepareStatement(sql);
+		            pstm.setInt(1, idProduto);
+
+		            pstm.executeUpdate();
+
+		        } catch (Exception e) {
+
+		            e.printStackTrace();
+
+		        } finally {
+
+		            BancoDeDados.desconectar(conexao);
+
+		        }
+		    }
 
 }

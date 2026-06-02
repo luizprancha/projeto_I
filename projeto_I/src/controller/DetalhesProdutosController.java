@@ -59,6 +59,10 @@ public class DetalhesProdutosController {
 
             	int id = produto.getIdProduto();
 
+            	// Remove todos os itens do carrinho que usam esse produto
+            	ItensCarrinhoDAO.removerItensPorProduto(id);
+
+            	// Agora remove o produto
             	model.removerProdutos(id);
 
                 view.exibirMensagem(
@@ -96,13 +100,20 @@ public class DetalhesProdutosController {
 
             try {
 
-                TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
+            	TelaAlterarProdutos telaAlterar = new TelaAlterarProdutos();
 
-        		telaAlterar.setProdutos(produto);
+            	new AlterarProdutosController(
+            	    telaAlterar,
+            	    model,
+            	    navegador,
+            	    produto,
+            	    null,
+            	    produtosController
+            	);
 
-        		navegador.adicionarPainel("ALTERAR_PRODUTOS", telaAlterar);
+            	navegador.adicionarPainel("ALTERAR_PRODUTOS",telaAlterar);
 
-                navegador.navegarPara("ALTERAR_PRODUTOS");
+            	navegador.navegarPara("ALTERAR_PRODUTOS");
 
             } catch (FontFormatException erro) {
 

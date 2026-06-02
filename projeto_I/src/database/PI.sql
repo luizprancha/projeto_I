@@ -16,7 +16,6 @@ CREATE TABLE Produtos (
   tamanho VARCHAR(20),
   cor VARCHAR(50),
   qtde_estoque INT DEFAULT 0,
-  tipo_produto Varchar(20),
   preco DECIMAL(10,2) NOT NULL
 ) ENGINE=InnoDB;
 
