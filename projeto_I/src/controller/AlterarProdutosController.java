@@ -78,6 +78,9 @@ public class AlterarProdutosController {
 
 				p.setIdProduto(produtos.getIdProduto());
 
+				System.out.println("Entrou no botão alterar");
+				System.out.println("ID: " + p.getIdProduto());
+				
 				model.atualizarProdutos(p);
 
 				view.exibirMensagem(

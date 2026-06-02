@@ -12,7 +12,7 @@ import database.BancoDeDados;
 public class ProdutosDAO {
 	
 	public void adicionarProduto(Produtos produto) {
-		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco, tipo_produto) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco) VALUES (?, ?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		
@@ -87,7 +87,7 @@ public class ProdutosDAO {
 		            pstm.setString(3, produto.getCor());
 		            pstm.setInt(4, produto.getQuantidade());
 		            pstm.setDouble(5, produto.getPreco());
-		            pstm.setInt(7, produto.getIdProduto());
+		            pstm.setInt(6, produto.getIdProduto());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
