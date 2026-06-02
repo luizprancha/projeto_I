@@ -189,7 +189,8 @@ public class MeuJFrame extends JFrame {
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador, materiaConf);
 		
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
-	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, itenscarrinhoDAO, navegador, itenscarrinho, carrinho );
+		
+	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, itenscarrinhoDAO, navegador, carrinho );
 	    new PedidosLojasController(telapedidoloja, pedidolojaDAO,navegador);
 		
 		mostrarTela("LOGIN");

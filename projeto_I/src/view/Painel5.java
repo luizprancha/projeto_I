@@ -22,13 +22,15 @@ public class Painel5 extends PainelArredondado  {
 	private int quantidade = 1; 
 	private JLabel lbpreco;
 	private ItensCarrinho itenscarrinhos;
-	public int selected;
+	public int selected,i;
+	
 
 	/**
 	 * Create the panel.
+	 * @param i 
 	 */
-	public Painel5(ItensCarrinho itenscarrinhos ) throws FontFormatException, IOException {
-		
+	public Painel5(int i, ItensCarrinho itenscarrinhos ) throws FontFormatException, IOException {
+		this.i=i;
 	    this.itenscarrinhos = itenscarrinhos;
 	    
 	    
