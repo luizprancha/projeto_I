@@ -156,7 +156,6 @@ public class DetalhesProdutosController {
                         telaCarrinho,
                         itensDAO,
                         navegador, 
-                        itenscarrinho,
                         carrinho 
                     );
 

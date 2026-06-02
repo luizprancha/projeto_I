@@ -12,7 +12,7 @@ import model.Carrinho;
 
 import model.ItensCarrinhoDAO;
 import model.ItensCarrinho;
-import model.ProdutosDAO;
+
 import view.Painel5;
 import view.TelaCarrinhoLojas;
 
@@ -24,8 +24,9 @@ public class CarrinhoLojasController {
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
 	private final Carrinho carrinho;
-	private final ItensCarrinho itenscarrinho;
 	private ArrayList<Painel5> listaPaineis = new ArrayList<Painel5>();
+	private List<ItensCarrinho> lista;
+	private int itemSelecionado;
 
 	/**
 	 * Construtor da classe
@@ -33,17 +34,17 @@ public class CarrinhoLojasController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CarrinhoLojasController(TelaCarrinhoLojas view, ItensCarrinhoDAO model, Navegador navegador, ItensCarrinho itenscarrinho, Carrinho carrinho) {
+	public CarrinhoLojasController(TelaCarrinhoLojas view, ItensCarrinhoDAO model, Navegador navegador,  Carrinho carrinho) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
-		this.itenscarrinho = itenscarrinho;
 		this.carrinho =carrinho;
+		this.itemSelecionado = -1;
 		
 		
 
 
-        List<ItensCarrinho> lista = model.listarItensCarrinho();
+        lista = model.listarItensCarrinho();
 
         try {
             criarPaineis(lista);
@@ -54,8 +55,17 @@ public class CarrinhoLojasController {
         this.view.excluir(e -> {
 
             try {
+            	  if (itemSelecionado == -1) {
+                      view.exibirMensagem(
+                          "Erro",
+                          "Selecione um produto para excluir",
+                          0
+                      );
+                      return;
+                  }
 
-            	int id = itenscarrinho.getIdItem();
+            	ItensCarrinho item = lista.get(itemSelecionado);
+            	int id = item.getIdItem();
 
             	ItensCarrinhoDAO.removerItensCarrinho(id);
 
@@ -66,21 +76,15 @@ public class CarrinhoLojasController {
                 );
 
                 TelaCarrinhoLojas telaCarrinhoLojas = new TelaCarrinhoLojas();
+                lista.remove(itemSelecionado);
+                itemSelecionado=-1;
+               recriarPaineis();
 
-                CarrinhoLojasController controller = new CarrinhoLojasController(
-                    telaCarrinhoLojas,
-                    model,
-                    navegador, 
-                    itenscarrinho,
-                    carrinho
-                );
+               // navegador.adicionarPainel("PRODUTO", view);
 
-                controller.recriarPaineis();
+              //  navegador.navegarPara("PRODUTO");
 
-                navegador.adicionarPainel("PRODUTO", view);
-
-                navegador.navegarPara("PRODUTO");
-
+                
             } catch (Exception ex) {
 
                 ex.printStackTrace();
@@ -90,7 +94,8 @@ public class CarrinhoLojasController {
         });
         
         this.view.continuarCompra(e ->{ 
-        	
+      
+        	navegador.navegarPara("PRODUTO");
         	
         });
         
@@ -101,7 +106,7 @@ public class CarrinhoLojasController {
         
         this.view.finalizarPedido(e ->{ 
         	
-        	
+        	navegador.navegarPara("PEDIDOS_LOJAS_VIZU");
         });
 
       
@@ -120,7 +125,7 @@ public class CarrinhoLojasController {
 
             ItensCarrinho car= lista.get(i); 
           
-            Painel5 p5 = new Painel5(car);
+            Painel5 p5 = new Painel5(i, car);
             listaPaineis.add(p5);
             p5.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
             
@@ -134,6 +139,8 @@ public class CarrinhoLojasController {
                 	}
                 	p5.selected = 1;
                 	p5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                	itemSelecionado =p5.i;
+
                 }
             });
 
