@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class NotificacaoController {
             try {
 
                 Painel6 painel = new Painel6(notificacao);
+                painel.fechar((ActionEvent e) -> fecharNotificacao(notificacao));
 
                 view.addPanel6(painel, "cell " + coluna + " " + linha + ",grow"
                 );
@@ -60,5 +62,9 @@ public class NotificacaoController {
         carregarNotificacoes();        
     }
     
+    private void fecharNotificacao(Notificacao notificacao) {
+        notificacaoDAO.descartar(notificacao.getTipo(), notificacao.getNome());
+        recriarPaineis();
+    }
     
 }

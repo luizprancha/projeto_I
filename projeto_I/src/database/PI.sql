@@ -68,6 +68,12 @@ CREATE TABLE MateriaPrima (
 	dataCadastro DATETIME NOT NULL
 ) ENGINE=InnoDB;
 
+CREATE TABLE NotificacoesDescartadas (
+    tipo VARCHAR(20) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    PRIMARY KEY (tipo, nome)
+);
+
 CREATE TABLE PedidosConfeccoes_Produtos (
   PedidosConfeccoes_idPedidoC INT,
   Produtos_idProdutos INT,

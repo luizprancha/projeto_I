@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -79,5 +80,9 @@ public class Painel6 extends PainelArredondado {
         JLabel lblMensagem = new JLabel(mensagem);
         lblMensagem.setFont(fonte3);
         add(lblMensagem, "cell 1 1,grow");
+    }
+    
+    public void fechar(ActionListener acao) {
+        btnFechar.addActionListener(acao);
     }
 }
