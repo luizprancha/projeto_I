@@ -88,8 +88,13 @@ CREATE TABLE PedidosLojas_Produtos (
 ) ENGINE=InnoDB;
 
 CREATE TABLE Carrinho(
-   id_carrinho INT PRIMARY KEY AUTO_INCREMENT
-  );
+   id_carrinho INT PRIMARY KEY AUTO_INCREMENT,
+   id_usuario  INT ,
+   idPedidosL INT ,
+   
+   FOREIGN KEY(id_usuario) references Usuarios(id),
+   FOREIGN KEY(idPedidosL) REFERENCES PedidosLojas(idPedidosL)
+);
   
  CREATE TABLE  ItensCarrinho(
 
@@ -102,9 +107,6 @@ CREATE TABLE Carrinho(
    
    FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
    FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos),
-   
-   FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
-    FOREIGN KEY (id_produto) REFERENCES Produtos(idProdutos),
 
     CONSTRAINT uk_carrinho_produto UNIQUE (id_carrinho, id_produto)
 

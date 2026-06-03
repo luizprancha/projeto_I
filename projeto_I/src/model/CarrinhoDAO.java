@@ -10,45 +10,43 @@ import database.BancoDeDados;
 
 public class CarrinhoDAO {
 
-	public void adicionarItem(Carrinho item) {
+	public void criarCarrinho(Carrinho item) {
 
-		String sql =
-		"INSERT INTO ItensCarrinho (id_carrinho, id_produto, quantidade, preco) VALUES (?, ?, ?, ?)";
+		  String sql =
+			        "INSERT INTO Carrinho (id_usuario, idPedidosL) VALUES (?, ?)";
 
-		Connection conexao = null;
-		PreparedStatement pstm = null;
+			    Connection conexao = null;
+			    PreparedStatement pstm = null;
 
-		try {
+			    try {
 
-			conexao = BancoDeDados.conectar();
+			        conexao = BancoDeDados.conectar();
 
-			pstm = conexao.prepareStatement(sql);
+			        pstm = conexao.prepareStatement(
+			                sql,
+			                PreparedStatement.RETURN_GENERATED_KEYS
+			        );
 
-			pstm.setInt(1, item.getIdCarrinho());
+			        pstm.setInt(1, item.getIdUsuario());
+			        pstm.setInt(2, item.getIdPedidosL());
 
-			pstm.setInt(2, item.getIdProduto());
+			        pstm.executeUpdate();
 
-			pstm.setInt(3, item.getQuantidade());
+	    } catch (Exception e) {
 
-			pstm.setDouble(4, item.getPreco());
+	        e.printStackTrace();
 
-			pstm.executeUpdate();
+	    } finally {
 
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		} finally {
-
-			BancoDeDados.desconectar(conexao);
-		}
+	        BancoDeDados.desconectar(conexao);
+	    }
 	}
 
-	public List<Carrinho> listarItensCarrinho() {
+	public List<Carrinho> listarCarrinho() {
 
 		List<Carrinho> lista = new ArrayList<>();
 
-		String sql = "SELECT * FROM ItensCarrinho";
+		String sql = "SELECT * FROM Carrinho";
 
 		Connection conexao = null;
 		PreparedStatement pstm = null;
@@ -64,19 +62,15 @@ public class CarrinhoDAO {
 
 			while (rset.next()) {
 
-				Carrinho item = new Carrinho();
+			    Carrinho item = new Carrinho();
 
-				item.setIdCarrinho(
-						rset.getInt("id_carrinho"));
+			    item.setIdCarrinho(rset.getInt("id_carrinho"));
+			    item.setIdUsuario(rset.getInt("id_usuario"));
+			    item.setIdPedidosL( rset.getInt("idPedidosL"));
 
-				item.setIdProduto(
-						rset.getInt("id_produto"));
+			    lista.add(item);
 
-				item.setQuantidade(
-						rset.getInt("quantidade"));
-
-				item.setPreco(
-						rset.getDouble("preco"));
+			
 
 				lista.add(item);
 			}
@@ -92,29 +86,30 @@ public class CarrinhoDAO {
 
 		return lista;
 	}
+	  public void removerCarrinho(int idCarrinho) {
 
-	public void limparCarrinho() {
+		  String sql =
+		            "DELETE FROM Carrinho WHERE id_carrinho = ?";
 
-		String sql = "DELETE FROM ItensCarrinho";
+		    Connection conexao = null;
+		    PreparedStatement pstm = null;
 
-		Connection conexao = null;
-		PreparedStatement pstm = null;
+		    try {
 
-		try {
+		        conexao = BancoDeDados.conectar();
+		        
+		        pstm = conexao.prepareStatement(sql);
+		        pstm.setInt(1, idCarrinho);
 
-			conexao = BancoDeDados.conectar();
+	            pstm.executeUpdate();
 
-			pstm = conexao.prepareStatement(sql);
+	        } catch (Exception e) {
 
-			pstm.executeUpdate();
+	            e.printStackTrace();
 
-		} catch (Exception e) {
+	        } finally {
 
-			e.printStackTrace();
-
-		} finally {
-
-			BancoDeDados.desconectar(conexao);
-		}
-	}
+	            BancoDeDados.desconectar(conexao);
+	        }
+	    }
 }

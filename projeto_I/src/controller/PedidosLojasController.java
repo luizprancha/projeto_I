@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import model.Carrinho;
 import model.CarrinhoDAO;
+import model.ItensCarrinho;
+import model.ItensCarrinhoDAO;
 import model.LojasDAO;
 import model.PedidosLojas;
 import model.PedidosLojasDAO;
@@ -21,10 +23,7 @@ public class PedidosLojasController {
 	private final PedidosLojasDAO model;
 	private final Navegador navegador;
 
-	public PedidosLojasController(
-			TelaPedidosLojas view,
-			PedidosLojasDAO model,
-			Navegador navegador) {
+	public PedidosLojasController(TelaPedidosLojas view,PedidosLojasDAO model,Navegador navegador) {
 
 		this.view = view;
 		this.model = model;
@@ -34,7 +33,6 @@ public class PedidosLojasController {
 
 			try {
 
-				// VALIDAR CNPJ
 				String cnpj = view.getCNPJLoja();
 
 				LojasDAO lojasDAO = new LojasDAO();
@@ -52,100 +50,89 @@ public class PedidosLojasController {
 					return;
 				}
 
-				// PEGAR ITENS DO CARRINHO
-				CarrinhoDAO carrinhoDAO =
-						new CarrinhoDAO();
+			
+				ItensCarrinhoDAO itensCarrinhoDAO =
+				        new ItensCarrinhoDAO();
 
-				List<Carrinho> carrinho =
-						carrinhoDAO.listarItensCarrinho();
+				List<ItensCarrinho> carrinho =
+				        itensCarrinhoDAO.listarItensCarrinho();
 
 				if (carrinho.isEmpty()) {
 
-					JOptionPane.showMessageDialog(
-							null,
-							"Carrinho vazio!"
-					);
+				    JOptionPane.showMessageDialog(
+				            null,
+				            "Carrinho vazio!"
+				    );
 
-					return;
+				    return;
 				}
 
-				// CALCULAR VALOR TOTAL
+			
 				double valorTotal = 0;
 
-				for (Carrinho item : carrinho) {
-
-					valorTotal +=
-							item.getPreco()
-							* item.getQuantidade();
+				for (ItensCarrinho item : carrinho) {
+				    valorTotal += item.getPreco();
 				}
 
-				// CRIAR PEDIDO
+				
 				PedidosLojas pedido =
-						new PedidosLojas();
+				        new PedidosLojas();
 
 				pedido.setLojas_CNPJ(cnpj);
 
 				pedido.setEntrega(
-						LocalDate.parse(
-								view.getEntrega()
-						)
+				        LocalDate.parse(
+				                view.getEntrega()
+				        )
 				);
 
-				pedido.setEndereco(
-						view.getEndereco()
-				);
 
 				pedido.setValorTotal(valorTotal);
 
-				// SALVAR PEDIDO
+				
 				int idPedido =
-						model.adicionarPedidosLojas(
-								pedido
-						);
+				        model.adicionarPedidosLojas(
+				                pedido
+				        );
 
-				// DAO DOS ITENS
+			
 				PedidosLojasProdutosDAO itensDAO =
-						new PedidosLojasProdutosDAO();
+				        new PedidosLojasProdutosDAO();
 
-				// DAO PRODUTOS
+		
 				ProdutosDAO produtosDAO =
-						new ProdutosDAO();
+				        new ProdutosDAO();
 
-				// PERCORRER CARRINHO
-				for (Carrinho item : carrinho) {
+				
+				for (ItensCarrinho item : carrinho) {
 
-					// SALVAR ITEM DO PEDIDO
-					PedidosLojasProdutos itemPedido =
-							new PedidosLojasProdutos();
+				    PedidosLojasProdutos itemPedido =
+				            new PedidosLojasProdutos();
 
-					itemPedido.setIdPedido(idPedido);
+				    itemPedido.setIdPedido(idPedido);
 
-					itemPedido.setIdProduto(
-							item.getIdProduto()
-					);
+				    itemPedido.setIdProduto(
+				            item.getIdProduto()
+				    );
 
-					itemPedido.setQuantidade(
-							item.getQuantidade()
-					);
+				    itemPedido.setQuantidade(
+				            item.getQuantidade()
+				    );
 
-					itemPedido.setPreco(
-							item.getPreco()
-					);
+				    itemPedido.setPreco(
+				            item.getPreco()
+				    );
 
-					itensDAO.salvar(itemPedido);
+				    itensDAO.salvar(itemPedido);
 
-
-					produtosDAO.atualizarEstoque(
-							item.getIdProduto(),
-							item.getQuantidade()
-					);
+				    produtosDAO.atualizarEstoque(
+				            item.getIdProduto(),
+				            item.getQuantidade()
+				    );
 				}
+				
+				//CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 
-				// LIMPAR CARRINHO
-				carrinhoDAO.limparCarrinho();
-
-				// LIMPAR CAMPOS
-				view.limparCampos();
 
 				JOptionPane.showMessageDialog(
 						null,
