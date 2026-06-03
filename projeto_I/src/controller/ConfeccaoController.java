@@ -140,7 +140,7 @@ public class ConfeccaoController {
     }
 
     public void recriarPaineis()
-            throws FontFormatException, IOException {
+        throws FontFormatException, IOException {
 
         List<Confeccoes> lista = model.listarConfeccoes();
 

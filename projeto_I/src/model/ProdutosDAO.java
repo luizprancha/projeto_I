@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class ProdutosDAO {
 			pstm.setString(3, produto.getCor());
 			pstm.setInt(4, produto.getQuantidade());
 			pstm.setDouble(5, produto.getPreco());
-			pstm.setDate(6, java.sql.Date.valueOf(LocalDate.now()));
+			pstm.setTimestamp(6,Timestamp.valueOf(LocalDateTime.now()));
 			
 			pstm.execute();
 			
@@ -64,7 +66,7 @@ public class ProdutosDAO {
 						produto.setQuantidade(rset.getInt("qtde_estoque"));
 						produto.setPreco(rset.getDouble("preco"));
 						produto.setIdProduto(rset.getInt("idProdutos"));
-						produto.setDataCadastro(rset.getDate("dataCadastro").toLocalDate());
+						produto.setDataCadastro(rset.getTimestamp("dataCadastro").toLocalDateTime());
 						produtos.add(produto);
 					}
 					
@@ -248,49 +250,6 @@ public class ProdutosDAO {
 
 		    		BancoDeDados.desconectar(conexao);
 		    	}
-		    }
-		    
-		    public List<Produtos> buscarProdutosParados() {
-
-		        List<Produtos> lista = new ArrayList<>();
-
-		        String sql =
-		        	"SELECT * FROM Produtos " +
-		        	"WHERE UNIX_TIMESTAMP(dataCadastro) <= UNIX_TIMESTAMP(NOW()) - (10)";
-
-		        try {
-
-		            Connection con = BancoDeDados.conectar();
-
-		            PreparedStatement stmt =
-		                    con.prepareStatement(sql);
-
-		            ResultSet rs =
-		                    stmt.executeQuery();
-
-		            while(rs.next()) {
-
-		                Produtos produto =new Produtos();
-		                produto.setIdProduto(rs.getInt("idProdutos"));
-		                produto.setNome(rs.getString("nome"));
-		                produto.setQuantidade(rs.getInt("qtde_estoque"));
-		                produto.setCor(rs.getString("cor"));
-		                produto.setTamanho(rs.getString("tamanho"));
-		                produto.setPreco(rs.getDouble("preco"));
-		                lista.add(produto);
-		            }
-
-		            rs.close();
-		            stmt.close();
-		            con.close();
-
-		        } catch(Exception e) {
-
-		            e.printStackTrace();
-		        }
-
-		        return lista;
-		    }
-			
+		    }			
 		    
 }

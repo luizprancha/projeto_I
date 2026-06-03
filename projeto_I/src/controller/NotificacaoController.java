@@ -1,25 +1,27 @@
 package controller;
 
 import java.awt.FontFormatException;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.List;
 
-import model.MateriaPrima;
-import model.MateriaPrimaDAO;
-import model.Produtos;
-import model.ProdutosDAO;
+import model.Notificacao;
+import model.NotificacaoDAO;
 import view.Painel6;
 import view.TelaNotificacao;
 
 public class NotificacaoController {
-    private TelaNotificacao view;
-    private MateriaPrimaDAO materiaDAO;
-    private ProdutosDAO produtoDAO;
 
-    public NotificacaoController(TelaNotificacao view, MateriaPrimaDAO materiaDAO, ProdutosDAO produtoDAO) {
+    private TelaNotificacao view;
+    private NotificacaoDAO notificacaoDAO;
+
+    public NotificacaoController(
+            TelaNotificacao view,
+            NotificacaoDAO notificacaoDAO) {
+
         this.view = view;
-        this.materiaDAO = materiaDAO;
-        this.produtoDAO = produtoDAO;
+        this.notificacaoDAO = notificacaoDAO;
+
         carregarNotificacoes();
     }
 
@@ -30,59 +32,38 @@ public class NotificacaoController {
         int linha = 0;
         int coluna = 0;
 
-        List<MateriaPrima> materias =
-                materiaDAO.buscarMateriasParadas();
+        List<Notificacao> notificacoes =
+                notificacaoDAO.buscarNotificacoes();
 
-        for(MateriaPrima mp : materias) {
-        
+        for (Notificacao notificacao : notificacoes) {
 
-            Painel6 painel;
-			try {
-				painel = new Painel6(mp);
-				
-			view.addPanel6(painel,  "cell "+coluna+" "+ linha+",grow");
-            
-			} catch (FontFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            try {
 
-			linha++;
+                Painel6 painel = new Painel6(notificacao);
+                painel.fechar((ActionEvent e) -> fecharNotificacao(notificacao));
+
+                view.addPanel6(painel, "cell " + coluna + " " + linha + ",grow"
+                );
+                coluna++;
+
+                if (coluna >= 2) {
+                    coluna = 0;
+                    linha++;
+                }
+            } catch (FontFormatException | IOException e) {
+                e.printStackTrace();
+            }
         }
-        
-        linha = 0;
-        coluna = 0;
+        view.revalidate();
+        view.repaint();
+    }
+    
+    public void recriarPaineis() {
+        carregarNotificacoes();
+    }
 
-        List<Produtos> produtos =
-                produtoDAO.buscarProdutosParados();
-        
-
-        for(Produtos produto : produtos) {
-        	
-        	if(coluna > 1) {
-				coluna = 0;
-				linha ++;
-			}
-
-            Painel6 painel;
-			try {
-				painel = new Painel6(produto);
-
-            view.addPanel6(painel,  "cell "+coluna+" "+ linha+",grow");
-            coluna = coluna+2;
-            
-			} catch (FontFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			coluna++;
-        }
+    private void fecharNotificacao(Notificacao notificacao) {
+        notificacaoDAO.descartar(notificacao.getTipo(), notificacao.getNome());
+        recriarPaineis();
     }
 }

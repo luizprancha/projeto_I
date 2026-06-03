@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import model.Produtos;
 import model.ProdutosDAO;
@@ -15,6 +16,7 @@ public class CadastroProdutosController {
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
 	private final ProdutosController produtoscontroller;
+	private final NotificacaoController notificacaoController;
 
 	/**
 	 * Construtor da classe
@@ -22,13 +24,12 @@ public class CadastroProdutosController {
 	 * @param model Referência ao modelo de dados (ProdutosDAO).
 	 * @param navegador Referência ao elemento que faz a transição de telas.
 	 */
-	public CadastroProdutosController(TelaCadastroProduto view, ProdutosDAO model, Navegador navegador, ProdutosController produtoscontroller) {
+	public CadastroProdutosController(TelaCadastroProduto view, ProdutosDAO model, Navegador navegador, ProdutosController produtoscontroller, NotificacaoController notificacaoController) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
 		this.produtoscontroller = produtoscontroller;
-
-		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
+		this.notificacaoController = notificacaoController;
 		
 		view.cadastrarProduto(e -> {
 			String nomeProduto = view.getNomeProduto().trim();
@@ -68,13 +69,15 @@ public class CadastroProdutosController {
 			if (erros.length() > 0) {
 			    view.exibirMensagem("Erro", erros.toString(), 0);
 			} else {
-			    Produtos p = new Produtos(nomeProduto, preco, tamanho, quantidade, cor, LocalDate.now());
+			    Produtos p = new Produtos(nomeProduto, preco, tamanho, quantidade, cor, LocalDateTime.now());
 			    model.adicionarProduto(p);
 			    view.limparCampos();
 			    view.exibirMensagem("Sucesso", "Produto salvo!", 1);
 			    try {
 
 			    	produtoscontroller.recriarPaineis();
+			    	
+			    	notificacaoController.recriarPaineis();
 
 				    navegador.navegarPara("PRODUTO");
 
@@ -88,14 +91,9 @@ public class CadastroProdutosController {
 
 				    ex.printStackTrace();
 				}
+			    
 			}
 			});
-
-				
-			
-
-			
-	
 
 	}
 

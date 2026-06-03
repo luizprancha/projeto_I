@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class MateriaPrimaDAO {
 				pstm.setString(2, materiaPrima.getCor());
 				pstm.setInt(3, materiaPrima.getQuantidade());
 				pstm.setString(4, materiaPrima.getTipo());
-				pstm.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
+				pstm.setTimestamp(5,Timestamp.valueOf(LocalDateTime.now()));
 				pstm.execute();
 				
 			} catch (SQLException e) {
@@ -62,8 +64,7 @@ public class MateriaPrimaDAO {
 							materiaPrima.setQuantidade(rset.getInt("quantidade"));
 							materiaPrima.setTipo(rset.getString("tipo"));
 							materiaPrima.setIdMateriaPrima(rset.getInt("idMateriaPrima"));
-							materiaPrima.setDataCadastro(rset.getDate("dataCadastro").toLocalDate()
-								);
+							materiaPrima.setDataCadastro(rset.getTimestamp("dataCadastro").toLocalDateTime());
 							MateriaPrima.add(materiaPrima);
 						}
 						
@@ -153,39 +154,6 @@ public class MateriaPrimaDAO {
 			        }
 
 			        return materiaprima;
-			    }
-			    
-			    public List<MateriaPrima> buscarMateriasParadas() {
-
-			        List<MateriaPrima> lista = new ArrayList<>();
-
-			        String sql =
-			            "SELECT * FROM MateriaPrima " +
-			            "WHERE UNIX_TIMESTAMP(dataCadastro) <= UNIX_TIMESTAMP(NOW()) - (10)";
-
-			        try {
-			            Connection con = database.BancoDeDados.conectar();
-			            PreparedStatement stmt = con.prepareStatement(sql);
-			            ResultSet rs = stmt.executeQuery();
-
-			            while (rs.next()) {
-			                MateriaPrima mp = new MateriaPrima();
-
-			                mp.setIdMateriaPrima(rs.getInt("idMateriaPrima"));
-			                mp.setNome(rs.getString("nome"));
-
-			                lista.add(mp);
-			            }
-
-			            rs.close();
-			            stmt.close();
-			            con.close();
-
-			        } catch (Exception e) {
-			            e.printStackTrace();
-			        }
-
-			        return lista;
-			    }
-
+			    }			    
+			 
 	}

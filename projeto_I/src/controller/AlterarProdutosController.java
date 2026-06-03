@@ -2,7 +2,9 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import model.Produtos;
 import model.ProdutosDAO;
@@ -69,7 +71,7 @@ public class AlterarProdutosController {
 
 			} else {
 
-				Produtos p = new Produtos(nome,	preco, tamanho,	quantidade,	cor, LocalDate.now());
+				Produtos p = new Produtos(nome,preco,tamanho,quantidade,cor,LocalDateTime.now());
 
 				p.setIdProduto(produtos.getIdProduto());
 

@@ -2,24 +2,13 @@ package view;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JMenuBar;
-
-import javax.swing.JMenu;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-
-import Botao.PainelArredondado;
-
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
-
-
-import java.awt.CardLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 public class TelaNotificacao extends JPanel {
@@ -65,31 +54,12 @@ public class TelaNotificacao extends JPanel {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		panel.add(scrollPane_1, "cell 1 3 2 1,grow");
 		
-//		painelNotificacoes = new JPanel();
-//
-//		painelNotificacoes.setBackground(
-//		        new Color(15,57,87));
-//
-//		scrollPane_1.setViewportView(painelNotificacoes);
-//
-//		painelNotificacoes.setLayout(new MigLayout("", "[grow][grow][grow]", "[grow][grow][grow][grow]"));
-		
 		painel_6 = new JPanel();
 		painel_6.setBackground(new Color(15, 57, 87));
 		scrollPane_1.setViewportView(painel_6);
 		painel_6.setLayout(new MigLayout("", "[grow]", "[grow][grow][grow][grow][grow]"));
 
 	}
-	
-//	public void adicionarNotificacao(String texto) {
-//
-//	    JLabel label = new JLabel(texto);
-//
-//	    painel_6.add(label);
-//
-//	    painel_6.revalidate();
-//	    painel_6.repaint();
-//	}
 	
 	public void addPanel6(Painel6 p6, String param) {
 	    painel_6.add(p6, param);
