@@ -198,10 +198,26 @@ public class MeuJFrame extends JFrame {
 		
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 		
-	    carrinhocont = new CarrinhoLojasController ( telaCarrinho, itenscarrinhoDAO, navegador, carrinho );
-	    new PedidosLojasController(telapedidoloja, pedidolojaDAO,navegador);
-	    
+	    carrinho = new Carrinho();
+	    carrinho.setIdCarrinho(1);
 
+	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(
+	    		telapedidoloja,
+	    		pedidolojaDAO,
+	    		navegador,
+	    		carrinho,
+	    		carrinhoDAO,
+	    		itenscarrinhoDAO
+	    );
+	    carrinhocont = new CarrinhoLojasController(
+	    		telaCarrinho,
+	    		itenscarrinhoDAO,
+	    		navegador,
+	    		carrinho,
+	    		pedidosLojasCont
+	    );
+	    pedidosLojasCont.setCarrinhoController(carrinhocont);
+		
 		mostrarTela("LOGIN");
 		
 		menuBar = new JMenuBar();
@@ -328,6 +344,7 @@ public class MeuJFrame extends JFrame {
 			JMenuItem ItemCarrinhos = new JMenuItem("Carrinho de Compras");
 			ItemCarrinhos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					recarregarCarrinho();
 					navegador.navegarPara("CARRINHO");
 				}
 			});
@@ -370,6 +387,16 @@ public class MeuJFrame extends JFrame {
 		menuBar.setVisible(true);
 	}
 	
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void recarregarCarrinho() {
+		if (carrinhocont != null) {
+			carrinhocont.recarregarItens();
+		}
+	}
+
 	public void esconderMenu() {
 		// TODO Auto-generated method stub
 		if (menuBar != null ) {

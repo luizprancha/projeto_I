@@ -25,8 +25,11 @@ public class PedidosLojasDAO {
 					
 					while(rset.next()) {
 						PedidosLojas pedidoslojas = new PedidosLojas();
+						java.sql.Date data = rset.getDate("data_entrega");
+
 						pedidoslojas.setEntrega(
-						rset.getDate("data_entrega").toLocalDate());
+						    data != null ? data.toString() : null
+						);
 						pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
 						pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
 						pedidoslojas.setEndereco(rset.getString("endereco"));

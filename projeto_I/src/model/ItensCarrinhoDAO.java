@@ -54,6 +54,38 @@ public class ItensCarrinhoDAO {
 	    }
 	}
 	
+			public List<ItensCarrinho> listarItensPorCarrinho(int idCarrinho) {
+				String sql = "SELECT * FROM ItensCarrinho WHERE id_carrinho = ?";
+				List<ItensCarrinho> itenscarrinho = new ArrayList<>();
+				Connection conexao = null;
+				PreparedStatement pstm = null;
+				ResultSet rset = null;
+
+				try {
+					conexao = database.BancoDeDados.conectar();
+					pstm = conexao.prepareStatement(sql);
+					pstm.setInt(1, idCarrinho);
+					rset = pstm.executeQuery();
+
+					while (rset.next()) {
+						ItensCarrinho itenscarrinhos = new ItensCarrinho();
+						itenscarrinhos.setIdItem(rset.getInt("id_item"));
+						itenscarrinhos.setIdCarrinho(rset.getInt("id_carrinho"));
+						itenscarrinhos.setIdProduto(rset.getInt("id_produto"));
+						itenscarrinhos.setQuantidade(rset.getInt("quantidade"));
+						itenscarrinhos.setNomeProduto(rset.getString("nome_produto"));
+						itenscarrinhos.setPreco(rset.getDouble("preco"));
+						itenscarrinho.add(itenscarrinhos);
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					database.BancoDeDados.desconectar(conexao);
+				}
+				return itenscarrinho;
+			}
+
 			public List<ItensCarrinho> listarItensCarrinho(){
 				String sql = "SELECT * FROM ItensCarrinho";
 				List<ItensCarrinho> itenscarrinho = new ArrayList<>();

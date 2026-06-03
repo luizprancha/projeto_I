@@ -3,12 +3,9 @@ package model;
 public class Carrinho {
 
 	private int idCarrinho;
+	private int idUsuario;
+	private int idPedidosL;
 
-	private int idProduto;
-
-	private int quantidade;
-
-	private double preco;
 
 	public Carrinho() {
 		super();
@@ -16,14 +13,31 @@ public class Carrinho {
 
 	public Carrinho(
 			int idCarrinho,
-			int idProduto,
-			int quantidade,
-			double preco) {
+		    int idUsuario,
+		    int idPedidosL
+			) {
 
 		this.idCarrinho = idCarrinho;
-		this.idProduto = idProduto;
-		this.quantidade = quantidade;
-		this.preco = preco;
+		this.idUsuario = idUsuario;
+		this.idPedidosL =idPedidosL;
+		
+
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public int getIdPedidosL() {
+		return idPedidosL;
+	}
+
+	public void setIdPedidosL(int idPedidosL) {
+		this.idPedidosL = idPedidosL;
 	}
 
 	public int getIdCarrinho() {
@@ -34,27 +48,5 @@ public class Carrinho {
 		this.idCarrinho = idCarrinho;
 	}
 
-	public int getIdProduto() {
-		return idProduto;
-	}
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
 }

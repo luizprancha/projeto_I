@@ -27,7 +27,6 @@ public class TelaPedidosLojas extends JPanel {
 	private JButton btnFinalizar;
 	private JLabel lbQuantidade;
 	private JLabel lbValorTotal;
-	private JTextField tfEndereco;
 
 	/**
 	 * Create the panel.
@@ -96,14 +95,6 @@ public class TelaPedidosLojas extends JPanel {
 		lbValorTotal.setFont(fonte3);
 		panel_1.add(lbValorTotal, "cell 3 7");
 		
-		JLabel lbEnderco = new JLabel("Endereço:");
-		panel_1.add(lbEnderco, "cell 1 9");
-		lbEnderco.setFont(fonte3);
-		
-		tfEndereco = new JTextField();
-		panel_1.add(tfEndereco, "cell 3 9,w 160!,h 30!");
-		tfEndereco.setColumns(10);
-		
 	    btnFinalizar = new JButtonOutLine();
         btnFinalizar.setText("Finalizar pedido");
 		btnFinalizar.setFont(fonte3);
@@ -134,10 +125,12 @@ public class TelaPedidosLojas extends JPanel {
 		return tfEntrega.getText();
 	}
 
-	public String getEndereco() {
-		return tfEndereco.getText();
+	public void setQuantidade(int quantidade) {
+		lbQuantidade.setText(String.valueOf(quantidade));
 	}
-	
 
+	public void setValorTotal(double valorTotal) {
+		lbValorTotal.setText(String.format("R$ %.2f", valorTotal));
+	}
 
 }
