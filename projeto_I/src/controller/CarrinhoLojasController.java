@@ -19,38 +19,30 @@ import view.TelaCarrinhoLojas;
 public class CarrinhoLojasController {
 	
 	private final TelaCarrinhoLojas view;
-	//private final  CarrinhoDAO model;
 	private final ItensCarrinhoDAO model;
 	@SuppressWarnings("unused")
 	private final Navegador navegador;
 	private final Carrinho carrinho;
+	private final PedidosLojasController pedidosController;
 	private ArrayList<Painel5> listaPaineis = new ArrayList<Painel5>();
 	private List<ItensCarrinho> lista;
 	private int itemSelecionado;
 
-	/**
-	 * Construtor da classe
-	 * @param view Referência à tela que controla (TelaCadastroProdutos).
-	 * @param model Referência ao modelo de dados (ProdutosDAO).
-	 * @param navegador Referência ao elemento que faz a transição de telas.
-	 */
-	public CarrinhoLojasController(TelaCarrinhoLojas view, ItensCarrinhoDAO model, Navegador navegador,  Carrinho carrinho) {
+	public CarrinhoLojasController(
+			TelaCarrinhoLojas view,
+			ItensCarrinhoDAO model,
+			Navegador navegador,
+			Carrinho carrinho,
+			PedidosLojasController pedidosController) {
+
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
-		this.carrinho =carrinho;
+		this.carrinho = carrinho;
+		this.pedidosController = pedidosController;
 		this.itemSelecionado = -1;
-		
-		
 
-
-        lista = model.listarItensCarrinho();
-
-        try {
-            criarPaineis(lista);
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-        }
+        recarregarItens();
         
         this.view.excluir(e -> {
 
@@ -75,15 +67,9 @@ public class CarrinhoLojasController {
                     1
                 );
 
-                TelaCarrinhoLojas telaCarrinhoLojas = new TelaCarrinhoLojas();
                 lista.remove(itemSelecionado);
-                itemSelecionado=-1;
-               recriarPaineis();
-
-               // navegador.adicionarPainel("PRODUTO", view);
-
-              //  navegador.navegarPara("PRODUTO");
-
+                itemSelecionado = -1;
+               recarregarItens();
                 
             } catch (Exception ex) {
 
@@ -99,19 +85,42 @@ public class CarrinhoLojasController {
         	
         });
         
-       
-        
-
-    
-        
         this.view.finalizarPedido(e ->{ 
-        	
+
+        	List<ItensCarrinho> itens = model.listarItensPorCarrinho(carrinho.getIdCarrinho());
+
+        	if (itens.isEmpty()) {
+        		view.exibirMensagem(
+        				"Erro",
+        				"O carrinho está vazio!",
+        				0
+        		);
+        		return;
+        	}
+
+        	int quantidadeTotal = 0;
+        	double valorTotal = 0;
+
+        	for (ItensCarrinho item : itens) {
+        		quantidadeTotal += item.getQuantidade();
+        		valorTotal += item.getPreco() * item.getQuantidade();
+        	}
+
+        	pedidosController.receberDadosDoCarrinho(itens, quantidadeTotal, valorTotal);
         	navegador.navegarPara("PEDIDOS_LOJAS_VIZU");
         });
 
-      
-
     }
+
+	public void recarregarItens() {
+		listaPaineis.clear();
+		lista = model.listarItensPorCarrinho(carrinho.getIdCarrinho());
+		try {
+			criarPaineis(lista);
+		} catch (FontFormatException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 
     public void criarPaineis(List<ItensCarrinho> lista)
             throws FontFormatException, IOException {
@@ -163,11 +172,6 @@ public class CarrinhoLojasController {
         this.view.revalidate();
         this.view.repaint();
     }
-
-    public void recriarPaineis() throws FontFormatException, IOException {
-    		List<ItensCarrinho> lista = model.listarItensCarrinho();
-    		criarPaineis(lista);
-    	}
     
 	
 }

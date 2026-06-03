@@ -1,6 +1,8 @@
 package controller;
 
 import javax.swing.JPanel;
+
+import model.Carrinho;
 import view.MeuJFrame;
 
 public class Navegador {
@@ -42,7 +44,14 @@ public class Navegador {
 		this.jFrame.mostrarMenu();
 		
 	}
-	
+
+	public Carrinho getCarrinho() {
+		return this.jFrame.getCarrinho();
+	}
+
+	public void recarregarCarrinho() {
+		this.jFrame.recarregarCarrinho();
+	}
 
 }
 

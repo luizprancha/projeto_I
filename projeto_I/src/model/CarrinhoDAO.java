@@ -10,36 +10,78 @@ import database.BancoDeDados;
 
 public class CarrinhoDAO {
 
-	public void criarCarrinho(Carrinho item) {
+	public int criarCarrinho(Carrinho item) {
 
-		  String sql =
-			        "INSERT INTO Carrinho (id_usuario, idPedidosL) VALUES (?, ?)";
+		String sql =
+				"INSERT INTO Carrinho (id_usuario, idPedidosL) VALUES (?, ?)";
 
-			    Connection conexao = null;
-			    PreparedStatement pstm = null;
+		Connection conexao = null;
+		PreparedStatement pstm = null;
+		ResultSet generatedKeys = null;
 
-			    try {
+		try {
 
-			        conexao = BancoDeDados.conectar();
+			conexao = BancoDeDados.conectar();
 
-			        pstm = conexao.prepareStatement(
-			                sql,
-			                PreparedStatement.RETURN_GENERATED_KEYS
-			        );
+			pstm = conexao.prepareStatement(
+					sql,
+					PreparedStatement.RETURN_GENERATED_KEYS
+			);
 
-			        pstm.setInt(1, item.getIdUsuario());
-			        pstm.setInt(2, item.getIdPedidosL());
+			if (item.getIdUsuario() > 0) {
+				pstm.setInt(1, item.getIdUsuario());
+			} else {
+				pstm.setNull(1, java.sql.Types.INTEGER);
+			}
 
-			        pstm.executeUpdate();
+			if (item.getIdPedidosL() > 0) {
+				pstm.setInt(2, item.getIdPedidosL());
+			} else {
+				pstm.setNull(2, java.sql.Types.INTEGER);
+			}
 
-	    } catch (Exception e) {
+			pstm.executeUpdate();
 
-	        e.printStackTrace();
+			generatedKeys = pstm.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				return generatedKeys.getInt(1);
+			}
 
-	    } finally {
+		} catch (Exception e) {
 
-	        BancoDeDados.desconectar(conexao);
-	    }
+			e.printStackTrace();
+
+		} finally {
+
+			BancoDeDados.desconectar(conexao);
+		}
+
+		return -1;
+	}
+
+	public void vincularPedidoAoCarrinho(int idCarrinho, int idPedido) {
+
+		String sql = "UPDATE Carrinho SET idPedidosL = ? WHERE id_carrinho = ?";
+
+		Connection conexao = null;
+		PreparedStatement pstm = null;
+
+		try {
+
+			conexao = BancoDeDados.conectar();
+			pstm = conexao.prepareStatement(sql);
+			pstm.setInt(1, idPedido);
+			pstm.setInt(2, idCarrinho);
+			pstm.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			BancoDeDados.desconectar(conexao);
+		}
 	}
 
 	public List<Carrinho> listarCarrinho() {

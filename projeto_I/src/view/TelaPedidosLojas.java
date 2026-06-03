@@ -125,8 +125,12 @@ public class TelaPedidosLojas extends JPanel {
 		return tfEntrega.getText();
 	}
 
+	public void setQuantidade(int quantidade) {
+		lbQuantidade.setText(String.valueOf(quantidade));
+	}
 
-	
-
+	public void setValorTotal(double valorTotal) {
+		lbValorTotal.setText(String.format("R$ %.2f", valorTotal));
+	}
 
 }

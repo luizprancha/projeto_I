@@ -25,11 +25,14 @@ public class PedidosLojasDAO {
 					
 					while(rset.next()) {
 						PedidosLojas pedidoslojas = new PedidosLojas();
+						java.sql.Date data = rset.getDate("data_entrega");
+
 						pedidoslojas.setEntrega(
-						rset.getDate("data_entrega").toLocalDate());
+						    data != null ? data.toString() : null
+						);
 						pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
 						pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
-
+						pedidoslojas.setEndereco(rset.getString("endereco"));
 						pedidolojas.add(pedidoslojas);
 					}
 					
@@ -43,7 +46,7 @@ public class PedidosLojasDAO {
 			
 
 		    public void atualizarPedidosLojas(PedidosLojas pedidoslojas) {
-		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ? WHERE idPedidosL = ?";
+		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ?, endereco = ? WHERE idPedidosL = ?";
 		        Connection conexao = null;
 		        PreparedStatement pstm = null;
 
@@ -53,7 +56,8 @@ public class PedidosLojasDAO {
 		            pstm.setDate(1, java.sql.Date.valueOf(pedidoslojas.getEntrega()));
 		            pstm.setDouble(2, pedidoslojas.getValorTotal());
 		            pstm.setString(3, pedidoslojas.getLojas_CNPJ());
-		            pstm.setInt(4, pedidoslojas.getIdPedidoL());
+		            pstm.setString(4, pedidoslojas.getEndereco());
+		            pstm.setInt(5, pedidoslojas.getIdPedidoL());
 		            pstm.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
@@ -79,7 +83,7 @@ public class PedidosLojasDAO {
 		    public int adicionarPedidosLojas(PedidosLojas pedido) {
 
 		    	String sql =
-		    	"INSERT INTO PedidosLojas(data_entrega, valor_total, Lojas_CNPJ) VALUES (?, ?, ?)";
+		    	"INSERT INTO PedidosLojas(data_entrega, valor_total, endereco, Lojas_CNPJ) VALUES (?, ?, ?, ?)";
 
 		    	Connection conexao = null;
 		    	PreparedStatement pstm = null;
@@ -97,6 +101,8 @@ public class PedidosLojasDAO {
 		    		pstm.setDate(1, java.sql.Date.valueOf(pedido.getEntrega()));
 
 		    		pstm.setDouble(2, pedido.getValorTotal());
+
+		    		pstm.setString(3, pedido.getEndereco());
 
 		    		pstm.setString(4, pedido.getLojas_CNPJ());
 

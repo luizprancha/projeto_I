@@ -1,18 +1,17 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PedidosLojas {
 
 	private int idPedidoL;
-	private LocalDate entrega;
+	private String entrega;
 	private double valorTotal;
 	private String lojas_CNPJ;
 	private ArrayList<String> listaProdutos;
 	private int idLoja;
 	private String endereco;
-	public PedidosLojas(int idPedidoL, LocalDate entrega, int idLoja, double valorTotal, ArrayList<String> listaProdutos, String lojas_CNPJ, String endereco) {
+	public PedidosLojas(int idPedidoL, String entrega, int idLoja, double valorTotal, ArrayList<String> listaProdutos, String lojas_CNPJ, String endereco) {
 		super();
 		this.idLoja = idLoja;
 		this.idPedidoL = idPedidoL;
@@ -31,10 +30,10 @@ public class PedidosLojas {
 	public void setIdPedidoL(int idPedidoL) {
 		this.idPedidoL = idPedidoL;
 	}
-	public LocalDate getEntrega() {
+	public String getEntrega() {
 		return entrega;
 	}
-	public void setEntrega(LocalDate entrega) {
+	public void setEntrega(String entrega) {
 		this.entrega = entrega;
 	}
 	public int getIdLoja() {

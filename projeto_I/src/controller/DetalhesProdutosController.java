@@ -4,13 +4,11 @@ import java.awt.FontFormatException;
 import java.sql.SQLException;
 import java.io.IOException;
 import model.Carrinho;
-import model.CarrinhoDAO;
 import model.ItensCarrinho;
 import model.ItensCarrinhoDAO;
 import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaAlterarProdutos;
-import view.TelaCarrinhoLojas;
 import view.TelaDetalheProduto;
 import view.TelaProdutos;
 
@@ -146,26 +144,7 @@ public class DetalhesProdutosController {
                     1
                 );
 
-              
-                TelaCarrinhoLojas telaCarrinho =
-                    new TelaCarrinhoLojas();
-
-                // controller do carrinho
-                CarrinhoLojasController controller =
-                    new CarrinhoLojasController(
-                        telaCarrinho,
-                        itensDAO,
-                        navegador, 
-                        carrinho 
-                    );
-
-                controller.recriarPaineis();
-
-                navegador.adicionarPainel(
-                    "CARRINHO",
-                    telaCarrinho
-                );
-
+                navegador.recarregarCarrinho();
                 navegador.navegarPara("CARRINHO");
 
             } catch (SQLException exsso) {
