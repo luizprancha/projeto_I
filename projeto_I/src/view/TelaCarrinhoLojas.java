@@ -127,7 +127,7 @@ public void addPanel5(Painel5 p5, String param) {
 	}
 	
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
-		JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
+	    TelaMensagem.mostrar(titulo, mensagem);
 	}
 
 }

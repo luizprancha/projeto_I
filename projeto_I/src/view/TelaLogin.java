@@ -17,14 +17,15 @@ import Botao.PainelArredondado;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.JPasswordField;
 
 public class TelaLogin extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfUsuario;
-	private JTextField tfSenha;
 	private JButton btnEntrar;
 	private JButton btnCadastro; 
+	private JPasswordField tfSenha;
 
 	/**
 	 * Create the panel.
@@ -73,12 +74,10 @@ public class TelaLogin extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(fonte3);
 		lbSenha.add(lblNewLabel_2, "cell 1 3,grow");
-
 		
-		tfSenha = new JTextField();
+		tfSenha = new JPasswordField();
+		lbSenha.add(tfSenha, "cell 3 3,growx");
 		tfSenha.setFont(fonte3);
-		lbSenha.add(tfSenha, "cell 3 3,grow");
-		tfSenha.setColumns(10);
 		
 		btnEntrar = new JButtonOutLine();
 		btnEntrar.setText("Entrar");
@@ -114,7 +113,7 @@ public class TelaLogin extends JPanel {
 	
 
 		public void exibirMensagem(String titulo, String mensagem, int tipo) {
-			JOptionPane.showMessageDialog(this, mensagem, titulo, tipo);
+		    TelaMensagem.mostrar(titulo + " de Login", mensagem);
 		}
 	
 
