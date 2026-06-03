@@ -121,7 +121,7 @@ public class TelaCadastro extends JPanel {
 
 
 	public void exibirMensagem(String titulo, String mensagem, int tipo) {
-	    TelaMensagem.mostrar(titulo, mensagem);
+	    TelaMensagem.mostrar(titulo+ " de Cadastro", mensagem);
 	}
 	
 	public void irParaLogin(ActionListener al) {

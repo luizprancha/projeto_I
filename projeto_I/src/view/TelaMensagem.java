@@ -10,9 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Botao.JButtonOutLine;
+
 public class TelaMensagem extends JDialog {
 
     private static final long serialVersionUID = 1L;
+    JButtonOutLine btnOk;
 
     public TelaMensagem(String titulo, String mensagem) {
 
@@ -23,9 +26,10 @@ public class TelaMensagem extends JDialog {
         setResizable(false);
 
         JPanel painel = new JPanel(new BorderLayout());
-        painel.setBackground(new Color(240, 240, 240));
+        painel.setBackground(new Color(235, 219, 194));
 
         JLabel lblTitulo = new JLabel(titulo);
+        lblTitulo.setForeground(new Color(15, 57, 87));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
 
@@ -34,7 +38,10 @@ public class TelaMensagem extends JDialog {
         lblMensagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblMensagem.setFont(new Font("Arial", Font.PLAIN, 14));
 
-        JButton btnOk = new JButton("OK");
+        btnOk = new JButtonOutLine();
+        btnOk.setText("OK");
+        btnOk.setBackground(new Color(15, 57, 87));
+        btnOk.setForeground(new Color(235, 219, 194));
 
         btnOk.addActionListener(e -> dispose());
 
@@ -42,7 +49,7 @@ public class TelaMensagem extends JDialog {
         painel.add(lblMensagem, BorderLayout.CENTER);
         painel.add(btnOk, BorderLayout.SOUTH);
 
-        add(painel);
+        getContentPane().add(painel);
     }
 
     public static void mostrar(String titulo, String mensagem) {

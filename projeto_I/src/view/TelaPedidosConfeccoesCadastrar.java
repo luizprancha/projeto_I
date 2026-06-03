@@ -20,9 +20,9 @@ import java.awt.event.ActionEvent;
 public class TelaPedidosConfeccoesCadastrar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfConfeccao;
+	private JTextField tfCNPJConfeccao;
 	private JTextField tfQuantidade;
-	private JTextField tfEntrega;
+	private JTextField tfRetirada;
 	private JTextField tfValor;
 	private JButton btnConfirmar;
 
@@ -64,14 +64,14 @@ public class TelaPedidosConfeccoesCadastrar extends JPanel {
 		panel.add(panel_1, "cell 1 3 3 1,grow");
 		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Confecção:");
+		JLabel lblNewLabel_1 = new JLabel("CNPJ:");
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		tfConfeccao = new JTextField();
-		tfConfeccao.setFont(fonte2);
-		panel_1.add(tfConfeccao, "cell 3 1,growx");
-		tfConfeccao.setColumns(10);
+		tfCNPJConfeccao = new JTextField();
+		tfCNPJConfeccao.setFont(fonte2);
+		panel_1.add(tfCNPJConfeccao, "cell 3 1,growx");
+		tfCNPJConfeccao.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças:");
 		lblNewLabel_2.setFont(fonte2);
@@ -82,14 +82,14 @@ public class TelaPedidosConfeccoesCadastrar extends JPanel {
 		panel_1.add(tfQuantidade, "cell 3 3,growx");
 		tfQuantidade.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
+		JLabel lblNewLabel_3 = new JLabel("Data de retirada:");
 		lblNewLabel_3.setFont(fonte2);
 		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
-		tfEntrega = new JTextField();
-		tfEntrega.setFont(fonte2);
-		panel_1.add(tfEntrega, "cell 3 5,growx");
-		tfEntrega.setColumns(10);
+		tfRetirada = new JTextField();
+		tfRetirada.setFont(fonte2);
+		panel_1.add(tfRetirada, "cell 3 5,growx");
+		tfRetirada.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Valor total:");
 		lblNewLabel_4.setFont(fonte2);
@@ -111,15 +111,15 @@ public class TelaPedidosConfeccoesCadastrar extends JPanel {
 		btnConfirmar.addActionListener(acao);
 	}
 	
-	public String getEntrega() {
-		return tfConfeccao.getText();
+	public String getCNPJConfeccao() {
+		return tfCNPJConfeccao.getText();
 	}
 	
 	public String getQuantidadePecas() {
 		return tfQuantidade.getText();
 	}
-	public String getDataEntrega() {
-		return tfEntrega.getText();
+	public String getDataRetirada() {
+		return tfRetirada.getText();
 	}
 	
 	public String getValorTotal() {

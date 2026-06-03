@@ -15,15 +15,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JTextField;
+
+import Botao.JButtonOutLine;
+import Botao.PainelArredondado;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class TelaPedidosConfeccoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfConfeccao;
 	private JTextField tfEntrega;
-	private JButton btnFinalizar;
+	private JButtonOutLine btnFinalizar;
 	private JTextField tfCNPJ;
 	private JTextField tfQtdePecas;
 	private JTextField tfValorTotal;
@@ -48,87 +51,78 @@ public class TelaPedidosConfeccoes extends JPanel {
 		        getClass().getResourceAsStream("/fontes/Abel-Regular.ttf")
 		).deriveFont(50f);
 		
+		Font fonte2 = Font.createFont(
+		        Font.TRUETYPE_FONT,
+		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
+		).deriveFont(18f);
+		
 		JLabel lblNewLabel = new JLabel("Pedidos Confecções");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1 3 1");
 		lblNewLabel.setFont(fonte1);
 		
 		
-		JPanel panel_1 = new JPanel();
+		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel_1.setForeground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
-		
-		JLabel lblNewLabel_1 = new JLabel("Confecção:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_1, "cell 1 1");
-		
-		tfConfeccao = new JTextField();
-		tfConfeccao.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfConfeccao, "cell 3 1,growx");
-		tfConfeccao.setColumns(10);
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel_5 = new JLabel("CNPJ:");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_5, "cell 1 3");
+		lblNewLabel_5.setFont(fonte2);
+		panel_1.add(lblNewLabel_5, "cell 1 1");
 		
 		tfCNPJ = new JTextField();
-		tfCNPJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfCNPJ, "cell 3 3,growx");
+		tfCNPJ.setFont(fonte2);
+		panel_1.add(tfCNPJ, "cell 3 1,growx");
 		tfCNPJ.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_2, "cell 1 6");
+		lblNewLabel_2.setFont(fonte2);
+		panel_1.add(lblNewLabel_2, "cell 1 3");
 		
 		tfQtdePecas = new JTextField();
-		tfQtdePecas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfQtdePecas, "cell 3 6,growx");
+		tfQtdePecas.setFont(fonte2);
+		panel_1.add(tfQtdePecas, "cell 3 3,growx");
 		tfQtdePecas.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_3, "cell 1 8");
+		lblNewLabel_3.setFont(fonte2);
+		panel_1.add(lblNewLabel_3, "cell 1 5");
 		
 		tfEntrega = new JTextField();
-		tfEntrega.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfEntrega, "cell 3 8,growx");
+		tfEntrega.setFont(fonte2);
+		panel_1.add(tfEntrega, "cell 3 5,growx");
 		tfEntrega.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Valor total:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_4, "cell 1 10");
+		lblNewLabel_4.setFont(fonte2);
+		panel_1.add(lblNewLabel_4, "cell 1 7");
 		
 		tfValorTotal = new JTextField();
-		tfValorTotal.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(tfValorTotal, "cell 3 10,growx");
+		tfValorTotal.setFont(fonte2);
+		panel_1.add(tfValorTotal, "cell 3 7,growx");
 		tfValorTotal.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Forma de Pagamento:");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		panel_1.add(lblNewLabel_6, "cell 1 12");
+		lblNewLabel_6.setFont(fonte2);
+		panel_1.add(lblNewLabel_6, "cell 1 9");
 		
 		cbPgmt = new JComboBox();
 		cbPgmt.setModel(new DefaultComboBoxModel(new String[] {"", "Boleto", "Pix", "Cartao Crédito", "Cartao Debito"}));
-		cbPgmt.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel_1.add(cbPgmt, "cell 3 12,growx");
+		cbPgmt.setFont(fonte2);
+		panel_1.add(cbPgmt, "cell 3 9,growx");
 		
-		btnFinalizar = new JButton("Finalizar Pedido");
+		btnFinalizar = new JButtonOutLine();
+		btnFinalizar.setText("Finalizar Pedido");
 		btnFinalizar.setBackground(new Color(235, 219, 194));
-		btnFinalizar.setOpaque(true);
-		btnFinalizar.setBorderPainted(false);
-		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFinalizar.setFont(fonte2);
 		panel.add(btnFinalizar, "cell 2 5,growx");
 
 	}
 	
 		public void finalizarPedido (ActionListener acao) {
 			btnFinalizar.addActionListener(acao);
-		}
-		
-		public String getConfeccao() {
-			return tfConfeccao.getText();
 		}
 		
 		public String getCNPJ() {
