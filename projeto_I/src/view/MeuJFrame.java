@@ -25,6 +25,7 @@ import controller.LoginController;
 import controller.LojasController;
 import controller.MateriaPrimaController;
 import controller.Navegador;
+import controller.NotificacaoController;
 import controller.PedidosConfeccoesConfirmadosController;
 import controller.PedidosLojasConfirmadosController;
 import controller.PedidosLojasController;
@@ -35,6 +36,7 @@ import model.ConfeccoesDAO;
 import model.ItensCarrinho;
 import model.ItensCarrinhoDAO;
 import model.MateriaPrimaDAO;
+import model.NotificacaoDAO;
 import model.PedidoConfeccaoDAO;
 import model.PedidosLojasDAO;
 import model.Produtos;
@@ -100,6 +102,7 @@ public class MeuJFrame extends JFrame {
 		PedidoConfeccaoDAO pedidoconfeccaoDAO = new PedidoConfeccaoDAO();
 		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 		ItensCarrinhoDAO itenscarrinhoDAO = new ItensCarrinhoDAO();
+		NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
 
 		
 		TelaLogin telaLogin = new TelaLogin();
@@ -173,12 +176,14 @@ public class MeuJFrame extends JFrame {
 		
 		TelaAlterarMateria telaalterarmateria = new TelaAlterarMateria();
 		adicionarTela("ALTERAR_MATERIA", telaalterarmateria);
+		
+		NotificacaoController notifCont = new NotificacaoController(telaNotificacao, notificacaoDAO);
        
 		new LoginController(telaLogin, navegador);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
 		
 		ProdutosController prodCont = new ProdutosController(telaProduto, produtosDAO, navegador);
-		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador, prodCont);
+		new CadastroProdutosController(telaCadastroProduto, produtosDAO, navegador, prodCont, notifCont);
 		
 		ConfeccaoController confCont = new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador, confCont);
@@ -189,7 +194,7 @@ public class MeuJFrame extends JFrame {
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador, lojaCont);
 		
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
-		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador, materiaConf);
+		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador, materiaConf, notifCont);
 		
 		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
 		
@@ -208,6 +213,7 @@ public class MeuJFrame extends JFrame {
 		ItemNotificacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("NOTIFICACAO");
+				notifCont.recriarPaineis();
 			}
 		});
 		itemNotificacao.add(ItemNotificacao);

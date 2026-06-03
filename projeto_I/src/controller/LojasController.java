@@ -141,7 +141,7 @@ public class LojasController {
     }
 
     public void recriarPaineis()
-            throws FontFormatException, IOException {
+        throws FontFormatException, IOException {
 
         List<Lojas> lista = model.listarLojas();
 

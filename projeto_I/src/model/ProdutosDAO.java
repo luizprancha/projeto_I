@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ import database.BancoDeDados;
 public class ProdutosDAO {
 	
 	public void adicionarProduto(Produtos produto) {
-		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Produtos(nome, tamanho, cor, qtde_estoque, preco, dataCadastro) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conexao = null;
 		PreparedStatement pstm = null;
 		
@@ -25,6 +28,7 @@ public class ProdutosDAO {
 			pstm.setString(3, produto.getCor());
 			pstm.setInt(4, produto.getQuantidade());
 			pstm.setDouble(5, produto.getPreco());
+			pstm.setTimestamp(6,Timestamp.valueOf(LocalDateTime.now()));
 			
 			pstm.execute();
 			
@@ -62,6 +66,7 @@ public class ProdutosDAO {
 						produto.setQuantidade(rset.getInt("qtde_estoque"));
 						produto.setPreco(rset.getDouble("preco"));
 						produto.setIdProduto(rset.getInt("idProdutos"));
+						produto.setDataCadastro(rset.getTimestamp("dataCadastro").toLocalDateTime());
 						produtos.add(produto);
 					}
 					
@@ -245,7 +250,6 @@ public class ProdutosDAO {
 
 		    		BancoDeDados.desconectar(conexao);
 		    	}
-		    }
-			
+		    }			
 		    
 }

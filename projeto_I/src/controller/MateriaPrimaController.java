@@ -139,8 +139,7 @@ public class MateriaPrimaController {
 		
 		}
 		
-	public void recriarPaineis() throws FontFormatException, IOException {
-		
+	public void recriarPaineis() throws FontFormatException, IOException {		
 		List<MateriaPrima> lista = model.listarMateriasPrimas();
 		criarPaineis(lista);
 	}

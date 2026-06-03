@@ -1,22 +1,26 @@
 package controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import view.TelaCadastroMateria;
+import controller.NotificacaoController;
 
 public class CadastroMateriaController {
 	private final TelaCadastroMateria view;
 	private final MateriaPrimaDAO model;
-	@SuppressWarnings("unused")
 	private final Navegador navegador;
 	private final MateriaPrimaController materiaPrimaController;
+	private final NotificacaoController notificacaoController;
 
-	public CadastroMateriaController(TelaCadastroMateria view, MateriaPrimaDAO model, Navegador navegador, MateriaPrimaController materiaPrimaController) {
+	public CadastroMateriaController(TelaCadastroMateria view, MateriaPrimaDAO model, Navegador navegador, MateriaPrimaController materiaPrimaController, NotificacaoController notificacaoController) {
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
 		this.materiaPrimaController = materiaPrimaController;
-		
+		this.notificacaoController = notificacaoController;
 
 		this.view.cadastro(e -> {
 
@@ -48,13 +52,15 @@ public class CadastroMateriaController {
 			if (erros.length() > 0) {
 				view.exibirMensagem("Erro", erros.toString(), 0);
 			} else {
-				MateriaPrima m = new MateriaPrima(nome, quantidade, cor, tipo);
+				MateriaPrima m = new MateriaPrima(nome, quantidade, cor, tipo, LocalDateTime.now());
 				model.adicionarMateriaPrima(m);
 				view.limparCampos();
 				view.exibirMensagem("Sucesso", "Matéria-Prima salva!", 1);
 				try {
 
 				    materiaPrimaController.recriarPaineis();
+				    
+				    notificacaoController.recriarPaineis();
 
 				    navegador.navegarPara("MATERIA_PRIMA");
 

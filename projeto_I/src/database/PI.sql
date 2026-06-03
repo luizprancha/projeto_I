@@ -16,7 +16,8 @@ CREATE TABLE Produtos (
   tamanho VARCHAR(20),
   cor VARCHAR(50),
   qtde_estoque INT DEFAULT 0,
-  preco DECIMAL(10,2) NOT NULL
+  preco DECIMAL(10,2) NOT NULL,
+  dataCadastro DATETIME NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE Confeccoes (
@@ -63,8 +64,15 @@ CREATE TABLE MateriaPrima (
 	nome VARCHAR(20) NOT NULL,
 	cor VARCHAR(20) NOT NULL,
 	quantidade INT NOT NULL,
-	tipo VARCHAR(20) NOT NULL
+	tipo VARCHAR(20) NOT NULL,
+	dataCadastro DATETIME NOT NULL
 ) ENGINE=InnoDB;
+
+CREATE TABLE NotificacoesDescartadas (
+    tipo VARCHAR(20) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    PRIMARY KEY (tipo, nome)
+);
 
 CREATE TABLE PedidosConfeccoes_Produtos (
   PedidosConfeccoes_idPedidoC INT,

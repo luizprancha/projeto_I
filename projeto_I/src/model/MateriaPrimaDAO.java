@@ -4,14 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import database.BancoDeDados;
 import model.MateriaPrima;
 
 public class MateriaPrimaDAO {
 		
 		public void adicionarMateriaPrima(MateriaPrima materiaPrima) {
-			String sql = "INSERT INTO MateriaPrima(nome, cor, quantidade, tipo) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO MateriaPrima(nome, cor, quantidade, tipo, dataCadastro) VALUES (?, ?, ?, ?, ?)";
 			Connection conexao = null;
 			PreparedStatement pstm = null;
 			
@@ -23,6 +28,7 @@ public class MateriaPrimaDAO {
 				pstm.setString(2, materiaPrima.getCor());
 				pstm.setInt(3, materiaPrima.getQuantidade());
 				pstm.setString(4, materiaPrima.getTipo());
+				pstm.setTimestamp(5,Timestamp.valueOf(LocalDateTime.now()));
 				pstm.execute();
 				
 			} catch (SQLException e) {
@@ -58,6 +64,7 @@ public class MateriaPrimaDAO {
 							materiaPrima.setQuantidade(rset.getInt("quantidade"));
 							materiaPrima.setTipo(rset.getString("tipo"));
 							materiaPrima.setIdMateriaPrima(rset.getInt("idMateriaPrima"));
+							materiaPrima.setDataCadastro(rset.getTimestamp("dataCadastro").toLocalDateTime());
 							MateriaPrima.add(materiaPrima);
 						}
 						
@@ -147,6 +154,6 @@ public class MateriaPrimaDAO {
 			        }
 
 			        return materiaprima;
-			    }
-
+			    }			    
+			 
 	}

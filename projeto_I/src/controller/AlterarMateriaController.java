@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import view.TelaAlterarMateria;
@@ -45,12 +48,7 @@ public class AlterarMateriaController {
 
 			} else {
 
-				MateriaPrima l = new MateriaPrima(
-						nome,
-						quantidade,
-						cor,
-						tipo
-				);
+				MateriaPrima l = new MateriaPrima(nome,	quantidade,	cor, tipo, LocalDateTime.now());
 
 				l.setIdMateriaPrima(materiaprima.getIdMateriaPrima());
 
