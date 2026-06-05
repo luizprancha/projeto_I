@@ -143,8 +143,16 @@ public class TelaPedidosConfeccoes extends JPanel {
 		}
 		
 		public String getFormaPgmt() {
-			return cbPgmt.getSelectedItem().toString();
+			Object selecionado = cbPgmt.getSelectedItem();
+			return selecionado != null ? selecionado.toString() : "";
 		}
-		
+
+		public void limparCampos() {
+			tfCNPJ.setText("");
+			tfQtdePecas.setText("");
+			tfEntrega.setText("");
+			tfValorTotal.setText("");
+			cbPgmt.setSelectedIndex(0);
+		}
 
 }

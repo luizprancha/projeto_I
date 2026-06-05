@@ -27,6 +27,8 @@ import controller.MateriaPrimaController;
 import controller.Navegador;
 import controller.NotificacaoController;
 import controller.PedidosConfeccoesConfirmadosController;
+import controller.PedidosConfeccoesController;
+import controller.PedidosConfeccoesAlterarController;
 import controller.PedidosLojasConfirmadosController;
 import controller.PedidosLojasController;
 import controller.ProdutosController;
@@ -158,6 +160,9 @@ public class MeuJFrame extends JFrame {
 		
 		TelaPedidosConfeccoes telapedidosconfeccoes = new TelaPedidosConfeccoes();
 		adicionarTela("PEDIDOS_CONFECCOES_VIZU", telapedidosconfeccoes);
+
+		TelaPedidosConfeccoesCadastrar telaPedidosConfeccoesAlterar = new TelaPedidosConfeccoesCadastrar();
+		adicionarTela("PEDIDOS_CONFECCOES_ALTERAR", telaPedidosConfeccoesAlterar);
 		
 		TelaDetalhesLojas telaDetalhesLojas = new TelaDetalhesLojas();
 		adicionarTela("DETALHES_LOJAS", telaDetalhesLojas);
@@ -196,7 +201,28 @@ public class MeuJFrame extends JFrame {
 		MateriaPrimaController materiaConf = new MateriaPrimaController (telaMateriaPrima , materiaDAO ,  navegador);
 		new CadastroMateriaController(telaCadastroMateria, materiaDAO, navegador, materiaConf, notifCont);
 		
-		new PedidosConfeccoesConfirmadosController(telaPedidosConfeccoesconfirmados, pedidoconfeccaoDAO, navegador);
+		PedidosConfeccoesConfirmadosController pedidosConfCont =
+				new PedidosConfeccoesConfirmadosController(
+						telaPedidosConfeccoesconfirmados,
+						pedidoconfeccaoDAO,
+						navegador,
+						confeccaoDAO);
+
+		PedidosConfeccoesAlterarController pedidosConfAlterarCont =
+				new PedidosConfeccoesAlterarController(
+						telaPedidosConfeccoesAlterar,
+						pedidoconfeccaoDAO,
+						navegador);
+
+		PedidosConfeccoesController pedidosConfCriarCont =
+				new PedidosConfeccoesController(
+						telapedidosconfeccoes,
+						pedidoconfeccaoDAO,
+						navegador);
+
+		pedidosConfCont.setAlterarController(pedidosConfAlterarCont);
+		pedidosConfAlterarCont.setConfirmadosController(pedidosConfCont);
+		pedidosConfCriarCont.setConfirmadosController(pedidosConfCont);
 		
 	    carrinho = new Carrinho();
 	    carrinho.setIdCarrinho(1);
@@ -313,6 +339,7 @@ public class MeuJFrame extends JFrame {
 		itemConfeccao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("PEDIDOS_CONFECCOES");
+				pedidosConfCont.recriarPaineis();
 			}
 		});
 		itemPedidos.add(itemConfeccao);

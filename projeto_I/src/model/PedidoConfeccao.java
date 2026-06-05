@@ -7,29 +7,25 @@ import java.util.List;
 public class PedidoConfeccao {
 
 	private int idPedidoC;
-	private String entrega;
+	private LocalDate entrega;
 	private int idConfeccao;
 	private double valorPedido;
 	private String confeccoesCNPJ;
-	private LocalDate dataEntrega;
-	private LocalDate dataDevolucao;
 	private String forma_pgm;
-	private String confeccao;
+	private String nomeConfeccao;
 	private int quantidade;
 	private List<Confeccoes> confeccoes = new ArrayList<Confeccoes>();
 	
-	public PedidoConfeccao(int idPedidoC, String entrega, int idConfeccao, double valorPedido, String confeccoesCNPJ,
-			LocalDate dataEntrega, LocalDate dataDevolucao, String forma_pgm, String confeccao, int quantidade) {
+	public PedidoConfeccao(int idPedidoC, LocalDate entrega, int idConfeccao, double valorPedido, String confeccoesCNPJ,
+			String forma_pgm, String nomeConfeccao, int quantidade) {
 		super();
 		this.idPedidoC = idPedidoC;
 		this.entrega = entrega;
 		this.idConfeccao = idConfeccao;
 		this.valorPedido = valorPedido;
 		this.confeccoesCNPJ = confeccoesCNPJ;
-		this.dataEntrega = dataEntrega;
-		this.dataDevolucao = dataDevolucao;
 		this.forma_pgm = forma_pgm;
-		this.confeccao = confeccao;
+		this.nomeConfeccao = nomeConfeccao;
 		this.quantidade = quantidade;
 	}
 	public PedidoConfeccao() {
@@ -42,11 +38,11 @@ public class PedidoConfeccao {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public String getConfeccao() {
-		return confeccao;
+	public String getNomeConfeccao() {
+		return nomeConfeccao;
 	}
-	public void setConfeccao(String confeccao) {
-		this.confeccao = confeccao;
+	public void setNomeConfeccao(String nomeConfeccao) {
+		this.nomeConfeccao = nomeConfeccao;
 	}
 	public int getIdPedidoC() {
 		return idPedidoC;
@@ -54,10 +50,10 @@ public class PedidoConfeccao {
 	public void setIdPedidoC(int idPedidoC) {
 		this.idPedidoC = idPedidoC;
 	}
-	public String getEntrega() {
+	public LocalDate getEntrega() {
 		return entrega;
 	}
-	public void setEntrega(String entrega) {
+	public void setEntrega(LocalDate entrega) {
 		this.entrega = entrega;
 	}
 	public int getIdConfeccao() {
@@ -79,19 +75,6 @@ public class PedidoConfeccao {
 	public void setConfeccoesCNPJ(String confeccoesCNPJ) {
 		this.confeccoesCNPJ = confeccoesCNPJ;
 	}
-	public LocalDate getDataEntrega() {
-		return dataEntrega;
-	}
-	public void setDataEntrega(LocalDate dataEntrega) {
-		this.dataEntrega = dataEntrega;
-	}
-	public LocalDate getDataDevolucao() {
-		return dataDevolucao;
-	}
-	public void setDataDevolucao(LocalDate dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-
 	public List<Confeccoes> getConfeccoes() {
 		return confeccoes;
 	}
