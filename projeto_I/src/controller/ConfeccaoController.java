@@ -25,10 +25,7 @@ public class ConfeccaoController {
      * @param model Referência ao DAO
      * @param navegador Navegador de telas
      */
-    public ConfeccaoController(
-            TelaConfeccoes view,
-            ConfeccoesDAO model,
-            Navegador navegador) {
+    public ConfeccaoController(TelaConfeccoes view,ConfeccoesDAO model,Navegador navegador) {
 
         this.view = view;
         this.model = model;

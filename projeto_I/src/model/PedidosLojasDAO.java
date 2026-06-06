@@ -10,40 +10,60 @@ import java.util.List;
 import database.BancoDeDados;
 
 public class PedidosLojasDAO {
-	
-			public List<PedidosLojas> listarPedidosLojas(){
-				String sql = "SELECT * FROM PedidosLojas";
-				List<PedidosLojas> pedidolojas = new ArrayList<>();
-				Connection conexao = null;
-				PreparedStatement pstm = null;
-				ResultSet rset = null;
-				
-				try {
-					conexao = database.BancoDeDados.conectar();
-					pstm = conexao.prepareStatement(sql);
-					rset = pstm.executeQuery();
-					
-					while(rset.next()) {
-						PedidosLojas pedidoslojas = new PedidosLojas();
-						java.sql.Date data = rset.getDate("data_entrega");
+	public List<PedidosLojas> listarPedidosLojas() {
 
-						pedidoslojas.setEntrega(
-						    data != null ? data.toString() : null
-						);
-						pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
-						pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
-						pedidoslojas.setEndereco(rset.getString("endereco"));
-						pedidolojas.add(pedidoslojas);
-					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}finally {
-					database.BancoDeDados.desconectar(conexao);
-				}
-				return pedidolojas;
-			}
-			
+	    String sql =
+	        "SELECT p.idPedidosL, p.data_entrega, p.valor_total, p.Lojas_CNPJ, p.endereco, " +
+	        "l.nome, COALESCE(SUM(plp.quantidade), 0) AS quantidade_total " +
+	        "FROM PedidosLojas p " +
+	        "JOIN Lojas l ON p.Lojas_CNPJ = l.CNPJ " +
+	        "LEFT JOIN PedidosLojas_Produtos plp ON plp.PedidosLojas_idPedidosL = p.idPedidosL " +
+	        "GROUP BY p.idPedidosL, p.data_entrega, p.valor_total, p.Lojas_CNPJ, p.endereco, l.nome";
+
+	    List<PedidosLojas> pedidolojas = new ArrayList<>();
+	    Connection conexao = null;
+	    PreparedStatement pstm = null;
+	    ResultSet rset = null;
+
+	    try {
+
+	        conexao = BancoDeDados.conectar();
+	        pstm = conexao.prepareStatement(sql);
+	        rset = pstm.executeQuery();
+
+	        while (rset.next()) {
+
+	            PedidosLojas pedidoslojas = new PedidosLojas();
+
+	            java.sql.Date data = rset.getDate("data_entrega");
+
+	            pedidoslojas.setIdPedidoL(rset.getInt("idPedidosL"));
+	            pedidoslojas.setEntrega(
+	                data != null ? data.toString() : null
+	            );
+
+	            pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
+	            pedidoslojas.setQuantidadeTotal(rset.getInt("quantidade_total"));
+	            pedidoslojas.setLojas_CNPJ(rset.getString("Lojas_CNPJ"));
+	            pedidoslojas.setEndereco(rset.getString("endereco"));
+
+	            // nome vindo da tabela Lojas
+	            pedidoslojas.setNomeLoja(rset.getString("nome"));
+
+	            pedidolojas.add(pedidoslojas);
+	        }
+
+	    } catch (SQLException e) {
+
+	        e.printStackTrace();
+
+	    } finally {
+
+	        BancoDeDados.desconectar(conexao);
+	    }
+
+	    return pedidolojas;
+	}
 
 		    public void atualizarPedidosLojas(PedidosLojas pedidoslojas) {
 		        String sql = "UPDATE PedidosLojas SET data_entrega = ?, valor_total = ?, Lojas_CNPJ = ?, endereco = ? WHERE idPedidosL = ?";
@@ -67,16 +87,30 @@ public class PedidosLojasDAO {
 		    }
 		    
 		    public static void removerPedidosLojas(int id) {
-		        String sql = "DELETE FROM PedidosLojas WHERE idPedidosL=?";
+		        Connection conn = null;
 
-		        try (Connection conn = database.BancoDeDados.conectar();
-		             PreparedStatement stmt = conn.prepareStatement(sql)) {
+		        try {
+		            conn = database.BancoDeDados.conectar();
 
-		            stmt.setInt(1, id);
-		            stmt.executeUpdate();
+		            String sqlCarrinho = "UPDATE Carrinho SET idPedidosL = NULL WHERE idPedidosL = ?";
+		            PreparedStatement stmtCarrinho = conn.prepareStatement(sqlCarrinho);
+		            stmtCarrinho.setInt(1, id);
+		            stmtCarrinho.executeUpdate();
+
+		            String sqlProdutos = "DELETE FROM PedidosLojas_Produtos WHERE PedidosLojas_idPedidosL = ?";
+		            PreparedStatement stmtProdutos = conn.prepareStatement(sqlProdutos);
+		            stmtProdutos.setInt(1, id);
+		            stmtProdutos.executeUpdate();
+
+		            String sqlPedido = "DELETE FROM PedidosLojas WHERE idPedidosL = ?";
+		            PreparedStatement stmtPedido = conn.prepareStatement(sqlPedido);
+		            stmtPedido.setInt(1, id);
+		            stmtPedido.executeUpdate();
 
 		        } catch (Exception e) {
 		            e.printStackTrace();
+		        } finally {
+		            database.BancoDeDados.desconectar(conn);
 		        }
 		    }
 		    

@@ -33,7 +33,7 @@ public class Painel7 extends PainelArredondado {
 		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
 		).deriveFont(13f);
 		
-		JLabel lbNomeLoja = new JLabel(pedidosLojas.getNome()); //inserir nome na tabela pedidos lojas e fazer ee pegar de lojas o nome
+		JLabel lbNomeLoja = new JLabel(pedidosLojas.getNomeLoja()); //inserir nome na tabela pedidos lojas e fazer ee pegar de lojas o nome
 		add(lbNomeLoja, "cell 1 1");
 		lbNomeLoja.setFont(fonte2);
 

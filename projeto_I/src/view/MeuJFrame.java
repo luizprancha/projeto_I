@@ -177,6 +177,10 @@ public class MeuJFrame extends JFrame {
 		TelaAlterarMateria telaalterarmateria = new TelaAlterarMateria();
 		adicionarTela("ALTERAR_MATERIA", telaalterarmateria);
 		
+		TelaDetalhePedidosLojas telaDetalhePedidoLoja = new TelaDetalhePedidosLojas();
+		adicionarTela("DETALHE_PEDIDOLOJA", telaDetalhePedidoLoja);
+		
+		
 		NotificacaoController notifCont = new NotificacaoController(telaNotificacao, notificacaoDAO);
        
 		new LoginController(telaLogin, navegador);
@@ -188,7 +192,8 @@ public class MeuJFrame extends JFrame {
 		ConfeccaoController confCont = new ConfeccaoController(telaConfeccoes, confeccaoDAO, navegador);
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador, confCont);
 		
-		new PedidosLojasConfirmadosController(telaPedidosLojas ,pedidolojaDAO, navegador);
+		PedidosLojasConfirmadosController pedidosLojasConfirmadosCont =
+				new PedidosLojasConfirmadosController(telaPedidosLojas, pedidolojaDAO, navegador);
 		
 		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);		
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador, lojaCont);
@@ -201,21 +206,8 @@ public class MeuJFrame extends JFrame {
 	    carrinho = new Carrinho();
 	    carrinho.setIdCarrinho(1);
 
-	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(
-	    		telapedidoloja,
-	    		pedidolojaDAO,
-	    		navegador,
-	    		carrinho,
-	    		carrinhoDAO,
-	    		itenscarrinhoDAO
-	    );
-	    carrinhocont = new CarrinhoLojasController(
-	    		telaCarrinho,
-	    		itenscarrinhoDAO,
-	    		navegador,
-	    		carrinho,
-	    		pedidosLojasCont
-	    );
+	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(telapedidoloja,pedidolojaDAO,navegador,carrinho,carrinhoDAO,itenscarrinhoDAO);
+	    carrinhocont = new CarrinhoLojasController(telaCarrinho,itenscarrinhoDAO,navegador,carrinho,pedidosLojasCont);
 	    pedidosLojasCont.setCarrinhoController(carrinhocont);
 		
 		mostrarTela("LOGIN");
@@ -305,6 +297,13 @@ public class MeuJFrame extends JFrame {
 		itemLojasPedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("PEDIDOS_LOJAS");
+				try {
+					pedidosLojasConfirmadosCont.recriarPaineis();
+				} catch (FontFormatException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		itemPedidos.add(itemLojasPedidos);

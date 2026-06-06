@@ -18,11 +18,13 @@ import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 
 public class TelaPedidosLojasConfirmados extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnRealizar;
+	private JComponent panel_7; 
 
 	/**
 	 * Create the panel.
@@ -67,10 +69,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "cell 1 4 3 1,grow");
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(15, 57, 87));
-		scrollPane.setViewportView(panel_1);
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow]"));
+		panel_7 = new JPanel();
+		panel_7.setBackground(new Color(15, 57, 87));
+		scrollPane.setViewportView(panel_7);
+		panel_7.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow]"));
 		
 
 
@@ -82,4 +84,27 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 	
 	
 
+
+
+	public void addPanel7(Painel7 p7, String param) {
+		
+		panel_7.add(p7, param);
+		
+	}
+
+
+	public void limparPaineis() {
+		panel_7.removeAll();
+
+	    panel_7.repaint();
+
+	    panel_7.revalidate();
+	}
+	
+	public void recriarPaineis(Painel7 p7, String param) {
+		limparPaineis();
+		panel_7.add(p7, param);
+		
+	}
+	
 }

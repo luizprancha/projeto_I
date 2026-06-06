@@ -13,6 +13,8 @@ import model.PedidosLojas;
 import model.PedidosLojasDAO;
 import view.Painel;
 import view.Painel2;
+import view.Painel7;
+import view.TelaDetalhePedidosLojas;
 import view.TelaDetalhesConfeccoes;
 import view.TelaPedidosLojasConfirmados;
 
@@ -52,39 +54,39 @@ public class PedidosLojasConfirmadosController {
 
 	        for (int i = 0; i < lista.size(); i++) {
 
-	            Confeccoes conf = lista.get(i);
+	            PedidosLojas ped = lista.get(i);
 
-	            Painel p = new Painel(conf);
+	            Painel7 p7 = new Painel7(ped);
 
 	            if (coluna > 4) {
 	                coluna = 0;
 	                linha = linha + 2;
 	            }
 
-	            p.addMouseListener(new MouseAdapter() {
+	            p7.addMouseListener(new MouseAdapter() {
 
 	                @Override
 	                public void mouseClicked(MouseEvent e) {
 
 	                    try {
 
-	                        TelaDetalhesConfeccoes telaDetalhe =
-	                                new TelaDetalhesConfeccoes();
+	                        TelaDetalhePedidosLojas telaDetalhePedidosLojas =
+	                                new TelaDetalhePedidosLojas();
 
-	                        new DetalhesConfeccoesController(
-	                                telaDetalhe,
+	                        new DetalhesPedidosLojasController(
+	                        		telaDetalhePedidosLojas,
 	                                model,
 	                                navegador,
-	                                conf,
-	                                ConfeccaoController.this
+	                                ped,
+	                                PedidosLojasConfirmadosController.this
 	                        );
 
-	                        ConfeccaoController.this.navegador.adicionarPainel(
+	                       PedidosLojasConfirmadosController.this.navegador.adicionarPainel(
 	                                "DETALHES_CONFECCAO",
-	                                telaDetalhe
+	                                telaDetalhePedidosLojas
 	                        );
 
-	                        ConfeccaoController.this.navegador.navegarPara(
+	                       PedidosLojasConfirmadosController.this.navegador.navegarPara(
 	                                "DETALHES_CONFECCAO"
 	                        );
 
@@ -95,8 +97,8 @@ public class PedidosLojasConfirmadosController {
 	                }
 	            });
 
-	            this.view.addPanel(
-	                    p,
+	            this.view.addPanel7(
+	                    p7,
 	                    "cell " + coluna + " " + linha + ",grow"
 	            );
 
@@ -105,6 +107,14 @@ public class PedidosLojasConfirmadosController {
 	            this.view.revalidate();
 	            this.view.repaint();
 	        }
+	    }
+	        
+	        public void recriarPaineis() throws FontFormatException, IOException {
+
+	                List<PedidosLojas > lista = model.listarPedidosLojas();
+
+	                criarPaineis(lista);
+	            }
 
 	    }
 
@@ -113,5 +123,5 @@ public class PedidosLojasConfirmadosController {
 	
 
 
-}
+
 
