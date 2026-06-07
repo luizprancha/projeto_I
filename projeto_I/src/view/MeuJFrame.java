@@ -171,6 +171,9 @@ public class MeuJFrame extends JFrame {
 		TelaAlterarProdutos telaAlterarProdutos = new TelaAlterarProdutos();
 		adicionarTela("ALTERAR_PRODUTOS", telaAlterarProdutos);
 		
+		TelaPedidosLojasAlterar telaalterarpedidos = new TelaPedidosLojasAlterar();
+		adicionarTela("ALTERAR_PEDIDO_LOJA", telaalterarpedidos);
+		
 		TelaAlterarConfeccao telaalterarconfeccao = new TelaAlterarConfeccao();
 		adicionarTela("ALTERAR_CONFECCAO", telaalterarconfeccao);
 		

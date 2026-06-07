@@ -134,6 +134,7 @@ public class ItensCarrinhoDAO {
 			            pstm.setString(4, itenscarrinho.getNomeProduto());
 			            pstm.setDouble(5, itenscarrinho.getPreco());
 			            pstm.setInt(6, itenscarrinho.getIdItem());
+			            pstm.executeUpdate();
 
 		        } catch (SQLException e) {
 		            e.printStackTrace();
