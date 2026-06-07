@@ -191,6 +191,30 @@ public class LojasDAO {
     	return "";
     }
 
+    public String buscarNomePorCNPJ(String cnpj) {
+    	String sql = "SELECT nome FROM Lojas WHERE CNPJ = ?";
+    	Connection conexao = null;
+    	PreparedStatement pstm = null;
+    	ResultSet rset = null;
+
+    	try {
+    		conexao = database.BancoDeDados.conectar();
+    		pstm = conexao.prepareStatement(sql);
+    		pstm.setString(1, cnpj);
+    		rset = pstm.executeQuery();
+
+    		if (rset.next()) {
+    			return rset.getString("nome");
+    		}
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		database.BancoDeDados.desconectar(conexao);
+    	}
+
+    	return "";
+    }
+
     public boolean existeCNPJ(String cnpj) {
 
     	String sql = "SELECT * FROM Lojas WHERE cnpj = ?";

@@ -25,6 +25,14 @@ public class Painel6 extends PainelArredondado {
 
         if ("MATERIA_PRIMA".equals(notificacao.getTipo())) {
             this.mensagem ="<html>A matéria-prima <b>"+ notificacao.getNome()+ "</b><br>está há 30 dias no estoque.</html>";
+        } else if ("PEDIDO_LOJA_FINALIZADO".equals(notificacao.getTipo())) {
+            this.mensagem = "<html>O pedido <b>" + notificacao.getNome() + "</b><br>foi finalizado para a loja.</html>";
+        } else if ("PEDIDO_CONFECCAO_FINALIZADO".equals(notificacao.getTipo())) {
+            this.mensagem = "<html>O pedido <b>" + notificacao.getNome() + "</b><br>foi finalizado para a confecção.</html>";
+        } else if ("PEDIDO_LOJA_ENTREGUE".equals(notificacao.getTipo())) {
+            this.mensagem = "<html>O pedido <b>" + notificacao.getNome() + "</b><br>foi entregue.</html>";
+        } else if ("PEDIDO_CONFECCAO_ENTREGUE".equals(notificacao.getTipo())) {
+            this.mensagem = "<html>O pedido <b>" + notificacao.getNome() + "</b><br>foi entregue.</html>";
         } else {
             this.mensagem = "<html>O produto <b>"+ notificacao.getNome()+ "</b><br>está há 30 dias no estoque.</html>";
         }

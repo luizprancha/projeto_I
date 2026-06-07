@@ -9,10 +9,12 @@ public class LoginController {
 	private TelaLogin view;
 	@SuppressWarnings("unused")
 	private Navegador navegador;
+	private final NotificacaoController notificacaoController;
 
-	public LoginController(TelaLogin view, Navegador navegador) {
+	public LoginController(TelaLogin view, Navegador navegador, NotificacaoController notificacaoController) {
 		this.view = view;
 		this.navegador = navegador;
+		this.notificacaoController = notificacaoController;
 
 	
 		view.entrar(e -> {
@@ -22,6 +24,9 @@ public class LoginController {
 		    if(!user.equals("") && !senha.equals("")) {
 		        UsuarioDAO usuarioDAO = new UsuarioDAO();
 		        if(usuarioDAO.verificarUsuario(user, senha)) {
+		            if (notificacaoController != null) {
+		                notificacaoController.recriarPaineis();
+		            }
 		            navegador.navegarPara("NOTIFICACAO");
 		            navegador.mostrarMenu();
 		        } else {

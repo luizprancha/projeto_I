@@ -191,7 +191,7 @@ public class MeuJFrame extends JFrame {
 		
 		NotificacaoController notifCont = new NotificacaoController(telaNotificacao, notificacaoDAO);
        
-		new LoginController(telaLogin, navegador);
+		new LoginController(telaLogin, navegador, notifCont);
 		new CadastroController(telaCadastro, usuarioDAO, navegador);
 		
 		ProdutosController prodCont = new ProdutosController(telaProduto, produtosDAO, navegador);
@@ -226,7 +226,8 @@ public class MeuJFrame extends JFrame {
 				new PedidosConfeccoesController(
 						telapedidosconfeccoes,
 						pedidoconfeccaoDAO,
-						navegador);
+						navegador,
+						notifCont);
 
 		pedidosConfCont.setAlterarController(pedidosConfAlterarCont);
 		pedidosConfAlterarCont.setConfirmadosController(pedidosConfCont);
@@ -235,7 +236,7 @@ public class MeuJFrame extends JFrame {
 	    carrinho = new Carrinho();
 	    carrinho.setIdCarrinho(1);
 
-	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(telapedidoloja,pedidolojaDAO,navegador,carrinho,carrinhoDAO,itenscarrinhoDAO);
+	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(telapedidoloja,pedidolojaDAO,navegador,carrinho,carrinhoDAO,itenscarrinhoDAO,notifCont);
 	    carrinhocont = new CarrinhoLojasController(telaCarrinho,itenscarrinhoDAO,navegador,carrinho,pedidosLojasCont);
 	    pedidosLojasCont.setCarrinhoController(carrinhocont);
 		

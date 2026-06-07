@@ -12,16 +12,19 @@ public class PedidosConfeccoesController {
 	private final TelaPedidosConfeccoes view;
 	private final PedidoConfeccaoDAO model;
 	private final Navegador navegador;
+	private final NotificacaoController notificacaoController;
 	private PedidosConfeccoesConfirmadosController confirmadosController;
 
 	public PedidosConfeccoesController(
 			TelaPedidosConfeccoes view,
 			PedidoConfeccaoDAO model,
-			Navegador navegador) {
+			Navegador navegador,
+			NotificacaoController notificacaoController) {
 
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
+		this.notificacaoController = notificacaoController;
 
 		view.finalizarPedido(e -> finalizarPedido());
 	}
@@ -74,7 +77,13 @@ public class PedidosConfeccoesController {
 				confirmadosController.recriarPaineis();
 			}
 
-			navegador.navegarPara("PEDIDOS_CONFECCOES");
+			if (notificacaoController != null) {
+				notificacaoController.registrarNotificacao(
+						"PEDIDO_CONFECCAO_FINALIZADO",
+						"Pedido #" + idPedido + " - " + pedido.getNomeConfeccao());
+			}
+
+			navegador.navegarPara("NOTIFICACAO");
 
 		} catch (NumberFormatException ex) {
 			JOptionPane.showMessageDialog(null, "Quantidade ou valor total inválidos!");
