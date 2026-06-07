@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 
 import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
+import model.Lojas;
+import model.PedidosLojas;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +22,7 @@ import java.awt.event.ActionEvent;
 public class TelaPedidosLojasAlterar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfLoja;
+	private JTextField tfNomeLoja;
 	private JTextField tfQuantidade;
 	private JTextField tfEntrega;
 	private JTextField tfValor;
@@ -68,10 +70,10 @@ public class TelaPedidosLojasAlterar extends JPanel {
 		lblNewLabel_1.setFont(fonte2);
 		panel_1.add(lblNewLabel_1, "cell 1 1");
 		
-		tfLoja = new JTextField();
-		tfLoja.setFont(fonte2);
-		panel_1.add(tfLoja, "cell 3 1,growx");
-		tfLoja.setColumns(10);
+		tfNomeLoja = new JTextField();
+		tfNomeLoja.setFont(fonte2);
+		panel_1.add(tfNomeLoja, "cell 3 1,growx");
+		tfNomeLoja.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade de peças:");
 		lblNewLabel_2.setFont(fonte2);
@@ -111,8 +113,8 @@ public class TelaPedidosLojasAlterar extends JPanel {
 		btnConfirmar.addActionListener(acao);
 	}
 	
-	public String getEntrega() {
-		return tfLoja.getText();
+	public String getNomeLoja() {
+		return tfNomeLoja.getText();
 	}
 	
 	public String getQuantidadePecas() {
@@ -125,4 +127,24 @@ public class TelaPedidosLojasAlterar extends JPanel {
 	public String getValorTotal() {
 		return tfValor.getText();
 	}
+	
+	public void limparCampos() {
+		tfNomeLoja.setText("");
+		tfValor.setText("");
+		tfQuantidade.setText("");
+		tfEntrega.setText("");
+		
+	}
+	public void exibirMensagem(String titulo, String mensagem, int tipo) {
+	    TelaMensagem.mostrar(titulo, mensagem);
+	}
+	
+	public void setPedidosLojas(PedidosLojas pedidosLoja) {
+		  tfNomeLoja.setText(pedidosLoja.getNomeLoja());
+		    tfValor.setText(String.valueOf(pedidosLoja.getValorTotal()));
+		    tfQuantidade.setText(String.valueOf(pedidosLoja.getQuantidadeTotal()));
+		    tfEntrega.setText(pedidosLoja.getEntrega());
+		
+	}
+
 }
