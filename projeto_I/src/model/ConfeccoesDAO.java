@@ -135,7 +135,7 @@ public class ConfeccoesDAO {
 		    
 		    public boolean existeCNPJ(String cnpj) {
 
-		    	String sql = "SELECT * FROM Confeccao WHERE cnpj = ?";
+		    	String sql = "SELECT * FROM Confeccoes WHERE CNPJ = ?";
 
 		    	Connection conexao = null;
 		    	PreparedStatement pstm = null;
@@ -208,6 +208,29 @@ public class ConfeccoesDAO {
 		        }
 
 		        return confeccoes;
+		    }
+
+		    public String buscarNomePorCNPJ(String cnpj) {
+		    	String sql = "SELECT nome FROM Confeccoes WHERE CNPJ = ?";
+		    	Connection conexao = null;
+		    	PreparedStatement pstm = null;
+		    	ResultSet rset = null;
+
+		    	try {
+		    		conexao = BancoDeDados.conectar();
+		    		pstm = conexao.prepareStatement(sql);
+		    		pstm.setString(1, cnpj);
+		    		rset = pstm.executeQuery();
+
+		    		if (rset.next()) {
+		    			return rset.getString("nome");
+		    		}
+		    	} catch (SQLException e) {
+		    		e.printStackTrace();
+		    	} finally {
+		    		BancoDeDados.desconectar(conexao);
+		    	}
+		    	return "";
 		    }
 
 }

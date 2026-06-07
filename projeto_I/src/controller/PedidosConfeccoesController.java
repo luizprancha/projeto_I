@@ -1,31 +1,86 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
+import model.ConfeccoesDAO;
+import model.PedidoConfeccao;
 import model.PedidoConfeccaoDAO;
 import view.TelaPedidosConfeccoes;
 
 public class PedidosConfeccoesController {
-	
+
 	private final TelaPedidosConfeccoes view;
 	private final PedidoConfeccaoDAO model;
-	@SuppressWarnings("unused")
 	private final Navegador navegador;
+	private PedidosConfeccoesConfirmadosController confirmadosController;
 
-	/**
-	 * Construtor da classe
-	 * @param view Referência à tela que controla (TelaCadastroProdutos).
-	 * @param model Referência ao modelo de dados (ProdutosDAO).
-	 * @param navegador Referência ao elemento que faz a transição de telas.
-	 */
-	public PedidosConfeccoesController(TelaPedidosConfeccoes view, PedidoConfeccaoDAO model, Navegador navegador) {
+	public PedidosConfeccoesController(
+			TelaPedidosConfeccoes view,
+			PedidoConfeccaoDAO model,
+			Navegador navegador) {
+
 		this.view = view;
 		this.model = model;
 		this.navegador = navegador;
 
-		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
-		this.view.finalizarPedido(e -> {
-								
-			});
-
+		view.finalizarPedido(e -> finalizarPedido());
 	}
 
+	public void setConfirmadosController(PedidosConfeccoesConfirmadosController confirmadosController) {
+		this.confirmadosController = confirmadosController;
+	}
+
+	private void finalizarPedido() {
+		try {
+			String cnpj = view.getCNPJ().trim();
+			if (cnpj.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Informe o CNPJ da confecção!");
+				return;
+			}
+
+			ConfeccoesDAO confeccoesDAO = new ConfeccoesDAO();
+			if (!confeccoesDAO.existeCNPJ(cnpj)) {
+				JOptionPane.showMessageDialog(null, "CNPJ não encontrado!");
+				return;
+			}
+
+			String formaPgmt = view.getFormaPgmt().trim();
+			if (formaPgmt.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento!");
+				return;
+			}
+
+			int quantidade = view.getQtdePecas();
+			double valorTotal = view.getValorTotal();
+
+			PedidoConfeccao pedido = new PedidoConfeccao();
+			pedido.setConfeccoesCNPJ(cnpj);
+			pedido.setEntrega(view.getDataEntrega());
+			pedido.setValorPedido(valorTotal);
+			pedido.setForma_pgm(formaPgmt);
+			pedido.setQuantidade(quantidade);
+			pedido.setNomeConfeccao(confeccoesDAO.buscarNomePorCNPJ(cnpj));
+
+			int idPedido = model.adicionarPedidosConfeccoes(pedido);
+			if (idPedido <= 0) {
+				JOptionPane.showMessageDialog(null, "Erro ao registrar o pedido!");
+				return;
+			}
+
+			view.limparCampos();
+			JOptionPane.showMessageDialog(null, "Pedido realizado com sucesso!");
+
+			if (confirmadosController != null) {
+				confirmadosController.recriarPaineis();
+			}
+
+			navegador.navegarPara("PEDIDOS_CONFECCOES");
+
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(null, "Quantidade ou valor total inválidos!");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Erro ao finalizar pedido! Verifique a data (dd/MM/yyyy).");
+		}
+	}
 }
