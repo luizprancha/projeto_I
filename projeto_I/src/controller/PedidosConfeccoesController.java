@@ -79,8 +79,8 @@ public class PedidosConfeccoesController {
 
 			if (notificacaoController != null) {
 				notificacaoController.registrarNotificacao(
-						"PEDIDO_CONFECCAO_FINALIZADO",
-						"Pedido #" + idPedido + " - " + pedido.getNomeConfeccao());
+				        "PEDIDO_CONFECCAO_FINALIZADO",
+				        pedido.getNomeConfeccao());
 			}
 
 			navegador.navegarPara("NOTIFICACAO");

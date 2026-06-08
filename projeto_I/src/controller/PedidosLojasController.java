@@ -126,10 +126,11 @@ public class PedidosLojasController {
 			}
 
 			if (notificacaoController != null) {
-				String nomeLoja = lojasDAO.buscarNomePorCNPJ(cnpj);
-				notificacaoController.registrarNotificacao(
-						"PEDIDO_LOJA_FINALIZADO",
-						"Pedido #" + idPedido + " - " + nomeLoja);
+			    String nomeLoja = lojasDAO.buscarNomePorCNPJ(cnpj);
+
+			    notificacaoController.registrarNotificacao(
+			            "PEDIDO_LOJA_FINALIZADO",
+			            nomeLoja);
 			}
 
 			navegador.navegarPara("NOTIFICACAO");
