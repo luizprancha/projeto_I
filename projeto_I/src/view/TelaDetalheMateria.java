@@ -23,6 +23,7 @@ public class TelaDetalheMateria extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btEditar;
 	private JButton btExcluir;
+	private JButton btAdicionar;
 	private JLabel lbTipoTecido;
 	private JLabel lbCor;
 	private JLabel lbQtdRolos;
@@ -118,6 +119,11 @@ public class TelaDetalheMateria extends JPanel {
 		btEditar.setFont(fonte2);
 		panel.add(btEditar, "cell 5 5 2 1,growx");
 
+		btAdicionar = new JButtonOutLine();
+		btAdicionar.setText("Adicionar ao Carrinho");
+		btAdicionar.setFont(fonte2);
+		panel.add(btAdicionar, "cell 3 5 2 1,growx");
+
 	}
 	
 	public void ExcluirMateria(ActionListener acao) {
@@ -126,6 +132,10 @@ public class TelaDetalheMateria extends JPanel {
 	
 	public void EditarMateria(ActionListener acao) {
 		btEditar.addActionListener(acao);
+	}
+
+	public void adicionarAoCarrinho(ActionListener acao) {
+		btAdicionar.addActionListener(acao);
 	}
 	
 	public void setMateria(MateriaPrima materia) {

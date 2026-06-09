@@ -19,6 +19,7 @@ import controller.CadastroController;
 import controller.CadastroLojaController;
 import controller.CadastroMateriaController;
 import controller.CadastroProdutosController;
+import controller.CarrinhoConfeccoesController;
 import controller.CarrinhoLojasController;
 import controller.ConfeccaoController;
 import controller.LoginController;
@@ -33,9 +34,12 @@ import controller.PedidosLojasConfirmadosController;
 import controller.PedidosLojasController;
 import controller.ProdutosController;
 import model.Carrinho;
+import model.CarrinhoConfeccoes;
+import model.CarrinhoConfeccoesDAO;
 import model.CarrinhoDAO;
 import model.ConfeccoesDAO;
 import model.ItensCarrinho;
+import model.ItensCarrinhoConfeccoesDAO;
 import model.ItensCarrinhoDAO;
 import model.MateriaPrimaDAO;
 import model.NotificacaoDAO;
@@ -55,7 +59,9 @@ public class MeuJFrame extends JFrame {
 	private CardLayout cardLayout;
 	protected JMenuBar menuBar;
 	private CarrinhoLojasController carrinhocont;
+	private CarrinhoConfeccoesController carrinhoConfeccoesCont;
 	private Carrinho carrinho;
+	private CarrinhoConfeccoes carrinhoConfeccoes;
 	private ItensCarrinho itenscarrinho;
 	private Produtos produto;
 	
@@ -103,7 +109,9 @@ public class MeuJFrame extends JFrame {
 		MateriaPrimaDAO materiaDAO = new MateriaPrimaDAO();
 		PedidoConfeccaoDAO pedidoconfeccaoDAO = new PedidoConfeccaoDAO();
 		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+		CarrinhoConfeccoesDAO carrinhoConfeccoesDAO = new CarrinhoConfeccoesDAO();
 		ItensCarrinhoDAO itenscarrinhoDAO = new ItensCarrinhoDAO();
+		ItensCarrinhoConfeccoesDAO itensCarrinhoConfeccoesDAO = new ItensCarrinhoConfeccoesDAO();
 		NotificacaoDAO notificacaoDAO = new NotificacaoDAO();
 
 		
@@ -172,6 +180,9 @@ public class MeuJFrame extends JFrame {
 		
 		TelaCarrinhoLojas telaCarrinho = new TelaCarrinhoLojas();
 		adicionarTela("CARRINHO", telaCarrinho);
+
+		TelaCarrinhoConfeccoes telaCarrinhoConfeccoes = new TelaCarrinhoConfeccoes();
+		adicionarTela("CARRINHO_CONFECCOES", telaCarrinhoConfeccoes);
 		
 		TelaAlterarProdutos telaAlterarProdutos = new TelaAlterarProdutos();
 		adicionarTela("ALTERAR_PRODUTOS", telaAlterarProdutos);
@@ -222,23 +233,38 @@ public class MeuJFrame extends JFrame {
 						pedidoconfeccaoDAO,
 						navegador);
 
+		pedidosConfCont.setAlterarController(pedidosConfAlterarCont);
+		pedidosConfAlterarCont.setConfirmadosController(pedidosConfCont);
+
+	    carrinho = new Carrinho();
+	    carrinho.setIdCarrinho(1);
+
+	    carrinhoConfeccoes = new CarrinhoConfeccoes();
+	    carrinhoConfeccoes.setIdCarrinho(1);
+
 		PedidosConfeccoesController pedidosConfCriarCont =
 				new PedidosConfeccoesController(
 						telapedidosconfeccoes,
 						pedidoconfeccaoDAO,
 						navegador,
-						notifCont);
+						notifCont,
+						carrinhoConfeccoes,
+						carrinhoConfeccoesDAO,
+						materiaDAO);
 
-		pedidosConfCont.setAlterarController(pedidosConfAlterarCont);
-		pedidosConfAlterarCont.setConfirmadosController(pedidosConfCont);
 		pedidosConfCriarCont.setConfirmadosController(pedidosConfCont);
-		
-	    carrinho = new Carrinho();
-	    carrinho.setIdCarrinho(1);
 
 	    PedidosLojasController pedidosLojasCont = new PedidosLojasController(telapedidoloja,pedidolojaDAO,navegador,carrinho,carrinhoDAO,itenscarrinhoDAO,notifCont);
 	    carrinhocont = new CarrinhoLojasController(telaCarrinho,itenscarrinhoDAO,navegador,carrinho,pedidosLojasCont);
 	    pedidosLojasCont.setCarrinhoController(carrinhocont);
+
+	    carrinhoConfeccoesCont = new CarrinhoConfeccoesController(
+	    		telaCarrinhoConfeccoes,
+	    		itensCarrinhoConfeccoesDAO,
+	    		navegador,
+	    		carrinhoConfeccoes,
+	    		pedidosConfCriarCont);
+	    pedidosConfCriarCont.setCarrinhoController(carrinhoConfeccoesCont);
 		
 		mostrarTela("LOGIN");
 		
@@ -365,7 +391,7 @@ public class MeuJFrame extends JFrame {
 			JMenu itemCarrinho = new JMenu("Carrinho de Compras");
 			menuBar.add(itemCarrinho);
 			
-			JMenuItem ItemCarrinhos = new JMenuItem("Carrinho de Compras");
+			JMenuItem ItemCarrinhos = new JMenuItem("Carrinho Lojas");
 			ItemCarrinhos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					recarregarCarrinho();
@@ -373,6 +399,15 @@ public class MeuJFrame extends JFrame {
 				}
 			});
 			itemCarrinho.add(ItemCarrinhos);
+
+			JMenuItem itemCarrinhoConfeccoes = new JMenuItem("Carrinho Confecções");
+			itemCarrinhoConfeccoes.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					recarregarCarrinhoConfeccoes();
+					navegador.navegarPara("CARRINHO_CONFECCOES");
+				}
+			});
+			itemCarrinho.add(itemCarrinhoConfeccoes);
 			
 		
 		JMenu itemDeslogar = new JMenu("Deslogar");
@@ -415,9 +450,19 @@ public class MeuJFrame extends JFrame {
 		return carrinho;
 	}
 
+	public CarrinhoConfeccoes getCarrinhoConfeccoes() {
+		return carrinhoConfeccoes;
+	}
+
 	public void recarregarCarrinho() {
 		if (carrinhocont != null) {
 			carrinhocont.recarregarItens();
+		}
+	}
+
+	public void recarregarCarrinhoConfeccoes() {
+		if (carrinhoConfeccoesCont != null) {
+			carrinhoConfeccoesCont.recarregarItens();
 		}
 	}
 

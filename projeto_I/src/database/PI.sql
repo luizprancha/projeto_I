@@ -128,7 +128,31 @@ CREATE TABLE Carrinho(
 
 );
 
+CREATE TABLE CarrinhoConfeccoes(
+   id_carrinho INT PRIMARY KEY AUTO_INCREMENT,
+   id_usuario  INT ,
+   idPedidoC INT ,
+
+   FOREIGN KEY(id_usuario) references Usuarios(id),
+   FOREIGN KEY(idPedidoC) REFERENCES PedidosConfeccoes(idPedidoC)
+);
+
+CREATE TABLE ItensCarrinhoConfeccoes(
+   id_item INT PRIMARY KEY AUTO_INCREMENT,
+   id_carrinho INT NOT NULL,
+   id_materia_prima INT NOT NULL,
+   nome_materia VARCHAR(50) NOT NULL,
+   quantidade INT NOT NULL,
+
+   FOREIGN KEY (id_carrinho) REFERENCES CarrinhoConfeccoes(id_carrinho),
+   FOREIGN KEY (id_materia_prima) REFERENCES MateriaPrima(idMateriaPrima),
+
+   CONSTRAINT uk_carrinho_materia UNIQUE (id_carrinho, id_materia_prima)
+);
+
 INSERT INTO Carrinho (id_carrinho) VALUES (1);
+
+INSERT INTO CarrinhoConfeccoes (id_carrinho) VALUES (1);
   
   
 

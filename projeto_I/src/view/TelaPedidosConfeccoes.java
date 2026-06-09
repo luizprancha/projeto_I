@@ -155,4 +155,8 @@ public class TelaPedidosConfeccoes extends JPanel {
 			cbPgmt.setSelectedIndex(0);
 		}
 
+		public void setQuantidade(int quantidade) {
+			tfQtdePecas.setText(String.valueOf(quantidade));
+		}
+
 }

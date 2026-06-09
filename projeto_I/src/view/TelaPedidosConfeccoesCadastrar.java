@@ -59,7 +59,7 @@ public class TelaPedidosConfeccoesCadastrar extends JPanel {
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel_1.setForeground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][][grow][grow][grow][grow][grow]"));
 
 		JLabel lblNewLabel_1 = new JLabel("CNPJ:");
 		lblNewLabel_1.setFont(fonte2);
@@ -78,33 +78,41 @@ public class TelaPedidosConfeccoesCadastrar extends JPanel {
 		tfQuantidade.setFont(fonte2);
 		panel_1.add(tfQuantidade, "cell 3 3,growx");
 		tfQuantidade.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("Quantidade de Matéria-Prima");
+		panel_1.add(lblNewLabel_6, "cell 1 5");
+		lblNewLabel_6.setFont(fonte2);
+		
+		JLabel lbQtdeMateria = new JLabel("");
+		panel_1.add(lbQtdeMateria, "cell 3 5");
+		lbQtdeMateria.setFont(fonte2);
 
 		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
 		lblNewLabel_3.setFont(fonte2);
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		panel_1.add(lblNewLabel_3, "cell 1 6");
 
 		tfRetirada = new JTextField();
 		tfRetirada.setFont(fonte2);
-		panel_1.add(tfRetirada, "cell 3 5,growx");
+		panel_1.add(tfRetirada, "cell 3 6,growx");
 		tfRetirada.setColumns(10);
 
 		JLabel lblNewLabel_4 = new JLabel("Valor total:");
 		lblNewLabel_4.setFont(fonte2);
-		panel_1.add(lblNewLabel_4, "cell 1 7");
+		panel_1.add(lblNewLabel_4, "cell 1 8");
 
 		tfValor = new JTextField();
 		tfValor.setFont(fonte2);
-		panel_1.add(tfValor, "cell 3 7,growx");
+		panel_1.add(tfValor, "cell 3 8,growx");
 		tfValor.setColumns(10);
 
 		JLabel lblNewLabel_5 = new JLabel("Forma de Pagamento:");
 		lblNewLabel_5.setFont(fonte2);
-		panel_1.add(lblNewLabel_5, "cell 1 9");
+		panel_1.add(lblNewLabel_5, "cell 1 10");
 
 		cbPgmt = new JComboBox<>();
 		cbPgmt.setModel(new DefaultComboBoxModel<>(new String[] {"", "Boleto", "Pix", "Cartao Crédito", "Cartao Debito"}));
 		cbPgmt.setFont(fonte2);
-		panel_1.add(cbPgmt, "cell 3 9,growx");
+		panel_1.add(cbPgmt, "cell 3 10,growx");
 
 	    btnConfirmar = new JButtonOutLine();
 	    btnConfirmar.setText("Confirmar Alterações");

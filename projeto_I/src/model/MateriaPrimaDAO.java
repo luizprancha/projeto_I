@@ -114,6 +114,31 @@ public class MateriaPrimaDAO {
 			    }
 			    
 			    
+			    public void atualizarEstoque(int idMateriaPrima, int quantidade) {
+
+			        String sql =
+			                "UPDATE MateriaPrima " +
+			                "SET quantidade = quantidade - ? " +
+			                "WHERE idMateriaPrima = ?";
+
+			        Connection conexao = null;
+			        PreparedStatement pstm = null;
+
+			        try {
+
+			            conexao = BancoDeDados.conectar();
+			            pstm = conexao.prepareStatement(sql);
+			            pstm.setInt(1, quantidade);
+			            pstm.setInt(2, idMateriaPrima);
+			            pstm.executeUpdate();
+
+			        } catch (SQLException e) {
+			            e.printStackTrace();
+			        } finally {
+			            BancoDeDados.desconectar(conexao);
+			        }
+			    }
+
 			    public List<MateriaPrima> buscarMateria(String nomeBusca) {
 
 			        String sql = "SELECT * FROM MateriaPrima WHERE nome LIKE ?";
