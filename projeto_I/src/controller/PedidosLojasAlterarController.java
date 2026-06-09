@@ -104,11 +104,7 @@ public class PedidosLojasAlterarController {
 
 				    navegador.navegarPara("PEDIDOS_LOJAS");
 
-				    try {
-				        pedidoslojasController.recriarPaineis();
-				    } catch (FontFormatException | IOException e1) {
-				        e1.printStackTrace();
-				    }
+				    pedidoslojasController.recriarPaineis();
 				}
 				
 		});

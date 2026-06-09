@@ -15,12 +15,14 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
 
 public class TelaPedidosConfeccoesConfirmados extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnRealizar;
 	private JComponent panelPedidos;
+	private JTextField tfBuscar;
 
 	public TelaPedidosConfeccoesConfirmados() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
@@ -28,7 +30,7 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][][grow][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][][grow][grow][grow]"));
 
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -50,11 +52,15 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		lblNewLabel.setBackground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1,grow");
 		lblNewLabel.setFont(fonte);
-
-		btnRealizar = new JButtonOutLine();
-		btnRealizar.setText("Realizar novo pedido");
-		btnRealizar.setFont(fonte3);
-		panel.add(btnRealizar, "cell 3 1,growx");
+		
+				btnRealizar = new JButtonOutLine();
+				btnRealizar.setText("Realizar novo pedido");
+				btnRealizar.setFont(fonte3);
+				panel.add(btnRealizar, "cell 2 1,growx");
+		
+		tfBuscar = new JTextField();
+		panel.add(tfBuscar, "cell 4 1,growx");
+		tfBuscar.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("Confirmados:");
 		lblNewLabel_1.setFont(fonte2);
@@ -62,7 +68,7 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		panel.add(lblNewLabel_1, "cell 1 3");
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 4 3 1,grow");
+		panel.add(scrollPane, "cell 1 4 4 1,grow");
 
 		panelPedidos = new JPanel();
 		panelPedidos.setBackground(new Color(15, 57, 87));
@@ -82,6 +88,10 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 
 	public void addPanel(Painel8 p, String param) {
 		panelPedidos.add(p, param);
+	}
+	
+	public JTextField getTfBuscar() {
+	    return tfBuscar;
 	}
 
 	public void revalidatePanel() {

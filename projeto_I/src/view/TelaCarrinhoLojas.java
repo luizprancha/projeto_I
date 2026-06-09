@@ -25,9 +25,7 @@ import javax.swing.JComponent;
 public class TelaCarrinhoLojas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfBuscar;
-
-	
+	private JTextField tfBuscar;	
 	private JButton btnExcluir; 
 	private JButton btnFinalizarPedido; 
 	private JButton btnContinuarCompra;
@@ -111,12 +109,15 @@ public class TelaCarrinhoLojas extends JPanel {
 	}
 	
 	
-public void addPanel5(Painel5 p5, String param) {
+	public void addPanel5(Painel5 p5, String param) {
 		
 		panel_5.add(p5, param);
 		
 	}
-
+	
+	public JTextField getTfBuscar() {
+	    return tfBuscar;
+	}
 
 	public void limparPaineis() {
 		panel_5.removeAll();

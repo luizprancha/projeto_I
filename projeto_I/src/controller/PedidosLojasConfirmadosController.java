@@ -1,127 +1,211 @@
 package controller;
 
-
 import java.awt.FontFormatException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import model.Confeccoes;
-import model.PedidoConfeccao;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import model.LojasDAO;
 import model.PedidosLojas;
 import model.PedidosLojasDAO;
-import view.Painel;
-import view.Painel2;
 import view.Painel7;
 import view.TelaDetalhePedidosLojas;
-import view.TelaDetalhesConfeccoes;
 import view.TelaPedidosLojasConfirmados;
 
+
 public class PedidosLojasConfirmadosController {
-	private final TelaPedidosLojasConfirmados view;
-	private final PedidosLojasDAO model;
-	@SuppressWarnings("unused")
-	private final Navegador navegador;
 
-	/**
-	 * Construtor da classe
-	 * @param view Referência à tela que controla (TelaCadastroProdutos).
-	 * @param model Referência ao modelo de dados (ProdutosDAO).
-	 * @param navegador Referência ao elemento que faz a transição de telas.
-	 */
-	public PedidosLojasConfirmadosController(TelaPedidosLojasConfirmados view, PedidosLojasDAO model, Navegador navegador) {
-		this.view = view;
-		this.model = model;
-		this.navegador = navegador;
-		
-	
+    private final TelaPedidosLojasConfirmados view;
+    private final PedidosLojasDAO model;
+    private final Navegador navegador;
+    private final LojasDAO lojasDAO;
 
-		//Define o que será executado quando o botão 'Cadastrar' da TelaCadastroProdutos for clicado.
-		this.view.realizarPedido(e -> {
-				
-				this.navegador.navegarPara("PEDIDOS_LOJAS_VIZU");
-				
-			});
-	}
-		
-	    public void criarPaineis(List<PedidosLojas> lista)  throws FontFormatException, IOException {
+    private List<PedidosLojas> lista;
 
-	        this.view.limparPaineis();
+    public PedidosLojasConfirmadosController(
+            TelaPedidosLojasConfirmados view,
+            PedidosLojasDAO model,
+            Navegador navegador,
+            LojasDAO lojasDAO) {
 
-	        int linha = 0;
-	        int coluna = 0;
+        this.view = view;
+        this.model = model;
+        this.navegador = navegador;
+        this.lojasDAO = new LojasDAO();
 
-	        for (int i = 0; i < lista.size(); i++) {
+        this.view.realizarPedido(e -> {
+            this.navegador.navegarPara("PEDIDOS_LOJAS_VIZU");
+        });
 
-	            PedidosLojas ped = lista.get(i);
+        try {
 
-	            Painel7 p7 = new Painel7(ped);
+            lista = model.listarPedidosLojas();
 
-	            if (coluna > 4) {
-	                coluna = 0;
-	                linha = linha + 2;
-	            }
+            for (PedidosLojas pedido : lista) {
 
-	            p7.addMouseListener(new MouseAdapter() {
+                if (pedido.getNomeLoja() == null
+                        || pedido.getNomeLoja().isEmpty()) {
 
-	                @Override
-	                public void mouseClicked(MouseEvent e) {
+                    pedido.setNomeLoja(
+                            lojasDAO.buscarNomePorCNPJ(
+                                    pedido.getLojas_CNPJ()));
+                }
+            }
 
-	                    try {
+            criarPaineis(lista);
 
-	                        TelaDetalhePedidosLojas telaDetalhePedidosLojas =
-	                                new TelaDetalhePedidosLojas();
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
-	                        new DetalhesPedidosLojasController(
-	                        		telaDetalhePedidosLojas,
-	                                model,
-	                                navegador,
-	                                ped,
-	                                PedidosLojasConfirmadosController.this
-	                        );
+        this.view.getTfBuscar().getDocument().addDocumentListener(
+                new DocumentListener() {
 
-	                       PedidosLojasConfirmadosController.this.navegador.adicionarPainel(
-	                                "DETALHES_CONFECCAO",
-	                                telaDetalhePedidosLojas
-	                        );
+                    @Override
+                    public void insertUpdate(DocumentEvent e) {
+                        filtrar();
+                    }
 
-	                       PedidosLojasConfirmadosController.this.navegador.navegarPara(
-	                                "DETALHES_CONFECCAO"
-	                        );
+                    @Override
+                    public void removeUpdate(DocumentEvent e) {
+                        filtrar();
+                    }
 
-	                    } catch (FontFormatException | IOException ex) {
-	                        ex.printStackTrace();
-	                    }
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {
+                        filtrar();
+                    }
 
-	                }
-	            });
+                    private void filtrar() {
 
-	            this.view.addPanel7(
-	                    p7,
-	                    "cell " + coluna + " " + linha + ",grow"
-	            );
+                        String texto = view.getTfBuscar()
+                                .getText()
+                                .trim()
+                                .toLowerCase();
 
-	            coluna = coluna + 2;
+                        if (texto.isEmpty()) {
 
-	            this.view.revalidate();
-	            this.view.repaint();
-	        }
-	    }
-	        
-	        public void recriarPaineis() throws FontFormatException, IOException {
+                            try {
+                                criarPaineis(lista);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
 
-	                List<PedidosLojas > lista = model.listarPedidosLojas();
+                            return;
+                        }
 
-	                criarPaineis(lista);
-	            }
+                        List<PedidosLojas> filtrados = new ArrayList<>();
 
-	    }
+                        for (PedidosLojas pedido : lista) {
 
+                            String nome = pedido.getNomeLoja();
 
+                            if (nome != null
+                                    && nome.toLowerCase().contains(texto)) {
 
-	
+                                filtrados.add(pedido);
+                            }
+                        }
 
+                        try {
+                            criarPaineis(filtrados);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+    }
 
+    public void criarPaineis(List<PedidosLojas> lista)
+            throws FontFormatException, IOException {
 
+        this.view.limparPaineis();
 
+        int linha = 0;
+        int coluna = 0;
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            PedidosLojas ped = lista.get(i);
+
+            Painel7 p7 = new Painel7(ped);
+
+            if (coluna > 4) {
+                coluna = 0;
+                linha = linha + 2;
+            }
+
+            p7.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+
+                    try {
+
+                        TelaDetalhePedidosLojas telaDetalhePedidosLojas =
+                                new TelaDetalhePedidosLojas();
+
+                        new DetalhesPedidosLojasController(
+                                telaDetalhePedidosLojas,
+                                model,
+                                navegador,
+                                ped,
+                                PedidosLojasConfirmadosController.this
+                        );
+
+                        PedidosLojasConfirmadosController.this.navegador
+                                .adicionarPainel(
+                                        "DETALHES_CONFECCAO",
+                                        telaDetalhePedidosLojas
+                                );
+
+                        PedidosLojasConfirmadosController.this.navegador
+                                .navegarPara("DETALHES_CONFECCAO");
+
+                    } catch (FontFormatException | IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
+            this.view.addPanel7(
+                    p7,
+                    "cell " + coluna + " " + linha + ",grow"
+            );
+
+            coluna = coluna + 2;
+        }
+
+        this.view.revalidate();
+        this.view.repaint();
+    }
+
+    public void recriarPaineis() {
+
+        try {
+
+            lista = model.listarPedidosLojas();
+
+            for (PedidosLojas pedido : lista) {
+
+                if (pedido.getNomeLoja() == null
+                        || pedido.getNomeLoja().isEmpty()) {
+
+                    pedido.setNomeLoja(
+                            lojasDAO.buscarNomePorCNPJ(
+                                    pedido.getLojas_CNPJ()));
+                }
+            }
+
+            criarPaineis(lista);
+
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

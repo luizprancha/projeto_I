@@ -201,7 +201,7 @@ public class MeuJFrame extends JFrame {
 		new CadastroConfeccaoController(telaCadastroConfeccao,  confeccaoDAO, navegador, confCont);
 		
 		PedidosLojasConfirmadosController pedidosLojasConfirmadosCont =
-				new PedidosLojasConfirmadosController(telaPedidosLojas, pedidolojaDAO, navegador);
+		new PedidosLojasConfirmadosController(telaPedidosLojas, pedidolojaDAO, navegador, lojasDAO);
 		
 		LojasController lojaCont = new LojasController(telaLojas, lojasDAO, navegador);		
 		new CadastroLojaController(telacadastrolojas, lojasDAO, navegador, lojaCont);
@@ -327,13 +327,7 @@ public class MeuJFrame extends JFrame {
 		itemLojasPedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("PEDIDOS_LOJAS");
-				try {
-					pedidosLojasConfirmadosCont.recriarPaineis();
-				} catch (FontFormatException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				pedidosLojasConfirmadosCont.recriarPaineis();
 			}
 		});
 		itemPedidos.add(itemLojasPedidos);

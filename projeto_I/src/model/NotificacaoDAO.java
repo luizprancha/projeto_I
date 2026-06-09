@@ -175,29 +175,29 @@ public class NotificacaoDAO {
 	        try {
 	            String sql = """
 	                SELECT 'PEDIDO_LOJA_ENTREGUE' AS tipo,
-	                       CONCAT('Pedido #', p.idPedidosL, ' - ', l.nome) AS nome,
-	                       NOW() AS dataCadastro
+	            		    l.nome AS nome,
+	            			NOW() AS dataCadastro
 	                FROM PedidosLojas p
 	                JOIN Lojas l ON p.Lojas_CNPJ = l.CNPJ
 	                WHERE p.data_entrega = CURDATE()
 	                AND NOT EXISTS (
 	                    SELECT 1 FROM NotificacoesDescartadas d
 	                    WHERE d.tipo = 'PEDIDO_LOJA_ENTREGUE'
-	                    AND d.nome = CONCAT('Pedido #', p.idPedidosL, ' - ', l.nome)
+	                    AND d.nome = l.nome
 	                )
 
 	                UNION ALL
 
 	                SELECT 'PEDIDO_CONFECCAO_ENTREGUE' AS tipo,
-	                       CONCAT('Pedido #', pc.idPedidoC, ' - ', c.nome) AS nome,
-	                       NOW() AS dataCadastro
+	            		    c.nome AS nome,
+	            			NOW() AS dataCadastro
 	                FROM PedidosConfeccoes pc
 	                JOIN Confeccoes c ON pc.Confeccoes_CNPJ = c.CNPJ
 	                WHERE pc.entrega = CURDATE()
 	                AND NOT EXISTS (
 	                    SELECT 1 FROM NotificacoesDescartadas d
 	                    WHERE d.tipo = 'PEDIDO_CONFECCAO_ENTREGUE'
-	                    AND d.nome = CONCAT('Pedido #', pc.idPedidoC, ' - ', c.nome)
+	                    AND d.nome = c.nome
 	                )
 	                """;
 

@@ -19,12 +19,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 public class TelaPedidosLojasConfirmados extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnRealizar;
 	private JComponent panel_7; 
+	private JTextField tfBuscar;
 
 	/**
 	 * Create the panel.
@@ -38,7 +40,7 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][][grow][grow]"));
 
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -59,7 +61,11 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		btnRealizar = new JButtonOutLine();
 		btnRealizar.setText("Realizar novo pedido");
 		btnRealizar.setFont(fonte2);
-		panel.add(btnRealizar, "cell 3 1,growx");
+		panel.add(btnRealizar, "cell 2 1,growx");
+		
+		tfBuscar = new JTextField();
+		panel.add(tfBuscar, "cell 4 1,growx");
+		tfBuscar.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmados:");
 		lblNewLabel_1.setForeground(new Color(235, 219, 194));
@@ -67,7 +73,7 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		panel.add(lblNewLabel_1, "cell 1 3");
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 4 3 1,grow");
+		panel.add(scrollPane, "cell 1 4 4 1,grow");
 		
 		panel_7 = new JPanel();
 		panel_7.setBackground(new Color(15, 57, 87));
@@ -90,6 +96,10 @@ public class TelaPedidosLojasConfirmados extends JPanel {
 		
 		panel_7.add(p7, param);
 		
+	}
+	
+	public JTextField getTfBuscar() {
+	    return tfBuscar;
 	}
 
 
