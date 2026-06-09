@@ -198,6 +198,9 @@ public class MeuJFrame extends JFrame {
 		
 		TelaDetalhePedidosLojas telaDetalhePedidoLoja = new TelaDetalhePedidosLojas();
 		adicionarTela("DETALHE_PEDIDOLOJA", telaDetalhePedidoLoja);
+
+		TelaDetalhePedidosConfeccoes telaDetalhePedidoConfeccao = new TelaDetalhePedidosConfeccoes();
+		adicionarTela("DETALHE_PEDIDO_CONFECCAO", telaDetalhePedidoConfeccao);
 		
 		
 		NotificacaoController notifCont = new NotificacaoController(telaNotificacao, notificacaoDAO);

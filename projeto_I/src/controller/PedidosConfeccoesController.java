@@ -60,7 +60,7 @@ public class PedidosConfeccoesController {
 	public void receberDadosDoCarrinho(List<ItensCarrinhoConfeccoes> itens, int quantidadeTotal) {
 		this.itensDoPedido = new ArrayList<>(itens);
 		this.quantidadeTotalPedido = quantidadeTotal;
-		view.setQuantidade(quantidadeTotal);
+		view.setQuantidadeMateriaPrima(quantidadeTotal);
 	}
 
 	private void finalizarPedido() {
@@ -88,6 +88,12 @@ public class PedidosConfeccoesController {
 				return;
 			}
 
+			int quantidadePecas = view.getQtdePecas();
+			if (quantidadePecas <= 0) {
+				JOptionPane.showMessageDialog(null, "Informe a quantidade de peÃ§as que vÃ£o voltar!");
+				return;
+			}
+
 			double valorTotal = view.getValorTotal();
 
 			PedidoConfeccao pedido = new PedidoConfeccao();
@@ -95,7 +101,7 @@ public class PedidosConfeccoesController {
 			pedido.setEntrega(view.getDataEntrega());
 			pedido.setValorPedido(valorTotal);
 			pedido.setForma_pgm(formaPgmt);
-			pedido.setQuantidade(quantidadeTotalPedido);
+			pedido.setQuantidade(quantidadePecas);
 			pedido.setNomeConfeccao(confeccoesDAO.buscarNomePorCNPJ(cnpj));
 
 			int idCarrinhoAntigo = carrinhoAtual.getIdCarrinho();

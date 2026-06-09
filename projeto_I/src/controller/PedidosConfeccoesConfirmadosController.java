@@ -11,6 +11,7 @@ import model.ConfeccoesDAO;
 import model.PedidoConfeccao;
 import model.PedidoConfeccaoDAO;
 import view.Painel8;
+import view.TelaDetalhePedidosConfeccoes;
 import view.TelaPedidosConfeccoesConfirmados;
 
 public class PedidosConfeccoesConfirmadosController {
@@ -133,8 +134,24 @@ public class PedidosConfeccoesConfirmadosController {
 			p.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if (alterarController != null) {
-						alterarController.abrirAlteracao(pedido);
+					try {
+						TelaDetalhePedidosConfeccoes telaDetalhe =
+								new TelaDetalhePedidosConfeccoes();
+
+						new DetalhesPedidosConfeccoesController(
+								telaDetalhe,
+								model,
+								navegador,
+								pedido,
+								PedidosConfeccoesConfirmadosController.this,
+								alterarController);
+
+						navegador.adicionarPainel(
+								"DETALHE_PEDIDO_CONFECCAO",
+								telaDetalhe);
+						navegador.navegarPara("DETALHE_PEDIDO_CONFECCAO");
+					} catch (Exception ex) {
+						ex.printStackTrace();
 					}
 				}
 			});

@@ -98,13 +98,31 @@ public class PedidoConfeccaoDAO {
 	}
 
 	public void removerPedidoConfeccao(int id) {
-		String sql = "DELETE FROM PedidosConfeccoes WHERE idPedidoC = ?";
+		String sqlCarrinho = "UPDATE CarrinhoConfeccoes SET idPedidoC = NULL WHERE idPedidoC = ?";
+		String sqlProdutos = "DELETE FROM PedidosConfeccoes_Produtos WHERE PedidosConfeccoes_idPedidoC = ?";
+		String sqlPedido = "DELETE FROM PedidosConfeccoes WHERE idPedidoC = ?";
 
-		try (Connection conn = BancoDeDados.conectar();
-				PreparedStatement stmt = conn.prepareStatement(sql)) {
+		try (Connection conn = BancoDeDados.conectar()) {
+			conn.setAutoCommit(false);
 
-			stmt.setInt(1, id);
-			stmt.executeUpdate();
+			try (PreparedStatement stmtCarrinho = conn.prepareStatement(sqlCarrinho);
+					PreparedStatement stmtProdutos = conn.prepareStatement(sqlProdutos);
+					PreparedStatement stmtPedido = conn.prepareStatement(sqlPedido)) {
+
+				stmtCarrinho.setInt(1, id);
+				stmtCarrinho.executeUpdate();
+
+				stmtProdutos.setInt(1, id);
+				stmtProdutos.executeUpdate();
+
+				stmtPedido.setInt(1, id);
+				stmtPedido.executeUpdate();
+
+				conn.commit();
+			} catch (Exception e) {
+				conn.rollback();
+				throw e;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
