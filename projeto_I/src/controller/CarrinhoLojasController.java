@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import model.Carrinho;
 
 import model.ItensCarrinhoDAO;
@@ -43,6 +46,63 @@ public class CarrinhoLojasController {
 		this.itemSelecionado = -1;
 
         recarregarItens();
+        
+        recarregarItens();
+
+        this.view.getTfBuscar().getDocument().addDocumentListener(
+            new DocumentListener() {
+
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    filtrar();
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    filtrar();
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    filtrar();
+                }
+
+                private void filtrar() {
+
+                    String texto = view.getTfBuscar()
+                            .getText()
+                            .trim()
+                            .toLowerCase();
+
+                    if (texto.isEmpty()) {
+                        try {
+                            criarPaineis(lista);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        return;
+                    }
+
+                    List<ItensCarrinho> filtrados = new ArrayList<>();
+
+                    for (ItensCarrinho item : lista) {
+
+                        if (item.getNomeProduto()
+                                .toLowerCase()
+                                .contains(texto)) {
+
+                            filtrados.add(item);
+                        }
+                    }
+
+                    try {
+                        criarPaineis(filtrados);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        );
         
         this.view.excluir(e -> {
 

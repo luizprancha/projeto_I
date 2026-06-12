@@ -57,9 +57,9 @@ public class CadastroConfeccaoController {
 			}
 			
 			if (email.isEmpty()) {
-			    erros.append("Tipo é obrigatório\n");
+			    erros.append("Email é obrigatório\n");
 			} else if (email.length() < 10) {
-			    erros.append("Tipo inválido\n");
+			    erros.append("Email inválido\n");
 			}
 
 			if (erros.length() > 0) {

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +134,7 @@ public class PedidosLojasDAO {
 		    				PreparedStatement.RETURN_GENERATED_KEYS
 		    		);
 
-		    		pstm.setDate(1, java.sql.Date.valueOf(pedido.getEntrega()));
+		    		pstm.setDate(1, java.sql.Date.valueOf(parseDataEntrega(pedido.getEntrega())));
 
 		    		pstm.setDouble(2, pedido.getValorTotal());
 
@@ -159,6 +161,13 @@ public class PedidosLojasDAO {
 		    	}
 
 		    	return -1;
+		    }
+
+		    private LocalDate parseDataEntrega(String data) {
+		    	if (data.contains("/")) {
+		    		return LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		    	}
+		    	return LocalDate.parse(data);
 		    }
 
 }

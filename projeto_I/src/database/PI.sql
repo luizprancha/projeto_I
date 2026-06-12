@@ -46,6 +46,7 @@ CREATE TABLE PedidosLojas (
   valor_total DECIMAL(10,2) NOT NULL,
   Lojas_CNPJ CHAR(18) NOT NULL,
   endereco VARCHAR(50) NOT NULL,
+  dataCadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (Lojas_CNPJ) REFERENCES Lojas(CNPJ)
 ) ENGINE=InnoDB;
 
@@ -56,6 +57,7 @@ CREATE TABLE PedidosConfeccoes (
   Confeccoes_CNPJ CHAR(18) NOT NULL,
   forma_pgmt VARCHAR(45),
   quantidade INT NOT NULL,
+  dataCadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (Confeccoes_CNPJ) REFERENCES Confeccoes(CNPJ)
 ) ENGINE=InnoDB;
 
@@ -69,8 +71,15 @@ CREATE TABLE MateriaPrima (
 ) ENGINE=InnoDB;
 
 CREATE TABLE NotificacoesDescartadas (
-    tipo VARCHAR(20) NOT NULL,
+    tipo VARCHAR(50) NOT NULL,
     nome VARCHAR(100) NOT NULL,
+    PRIMARY KEY (tipo, nome)
+);
+
+CREATE TABLE NotificacoesPedidos (
+    tipo VARCHAR(50) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    dataCadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (tipo, nome)
 );
 
@@ -119,7 +128,31 @@ CREATE TABLE Carrinho(
 
 );
 
+CREATE TABLE CarrinhoConfeccoes(
+   id_carrinho INT PRIMARY KEY AUTO_INCREMENT,
+   id_usuario  INT ,
+   idPedidoC INT ,
+
+   FOREIGN KEY(id_usuario) references Usuarios(id),
+   FOREIGN KEY(idPedidoC) REFERENCES PedidosConfeccoes(idPedidoC)
+);
+
+CREATE TABLE ItensCarrinhoConfeccoes(
+   id_item INT PRIMARY KEY AUTO_INCREMENT,
+   id_carrinho INT NOT NULL,
+   id_materia_prima INT NOT NULL,
+   nome_materia VARCHAR(50) NOT NULL,
+   quantidade INT NOT NULL,
+
+   FOREIGN KEY (id_carrinho) REFERENCES CarrinhoConfeccoes(id_carrinho),
+   FOREIGN KEY (id_materia_prima) REFERENCES MateriaPrima(idMateriaPrima),
+
+   CONSTRAINT uk_carrinho_materia UNIQUE (id_carrinho, id_materia_prima)
+);
+
 INSERT INTO Carrinho (id_carrinho) VALUES (1);
+
+INSERT INTO CarrinhoConfeccoes (id_carrinho) VALUES (1);
   
   
 
@@ -127,11 +160,6 @@ INSERT INTO Usuarios VALUES
 (null, "Maria Clara Oliveira", "maria_clara", "Auxiliar de compras", "abcd"),
 (null,"João Batiste Silva", "silva.batista", "Almoxarife", "Joao_@.2008"),
 (null,"Maicon Douglas", "maicon2000", "Limpeza", "123456789");
-
-INSERT INTO Produtos (nome, tamanho, cor, qtde_estoque, preco) VALUES
-('Camiseta Básica', 'M', 'Branca', 150, 39.90),
-('Calça Jeans', '42', 'Azul', 80, 119.90),
-('Moletom Unissex', 'G', 'Preto', 60, 149.90);
 
 INSERT INTO Confeccoes (CNPJ, nome, responsavel, endereco, telefone, email) VALUES
 ('55.666.777/0001-40', 'Confecção Alfa', 'João Mendes', 'Av Brasil, 500', '51966660001', 'alfa@conf.com'),

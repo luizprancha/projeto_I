@@ -61,6 +61,11 @@ public class NotificacaoController {
     public void recriarPaineis() {
         carregarNotificacoes();        
     }
+
+    public void registrarNotificacao(String tipo, String nome) {
+        notificacaoDAO.registrar(tipo, nome);
+        recriarPaineis();
+    }
     
     private void fecharNotificacao(Notificacao notificacao) {
         notificacaoDAO.descartar(notificacao.getTipo(), notificacao.getNome());

@@ -111,7 +111,8 @@ public class MateriaPrimaController {
 			                    model,
 			                    navegador,
 			                    materia,
-			                    MateriaPrimaController.this
+			                    MateriaPrimaController.this,
+			                    navegador.getCarrinhoConfeccoes()
 			            );
 
 			            MateriaPrimaController.this.navegador

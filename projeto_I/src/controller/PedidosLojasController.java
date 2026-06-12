@@ -25,6 +25,7 @@ public class PedidosLojasController {
 	private final Carrinho carrinhoAtual;
 	private final CarrinhoDAO carrinhoDAO;
 	private final ItensCarrinhoDAO itensCarrinhoDAO;
+	private final NotificacaoController notificacaoController;
 	private CarrinhoLojasController carrinhoController;
 
 	private List<ItensCarrinho> itensDoPedido = new ArrayList<>();
@@ -37,7 +38,8 @@ public class PedidosLojasController {
 			Navegador navegador,
 			Carrinho carrinhoAtual,
 			CarrinhoDAO carrinhoDAO,
-			ItensCarrinhoDAO itensCarrinhoDAO) {
+			ItensCarrinhoDAO itensCarrinhoDAO,
+			NotificacaoController notificacaoController) {
 
 		this.view = view;
 		this.model = model;
@@ -45,6 +47,7 @@ public class PedidosLojasController {
 		this.carrinhoAtual = carrinhoAtual;
 		this.carrinhoDAO = carrinhoDAO;
 		this.itensCarrinhoDAO = itensCarrinhoDAO;
+		this.notificacaoController = notificacaoController;
 
 		view.finalizarPedido(e -> finalizarPedido());
 	}
@@ -122,7 +125,15 @@ public class PedidosLojasController {
 				carrinhoController.recarregarItens();
 			}
 
-			navegador.navegarPara("PRODUTO");
+			if (notificacaoController != null) {
+			    String nomeLoja = lojasDAO.buscarNomePorCNPJ(cnpj);
+
+			    notificacaoController.registrarNotificacao(
+			            "PEDIDO_LOJA_FINALIZADO",
+			            nomeLoja);
+			}
+
+			navegador.navegarPara("NOTIFICACAO");
 
 		} catch (Exception ex) {
 

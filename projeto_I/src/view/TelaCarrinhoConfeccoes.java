@@ -22,7 +22,7 @@ import javax.swing.JComponent;
 
 
 
-public class TelaCarrinhoLojas extends JPanel {
+public class TelaCarrinhoConfeccoes extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfBuscar;	
@@ -36,7 +36,7 @@ public class TelaCarrinhoLojas extends JPanel {
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaCarrinhoLojas() throws FontFormatException, IOException {
+	public TelaCarrinhoConfeccoes() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 	
@@ -57,7 +57,7 @@ public class TelaCarrinhoLojas extends JPanel {
 		).deriveFont(15f);
 		
 		
-		JLabel lblNewLabel = new JLabel("Carrinho de pedidos ");
+		JLabel lblNewLabel = new JLabel("Carrinho de Confeccoes  ");
 		lblNewLabel.setForeground(new Color(235, 219, 194));
 		panel.add(lblNewLabel, "cell 1 1 5 1");
 		lblNewLabel.setFont(fonte);
@@ -109,10 +109,8 @@ public class TelaCarrinhoLojas extends JPanel {
 	}
 	
 	
-	public void addPanel5(Painel5 p5, String param) {
-		
-		panel_5.add(p5, param);
-		
+	public void addPanel(JComponent painel, String param) {
+		panel_5.add(painel, param);
 	}
 	
 	public JTextField getTfBuscar() {

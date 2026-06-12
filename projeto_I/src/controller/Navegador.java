@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JPanel;
 
 import model.Carrinho;
+import model.CarrinhoConfeccoes;
 import view.MeuJFrame;
 
 public class Navegador {
@@ -49,8 +50,16 @@ public class Navegador {
 		return this.jFrame.getCarrinho();
 	}
 
+	public CarrinhoConfeccoes getCarrinhoConfeccoes() {
+		return this.jFrame.getCarrinhoConfeccoes();
+	}
+
 	public void recarregarCarrinho() {
 		this.jFrame.recarregarCarrinho();
+	}
+
+	public void recarregarCarrinhoConfeccoes() {
+		this.jFrame.recarregarCarrinhoConfeccoes();
 	}
 
 }

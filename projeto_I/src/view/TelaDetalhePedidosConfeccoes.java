@@ -4,27 +4,25 @@ import javax.swing.JPanel;
 
 import Botao.JButtonOutLine;
 import Botao.PainelArredondado;
-import model.PedidosLojas;
-import model.Produtos;
+import model.PedidoConfeccao;
 
 import java.awt.BorderLayout;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
+import java.time.format.DateTimeFormatter;
 
-public class TelaDetalhePedidosLojas extends JPanel {
+public class TelaDetalhePedidosConfeccoes extends JPanel {
 	
 	private JButton btnExcluir;
 	private JButton btnEditar;
-	private JLabel lbNomeLoja;
+	private JLabel lbNomeConfeccao;
 	private JLabel lbQuantidadePeca;
 	private JLabel lbDataEntrega;
 	private JLabel lbValor;
@@ -32,15 +30,13 @@ public class TelaDetalhePedidosLojas extends JPanel {
 	
 
 	private static final long serialVersionUID = 1L;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the panel.
 	 * @throws IOException 
 	 * @throws FontFormatException 
 	 */
-	public TelaDetalhePedidosLojas() throws FontFormatException, IOException {
+	public TelaDetalhePedidosConfeccoes() throws FontFormatException, IOException {
 		setLayout(new BorderLayout(0, 0));
 		
 	
@@ -63,18 +59,18 @@ public class TelaDetalhePedidosLojas extends JPanel {
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 5 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][][grow][][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 	
 
 		
-		JLabel lbLo = new JLabel("Confeccao:");
+		JLabel lbLo = new JLabel("Confecção:");
 		lbLo.setFont(fonte2);
 		panel_1.add(lbLo, "cell 1 1");
 		
-		lbNomeLoja = new JLabel("New label");
-		lbNomeLoja.setFont(fonte2);
-		panel_1.add(lbNomeLoja, "cell 3 1");
+		lbNomeConfeccao = new JLabel("New label");
+		lbNomeConfeccao.setFont(fonte2);
+		panel_1.add(lbNomeConfeccao, "cell 3 1");
 		
 		JLabel lblNewLabel_3 = new JLabel("Quantidade de peças:");
 		lblNewLabel_3.setFont(fonte2);
@@ -92,21 +88,13 @@ public class TelaDetalhePedidosLojas extends JPanel {
 		lbDataEntrega.setFont(fonte2);
 		panel_1.add(lbDataEntrega, "cell 3 5");
 		
-		lblNewLabel = new JLabel("Quantidade de Matéria:");
-		panel_1.add(lblNewLabel, "cell 1 8");
-		lblNewLabel.setFont(fonte2);
-		
-		lblNewLabel_1 = new JLabel("New label");
-		panel_1.add(lblNewLabel_1, "cell 3 8");
-		lblNewLabel_1.setFont(fonte2);
-		
 		JLabel lblNewLabel_5 = new JLabel("Valor Total:");
 		lblNewLabel_5.setFont(fonte2);
-		panel_1.add(lblNewLabel_5, "cell 1 10");
+		panel_1.add(lblNewLabel_5, "cell 1 7");
 		
 		lbValor = new JLabel("New label");
 		lbValor.setFont(fonte2);
-		panel_1.add(lbValor, "cell 3 10");
+		panel_1.add(lbValor, "cell 3 7");
 		
 		btnExcluir = new JButtonOutLine();
 		btnExcluir.setText("Excluir");
@@ -120,23 +108,27 @@ public class TelaDetalhePedidosLojas extends JPanel {
 		
 	}
 	
-	public void excluirPedidoLojas(ActionListener acao) {
+	public void excluirPedidoConfeccao(ActionListener acao) {
 		btnExcluir.addActionListener(acao);
 	}
 	
-	public void editarPedidoLoja(ActionListener acao) {
+	public void editarPedidoConfeccao(ActionListener acao) {
 		btnEditar.addActionListener(acao);
 	}
 	
 
 	
-	public void setPedidosLojas(PedidosLojas pedidosLojas) {
+	public void setPedidoConfeccao(PedidoConfeccao pedido) {
 
 
-	    lbNomeLoja.setText(pedidosLojas.getNomeLoja());
-	    lbQuantidadePeca.setText(String.valueOf(pedidosLojas.getQuantidadeTotal()));
-	    lbDataEntrega.setText(pedidosLojas.getEntrega());
-	    lbValor.setText(String.valueOf(pedidosLojas.getValorTotal()));
+	    lbNomeConfeccao.setText(pedido.getNomeConfeccao());
+	    lbQuantidadePeca.setText(String.valueOf(pedido.getQuantidade()));
+	    if (pedido.getEntrega() != null) {
+	    	lbDataEntrega.setText(pedido.getEntrega().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+	    } else {
+	    	lbDataEntrega.setText("");
+	    }
+	    lbValor.setText(String.valueOf(pedido.getValorPedido()));
 	   
 	}
 	

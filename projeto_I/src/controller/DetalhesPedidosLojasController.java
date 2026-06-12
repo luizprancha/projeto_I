@@ -30,7 +30,12 @@ public class DetalhesPedidosLojasController {
 
 	        carregarDados();
 
-	        configurarEventos();
+	        try {
+				configurarEventos();
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 	    
 	    private void carregarDados() {
@@ -39,7 +44,7 @@ public class DetalhesPedidosLojasController {
 
 	    }
 
-	    private void configurarEventos() {
+	    private void configurarEventos() throws FontFormatException {
 
 	        this.view.excluirPedidoLojas(e -> {
 
@@ -54,12 +59,7 @@ public class DetalhesPedidosLojasController {
 	            );
 
 	            navegador.navegarPara("PEDIDOS_LOJAS");
-	            try {
-	            	pedidoslojasconfirmadosController.recriarPaineis();
-				} catch (FontFormatException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+	            pedidoslojasconfirmadosController.recriarPaineis();
 
 	        });
 

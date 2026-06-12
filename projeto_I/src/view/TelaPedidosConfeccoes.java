@@ -30,6 +30,7 @@ public class TelaPedidosConfeccoes extends JPanel {
 	private JTextField tfCNPJ;
 	private JTextField tfQtdePecas;
 	private JTextField tfValorTotal;
+	private JLabel lbQtdeMateriaPrima;
 	private JComboBox cbPgmt;
 	
 	/**
@@ -66,7 +67,7 @@ public class TelaPedidosConfeccoes extends JPanel {
 		panel_1.setBackground(new Color(235, 219, 194));
 		panel_1.setForeground(new Color(235, 219, 194));
 		panel.add(panel_1, "cell 1 3 3 1,grow");
-		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
+		panel_1.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel_5 = new JLabel("CNPJ:");
 		lblNewLabel_5.setFont(fonte2);
@@ -85,33 +86,41 @@ public class TelaPedidosConfeccoes extends JPanel {
 		tfQtdePecas.setFont(fonte2);
 		panel_1.add(tfQtdePecas, "cell 3 3,growx");
 		tfQtdePecas.setColumns(10);
+
+		JLabel lblQtdeMateriaPrima = new JLabel("Quantidade de Matéria-Prima:");
+		lblQtdeMateriaPrima.setFont(fonte2);
+		panel_1.add(lblQtdeMateriaPrima, "cell 1 5");
+
+		lbQtdeMateriaPrima = new JLabel("0");
+		lbQtdeMateriaPrima.setFont(fonte2);
+		panel_1.add(lbQtdeMateriaPrima, "cell 3 5");
 		
 		JLabel lblNewLabel_3 = new JLabel("Data de entrega:");
 		lblNewLabel_3.setFont(fonte2);
-		panel_1.add(lblNewLabel_3, "cell 1 5");
+		panel_1.add(lblNewLabel_3, "cell 1 7");
 		
 		tfEntrega = new JTextField();
 		tfEntrega.setFont(fonte2);
-		panel_1.add(tfEntrega, "cell 3 5,growx");
+		panel_1.add(tfEntrega, "cell 3 7,growx");
 		tfEntrega.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Valor total:");
 		lblNewLabel_4.setFont(fonte2);
-		panel_1.add(lblNewLabel_4, "cell 1 7");
+		panel_1.add(lblNewLabel_4, "cell 1 9");
 		
 		tfValorTotal = new JTextField();
 		tfValorTotal.setFont(fonte2);
-		panel_1.add(tfValorTotal, "cell 3 7,growx");
+		panel_1.add(tfValorTotal, "cell 3 9,growx");
 		tfValorTotal.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Forma de Pagamento:");
 		lblNewLabel_6.setFont(fonte2);
-		panel_1.add(lblNewLabel_6, "cell 1 9");
+		panel_1.add(lblNewLabel_6, "cell 1 11");
 		
 		cbPgmt = new JComboBox();
 		cbPgmt.setModel(new DefaultComboBoxModel(new String[] {"", "Boleto", "Pix", "Cartao Crédito", "Cartao Debito"}));
 		cbPgmt.setFont(fonte2);
-		panel_1.add(cbPgmt, "cell 3 9,growx");
+		panel_1.add(cbPgmt, "cell 3 11,growx");
 		
 		btnFinalizar = new JButtonOutLine();
 		btnFinalizar.setText("Finalizar Pedido");
@@ -150,9 +159,14 @@ public class TelaPedidosConfeccoes extends JPanel {
 		public void limparCampos() {
 			tfCNPJ.setText("");
 			tfQtdePecas.setText("");
+			lbQtdeMateriaPrima.setText("0");
 			tfEntrega.setText("");
 			tfValorTotal.setText("");
 			cbPgmt.setSelectedIndex(0);
+		}
+
+		public void setQuantidadeMateriaPrima(int quantidade) {
+			lbQtdeMateriaPrima.setText(String.valueOf(quantidade));
 		}
 
 }
