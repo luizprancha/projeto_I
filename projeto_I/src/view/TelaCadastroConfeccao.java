@@ -69,6 +69,7 @@ public class TelaCadastroConfeccao extends JPanel {
 		
 		tfNomeConfeccao = new JTextField();
 		panel_1.add(tfNomeConfeccao, "cell 4 1,growx");
+		tfNomeConfeccao.setFont(fonte2);
 		tfNomeConfeccao.setColumns(10);
 		
 		JLabel lbResponsavel = new JLabel("Responsável:");
@@ -86,6 +87,7 @@ public class TelaCadastroConfeccao extends JPanel {
 		
 		tfTelefone = new JTextField();
 		panel_1.add(tfTelefone, "cell 4 5,grow");
+		tfTelefone.setFont(fonte2);
 		tfTelefone.setColumns(10);
 		
 		JLabel lbCNPJ = new JLabel("CNPJ:");
@@ -95,10 +97,12 @@ public class TelaCadastroConfeccao extends JPanel {
 	    tfCNPJ = new JTextField();
 		panel_1.add(tfCNPJ, "cell 4 7,grow");
 		tfCNPJ.setColumns(10);
+		tfCNPJ.setFont(fonte2);
 		
 		JLabel lbEndereco = new JLabel("Endereço:");
 		panel_1.add( lbEndereco, "cell 2 9");
-		 lbEndereco.setFont(fonte2);
+		lbEndereco.setFont(fonte2);
+		
 		 
 		tfEndereco = new JTextField();
 		tfEndereco.setFont(fonte2);

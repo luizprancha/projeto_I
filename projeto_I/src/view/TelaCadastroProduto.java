@@ -57,7 +57,7 @@ public class TelaCadastroProduto extends JPanel {
 		
 		JLabel lbCadastro = new JLabel("Cadastro Produto");
 		lbCadastro.setForeground(new Color(235, 219, 194));
-		lbCadastro.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lbCadastro.setFont(fonte2);
 		panel.add(lbCadastro, "cell 1 1 5 1,alignx left,growy");
 		lbCadastro.setFont(fonte);
 		
@@ -71,7 +71,7 @@ public class TelaCadastroProduto extends JPanel {
 		panel_1.add(lbNomePeca, "cell 1 1");
 		
 		tfNomepeca = new JTextField();
-		tfNomepeca.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNomepeca.setFont(fonte2);
 		panel_1.add(tfNomepeca, "cell 3 1,growx");
 		tfNomepeca.setColumns(10);
 		
