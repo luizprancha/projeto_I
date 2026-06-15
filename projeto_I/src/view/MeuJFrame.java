@@ -1,16 +1,20 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FontFormatException;
 import java.awt.Toolkit;
 import java.io.IOException;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import controller.AlterarLojaController;
 import controller.AlterarProdutosController;
@@ -87,7 +91,7 @@ public class MeuJFrame extends JFrame {
 		setBounds(100, 100, 450, 300);
 		setMinimumSize(new Dimension(600, 500));
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.contentPane.setBorder(null);
 		setContentPane(contentPane);
 
 		setLocationRelativeTo(null);
@@ -96,7 +100,7 @@ public class MeuJFrame extends JFrame {
 
 		this.contentPane = new JPanel(this.cardLayout);
 		this.contentPane.setPreferredSize(new Dimension(600, 675));
-		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.contentPane.setBorder(null);
 		setContentPane(this.contentPane);
 
 		
@@ -271,7 +275,22 @@ public class MeuJFrame extends JFrame {
 		
 		mostrarTela("LOGIN");
 		
+		Color bege = new Color(220, 206, 180);
+		Color azul = new Color(16, 60, 95);
+
+		UIManager.put("Menu.background", bege);
+		UIManager.put("Menu.foreground", azul);
+
+		UIManager.put("MenuItem.background", bege);
+		UIManager.put("MenuItem.foreground", azul);
+
+		UIManager.put("PopupMenu.background", bege);
+		
+	
+
 		menuBar = new JMenuBar();
+		menuBar.setBackground(bege);
+		menuBar.setOpaque(true);;
 
 		JMenu itemNotificacao = new JMenu("Notificações");
 		menuBar.add(itemNotificacao);
@@ -425,11 +444,45 @@ public class MeuJFrame extends JFrame {
 			}
 		});
 		itemDeslogar.add(ItemDeslogar);
-		
 
+
+
+		ItemNotificacao.setBackground(bege);
+		ItemNotificacao.setForeground(azul);
+
+		itemProdutos.setBackground(bege);
+		itemProdutos.setForeground(azul);
+
+		mntmNewMenuItem_3.setBackground(bege);
+		mntmNewMenuItem_3.setForeground(azul);
+
+		mntmNewMenuItem_4.setBackground(bege);
+		mntmNewMenuItem_4.setForeground(azul);
+
+		itemLojasPedidos.setBackground(bege);
+		itemLojasPedidos.setForeground(azul);
+
+		itemConfeccao.setBackground(bege);
+		itemConfeccao.setForeground(azul);
+
+		itensMateriaPrima.setBackground(bege);
+		itensMateriaPrima.setForeground(azul);
+
+		ItemCarrinhos.setBackground(bege);
+		ItemCarrinhos.setForeground(azul);
+
+		itemCarrinhoConfeccoes.setBackground(bege);
+		itemCarrinhoConfeccoes.setForeground(azul);
+
+		ItemDeslogar.setBackground(bege);
+		ItemDeslogar.setForeground(azul);
+		
+		menuBar.setBorder(BorderFactory.createEmptyBorder());
 		
 		//setJMenuBar(menuBar);
 	}
+	
+	
 
 	public void adicionarTela(String nome, JPanel tela) {
 		this.contentPane.add(tela, nome);
