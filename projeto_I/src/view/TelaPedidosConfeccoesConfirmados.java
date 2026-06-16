@@ -35,7 +35,7 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/Jomhuria-Regular.ttf")
-		).deriveFont(80f);
+		).deriveFont(60f);
 
 		Font fonte3 = Font.createFont(
 		        Font.TRUETYPE_FONT,

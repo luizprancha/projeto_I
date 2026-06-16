@@ -41,6 +41,7 @@ public class TelaDetalhePedidosConfeccoes extends JPanel {
 		
 	
 		JPanel panel = new JPanel();
+		panel.setForeground(new Color(235, 219, 194));
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow][grow]", "[grow][grow][grow][grow][grow][grow][grow]"));
@@ -55,6 +56,11 @@ public class TelaDetalhePedidosConfeccoes extends JPanel {
 		        Font.TRUETYPE_FONT,
 		        getClass().getResourceAsStream("/fontes/PlayfairDisplay-Regular.ttf")
 		).deriveFont(15f);
+		
+		JLabel lbPedidosConf = new JLabel("Pedidos Confecções");
+		lbPedidosConf.setForeground(new Color(235, 219, 194));
+		panel.add(lbPedidosConf, "cell 1 1 2 1");
+		lbPedidosConf.setFont(fonte);
 		
 		PainelArredondado panel_1 = new PainelArredondado();
 		panel_1.setBackground(new Color(235, 219, 194));
