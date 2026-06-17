@@ -30,7 +30,7 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(15, 57, 87));
 		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[grow][grow][grow][grow][grow][grow]", "[grow][grow][][grow][grow][grow]"));
+		panel.setLayout(new MigLayout("", "[grow][grow 90][grow][grow][grow][grow][grow]", "[grow][grow][][grow][grow][grow]"));
 
 		Font fonte = Font.createFont(
 		        Font.TRUETYPE_FONT,
@@ -56,10 +56,10 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 				btnRealizar = new JButtonOutLine();
 				btnRealizar.setText("Realizar novo pedido");
 				btnRealizar.setFont(fonte3);
-				panel.add(btnRealizar, "cell 2 1,growx");
+				panel.add(btnRealizar, "cell 3 1,growx");
 		
 		tfBuscar = new JTextField();
-		panel.add(tfBuscar, "cell 4 1,growx");
+		panel.add(tfBuscar, "cell 5 1,growx");
 		tfBuscar.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("Confirmados:");
@@ -68,7 +68,7 @@ public class TelaPedidosConfeccoesConfirmados extends JPanel {
 		panel.add(lblNewLabel_1, "cell 1 3");
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, "cell 1 4 4 1,grow");
+		panel.add(scrollPane, "cell 1 4 5 1,grow");
 
 		panelPedidos = new JPanel();
 		panelPedidos.setBackground(new Color(15, 57, 87));

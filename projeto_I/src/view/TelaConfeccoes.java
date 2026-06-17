@@ -62,7 +62,7 @@ public class TelaConfeccoes extends JPanel {
 		panel.add(lbLojas, "cell 1 1");
 		
 		btnCadastrarConfeccao = new JButtonOutLine();
-		btnCadastrarConfeccao.setText("Cadastrar nova confecção");
+		btnCadastrarConfeccao.setText("Cadastrar confecção");
 		btnCadastrarConfeccao.setFont(fonte2);
 		panel.add(btnCadastrarConfeccao, "cell 3 1,growx,aligny center");
 		
