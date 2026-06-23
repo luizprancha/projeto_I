@@ -15,6 +15,8 @@ import model.Carrinho;
 
 import model.ItensCarrinhoDAO;
 import model.ItensCarrinho;
+import model.Produtos;
+import model.ProdutosDAO;
 
 import view.Painel5;
 import view.TelaCarrinhoLojas;
@@ -158,6 +160,16 @@ public class CarrinhoLojasController {
         		return;
         	}
 
+        	String erroEstoque = validarEstoqueItens(itens);
+        	if (erroEstoque != null) {
+        		view.exibirMensagem(
+        				"Erro",
+        				"Estoque insuficiente:\n" + erroEstoque,
+        				0
+        		);
+        		return;
+        	}
+
         	int quantidadeTotal = 0;
         	double valorTotal = 0;
 
@@ -231,6 +243,27 @@ public class CarrinhoLojasController {
 
         this.view.revalidate();
         this.view.repaint();
+    }
+
+    private String validarEstoqueItens(List<ItensCarrinho> itens) {
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        StringBuilder erros = new StringBuilder();
+
+        for (ItensCarrinho item : itens) {
+            Produtos produto = produtosDAO.buscarPorId(item.getIdProduto());
+            int disponivel = produto != null ? produto.getQuantidade() : 0;
+
+            if (disponivel < item.getQuantidade()) {
+                erros.append(item.getNomeProduto())
+                        .append(": disponível ")
+                        .append(disponivel)
+                        .append(", solicitado ")
+                        .append(item.getQuantidade())
+                        .append("\n");
+            }
+        }
+
+        return erros.length() > 0 ? erros.toString().trim() : null;
     }
     
 	

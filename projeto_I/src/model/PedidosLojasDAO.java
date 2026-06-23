@@ -12,6 +12,8 @@ import java.util.List;
 import database.BancoDeDados;
 
 public class PedidosLojasDAO {
+
+	private static final DateTimeFormatter FORMATO_DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	public List<PedidosLojas> listarPedidosLojas() {
 
 	    String sql =
@@ -41,7 +43,7 @@ public class PedidosLojasDAO {
 
 	            pedidoslojas.setIdPedidoL(rset.getInt("idPedidosL"));
 	            pedidoslojas.setEntrega(
-	                data != null ? data.toString() : null
+	                data != null ? data.toLocalDate().format(FORMATO_DATA) : null
 	            );
 
 	            pedidoslojas.setValorTotal(rset.getDouble("valor_total"));
@@ -75,7 +77,7 @@ public class PedidosLojasDAO {
 		        try {
 		            conexao = database.BancoDeDados.conectar();
 		            pstm = conexao.prepareStatement(sql);
-		            pstm.setDate(1, java.sql.Date.valueOf(pedidoslojas.getEntrega()));
+		            pstm.setDate(1, java.sql.Date.valueOf(parseDataEntrega(pedidoslojas.getEntrega())));
 		            pstm.setDouble(2, pedidoslojas.getValorTotal());
 		            pstm.setString(3, pedidoslojas.getLojas_CNPJ());
 		            pstm.setString(4, pedidoslojas.getEndereco());
@@ -164,10 +166,11 @@ public class PedidosLojasDAO {
 		    }
 
 		    private LocalDate parseDataEntrega(String data) {
-		    	if (data.contains("/")) {
-		    		return LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		    	String trimmed = data.trim();
+		    	if (trimmed.contains("/")) {
+		    		return LocalDate.parse(trimmed, FORMATO_DATA);
 		    	}
-		    	return LocalDate.parse(data);
+		    	return LocalDate.parse(trimmed);
 		    }
 
 }

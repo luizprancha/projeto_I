@@ -3,6 +3,10 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import model.Carrinho;
 import model.CarrinhoDAO;
 import model.ItensCarrinho;
@@ -12,6 +16,7 @@ import model.PedidosLojas;
 import model.PedidosLojasDAO;
 import model.PedidosLojasProdutos;
 import model.PedidosLojasProdutosDAO;
+import model.Produtos;
 import model.ProdutosDAO;
 import view.TelaMensagem;
 import view.TelaPedidosLojas;
@@ -81,9 +86,29 @@ private void finalizarPedido() {
 			return;
 		}
 
+		String entrega = view.getEntrega().trim();
+		if (entrega.isEmpty()) {
+			TelaMensagem.mostrar("Aviso", "Informe a data de entrega!");
+			return;
+		}
+
+		try {
+			LocalDate.parse(entrega, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		} catch (DateTimeParseException ex) {
+			TelaMensagem.mostrar("Erro", "Data de entrega inválida! Use o formato dd/MM/yyyy.");
+			return;
+		}
+
+		ProdutosDAO produtosDAO = new ProdutosDAO();
+		String erroEstoque = validarEstoqueItens(produtosDAO, itensDoPedido);
+		if (erroEstoque != null) {
+			TelaMensagem.mostrar("Erro", "Estoque insuficiente:\n" + erroEstoque);
+			return;
+		}
+
 		PedidosLojas pedido = new PedidosLojas();
 		pedido.setLojas_CNPJ(cnpj);
-		pedido.setEntrega(view.getEntrega());
+		pedido.setEntrega(entrega);
 		pedido.setEndereco(lojasDAO.buscarEnderecoPorCNPJ(cnpj));
 		pedido.setValorTotal(valorTotalPedido);
 
@@ -97,7 +122,6 @@ private void finalizarPedido() {
 		}
 
 		PedidosLojasProdutosDAO itensDAO = new PedidosLojasProdutosDAO();
-		ProdutosDAO produtosDAO = new ProdutosDAO();
 
 		for (ItensCarrinho item : itensDoPedido) {
 
@@ -109,7 +133,10 @@ private void finalizarPedido() {
 
 			itensDAO.salvar(itemPedido);
 
-			produtosDAO.atualizarEstoque(item.getIdProduto(), item.getQuantidade());
+			if (!produtosDAO.atualizarEstoque(item.getIdProduto(), item.getQuantidade())) {
+				TelaMensagem.mostrar("Erro", "Estoque insuficiente para o produto: " + item.getNomeProduto());
+				return;
+			}
 		}
 
 		carrinhoDAO.vincularPedidoAoCarrinho(idCarrinhoAntigo, idPedido);
@@ -137,7 +164,7 @@ private void finalizarPedido() {
 	} catch (Exception ex) {
 
 		ex.printStackTrace();
-		TelaMensagem.mostrar("Erro", "Erro ao finalizar pedido!");
+		TelaMensagem.mostrar("Erro", "Erro ao finalizar pedido! Verifique a data (dd/MM/yyyy).");
 	}
 }
 
@@ -153,6 +180,26 @@ private void criarNovoCarrinho() {
 		carrinhoAtual.setIdCarrinho(novoId);
 		carrinhoAtual.setIdPedidosL(0);
 	}
+}
+
+private String validarEstoqueItens(ProdutosDAO produtosDAO, List<ItensCarrinho> itens) {
+	StringBuilder erros = new StringBuilder();
+
+	for (ItensCarrinho item : itens) {
+		Produtos produto = produtosDAO.buscarPorId(item.getIdProduto());
+		int disponivel = produto != null ? produto.getQuantidade() : 0;
+
+		if (disponivel < item.getQuantidade()) {
+			erros.append(item.getNomeProduto())
+					.append(": disponível ")
+					.append(disponivel)
+					.append(", solicitado ")
+					.append(item.getQuantidade())
+					.append("\n");
+		}
+	}
+
+	return erros.length() > 0 ? erros.toString().trim() : null;
 }
 
 

@@ -7,6 +7,7 @@ import model.CarrinhoConfeccoes;
 import model.CarrinhoConfeccoesDAO;
 import model.ConfeccoesDAO;
 import model.ItensCarrinhoConfeccoes;
+import model.MateriaPrima;
 import model.MateriaPrimaDAO;
 import model.PedidoConfeccao;
 import model.PedidoConfeccaoDAO;
@@ -95,6 +96,12 @@ private void finalizarPedido() {
 
 		double valorTotal = view.getValorTotal();
 
+		String erroEstoque = validarEstoqueItens(itensDoPedido);
+		if (erroEstoque != null) {
+			TelaMensagem.mostrar("Erro", "Estoque insuficiente:\n" + erroEstoque);
+			return;
+		}
+
 		PedidoConfeccao pedido = new PedidoConfeccao();
 		pedido.setConfeccoesCNPJ(cnpj);
 		pedido.setEntrega(view.getDataEntrega());
@@ -112,9 +119,13 @@ private void finalizarPedido() {
 		}
 
 		for (ItensCarrinhoConfeccoes item : itensDoPedido) {
-			materiaPrimaDAO.atualizarEstoque(
+			if (!materiaPrimaDAO.atualizarEstoque(
 					item.getIdMateriaPrima(),
-					item.getQuantidade());
+					item.getQuantidade())) {
+				TelaMensagem.mostrar("Erro",
+						"Estoque insuficiente para: " + item.getNomeMateria());
+				return;
+			}
 		}
 
 		carrinhoDAO.vincularPedidoAoCarrinho(idCarrinhoAntigo, idPedido);
@@ -161,6 +172,26 @@ private void criarNovoCarrinho() {
 		carrinhoAtual.setIdCarrinho(novoId);
 		carrinhoAtual.setIdPedidoC(0);
 	}
+}
+
+private String validarEstoqueItens(List<ItensCarrinhoConfeccoes> itens) {
+	StringBuilder erros = new StringBuilder();
+
+	for (ItensCarrinhoConfeccoes item : itens) {
+		MateriaPrima materia = materiaPrimaDAO.buscarPorId(item.getIdMateriaPrima());
+		int disponivel = materia != null ? materia.getQuantidade() : 0;
+
+		if (disponivel < item.getQuantidade()) {
+			erros.append(item.getNomeMateria())
+					.append(": disponível ")
+					.append(disponivel)
+					.append(", solicitado ")
+					.append(item.getQuantidade())
+					.append("\n");
+		}
+	}
+
+	return erros.length() > 0 ? erros.toString().trim() : null;
 }
 
 }

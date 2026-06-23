@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import model.Lojas;
 import model.LojasDAO;
@@ -63,6 +66,12 @@ public class PedidosLojasAlterarController {
 
 		    if (entrega.isEmpty()) {
 		        erros.append("Data de entrega é obrigatória\n");
+		    } else {
+		        try {
+		            LocalDate.parse(entrega, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		        } catch (DateTimeParseException ex) {
+		            erros.append("Data de entrega inválida (use dd/MM/yyyy)\n");
+		        }
 		    }
 
 		    if (valor.isEmpty()) {

@@ -97,6 +97,16 @@ public class DetalheMateriaController {
 
             try {
 
+                MateriaPrima materiaAtual = model.buscarPorId(materiaprima.getIdMateriaPrima());
+                if (materiaAtual == null || materiaAtual.getQuantidade() < 1) {
+                    view.exibirMensagem(
+                        "Erro",
+                        "Matéria-prima sem estoque disponível!",
+                        0
+                    );
+                    return;
+                }
+
                 ItensCarrinhoConfeccoes item = new ItensCarrinhoConfeccoes();
                 item.setIdCarrinho(carrinho.getIdCarrinho());
                 item.setIdMateriaPrima(materiaprima.getIdMateriaPrima());

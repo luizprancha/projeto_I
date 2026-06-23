@@ -14,6 +14,8 @@ import javax.swing.event.DocumentListener;
 import model.CarrinhoConfeccoes;
 import model.ItensCarrinhoConfeccoes;
 import model.ItensCarrinhoConfeccoesDAO;
+import model.MateriaPrima;
+import model.MateriaPrimaDAO;
 import view.PainelCarrinhoMateria;
 import view.TelaCarrinhoConfeccoes;
 
@@ -146,6 +148,15 @@ public class CarrinhoConfeccoesController {
 				return;
 			}
 
+			String erroEstoque = validarEstoqueItens(itens);
+			if (erroEstoque != null) {
+				view.exibirMensagem(
+						"Erro",
+						"Estoque insuficiente:\n" + erroEstoque,
+						0);
+				return;
+			}
+
 			int quantidadeTotal = 0;
 
 			for (ItensCarrinhoConfeccoes item : itens) {
@@ -210,5 +221,26 @@ public class CarrinhoConfeccoesController {
 
 		this.view.revalidate();
 		this.view.repaint();
+	}
+
+	private String validarEstoqueItens(List<ItensCarrinhoConfeccoes> itens) {
+		MateriaPrimaDAO materiaPrimaDAO = new MateriaPrimaDAO();
+		StringBuilder erros = new StringBuilder();
+
+		for (ItensCarrinhoConfeccoes item : itens) {
+			MateriaPrima materia = materiaPrimaDAO.buscarPorId(item.getIdMateriaPrima());
+			int disponivel = materia != null ? materia.getQuantidade() : 0;
+
+			if (disponivel < item.getQuantidade()) {
+				erros.append(item.getNomeMateria())
+						.append(": disponível ")
+						.append(disponivel)
+						.append(", solicitado ")
+						.append(item.getQuantidade())
+						.append("\n");
+			}
+		}
+
+		return erros.length() > 0 ? erros.toString().trim() : null;
 	}
 }

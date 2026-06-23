@@ -10,6 +10,8 @@ import model.Carrinho;
 import model.ItensCarrinho;
 import model.ItensCarrinhoDAO;
 import model.Produtos;
+import model.ProdutosDAO;
+import view.TelaMensagem;
 import java.awt.Color;
 import java.awt.FontFormatException;
 import java.io.IOException;
@@ -71,6 +73,16 @@ public class Painel5 extends PainelArredondado  {
 	        btnMais.addActionListener(new ActionListener() {
 
 	            public void actionPerformed(ActionEvent e) {
+	                Produtos produto = new ProdutosDAO().buscarPorId(itenscarrinhos.getIdProduto());
+	                int disponivel = produto != null ? produto.getQuantidade() : 0;
+
+	                if (quantidade + 1 > disponivel) {
+	                    TelaMensagem.mostrar(
+	                            "Aviso",
+	                            "Estoque insuficiente! Disponível: " + disponivel);
+	                    return;
+	                }
+
 	                quantidade++;
 	                atualizarQuantidade(true);
 

@@ -218,14 +218,19 @@ public class ProdutosDAO {
 		        return produtos;
 		    }
 		    
-		    public void atualizarEstoque(
+		    public boolean temEstoqueSuficiente(int idProduto, int quantidade) {
+		    	Produtos produto = buscarPorId(idProduto);
+		    	return produto != null && produto.getQuantidade() >= quantidade;
+		    }
+
+		    public boolean atualizarEstoque(
 		    		int idProduto,
 		    		int quantidade) {
 
 		    	String sql =
 		    	"UPDATE Produtos " +
 		    	"SET qtde_estoque = qtde_estoque - ? " +
-		    	"WHERE idProdutos = ?";
+		    	"WHERE idProdutos = ? AND qtde_estoque >= ?";
 
 		    	Connection conexao = null;
 		    	PreparedStatement pstm = null;
@@ -237,14 +242,15 @@ public class ProdutosDAO {
 		    		pstm = conexao.prepareStatement(sql);
 
 		    		pstm.setInt(1, quantidade);
-
 		    		pstm.setInt(2, idProduto);
+		    		pstm.setInt(3, quantidade);
 
-		    		pstm.executeUpdate();
+		    		return pstm.executeUpdate() > 0;
 
 		    	} catch (Exception e) {
 
 		    		e.printStackTrace();
+		    		return false;
 
 		    	} finally {
 

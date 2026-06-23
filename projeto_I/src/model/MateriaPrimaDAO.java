@@ -114,12 +114,51 @@ public class MateriaPrimaDAO {
 			    }
 			    
 			    
-			    public void atualizarEstoque(int idMateriaPrima, int quantidade) {
+			    public MateriaPrima buscarPorId(int id) {
+
+			        String sql = "SELECT * FROM MateriaPrima WHERE idMateriaPrima = ?";
+
+			        Connection conexao = null;
+			        PreparedStatement pstm = null;
+			        ResultSet rset = null;
+
+			        try {
+
+			            conexao = BancoDeDados.conectar();
+			            pstm = conexao.prepareStatement(sql);
+			            pstm.setInt(1, id);
+			            rset = pstm.executeQuery();
+
+			            if (rset.next()) {
+			                MateriaPrima materia = new MateriaPrima();
+			                materia.setIdMateriaPrima(rset.getInt("idMateriaPrima"));
+			                materia.setNome(rset.getString("nome"));
+			                materia.setCor(rset.getString("cor"));
+			                materia.setQuantidade(rset.getInt("quantidade"));
+			                materia.setTipo(rset.getString("tipo"));
+			                return materia;
+			            }
+
+			        } catch (SQLException e) {
+			            e.printStackTrace();
+			        } finally {
+			            BancoDeDados.desconectar(conexao);
+			        }
+
+			        return null;
+			    }
+
+			    public boolean temEstoqueSuficiente(int idMateriaPrima, int quantidade) {
+			        MateriaPrima materia = buscarPorId(idMateriaPrima);
+			        return materia != null && materia.getQuantidade() >= quantidade;
+			    }
+
+			    public boolean atualizarEstoque(int idMateriaPrima, int quantidade) {
 
 			        String sql =
 			                "UPDATE MateriaPrima " +
 			                "SET quantidade = quantidade - ? " +
-			                "WHERE idMateriaPrima = ?";
+			                "WHERE idMateriaPrima = ? AND quantidade >= ?";
 
 			        Connection conexao = null;
 			        PreparedStatement pstm = null;
@@ -130,10 +169,12 @@ public class MateriaPrimaDAO {
 			            pstm = conexao.prepareStatement(sql);
 			            pstm.setInt(1, quantidade);
 			            pstm.setInt(2, idMateriaPrima);
-			            pstm.executeUpdate();
+			            pstm.setInt(3, quantidade);
+			            return pstm.executeUpdate() > 0;
 
 			        } catch (SQLException e) {
 			            e.printStackTrace();
+			            return false;
 			        } finally {
 			            BancoDeDados.desconectar(conexao);
 			        }

@@ -7,6 +7,9 @@ import javax.swing.JTextField;
 import Botao.PainelArredondado;
 import model.ItensCarrinhoConfeccoes;
 import model.ItensCarrinhoConfeccoesDAO;
+import model.MateriaPrima;
+import model.MateriaPrimaDAO;
+import view.TelaMensagem;
 import java.awt.Color;
 import java.awt.FontFormatException;
 import java.io.IOException;
@@ -58,6 +61,16 @@ public class PainelCarrinhoMateria extends PainelArredondado {
 		JButton btnMais = new JButton("+");
 		btnMais.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MateriaPrima materia = new MateriaPrimaDAO().buscarPorId(item.getIdMateriaPrima());
+				int disponivel = materia != null ? materia.getQuantidade() : 0;
+
+				if (quantidade + 1 > disponivel) {
+					TelaMensagem.mostrar(
+							"Aviso",
+							"Estoque insuficiente! Disponível: " + disponivel);
+					return;
+				}
+
 				quantidade++;
 				atualizarQuantidade(true);
 			}

@@ -130,7 +130,16 @@ public class DetalhesProdutosController {
 
             try {
 
-           
+                Produtos produtoAtual = model.buscarPorId(produto.getIdProduto());
+                if (produtoAtual == null || produtoAtual.getQuantidade() < 1) {
+                    view.exibirMensagem(
+                        "Erro",
+                        "Produto sem estoque disponível!",
+                        0
+                    );
+                    return;
+                }
+
                 ItensCarrinho item = new ItensCarrinho();
 
                 item.setIdCarrinho(carrinho.getIdCarrinho());
